@@ -2,7 +2,7 @@
 
 - 计划 ID：CRYSTRA-RENAME-20260913
 - 文档版本：2
-- 最后更新：2026-09-13
+- 最后更新：2026-09-14
 - 总体状态：IN_PROGRESS（T0–T4 完成，T5 进行中）
 - 当前执行任务：T5
 - 当前执行者：本任务 Codex；T5
@@ -132,9 +132,9 @@ T0 产出必须链接在本文中，可以建立同目录的决策附件；不�
 | 本轮仓库／发布／部署操作 | repository-renames.json 记录相同仓库 ID；没有新发布或旧部署清理 |
 | 工作路径 | 台账 /Users/firestige/Projects/wsr-contracts；组件仍用旧本地目录；组合隔离工作树 /tmp/crystra-combination-stage，codex/crystra-combination |
 | 文档持久化 | C019 与 t5-progress.md、repository-discovery.json 已纳入本轮文档持久化 |
-| 活跃进程／作业 | DSH #35/#36 已合并；组合 #271 CI 均通过但 REVIEW_REQUIRED；#272 草稿 CI 待读回；无发布作业 |
+| 活跃进程／作业 | DSH #35/#36 已合并；组合 #271 CI 均通过但 REVIEW_REQUIRED；#272 草稿 CI 34767193421 已成功；无发布作业 |
 | 已知阻塞 | 发布凭据自动审批等待明确授权；组合 PR #271 被 REVIEW_REQUIRED 阻止，未绕过；独立准备继续 |
-| 下一条动作 | 先读回 #272 CI；在 codex/crystra-combination-publisher 完成发布 workflow 接线、资格／晋升检查及旧安装器退出。#271 合并授权与发布凭据授权分别等待答复，详见 t5-progress.md |
+| 下一条动作 | 在 codex/crystra-combination-publisher 完成发布 workflow 接线、资格／晋升检查及旧安装器退出。#271 合并授权与发布凭据授权分别等待答复，详见 t5-progress.md |
 | 禁止误恢复项 | 不重做仓库更名；不绕过凭据审批；保护原组合子模块脏内容，不消费旧制品 |
 
 

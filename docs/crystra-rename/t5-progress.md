@@ -51,3 +51,5 @@ T6 尚未发布候选。T7 尚未清理任何真实旧部署。
 - PR #272 仍是草稿：尚未替换 .github/workflows/release-candidate.yml、release-compose-bundle.yml，尚未删除 product-operations 或 deployment 旧发行入口，尚未实施组合端的完整资格与晋升检查。后续不得把当前构建脚本直接接到无资格门槛的发布动作。
 - 已向用户提出 PR #271 具体审核／管理员合并授权问题；未获答复前不使用 --admin。发布私钥的明确授权问题同样待答复。
 - PR #271 合并后，先读回真实 merge SHA，再将 #272 的新提交从 314c362b 基础协调到 main；不要 reset 原组合工作树或把组件脏内容一起带入。
+
+- 远端追加读回：Draft #272 qualify [34767193421](https://github.com/firestige/crystra/actions/runs/34767193421) 成功；Evidence 84bb315 CI [34765582066](https://github.com/firestige/crystra-evidence/actions/runs/34765582066) 成功。#272 仍是未接通发布流程的草稿，CI 通过不等于真实新服务已验收。
