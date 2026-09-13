@@ -59,7 +59,7 @@ T0 已落定具体实现选择，见 [T0 决策](t0-decisions.md)。新坐标的
 | T2-EV | Evidence 更名与服务配置 | T1 DONE | DONE | 本任务 Codex | main 3345e82；[本地与 CI 完成证据](t2-evidence-progress.md) |
 | T2-EO | Evolution 更名与发布解耦 | T1 DONE | DONE | 本任务 Codex | main e22920e；[完成证据与 CI](t2-evolution-progress.md) |
 | T2-WP | Workflow 资源更名与 main CI | T1 DONE | DONE | 本任务 Codex | main 8746d18；[验证记录与 CI](t2-workflow-progress.md) |
-| T3 | 统一 dsh-crystra 包与模块装配 | T2-EX、T2-UI DONE | IN_PROGRESS | 本任务 Codex | 基线 117b54c；根包合并、内部模块、普通依赖和单客户端规划已确认 |
+| T3 | 统一 dsh-crystra 包与模块装配 | T2-EX、T2-UI DONE | IN_PROGRESS | 本任务 Codex | 基线 117b54c；根包与模块合并已实施；隔离安装／生命周期通过，169 测试／真实 Harness 通过；PR #33 CI 验证中；[恢复记录](t3-progress.md) |
 | T4 | 插件初始化、取消独立安装步骤 | T3 DONE；完整服务验收需 T2-EV、T2-EO、T2-WP DONE | PENDING | 未分配 | — |
 | T5 | 当前品牌收尾与外部坐标切换 | 准备可在 T0 后；实际切换需 T1–T4 DONE | PENDING | 未分配 | — |
 | T6 | 新组件候选与隔离环境组合验证 | T5 DONE | PENDING | 未分配 | — |
@@ -191,6 +191,8 @@ T0 产出必须链接在本文中，可以建立同目录的决策附件；不�
 | L009 | 2026-09-13 | T2-EV DONE；T2-EO IN_PROGRESS | Evidence main 3345e82、CI 34760537286 成功；164 单元／16 PostgreSQL、部署备份恢复与新 wheel 消费通过 | Evolution 组件输入解耦 |
 
 | L010 | 2026-09-13 | T2 DONE；T3 IN_PROGRESS | Evolution main e22920e、CI 34760877941 成功；191 测试与镜像内真实校验通过，五组件完成 | 单根 dsh-crystra 包与内部模块合并 |
+
+| L011 | 2026-09-13 | T3 IN_PROGRESS | 单根包／单客户端／单注册已实施，37 工具测试及隔离安装生命周期通过；真实 Harness／终态场景通过，独立输入重建摘要一致；044301d 经 PR #33 集成；[详细恢复点](t3-progress.md) | 完整 Harness、独立输入重建与 main CI |
 
 后续日志至少记录：任务 ID、状态变化、修改范围／仓库、实际分支或提交、验证结果／证据位置、阻塞及下一步。范围变化还需说明它替代哪条决策，并同步相关附件。没有变化时不堆积“继续等待”日志。
 
