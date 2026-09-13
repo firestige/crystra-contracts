@@ -1,0 +1,22 @@
+[
+  {
+    "old": 271,
+    "new": 273,
+    "url": "https://github.com/firestige/crystra/pull/273",
+    "author": "project-ops-agent[bot]",
+    "head": "codex/crystra-combination-bot",
+    "base": "main",
+    "sha": "314c362ba35e4fa5d517e93fac207b583d66807f",
+    "draft": false
+  },
+  {
+    "old": 272,
+    "new": 274,
+    "url": "https://github.com/firestige/crystra/pull/274",
+    "author": "project-ops-agent[bot]",
+    "head": "codex/crystra-combination-publisher-bot",
+    "base": "codex/crystra-combination-bot",
+    "sha": "9569df79f1e7f891733ca1664ad398496a105e0b",
+    "draft": true
+  }
+]

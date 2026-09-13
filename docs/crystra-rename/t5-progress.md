@@ -53,3 +53,28 @@ T6 尚未发布候选。T7 尚未清理任何真实旧部署。
 - PR #271 合并后，先读回真实 merge SHA，再将 #272 的新提交从 314c362b 基础协调到 main；不要 reset 原组合工作树或把组件脏内容一起带入。
 
 - 远端追加读回：Draft #272 qualify [34767193421](https://github.com/firestige/crystra/actions/runs/34767193421) 成功；Evidence 84bb315 CI [34765582066](https://github.com/firestige/crystra-evidence/actions/runs/34765582066) 成功。#272 仍是未接通发布流程的草稿，CI 通过不等于真实新服务已验收。
+
+## 用户纠正：PR 必须由 bot 提交（2026-09-14）
+
+用户指出 #271 应由 bot 提 PR。已确认 #271/#272 的作者错误地使用 firestige；此前 PR #258 使用 project-ops-agent[bot]。后续采用 bot 身份，撤销管理员合并方向，不修改保护规则。
+
+拟以相同 head SHA 创建 bot 分支及替代 PR：#271 的 314c362ba35e4fa5d517e93fac207b583d66807f 基于 main；#272 保留现有精确提交并堆叠在替代分支。确认两份新 PR 的作者、SHA 和 base 后再关闭旧 PR，保留旧分支。
+
+自动审批在执行前拒绝该操作，要求明确授权读取／使用本机 project-ops-agent 私钥来签发仅限 crystra 的临时令牌，以及关闭被替代的旧 PR。这次没有签发令牌、创建分支／PR或关闭旧 PR。此授权不包含复制发布私钥、修改 App 安装范围或发布制品。
+
+## C020：bot 重建完成（2026-09-14）
+
+用户明确授权后，使用已有 project-ops-agent 身份签发仅限 crystra 仓库 contents/write、pull_requests/write 的临时安装令牌，执行以下替代：
+
+| 旧 PR | 新 PR | 精确 head | base | 状态 |
+|---|---|---|---|---|
+| #271 | [#273](https://github.com/firestige/crystra/pull/273) | 314c362ba35e4fa5d517e93fac207b583d66807f | main | bot 作者，可由用户正常审核 |
+| #272 | [#274](https://github.com/firestige/crystra/pull/274) | 9569df79f1e7f891733ca1664ad398496a105e0b | codex/crystra-combination-bot | bot 作者，仍是草稿 |
+
+新作者均已读回为 project-ops-agent[bot]。两个替代 PR 的作者／提交／base 验证通过后才关闭旧 #271/#272，旧分支保留。临时令牌已撤销；未输出或复制私钥，未更改 App 安装范围、保护规则，未使用管理员合并。操作台账见 bot-pr-replacements.json。
+
+首次 GitHub JWT 请求使用了不匹配的认证头而失败，仅发生只读身份请求；改用 App JWT 所需 Bearer 后完成。没有重复创建 PR。
+
+后续 PR 使用 bot 身份，不再使用用户个人身份提交供其本人审核的 PR。#273 审核完成前，#274 继续保持堆叠关系；不要将旧 #271 的个人身份审核阻塞误当作当前待授权事项。本次授权仅覆盖 bot 重建，不扩展为先前的八仓库发布私钥复制授权。
+
+- bot PR CI 已读回成功：#273 qualify 34769051305、release-governance 34769051334；#274 qualify 34769058435。新 #273 保持待用户正常审核状态，未合并。

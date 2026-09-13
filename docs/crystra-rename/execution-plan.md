@@ -124,17 +124,17 @@ T0 产出必须链接在本文中，可以建立同目录的决策附件；不�
 
 | 字段 | 当前值 |
 |---|---|
-| 检查点 | C019：插件证据已集成；组合 #271 待审核，发布工具草稿 #272 已保存 |
+| 检查点 | C020：bot PR #273 替代 #271；发布工具草稿 #274 替代 #272 |
 | 当前任务 | T5 IN_PROGRESS；T0–T4 DONE |
 | 已完成 | 八仓库更名、origin 更新；Execution 0a708b5、Evolution 984a0dc、Workflow 2fc61f0 新 tag 坐标修复与 CI 成功 |
 | 未完成 | T5 当前资产、组合发布代码、权限配置；T6–T8 |
 | 本轮产品变更 | 新 Workflow tag 命名在发行端与两消费端一致；移除 Evolution 历史制品回退 |
 | 本轮仓库／发布／部署操作 | repository-renames.json 记录相同仓库 ID；没有新发布或旧部署清理 |
 | 工作路径 | 台账 /Users/firestige/Projects/wsr-contracts；组件仍用旧本地目录；组合隔离工作树 /tmp/crystra-combination-stage，codex/crystra-combination |
-| 文档持久化 | C019 与 t5-progress.md、repository-discovery.json 已纳入本轮文档持久化 |
-| 活跃进程／作业 | DSH #35/#36 已合并；组合 #271 CI 均通过但 REVIEW_REQUIRED；#272 草稿 CI 34767193421 已成功；无发布作业 |
-| 已知阻塞 | 发布凭据自动审批等待明确授权；组合 PR #271 被 REVIEW_REQUIRED 阻止，未绕过；独立准备继续 |
-| 下一条动作 | 在 codex/crystra-combination-publisher 完成发布 workflow 接线、资格／晋升检查及旧安装器退出。#271 合并授权与发布凭据授权分别等待答复，详见 t5-progress.md |
+| 文档持久化 | C020 与 t5-progress.md、bot-pr-replacements.json 随本轮保存 |
+| 活跃进程／作业 | DSH #35/#36 已合并；bot #273 两项 CI 及 #274 qualify 均成功；旧 #271/#272 已关闭，原提交验证证据保留；无发布作业 |
+| 已知阻塞 | 发布凭据自动审批等待明确授权；用户已授权并完成 bot 重建：#273 待正常审核，#274 为草稿；发布凭据复制仍待单独授权；不使用管理员绕过 |
+| 下一条动作 | 在 codex/crystra-combination-publisher 完成发布 workflow 接线、资格／晋升检查及旧安装器退出。以 bot 分支 codex/crystra-combination-publisher-bot 继续 #274；#273 由用户正常审核。bot 重建已完成，发布凭据复制仍待单独授权，详见 t5-progress.md |
 | 禁止误恢复项 | 不重做仓库更名；不绕过凭据审批；保护原组合子模块脏内容，不消费旧制品 |
 
 
