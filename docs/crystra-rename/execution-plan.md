@@ -61,7 +61,7 @@ T0 已落定具体实现选择，见 [T0 决策](t0-decisions.md)。新坐标的
 | T2-WP | Workflow 资源更名与 main CI | T1 DONE | DONE | 本任务 Codex | main 8746d18；[验证记录与 CI](t2-workflow-progress.md) |
 | T3 | 统一 dsh-crystra 包与模块装配 | T2-EX、T2-UI DONE | DONE | 本任务 Codex | main b951b9c；PR #33、CI 34762427482 成功；[恢复记录](t3-progress.md) |
 | T4 | 插件初始化、取消独立安装步骤 | T3 DONE；完整服务验收需 T2-EV、T2-EO、T2-WP DONE | DONE | 本任务 Codex | PR #34；CI 34764469211；195 测试、空白浏览器和真实服务通过；[恢复记录](t4-progress.md) |
-| T5 | 当前品牌收尾与外部坐标切换 | 准备可在 T0 后；实际切换需 T1–T4 DONE | IN_PROGRESS | 本任务 Codex | 八个新名可用、admin 权限和本机发布 App 凭据已核实；准备协调更名 |
+| T5 | 当前品牌收尾与外部坐标切换 | 准备可在 T0 后；实际切换需 T1–T4 DONE | IN_PROGRESS | 本任务 Codex | 八仓库已更名且 ID 不变；组件 CI 通过；发布凭据配置等待明确授权；[恢复记录](t5-progress.md) |
 | T6 | 新组件候选与隔离环境组合验证 | T5 DONE | PENDING | 未分配 | — |
 | T7 | 一次性人工清理实际旧部署 | T6 DONE；只读盘点可在 T0 开始 | PENDING | 未分配 | — |
 | T8 | 实际安装验收与发布收尾 | T7 DONE；使用 T6 验证制品 | PENDING | 未分配 | — |
@@ -124,18 +124,19 @@ T0 产出必须链接在本文中，可以建立同目录的决策附件；不�
 
 | 字段 | 当前值 |
 |---|---|
-| 检查点 | C015：T4 DONE；T5 仓库协调切换开始 |
+| 检查点 | C016：八仓库远端更名完成；T5 当前坐标收尾 |
 | 当前任务 | T5 IN_PROGRESS；T0–T4 DONE |
-| 已完成 | 全部普通组件及单插件 main 集成；各组件验证证据见附件 |
-| 未完成 | T5–T8 |
-| 本轮产品变更 | 单根 dsh-crystra 包、内部模块、普通依赖；169 测试／真实 Harness 与终态 fixture 通过 |
-| 本轮仓库／发布／部署操作 | DSH PR #33 squash main b951b9c；CI 34762427482 成功；未发布或清理旧部署 |
-| 工作路径 | 台账：/Users/firestige/Projects/wsr-contracts；代码：/Users/firestige/Projects/wsr-dsh |
-| 文档持久化 | T3 记录已持久化；本检查点随下一文档提交保存 |
-| 活跃进程／作业 | DSH main CI 34762515441 成功；没有发布／部署作业 |
-| 已知阻塞 | 无；新 App 配置仍属于 T5 |
-| 下一条动作 | T5：按仓库 ID 校验并逐一更名八个现有仓库，读回结果写入 repository-renames.json；更新 remote／发布权限，继续当前坐标与文档收尾 |
-| 禁止误恢复项 | 保护用户脏文件；不清理组合子模块、不安装旧资产、不把开发归档当已发布候选 |
+| 已完成 | 八仓库更名、origin 更新；Execution 0a708b5、Evolution 984a0dc、Workflow 2fc61f0 新 tag 坐标修复与 CI 成功 |
+| 未完成 | T5 当前资产、组合发布代码、权限配置；T6–T8 |
+| 本轮产品变更 | 新 Workflow tag 命名在发行端与两消费端一致；移除 Evolution 历史制品回退 |
+| 本轮仓库／发布／部署操作 | repository-renames.json 记录相同仓库 ID；没有新发布或旧部署清理 |
+| 工作路径 | 台账 /Users/firestige/Projects/wsr-contracts；组件仍用旧本地目录；组合隔离工作树 /tmp/crystra-combination-stage，codex/crystra-combination |
+| 文档持久化 | C016 与 t5-progress.md 随本轮文档提交保存 |
+| 活跃进程／作业 | 三组件新提交 CI 全部成功；无发布／部署作业 |
+| 已知阻塞 | 自动审批拒绝复制发布 App 私钥及补充安装范围；明确授权问题已发出，尚无答复；其它 T5 工作继续 |
+| 下一条动作 | 重建 0a708b5 Execution 开发归档、更新 DSH 精确输入与客户端生成物；继续组合仓库收尾 |
+| 禁止误恢复项 | 不重做仓库更名；不绕过凭据审批；保护原组合子模块脏内容，不消费旧制品 |
+
 
 每次推进后直接更新此表，不追加第二份“最新”检查点；旧事件保留在日志。终端会话 ID 仅供定位，跨会话必须验证是否仍有效。
 
@@ -158,7 +159,7 @@ T0 产出必须链接在本文中，可以建立同目录的决策附件；不�
 
 ## 10. 外部动作与一次性清理记录
 
-当前无外部动作。开始 T5–T8 前，在日志中记录具体目标和状态；出现不确定结果时补记读回结果。按当时适用的仓库／发布规则处理实际操作，不把本文中的任务条目当作已经完成的批准或执行结果。
+八仓库已完成远端更名与 origin 更新，见 [读回台账](repository-renames.json)。发布凭据尚未复制，旧部署尚未清理。开始其它 T5–T8 动作前，在日志中记录具体目标和状态；出现不确定结果时补记读回结果。按当时适用的仓库／发布规则处理实际操作，不把本文中的任务条目当作已经完成的批准或执行结果。
 
 人工清理记录模板（T7 使用，当前未执行）：
 
@@ -216,3 +217,5 @@ T0 产出必须链接在本文中，可以建立同目录的决策附件；不�
 
 T0 已完成附件：[t0-decisions.md](t0-decisions.md)。新首轮分发采用 GitHub 精确制品，Contracts scope 保持 private；T5 发布权限仍需实配。
 
+
+| L016 | 2026-09-13 | T5 IN_PROGRESS | 八仓库 ID 校验更名；新 Workflow tag 消费／发行一致，三个组件 CI 成功；凭据操作被自动审批拒绝并等待明确授权 | 独立推进 DSH 输入与组合发布收尾 |

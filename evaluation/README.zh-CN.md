@@ -2,7 +2,7 @@
 
 [English](README.md) | [中文](README.zh-CN.md)
 
-本目录包含 MVP 14-metric Evaluation Catalog 的 published machine representation。Semantic authority 仍是父仓库的 [`Metric Catalog`](https://github.com/firestige/workflow-self-recursive/blob/main/docs/contracts/evaluation/metric-catalog.zh-CN.md)；本 representation 编码该文档，不得静默重定义它。
+本目录包含 MVP 14-metric Evaluation Catalog 的 published machine representation。Semantic authority 仍是父仓库的 [`Metric Catalog`](https://github.com/firestige/crystra/blob/main/docs/contracts/evaluation/metric-catalog.zh-CN.md)；本 representation 编码该文档，不得静默重定义它。
 
 | 内容 | 路径 | 作用 |
 | --- | --- | --- |

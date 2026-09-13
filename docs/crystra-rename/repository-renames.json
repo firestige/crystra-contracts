@@ -1,0 +1,58 @@
+[
+  {
+    "old": "firestige/workflow-self-recursive",
+    "new": "firestige/crystra",
+    "id": 1336515269,
+    "url": "https://github.com/firestige/crystra",
+    "status": "renamed-and-verified"
+  },
+  {
+    "old": "firestige/wsr-contracts",
+    "new": "firestige/crystra-contracts",
+    "id": 1336515477,
+    "url": "https://github.com/firestige/crystra-contracts",
+    "status": "renamed-and-verified"
+  },
+  {
+    "old": "firestige/wsr-execution",
+    "new": "firestige/crystra-execution",
+    "id": 1336515356,
+    "url": "https://github.com/firestige/crystra-execution",
+    "status": "renamed-and-verified"
+  },
+  {
+    "old": "firestige/wsr-ui",
+    "new": "firestige/crystra-ui",
+    "id": 1348270053,
+    "url": "https://github.com/firestige/crystra-ui",
+    "status": "renamed-and-verified"
+  },
+  {
+    "old": "firestige/wsr-evidence",
+    "new": "firestige/crystra-evidence",
+    "id": 1336515394,
+    "url": "https://github.com/firestige/crystra-evidence",
+    "status": "renamed-and-verified"
+  },
+  {
+    "old": "firestige/wsr-evolution",
+    "new": "firestige/crystra-evolution",
+    "id": 1336515431,
+    "url": "https://github.com/firestige/crystra-evolution",
+    "status": "renamed-and-verified"
+  },
+  {
+    "old": "firestige/wsr-workflow-package",
+    "new": "firestige/crystra-workflow-package",
+    "id": 1336515314,
+    "url": "https://github.com/firestige/crystra-workflow-package",
+    "status": "renamed-and-verified"
+  },
+  {
+    "old": "firestige/wsr-dsh",
+    "new": "firestige/crystra-dsh",
+    "id": 1350488250,
+    "url": "https://github.com/firestige/crystra-dsh",
+    "status": "renamed-and-verified"
+  }
+]

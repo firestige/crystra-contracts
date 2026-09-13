@@ -8,7 +8,7 @@ Components evolve on their own `main`. The Crystra combination repository publis
 
 ## Development
 
-Use a standalone checkout. The target repository is `firestige/crystra-contracts`; until the coordinated rename, the existing `firestige/wsr-contracts` URL remains the source location.
+Use a standalone checkout. The repository is `firestige/crystra-contracts`.
 
 ```sh
 node release/cli/qualify.cjs --install

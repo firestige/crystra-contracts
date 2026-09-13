@@ -2,7 +2,7 @@
 
 [English](README.md) | [中文](README.zh-CN.md)
 
-This directory contains the published machine representation of the 14-metric MVP Evaluation Catalog. The semantic authority remains the parent repository's [`Metric Catalog`](https://github.com/firestige/workflow-self-recursive/blob/main/docs/contracts/evaluation/metric-catalog.md); this representation encodes that document and cannot silently redefine it.
+This directory contains the published machine representation of the 14-metric MVP Evaluation Catalog. The semantic authority remains the parent repository's [`Metric Catalog`](https://github.com/firestige/crystra/blob/main/docs/contracts/evaluation/metric-catalog.md); this representation encodes that document and cannot silently redefine it.
 
 | Content | Path | Role |
 | --- | --- | --- |

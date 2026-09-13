@@ -8,7 +8,7 @@ Crystra 将可重复的工作流决策固化为确定性执行，目标是用更
 
 ## 开发
 
-使用独立 checkout。目标仓库为 `firestige/crystra-contracts`；统一更名前仍使用现有的 `firestige/wsr-contracts` 地址。
+使用独立 checkout。仓库地址为 `firestige/crystra-contracts`。
 
 ```sh
 node release/cli/qualify.cjs --install
