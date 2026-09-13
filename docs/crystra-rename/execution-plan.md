@@ -3,10 +3,10 @@
 - 计划 ID：CRYSTRA-RENAME-20260913
 - 文档版本：2
 - 最后更新：2026-09-13
-- 总体状态：IN_PROGRESS（T0、T1 完成，T2-UI 进行中）
-- 当前执行任务：T2-UI
-- 当前执行者：本任务 Codex；T2-UI
-- 下一步：继续 UI 包／样式／导出符号更名，验证组件与浏览器测试；恢复细节见第 8 节
+- 总体状态：IN_PROGRESS（T0、T1、T2-UI 完成，T2-EX 进行中）
+- 当前执行任务：T2-EX
+- 当前执行者：本任务 Codex；T2-EX
+- 下一步：Execution 独立测试输入、生成器与命名／CI 解耦；恢复细节见第 8 节
 
 ## 1. 本文的作用与优先级
 
@@ -54,8 +54,8 @@ T0 已落定具体实现选择，见 [T0 决策](t0-decisions.md)。新坐标的
 | T0 | 固定命名与新安装闭环 | 无 | DONE | 本任务 Codex | [决策与检查](t0-decisions.md) |
 | T1 | Contracts 更名、自包含验证与 CI 解耦 | T0 DONE | DONE | 本任务 Codex | main `f2d373a`；[CI 成功](https://github.com/firestige/wsr-contracts/actions/runs/34758259364)；[实现与验证](t1-progress.md) |
 | T2 | 普通组件与 Workflow 的聚合任务 | 按下列子任务分别推进 | IN_PROGRESS | 本任务 Codex | UI 已开始，五项全部完成后收口 |
-| T2-EX | Execution 更名与 CI／发布解耦 | T1 DONE | READY | 未分配 | — |
-| T2-UI | UI 库更名与 main CI | T0 DONE；如引入契约依赖须显式登记 | IN_PROGRESS | 本任务 Codex | 独立 main 基线 `666a550`；已有 .gitignore 改动不属于此次工作 |
+| T2-EX | Execution 更名与 CI／发布解耦 | T1 DONE | IN_PROGRESS | 本任务 Codex | [进行中与恢复说明](t2-execution-progress.md)；main 基线 dbec4ec |
+| T2-UI | UI 库更名与 main CI | T0 DONE；如引入契约依赖须显式登记 | DONE | 本任务 Codex | main `482f6f1`；[验证与 CI](t2-ui-progress.md) |
 | T2-EV | Evidence 更名与服务配置 | T1 DONE | READY | 未分配 | — |
 | T2-EO | Evolution 更名与发布解耦 | T1 DONE | READY | 未分配 | — |
 | T2-WP | Workflow 资源更名与 main CI | T1 DONE | READY | 未分配 | — |
@@ -124,17 +124,17 @@ T0 产出必须链接在本文中，可以建立同目录的决策附件；不�
 
 | 字段 | 当前值 |
 |---|---|
-| 检查点 | C005：T1 DONE；T2-UI 更名开始 |
-| 当前任务 | T2-UI IN_PROGRESS；其余 T2 子任务 READY |
+| 检查点 | C006：T2-UI DONE；Execution 输入解耦开始 |
+| 当前任务 | T2-EX IN_PROGRESS；T2-UI DONE；EV／EO／WP READY |
 | 已完成 | T0；T1 本地更名／当前绑定／独立 main CI／确定性归档实现；11 模块 18 条资格命令通过，见 T1 第二批记录 |
 | 未完成 | T2–T8 实施任务 |
 | 本轮产品变更 | Contracts 私有包／schema 身份更名；领域当前输入绑定与独立资格验证；CI 和发布入口解耦；未发布 |
 | 本轮仓库／发布／部署操作 | 仅读取远端信息及旧部署元数据；未更名、发布、安装或清理 |
-| 工作路径 | 台账：/Users/firestige/Projects/wsr-contracts；当前代码：/Users/firestige/Projects/wsr-ui |
+| 工作路径 | 台账：/Users/firestige/Projects/wsr-contracts；当前代码：/Users/firestige/Projects/wsr-execution |
 | 文档持久化 | 分析／计划及 T1 已随 main f2d373a 推送；本检查点随后单独提交 |
-| 活跃进程／作业 | 无后台实现／构建／部署作业；本地测试已结束 |
+| 活跃进程／作业 | Execution 依赖安装正在完成；恢复时先核对实际进程和 node_modules，再继续测试；没有发布／部署作业 |
 | 已知阻塞 | 无；新 App 配置仍属于 T5，T1 未执行候选发布 |
-| 下一条动作 | T2-UI：完成包名 crystra-ui-core、CSS／符号／资源名更名，main CI 触发修正与完整验证；保留用户 .gitignore |
+| 下一条动作 | Execution：确认 pnpm 依赖安装结果，生成器改用 .crystra-inputs/contracts；逐项替换父目录测试依赖，并进行命名／发布改造 |
 | 禁止误恢复项 | 不清理组合子模块脏状态，不安装旧资产，不把分析完成计为组件实现完成 |
 
 每次推进后直接更新此表，不追加第二份“最新”检查点；旧事件保留在日志。终端会话 ID 仅供定位，跨会话必须验证是否仍有效。
@@ -181,6 +181,8 @@ T0 产出必须链接在本文中，可以建立同目录的决策附件；不�
 | L004 | 2026-09-13 | T1 IN_PROGRESS | 11 私有包改名；当前领域绑定与 CI 解耦；全领域资格通过；发布归档独立重建与验证。用户明确计划内连续推进，无需重复请示 | main 集成与 CI |
 
 | L005 | 2026-09-13 | T1 DONE；T2-UI IN_PROGRESS | Contracts main f2d373a 已推送，独立 CI 34758259364 成功；精确提交归档 239 文件校验通过。UI 包身份新名回归先失败，开始实施 | UI 更名与验证 |
+
+| L006 | 2026-09-13 | T2-UI DONE；T2-EX IN_PROGRESS | UI main 482f6f1 与 CI 34758649497 成功；Execution main FF dbec4ec，准备精确 Contracts／Workflow 测试输入，无组合仓库改动 | Execution 独立资格与更名 |
 
 后续日志至少记录：任务 ID、状态变化、修改范围／仓库、实际分支或提交、验证结果／证据位置、阻塞及下一步。范围变化还需说明它替代哪条决策，并同步相关附件。没有变化时不堆积“继续等待”日志。
 
