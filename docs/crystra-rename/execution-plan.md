@@ -3,10 +3,10 @@
 - 计划 ID：CRYSTRA-RENAME-20260913
 - 文档版本：2
 - 最后更新：2026-09-13
-- 总体状态：IN_PROGRESS（T0、T1、T2 完成，T3 进行中）
-- 当前执行任务：T3
-- 当前执行者：本任务 Codex；T3
-- 下一步：DSH 根包统一为 dsh-crystra；保留包内 Execution／Studio 模块和生命周期；恢复细节见第 8 节
+- 总体状态：IN_PROGRESS（T0、T1、T2、T3 完成，T4 进行中）
+- 当前执行任务：T4
+- 当前执行者：本任务 Codex；T4
+- 下一步：插件初始化、配置与服务就绪；恢复细节见第 8 节
 
 ## 1. 本文的作用与优先级
 
@@ -59,8 +59,8 @@ T0 已落定具体实现选择，见 [T0 决策](t0-decisions.md)。新坐标的
 | T2-EV | Evidence 更名与服务配置 | T1 DONE | DONE | 本任务 Codex | main 3345e82；[本地与 CI 完成证据](t2-evidence-progress.md) |
 | T2-EO | Evolution 更名与发布解耦 | T1 DONE | DONE | 本任务 Codex | main e22920e；[完成证据与 CI](t2-evolution-progress.md) |
 | T2-WP | Workflow 资源更名与 main CI | T1 DONE | DONE | 本任务 Codex | main 8746d18；[验证记录与 CI](t2-workflow-progress.md) |
-| T3 | 统一 dsh-crystra 包与模块装配 | T2-EX、T2-UI DONE | IN_PROGRESS | 本任务 Codex | 基线 117b54c；根包与模块合并已实施；隔离安装／生命周期通过，169 测试／真实 Harness 通过；PR #33 CI 验证中；[恢复记录](t3-progress.md) |
-| T4 | 插件初始化、取消独立安装步骤 | T3 DONE；完整服务验收需 T2-EV、T2-EO、T2-WP DONE | PENDING | 未分配 | — |
+| T3 | 统一 dsh-crystra 包与模块装配 | T2-EX、T2-UI DONE | DONE | 本任务 Codex | main b951b9c；PR #33、CI 34762427482 成功；[恢复记录](t3-progress.md) |
+| T4 | 插件初始化、取消独立安装步骤 | T3 DONE；完整服务验收需 T2-EV、T2-EO、T2-WP DONE | IN_PROGRESS | 本任务 Codex | 内部模块 17 回归通过；尚未接入根 Host；[恢复记录](t4-progress.md) |
 | T5 | 当前品牌收尾与外部坐标切换 | 准备可在 T0 后；实际切换需 T1–T4 DONE | PENDING | 未分配 | — |
 | T6 | 新组件候选与隔离环境组合验证 | T5 DONE | PENDING | 未分配 | — |
 | T7 | 一次性人工清理实际旧部署 | T6 DONE；只读盘点可在 T0 开始 | PENDING | 未分配 | — |
@@ -124,18 +124,18 @@ T0 产出必须链接在本文中，可以建立同目录的决策附件；不�
 
 | 字段 | 当前值 |
 |---|---|
-| 检查点 | C011：T2 全部 DONE；T3 根包合并开始 |
-| 当前任务 | T3 IN_PROGRESS；T0／T1／T2 DONE |
-| 已完成 | T0、T1、T2-EX、T2-UI、T2-WP；各组件 main、独立 CI 与制品验证见对应记录 |
-| 未完成 | T2–T8 实施任务 |
-| 本轮产品变更 | Contracts 私有包／schema 身份更名；领域当前输入绑定与独立资格验证；CI 和发布入口解耦；未发布 |
-| 本轮仓库／发布／部署操作 | Contracts／UI／Execution／Workflow main 已提交推送并通过 CI；未更名远端仓库、发布候选或清理旧部署 |
-| 工作路径 | 台账：/Users/firestige/Projects/wsr-contracts；当前代码：/Users/firestige/Projects/wsr-dsh |
-| 文档持久化 | 分析／计划及 T1 已随 main f2d373a 推送；本检查点随后单独提交 |
-| 活跃进程／作业 | DSH 尚无运行验证作业；没有发布／部署作业 |
-| 已知阻塞 | 无；新 App 配置仍属于 T5，T1 未执行候选发布 |
-| 下一条动作 | DSH：先新增单一根插件包／内部装配回归，再合并包；T3 验证使用新的本地组件制品，最终发布依赖 URL 在 T5／T6 固定 |
-| 禁止误恢复项 | 不清理组合子模块脏状态，不安装旧资产，不把分析完成计为组件实现完成 |
+| 检查点 | C013：T3 DONE；T4 内部配置／服务模块已验证 |
+| 当前任务 | T4 IN_PROGRESS；T0–T3 DONE |
+| 已完成 | 全部普通组件及单插件 main 集成；各组件验证证据见附件 |
+| 未完成 | T4–T8 |
+| 本轮产品变更 | 单根 dsh-crystra 包、内部模块、普通依赖；169 测试／真实 Harness 与终态 fixture 通过 |
+| 本轮仓库／发布／部署操作 | DSH PR #33 squash main b951b9c；CI 34762427482 成功；未发布或清理旧部署 |
+| 工作路径 | 台账：/Users/firestige/Projects/wsr-contracts；代码：/Users/firestige/Projects/wsr-dsh |
+| 文档持久化 | T3 记录已持久化；本检查点随下一文档提交保存 |
+| 活跃进程／作业 | DSH main CI 34762515441 成功；没有发布／部署作业 |
+| 已知阻塞 | 无；新 App 配置仍属于 T5 |
+| 下一条动作 | T4：接入根命令与轻量启动、生成 Execution 配置和绑定服务组，完成真实 Host／Docker 验证；见 t4-progress.md |
+| 禁止误恢复项 | 保护用户脏文件；不清理组合子模块、不安装旧资产、不把开发归档当已发布候选 |
 
 每次推进后直接更新此表，不追加第二份“最新”检查点；旧事件保留在日志。终端会话 ID 仅供定位，跨会话必须验证是否仍有效。
 
@@ -193,6 +193,10 @@ T0 产出必须链接在本文中，可以建立同目录的决策附件；不�
 | L010 | 2026-09-13 | T2 DONE；T3 IN_PROGRESS | Evolution main e22920e、CI 34760877941 成功；191 测试与镜像内真实校验通过，五组件完成 | 单根 dsh-crystra 包与内部模块合并 |
 
 | L011 | 2026-09-13 | T3 IN_PROGRESS | 单根包／单客户端／单注册已实施，37 工具测试及隔离安装生命周期通过；真实 Harness／终态场景通过，独立输入重建摘要一致；044301d 经 PR #33 集成；[详细恢复点](t3-progress.md) | 完整 Harness、独立输入重建与 main CI |
+
+| L012 | 2026-09-13 | T3 DONE；T4 IN_PROGRESS | PR #33 CI 34762427482 成功，squash main b951b9c；开始首次初始化模块 | 配置／命令／服务就绪 |
+
+| L013 | 2026-09-13 | T4 IN_PROGRESS | 新增配置／服务生命周期／归档／Compose 内部模块；186 全量测试及后续 17 重点回归通过；未接入根 Host、未提交 | [T4 恢复点](t4-progress.md) |
 
 后续日志至少记录：任务 ID、状态变化、修改范围／仓库、实际分支或提交、验证结果／证据位置、阻塞及下一步。范围变化还需说明它替代哪条决策，并同步相关附件。没有变化时不堆积“继续等待”日志。
 
