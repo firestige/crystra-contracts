@@ -1,0 +1,85 @@
+[
+  {
+    "repository": "firestige/crystra",
+    "description": "Tested, immutable Crystra workflow combinations. Fewer agents and LLM calls through explicit, verifiable workflows. One DSH plugin: dsh-crystra.",
+    "homepage": "https://github.com/firestige/crystra",
+    "topics": [
+      "agent",
+      "crystra",
+      "deepseek-harness",
+      "dsh",
+      "evidence",
+      "evolution",
+      "execution",
+      "langgraph",
+      "workflow"
+    ]
+  },
+  {
+    "repository": "firestige/crystra-contracts",
+    "description": "Self-contained Crystra contracts, schemas, resources and conformance validation.",
+    "homepage": "https://github.com/firestige/crystra-contracts",
+    "topics": [
+      "crystra"
+    ]
+  },
+  {
+    "repository": "firestige/crystra-execution",
+    "description": "Host-neutral Crystra runtime library: binds an exact Workflow Package to a Delivery, coordinates execution and emits bounded observations.",
+    "homepage": "https://github.com/firestige/crystra-execution",
+    "topics": [
+      "agent",
+      "crystra",
+      "deepseek-harness",
+      "dsh",
+      "langgraph",
+      "workflow",
+      "workflow-engine"
+    ]
+  },
+  {
+    "repository": "firestige/crystra-ui",
+    "description": "Crystra UI component library and independently built UI artifacts.",
+    "homepage": "https://github.com/firestige/crystra-ui",
+    "topics": [
+      "crystra"
+    ]
+  },
+  {
+    "repository": "firestige/crystra-evidence",
+    "description": "Crystra Evidence service: bounded observation ingestion, factual projections and inspection.",
+    "homepage": "https://github.com/firestige/crystra-evidence",
+    "topics": [
+      "crystra"
+    ]
+  },
+  {
+    "repository": "firestige/crystra-evolution",
+    "description": "Crystra Evolution service: evaluates proposed Workflow changes using explicit contracts and Evidence.",
+    "homepage": "https://github.com/firestige/crystra-evolution",
+    "topics": [
+      "crystra"
+    ]
+  },
+  {
+    "repository": "firestige/crystra-workflow-package",
+    "description": "Versioned Crystra Workflow definitions, resources and release tooling.",
+    "homepage": "https://github.com/firestige/crystra-workflow-package",
+    "topics": [
+      "crystra"
+    ]
+  },
+  {
+    "repository": "firestige/crystra-dsh",
+    "description": "The single dsh-crystra plugin for DeepSeek Harness: workflow execution, analysis and deterministic initialization.",
+    "homepage": "https://github.com/firestige/crystra-dsh",
+    "topics": [
+      "agent",
+      "crystra",
+      "deepseek-harness",
+      "dsh",
+      "dsh-plugin",
+      "workflow"
+    ]
+  }
+]

@@ -1,6 +1,6 @@
 {
   "date": "2026-09-13",
-  "status": "analysis proposal; no renames applied",
+  "status": "implementation in progress; remote repository renames and single-plugin topics verified; execution-plan.md is state authority",
   "rows": [
     {
       "id": "N001",
@@ -8,8 +8,8 @@
       "old": "firestige/workflow-self-recursive",
       "new": "firestige/crystra",
       "action": "rename-repository",
-      "status": "命名方案",
-      "note": "更名现有仓库；更新当前 remote、checkout、链接和发布坐标。crystra 只承担组合发布。"
+      "status": "远端已更名；本地路径待协调",
+      "note": "原仓库 ID 保持不变，origin 已更新；组件独立 main 开发，crystra 负责组合发布。见 repository-renames.json。"
     },
     {
       "id": "N002",
@@ -17,8 +17,8 @@
       "old": "firestige/wsr-contracts",
       "new": "firestige/crystra-contracts",
       "action": "rename-repository",
-      "status": "命名方案",
-      "note": "更名现有仓库；更新当前 remote、checkout、链接和发布坐标。crystra 只承担组合发布。"
+      "status": "远端已更名；本地路径待协调",
+      "note": "原仓库 ID 保持不变，origin 已更新；组件独立 main 开发，crystra 负责组合发布。见 repository-renames.json。"
     },
     {
       "id": "N003",
@@ -26,8 +26,8 @@
       "old": "firestige/wsr-execution",
       "new": "firestige/crystra-execution",
       "action": "rename-repository",
-      "status": "命名方案",
-      "note": "更名现有仓库；更新当前 remote、checkout、链接和发布坐标。crystra 只承担组合发布。"
+      "status": "远端已更名；本地路径待协调",
+      "note": "原仓库 ID 保持不变，origin 已更新；组件独立 main 开发，crystra 负责组合发布。见 repository-renames.json。"
     },
     {
       "id": "N004",
@@ -35,8 +35,8 @@
       "old": "firestige/wsr-evidence",
       "new": "firestige/crystra-evidence",
       "action": "rename-repository",
-      "status": "命名方案",
-      "note": "更名现有仓库；更新当前 remote、checkout、链接和发布坐标。crystra 只承担组合发布。"
+      "status": "远端已更名；本地路径待协调",
+      "note": "原仓库 ID 保持不变，origin 已更新；组件独立 main 开发，crystra 负责组合发布。见 repository-renames.json。"
     },
     {
       "id": "N005",
@@ -44,8 +44,8 @@
       "old": "firestige/wsr-evolution",
       "new": "firestige/crystra-evolution",
       "action": "rename-repository",
-      "status": "命名方案",
-      "note": "更名现有仓库；更新当前 remote、checkout、链接和发布坐标。crystra 只承担组合发布。"
+      "status": "远端已更名；本地路径待协调",
+      "note": "原仓库 ID 保持不变，origin 已更新；组件独立 main 开发，crystra 负责组合发布。见 repository-renames.json。"
     },
     {
       "id": "N006",
@@ -53,8 +53,8 @@
       "old": "firestige/wsr-dsh",
       "new": "firestige/crystra-dsh",
       "action": "rename-repository",
-      "status": "已确定",
-      "note": "更名现有仓库；更新当前 remote、checkout、链接和发布坐标。crystra 只承担组合发布。"
+      "status": "远端已更名；本地路径待协调",
+      "note": "原仓库 ID 保持不变，origin 已更新；组件独立 main 开发，crystra 负责组合发布。见 repository-renames.json。"
     },
     {
       "id": "N007",
@@ -62,8 +62,8 @@
       "old": "firestige/wsr-ui",
       "new": "firestige/crystra-ui",
       "action": "rename-repository",
-      "status": "命名方案",
-      "note": "更名现有仓库；更新当前 remote、checkout、链接和发布坐标。crystra 只承担组合发布。"
+      "status": "远端已更名；本地路径待协调",
+      "note": "原仓库 ID 保持不变，origin 已更新；组件独立 main 开发，crystra 负责组合发布。见 repository-renames.json。"
     },
     {
       "id": "N008",
@@ -71,8 +71,8 @@
       "old": "firestige/wsr-workflow-package",
       "new": "firestige/crystra-workflow-package",
       "action": "rename-repository",
-      "status": "命名方案",
-      "note": "更名现有仓库；更新当前 remote、checkout、链接和发布坐标。crystra 只承担组合发布。"
+      "status": "远端已更名；本地路径待协调",
+      "note": "原仓库 ID 保持不变，origin 已更新；组件独立 main 开发，crystra 负责组合发布。见 repository-renames.json。"
     },
     {
       "id": "N009",
@@ -134,7 +134,7 @@
       "old": "wsr-dsh 与 wsr-execution 的 dsh-plugin Topic",
       "new": "仅 firestige/crystra-dsh 保留 dsh-plugin",
       "action": "single-registration",
-      "status": "已确定",
+      "status": "GitHub Topics 已验证；最终市场状态待 T8",
       "note": "同时移除 Execution 插件关键词和安装宣传；核对外部市场，不宣称已清理。"
     },
     {

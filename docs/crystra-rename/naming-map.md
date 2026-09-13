@@ -2,7 +2,7 @@
 
 日期：2026-09-13。配套 [分析报告](analysis-report.md) 与 [文件证据](file-inventory.md)。机器可读版本：[naming-map.json](naming-map.json)。
 
-“已确定”来自本次用户约束；“命名方案／建议落定”是待实施采用的具体拼写；“待定”不阻止分析交付。仓库唯一入口与插件包名的方向相反：**仓库 crystra-dsh，插件 dsh-crystra**。目标坐标已在 T0 检查，见 [T0 决策](t0-decisions.md)；尚未执行仓库更名，名称检查不等于预留或发布权限就绪。
+“已确定”来自本次用户约束；“命名方案／建议落定”是待实施采用的具体拼写；“待定”不阻止分析交付。仓库唯一入口与插件包名的方向相反：**仓库 crystra-dsh，插件 dsh-crystra**。目标坐标已在 T0 检查，见 [T0 决策](t0-decisions.md)；八仓库远端更名已完成且 ID 不变，见 [读回记录](repository-renames.json)；发布权限仍待配置，本地目录尚未移动。
 
 本表不是全局替换脚本。多对一归并必须先于一般前缀规则；仓库 URL、npm 包、内部插件 ID、普通功能名属于不同上下文。保留字段／概念不因为包含 execution 或 workflow 就改名。新制品必须重新构建，不对旧归档换壳。
 
@@ -15,14 +15,14 @@
 
 | ID | 当前名称／结构 | 目标 | 操作 | 状态 | 说明 |
 |---|---|---|---|---|---|
-| N001 | firestige/workflow-self-recursive | firestige/crystra | rename-repository | 命名方案 | 更名现有仓库；更新当前 remote、checkout、链接和发布坐标。crystra 只承担组合发布。 |
-| N002 | firestige/wsr-contracts | firestige/crystra-contracts | rename-repository | 命名方案 | 更名现有仓库；更新当前 remote、checkout、链接和发布坐标。crystra 只承担组合发布。 |
-| N003 | firestige/wsr-execution | firestige/crystra-execution | rename-repository | 命名方案 | 更名现有仓库；更新当前 remote、checkout、链接和发布坐标。crystra 只承担组合发布。 |
-| N004 | firestige/wsr-evidence | firestige/crystra-evidence | rename-repository | 命名方案 | 更名现有仓库；更新当前 remote、checkout、链接和发布坐标。crystra 只承担组合发布。 |
-| N005 | firestige/wsr-evolution | firestige/crystra-evolution | rename-repository | 命名方案 | 更名现有仓库；更新当前 remote、checkout、链接和发布坐标。crystra 只承担组合发布。 |
-| N006 | firestige/wsr-dsh | firestige/crystra-dsh | rename-repository | 已确定 | 更名现有仓库；更新当前 remote、checkout、链接和发布坐标。crystra 只承担组合发布。 |
-| N007 | firestige/wsr-ui | firestige/crystra-ui | rename-repository | 命名方案 | 更名现有仓库；更新当前 remote、checkout、链接和发布坐标。crystra 只承担组合发布。 |
-| N008 | firestige/wsr-workflow-package | firestige/crystra-workflow-package | rename-repository | 命名方案 | 更名现有仓库；更新当前 remote、checkout、链接和发布坐标。crystra 只承担组合发布。 |
+| N001 | firestige/workflow-self-recursive | firestige/crystra | rename-repository | 远端已更名；本地路径待协调 | 原仓库 ID 保持不变，origin 已更新；组件独立 main 开发，crystra 负责组合发布。 |
+| N002 | firestige/wsr-contracts | firestige/crystra-contracts | rename-repository | 远端已更名；本地路径待协调 | 原仓库 ID 保持不变，origin 已更新；组件独立 main 开发，crystra 负责组合发布。 |
+| N003 | firestige/wsr-execution | firestige/crystra-execution | rename-repository | 远端已更名；本地路径待协调 | 原仓库 ID 保持不变，origin 已更新；组件独立 main 开发，crystra 负责组合发布。 |
+| N004 | firestige/wsr-evidence | firestige/crystra-evidence | rename-repository | 远端已更名；本地路径待协调 | 原仓库 ID 保持不变，origin 已更新；组件独立 main 开发，crystra 负责组合发布。 |
+| N005 | firestige/wsr-evolution | firestige/crystra-evolution | rename-repository | 远端已更名；本地路径待协调 | 原仓库 ID 保持不变，origin 已更新；组件独立 main 开发，crystra 负责组合发布。 |
+| N006 | firestige/wsr-dsh | firestige/crystra-dsh | rename-repository | 远端已更名；本地路径待协调 | 原仓库 ID 保持不变，origin 已更新；组件独立 main 开发，crystra 负责组合发布。 |
+| N007 | firestige/wsr-ui | firestige/crystra-ui | rename-repository | 远端已更名；本地路径待协调 | 原仓库 ID 保持不变，origin 已更新；组件独立 main 开发，crystra 负责组合发布。 |
+| N008 | firestige/wsr-workflow-package | firestige/crystra-workflow-package | rename-repository | 远端已更名；本地路径待协调 | 原仓库 ID 保持不变，origin 已更新；组件独立 main 开发，crystra 负责组合发布。 |
 
 ## 品牌
 
@@ -39,7 +39,7 @@
 | N012 | dsh-wsr-studio | dsh-crystra | merge | 已确定 | 一个公开发布包；旧包停止分发，无别名；Intake 独有功能需先核对。 |
 | N013 | dsh-wsr | dsh-crystra | merge | 已确定 | 一个公开发布包；旧包停止分发，无别名；Intake 独有功能需先核对。 |
 | N014 | wsr-dsh-intake | dsh-crystra | merge | 已确定 | 一个公开发布包；旧包停止分发，无别名；Intake 独有功能需先核对。 |
-| N015 | wsr-dsh 与 wsr-execution 的 dsh-plugin Topic | 仅 firestige/crystra-dsh 保留 dsh-plugin | single-registration | 已确定 | 同时移除 Execution 插件关键词和安装宣传；核对外部市场，不宣称已清理。 |
+| N015 | wsr-dsh 与 wsr-execution 的 dsh-plugin Topic | 仅 firestige/crystra-dsh 保留 dsh-plugin | single-registration | GitHub Topics 已验证 | 仅 crystra-dsh 保留 dsh-plugin，见 repository-discovery.json；T8 再核实最终可安装市场状态。 |
 | N016 | marketplace/packages.json 的三个条目 | 一个 dsh-crystra 条目 | merge | 已确定 | 只注册 crystra-dsh 仓库；displayName 建议 Crystra。 |
 | N017 | wsr-dsh-monorepo 根包 + 三个 workspace | 根包 dsh-crystra + 内部功能目录 | restructure | 建议落定 | 建议根包直接发布；原 suite 不再是空壳，内部模块不单独发布。 |
 | N018 | Cordis id: wsr-execution / wsr-studio | crystra-* 内部节点；name 仅用 dsh-crystra 或其子路径 | unify-package | 建议落定 | 一个包可有多个 Cordis 行；无需硬合成一个节点。旧 workspace UI 替换只生效一次。 |
