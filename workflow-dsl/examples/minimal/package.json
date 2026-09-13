@@ -16,7 +16,7 @@
       "version": "1.0.0",
       "contentIdentity": "sha256:6a939fcfc38e0860643d784efa17b992a01983c86c89fb6ecd9cd9acd6c6b4fd"
     },
-    "digest": "sha256:b29e3f3c3901d26ad341b004dd79cbfad7742a58c52cbb232dca269db941eb87"
+    "digest": "sha256:508c2fe79f4db1f9729fbbdd9c433037c70aa5a8352e75ea6c8e8627dae37ec9"
   },
   "documents": {
     "workflow": "workflow.json",
@@ -99,7 +99,7 @@
         "kind": "skill",
         "owner": "referenced",
         "sourceLocator": {
-          "repository": "workflow-package",
+          "repository": "crystra-workflow-package",
           "path": ".agents/skills/grilling/SKILL.md",
           "ref": "main"
         },
@@ -111,7 +111,7 @@
         "kind": "agent-definition",
         "owner": "referenced",
         "sourceLocator": {
-          "repository": "workflow-self-recursive",
+          "repository": "crystra-workflow-package",
           "path": "agents/managed-agent-definition.yaml"
         },
         "contentIdentity": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
@@ -122,7 +122,7 @@
         "kind": "model",
         "owner": "referenced",
         "sourceLocator": {
-          "repository": "workflow-self-recursive",
+          "repository": "crystra-workflow-package",
           "path": "bindings/managed-model.yaml"
         },
         "contentIdentity": "sha256:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
@@ -133,7 +133,7 @@
         "kind": "driver",
         "owner": "referenced",
         "sourceLocator": {
-          "repository": "workflow-self-recursive",
+          "repository": "crystra-workflow-package",
           "path": "bindings/managed-cli-driver.yaml"
         },
         "contentIdentity": "sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
@@ -144,7 +144,7 @@
         "kind": "tool",
         "owner": "referenced",
         "sourceLocator": {
-          "repository": "workflow-self-recursive",
+          "repository": "crystra-workflow-package",
           "path": "tools/repo-read.yaml"
         },
         "contentIdentity": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
@@ -155,7 +155,7 @@
         "kind": "validator",
         "owner": "referenced",
         "sourceLocator": {
-          "repository": "workflow-self-recursive",
+          "repository": "crystra-workflow-package",
           "path": "scripts/budget/review.mjs"
         },
         "contentIdentity": "sha256:ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",

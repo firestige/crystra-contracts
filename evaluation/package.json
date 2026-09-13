@@ -1,10 +1,9 @@
 {
-  "name": "@workflow-self-recursive/evaluation-contract",
+  "name": "@crystra/evaluation-contract",
   "version": "1.0.0",
   "private": true,
-  "description": "Published machine schema, fixtures, and validator for the MVP Evaluation Metric Catalog contract.",
+  "description": "Current machine schema, fixtures, and validator for the MVP Evaluation Metric Catalog contract.",
   "scripts": {
-    "build:publication": "node tools/build-publication-record.cjs",
     "check:example": "node tools/check-catalog.cjs examples/metric-catalog-1.0.0.json",
     "test": "node --test tools/test-*.cjs"
   },

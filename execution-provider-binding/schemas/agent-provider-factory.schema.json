@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "urn:wsr:execution:agent-provider-factory:1.0.0",
+  "$id": "urn:crystra:execution:agent-provider-factory:1.0.0",
   "type": "object",
   "required": ["schemaVersion", "identity", "version", "adapterKey", "capabilities"],
   "properties": {

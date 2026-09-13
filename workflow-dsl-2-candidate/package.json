@@ -1,5 +1,5 @@
 {
-  "name": "@workflow-self-recursive/workflow-dsl-contract-2-candidate",
+  "name": "@crystra/workflow-dsl-contract-2-candidate",
   "version": "2.0.0-candidate.0",
   "private": true,
   "description": "Generated standalone machine candidate for agentops.workflow-dsl@2.0.0; published 1.1.0 inputs remain immutable.",

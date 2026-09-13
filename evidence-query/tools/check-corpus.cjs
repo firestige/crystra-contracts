@@ -34,4 +34,4 @@ if (!binding.valid) failures.push(...binding.errors);
 if (failures.length) {
   console.error(`FAIL:\n${failures.join("\n")}`);
   process.exitCode = 1;
-} else console.log(`PASS: ${fixturePaths.length} fixtures (${counts.positive} positive, ${counts.negative} negative, ${counts.recovery} recovery), ${examples.length} examples, exact manifest binding`);
+} else console.log(`PASS: ${fixturePaths.length} fixtures (${counts.positive} positive, ${counts.negative} negative, ${counts.recovery} recovery), ${examples.length} examples, exact current input binding`);

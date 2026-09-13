@@ -1,0 +1,92 @@
+{
+  "schemaVersion": "crystra.contract-resources@1.0.0",
+  "resources": [
+    {
+      "id": "workflow-dsl",
+      "directory": "workflow-dsl",
+      "semantic": [
+        "docs/contracts/workflow/workflow-definition-dsl.md",
+        "docs/contracts/workflow/workflow-definition-dsl.zh-CN.md"
+      ]
+    },
+    {
+      "id": "workflow-dsl-2-candidate",
+      "directory": "workflow-dsl-2-candidate",
+      "semantic": [
+        "docs/contracts/workflow/workflow-definition-dsl-2.0.0-candidate.md",
+        "docs/contracts/workflow/workflow-definition-dsl-2.0.0-candidate.zh-CN.md"
+      ]
+    },
+    {
+      "id": "observation",
+      "directory": "observation",
+      "semantic": [
+        "docs/contracts/observation/observation-catalog.md",
+        "docs/contracts/observation/otel-observation-profile.md",
+        "docs/contracts/observation/observation-catalog.zh-CN.md",
+        "docs/contracts/observation/otel-observation-profile.zh-CN.md"
+      ]
+    },
+    {
+      "id": "evaluation",
+      "directory": "evaluation",
+      "semantic": [
+        "docs/contracts/evaluation/metric-catalog.md",
+        "docs/contracts/evaluation/metric-catalog.zh-CN.md"
+      ]
+    },
+    {
+      "id": "evaluation-2-candidate",
+      "directory": "evaluation-2-candidate",
+      "semantic": [
+        "docs/contracts/evaluation/metric-catalog-2-candidate.md",
+        "docs/contracts/evaluation/metric-catalog-2-candidate.zh-CN.md"
+      ]
+    },
+    {
+      "id": "evidence-query",
+      "directory": "evidence-query",
+      "semantic": [
+        "docs/contracts/evidence-query/evidence-query.md",
+        "docs/contracts/evidence-query/evidence-query.zh-CN.md"
+      ]
+    },
+    {
+      "id": "delivery-admission",
+      "directory": "delivery-admission",
+      "semantic": [
+        "delivery-admission/README.md"
+      ]
+    },
+    {
+      "id": "evidence-task-query",
+      "directory": "evidence-task-query",
+      "semantic": [
+        "evidence-task-query/README.md"
+      ]
+    },
+    {
+      "id": "execution-provider-binding",
+      "directory": "execution-provider-binding",
+      "semantic": [
+        "execution-provider-binding/README.md",
+        "execution-provider-binding/README.zh-CN.md"
+      ]
+    },
+    {
+      "id": "observation-task-binding",
+      "directory": "observation-task-binding",
+      "semantic": [
+        "observation-task-binding/README.md",
+        "observation-task-binding/README.zh-CN.md"
+      ]
+    },
+    {
+      "id": "task-binding",
+      "directory": "task-binding",
+      "semantic": [
+        "task-binding/README.md"
+      ]
+    }
+  ]
+}

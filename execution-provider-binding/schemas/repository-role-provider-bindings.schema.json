@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "urn:wsr:execution:repository-role-provider-bindings:1.0.0",
+  "$id": "urn:crystra:execution:repository-role-provider-bindings:1.0.0",
   "type": "object",
   "required": ["schemaVersion", "bindings"],
   "properties": {

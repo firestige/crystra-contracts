@@ -1,9 +1,9 @@
 const assert = require("node:assert/strict");
 const { createHash } = require("node:crypto");
-const { readFileSync, readdirSync, statSync } = require("node:fs");
+const { readFileSync } = require("node:fs");
 const { mkdtempSync, rmSync, writeFileSync } = require("node:fs");
 const { spawnSync } = require("node:child_process");
-const { join, relative } = require("node:path");
+const { join } = require("node:path");
 const { tmpdir } = require("node:os");
 const test = require("node:test");
 const Ajv = require("ajv");
@@ -85,8 +85,8 @@ test("coverage is always reported and LOW_COVERAGE uses exact cross multiplicati
 });
 
 test("semantic authority preserves the exact 8 + 3 + 3 scope classification", context => {
-  const authority = join(ROOT, "..", "..", "docs", "contracts", "evaluation", "metric-catalog.md");
-  try {
+  const authority = join(ROOT, "..", "docs", "contracts", "evaluation", "metric-catalog.md");
+  {
     const rows = [...readFileSync(authority, "utf8").matchAll(/^\| ([a-z][a-z0-9-]+) \| 1\.0\.0 \| (DIRECT|B_TASK_READING|A_PROFILE_1\.0) \|/gm)];
     const groups = Object.groupBy(rows, match => match[2]);
     assert.equal(rows.length, 14);
@@ -94,9 +94,6 @@ test("semantic authority preserves the exact 8 + 3 + 3 scope classification", co
     assert.equal(groups.B_TASK_READING.length, 3);
     assert.equal(groups["A_PROFILE_1.0"].length, 3);
     assert.deepEqual(rows.map(match => match[1]).sort(), EXPECTED_METRIC_IDS);
-  } catch (error) {
-    if (error.code === "ENOENT") context.skip("standalone checkout has no parent semantic repository");
-    else throw error;
   }
 });
 
@@ -147,7 +144,7 @@ for (const fixture of JSON.parse(readFileSync(FIXTURES, "utf8")).negative) {
   });
 }
 
-test("publication record freezes the exact 1.0.0 validator-only release", () => {
+test("historical 1.0.0 publication retains its recorded identity", () => {
   const policy = readFileSync(join(ROOT, "VERSION_POLICY.md"), "utf8");
   assert.match(policy, /Metric Catalog `0\.1\.0`.*NON_RESOLVING_LEGACY_HISTORY_ONLY/s);
   const record = JSON.parse(readFileSync(join(ROOT, "publication", "publication-record-1.0.0.json"), "utf8"));
@@ -157,7 +154,7 @@ test("publication record freezes the exact 1.0.0 validator-only release", () => 
   assert.equal(record.status, "PUBLISHED");
   assert.equal(record.published, true);
   assert.equal(record.conformance_claim, "VALIDATOR_ONLY");
-  assert.deepEqual(record.dependencies, JSON.parse(readFileSync(EXAMPLE, "utf8")).dependencies);
+  assert.equal(record.dependencies[0].coordinate, "observation-contract@1.0.0");
   assert.equal(record.source_revision, "sha256:602bc43accf86911a2d3d89a346058277c5ebb86bc2cc152eaa39000d6768326");
   assert.equal(record.catalog_semantic_digest, "sha256:6dbb4375507a3a2eebbe5e86bb6f0a40ebf811790f55ee841b15c6942e1f159d");
   assert.equal(record.gates["contract.gate.1"], "PASS_evaluation_gate1_v2");
@@ -167,17 +164,5 @@ test("publication record freezes the exact 1.0.0 validator-only release", () => 
   assert.equal(record.gates["contract.gate.5"], "PASS_EXACT_REVISION_MATCH");
   assert.equal(record.gates["contract.gate.6"], "PASS_1_SEMANTIC_14_ARTIFACTS");
   assert.equal(record.gates.owner_approval, "https://github.com/firestige/workflow-self-recursive/issues/79#issuecomment-5367772885");
-  function walk(directory) {
-    return readdirSync(directory).sort().flatMap(name => {
-      const path = join(directory, name);
-      const rel = relative(ROOT, path);
-      if (rel === "node_modules" || rel.startsWith("node_modules/") || rel === ".gitignore" || rel === "publication/publication-record-1.0.0.json") return [];
-      return statSync(path).isDirectory() ? walk(path) : [rel];
-    });
-  }
-  assert.deepEqual(record.artifacts.map(artifact => artifact.path), walk(ROOT));
-  for (const artifact of record.artifacts) {
-    assert.equal(artifact.sha256, createHash("sha256").update(readFileSync(join(ROOT, artifact.path))).digest("hex"), artifact.path);
-  }
   assert.equal(record.content_revision, `sha256:${createHash("sha256").update(JSON.stringify(record.artifacts)).digest("hex")}`);
 });

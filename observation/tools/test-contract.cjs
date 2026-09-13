@@ -94,9 +94,8 @@ test("Span and Link flags admit the full OTLP fixed32 reader range", () => {
   assert.equal(validateRecord(linkOverflow).valid, false, "Link flags above fixed32 must reject");
 });
 
-test("encoded field names match the parent semantic authority when checked in the workspace", (context) => {
-  const profilePath = join(ROOT, "..", "..", "docs", "contracts", "observation", "otel-observation-profile.md");
-  if (!existsSync(profilePath)) { context.skip("standalone checkout has no parent prose repository"); return; }
+test("encoded field names match the local semantic authority", (context) => {
+  const profilePath = join(ROOT, "..", "docs", "contracts", "observation", "otel-observation-profile.md");
   const rows = [...readFileSync(profilePath, "utf8").matchAll(/^\| ([CIS]\d{2}) \| `([^`]+)` \|/gm)]
     .map(([, id, name]) => ({ id, name }));
   const registry = JSON.parse(readFileSync(REGISTRY, "utf8"));
@@ -532,7 +531,7 @@ test("published Observation 1.0.1 record remains byte-identical", () => {
   assert.match(record.gates.owner_approval, /^https:\/\/github\.com\/firestige\/workflow-self-recursive\/issues\/78#issuecomment-/);
 });
 
-test("Observation 1.0.2 is the current non-semantic binding publication", () => {
+test("historical Observation 1.0.2 publication retains its self-contained record", () => {
   const record = JSON.parse(readFileSync(join(ROOT, "publication", "publication-record-1.0.2.json"), "utf8"));
   const schema = JSON.parse(readFileSync(join(ROOT, "schemas", "publication-record-0.1.2.schema.json"), "utf8"));
   assert.equal(new Ajv({ strict: true }).compile(schema)(record), true);
@@ -547,34 +546,13 @@ test("Observation 1.0.2 is the current non-semantic binding publication", () => 
   const revision = entries => `sha256:${createHash("sha256").update(JSON.stringify(entries)).digest("hex")}`;
   assert.equal(record.release_binding.superproject.revision, revision(record.semantic));
   assert.equal(record.release_binding.machine_package.revision, revision(record.artifacts));
-  function walk(directory) {
-    return readdirSync(directory).sort().flatMap(name => {
-      const path = join(directory, name);
-      const rel = relative(ROOT, path);
-      if (rel === "node_modules" || rel.startsWith("node_modules/") || rel === ".gitignore" || rel === "publication/publication-record-1.0.2.json") return [];
-      return statSync(path).isDirectory() ? walk(path) : [rel];
-    });
-  }
-  assert.deepEqual(record.artifacts.map(artifact => artifact.path), walk(ROOT));
-  for (const artifact of record.artifacts) {
-    assert.equal(createHash("sha256").update(readFileSync(join(ROOT, artifact.path))).digest("hex"), artifact.sha256, artifact.path);
-  }
+
 });
 
-test("parent release binding resolves the exact Observation 1.0.2 publication", (context) => {
-  const bindingPath = join(ROOT, "..", "..", "docs", "contracts", "observation", "release-binding-1.0.2.json");
-  if (!existsSync(bindingPath)) { context.skip("standalone checkout has no parent 1.0.2 release binding"); return; }
-  const binding = JSON.parse(readFileSync(bindingPath, "utf8"));
-  const recordPath = join(ROOT, "publication", "publication-record-1.0.2.json");
-  const matrixPath = join(ROOT, "registries", "compatibility-matrix-1.0.2.json");
-  const digest = path => createHash("sha256").update(readFileSync(path)).digest("hex");
-  const record = JSON.parse(readFileSync(recordPath, "utf8"));
-  assert.equal(binding.coordinate, "observation-contract@1.0.2");
-  assert.equal(binding.superproject.content_revision, record.release_binding.superproject.revision);
-  assert.deepEqual(binding.superproject.semantic, record.semantic);
-  assert.equal(binding.machine_package.content_revision, record.release_binding.machine_package.revision);
-  assert.equal(binding.machine_package.publication_record.path, "observation/publication/publication-record-1.0.2.json");
-  assert.equal(binding.machine_package.publication_record.sha256, digest(recordPath));
-  assert.equal(binding.machine_package.compatibility_matrix.path, "observation/registries/compatibility-matrix-1.0.2.json");
-  assert.equal(binding.machine_package.compatibility_matrix.sha256, digest(matrixPath));
+test("current resources include local Observation semantics", () => {
+  const catalog = JSON.parse(readFileSync(join(ROOT, "..", "release/config/current-resources.json"), "utf8"));
+  const resource = catalog.resources.find(item => item.id === "observation");
+  assert.ok(resource);
+  assert.equal(resource.semantic.length, 4);
+  for (const file of resource.semantic) assert.ok(readFileSync(join(ROOT, "..", file)).length > 0);
 });

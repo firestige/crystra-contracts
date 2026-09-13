@@ -40,8 +40,8 @@ const EXPECTED_INPUT_REFS = {
   "direct-evidence-basis-rate": ["observation.fact-identity", "observation.fact-provenance", "projection.compatibility-eligibility"]
 };
 const EXPECTED_INPUT_IDS = new Set(Object.values(EXPECTED_INPUT_REFS).flat());
-const EXPECTED_CATALOG_DIGEST = "6dbb4375507a3a2eebbe5e86bb6f0a40ebf811790f55ee841b15c6942e1f159d";
-const EXPECTED_OBSERVATION_PUBLICATION = join(ROOT, "..", "observation", "publication", "publication-record-1.0.0.json");
+const EXPECTED_CATALOG_DIGEST = "872d5bfb4bbdefd36a54c8df6ee20763f938070be1f176bf94519f42ef422e28";
+const EXPECTED_OBSERVATION_INPUT = join(ROOT, "..", "observation", "current-input-binding.json");
 const canonical = value => Array.isArray(value)
   ? value.map(canonical)
   : value && typeof value === "object"
@@ -81,14 +81,22 @@ if (!target) {
     }
 
     try {
-      const observation = JSON.parse(readFileSync(EXPECTED_OBSERVATION_PUBLICATION, "utf8"));
+      const observation = JSON.parse(readFileSync(EXPECTED_OBSERVATION_INPUT, "utf8"));
       const dependency = catalog.dependencies?.[0];
-      if (observation.status !== "PUBLISHED" || observation.published !== true
-        || dependency?.coordinate !== observation.release_binding?.coordinate
-        || dependency?.semantic_revision !== observation.release_binding?.superproject?.revision
-        || dependency?.machine_revision !== observation.release_binding?.machine_package?.revision
-        || dependency?.publication_sha256 !== createHash("sha256").update(readFileSync(EXPECTED_OBSERVATION_PUBLICATION)).digest("hex")) {
-        errors.push("Observation dependency does not resolve to the exact published 1.0.0 binding");
+      const revision = entries => `sha256:${createHash("sha256").update(JSON.stringify(entries)).digest("hex")}`;
+      if (observation.schemaVersion !== "crystra.contract-input-binding@1.0.0"
+        || dependency?.status !== "CURRENT" || dependency?.coordinate !== observation.coordinate
+        || dependency?.semantic_revision !== revision(observation.semantic)
+        || dependency?.machine_revision !== revision(observation.machine)
+        || dependency?.input_binding_sha256 !== createHash("sha256").update(readFileSync(EXPECTED_OBSERVATION_INPUT)).digest("hex")) {
+        errors.push("Observation dependency does not resolve to the exact current input binding");
+      }
+      for (const input of [...observation.semantic, ...observation.machine]) {
+        if (typeof input.path !== "string" || input.path.split("/").some(part => !/^[A-Za-z0-9_.-]+$/.test(part) || part === "." || part === "..")) {
+          errors.push("Observation current input path invalid");
+        } else if (createHash("sha256").update(readFileSync(join(ROOT, "..", input.path))).digest("hex") !== input.sha256) {
+          errors.push(`Observation current input digest mismatch: ${input.path}`);
+        }
       }
     } catch (error) {
       errors.push(`Observation dependency is not resolvable: ${error.message}`);

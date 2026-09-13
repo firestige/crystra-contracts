@@ -3,30 +3,31 @@
   "contract_revision": "0.1.0",
   "read_model_revision": "1.0.0",
   "observation_profile": "1.0.0",
-  "status": "FROZEN",
+  "status": "CURRENT",
   "conformance_claim": "VALIDATOR_ONLY",
-  "manifest_binding": {
-    "path": "docs/contracts/evidence-query/wave6-input-manifest.json",
-    "sha256": "e605720c5b225fa9228e2a4b1a8001f3235482ed83dc214e4c766e5caa6e1706",
-    "approved_superproject_commit": "df3670739b074038f145a569ca30ea1c9e950e98",
-    "semantic_sha256": "49a4db21db4ce56ecf4c165246a3355840c3bb521500e644ae4a4234526fce32",
-    "translation_sha256": "ecd728bb2f89e16e20490aa2aa14bd64277764f65649b4e16ea8bb27f4bdc4da",
-    "truth_table_sha256": "59026c78e74d534755b04ca093602f283df4064fe7f12231b7f4f6dfd1df3304",
-    "lifecycle_defaults_sha256": "fbdcd4f98a53cec84c3d686a0b85f66e357521495123cb878969ca25335f1fd8"
-  },
-  "publication_binding": {
-    "path": "publication/publication-record-0.1.0.json",
-    "semantic_sha256": "ce13b76cb3c2737e8243c97de880574060a61c05a6a7a67182a2804c04a2a8ef",
-    "translation_sha256": "d68b9f250bd608f0c6d46ace53bfa9f99241fe957f0184d320ecbceadd44ed3b",
-    "candidate_tag": "evidence-query-0.1.0-rc.1",
-    "candidate_commit": "dc8a50e92eebfc35bd706579ff2bf5e9beb57782",
-    "release_url": "https://github.com/firestige/system-contracts/releases/tag/evidence-query-0.1.0-rc.1"
+  "semantic_binding": {
+    "semantic": {
+      "path": "docs/contracts/evidence-query/evidence-query.md",
+      "sha256": "ce13b76cb3c2737e8243c97de880574060a61c05a6a7a67182a2804c04a2a8ef"
+    },
+    "translation": {
+      "path": "docs/contracts/evidence-query/evidence-query.zh-CN.md",
+      "sha256": "d68b9f250bd608f0c6d46ace53bfa9f99241fe957f0184d320ecbceadd44ed3b"
+    }
   },
   "upstream_machine": {
-    "component_commit": "74c5eb38b91fa774662dbfbfc02536bf97c7f188",
-    "registry": { "path": "observation/registries/observation-profile-1.0.0.json", "sha256": "ddbd65262237680799aea90a49c843cb2f924cdaa884876e97cd27895aa42eed" },
-    "schema": { "path": "observation/schemas/observation-record-1.0.0.schema.json", "sha256": "e851c40ab47f38e73f6ab115f43b36f8eb4f6965a8d3b43c7b4d0ec431f47842" },
-    "validator": { "path": "observation/tools/validator.cjs", "sha256": "729cb4d54ffc9e66aeb19ba37b9e6c5954cdd93bcb8e1bd8799f45d5053eb4e4" }
+    "registry": {
+      "path": "observation/registries/observation-profile-1.0.0.json",
+      "sha256": "ddbd65262237680799aea90a49c843cb2f924cdaa884876e97cd27895aa42eed"
+    },
+    "schema": {
+      "path": "observation/schemas/observation-record-1.0.0.schema.json",
+      "sha256": "e851c40ab47f38e73f6ab115f43b36f8eb4f6965a8d3b43c7b4d0ec431f47842"
+    },
+    "validator": {
+      "path": "observation/tools/validator.cjs",
+      "sha256": "729cb4d54ffc9e66aeb19ba37b9e6c5954cdd93bcb8e1bd8799f45d5053eb4e4"
+    }
   },
   "routes": ["/v1/evidence/facts", "/v1/evidence/traces"],
   "fact_kinds": ["EVENT_CONTRIBUTION", "FINDING_ASSERTION", "FINDING_TARGET", "FINDING_STATUS", "FINDING_FIX", "FINDING_RECHECK", "ROLE_LINEAGE", "DELIVERY_ROOT_BINDING", "MODEL_ATTRIBUTION"],

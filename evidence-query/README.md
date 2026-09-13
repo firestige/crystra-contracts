@@ -2,9 +2,9 @@
 
 English | [中文](README.zh-CN.md)
 
-This directory is the frozen machine-readable representation of `evidence.query@0.1.0`. It is bound to Wave6 input manifest SHA-256 `e605720c5b225fa9228e2a4b1a8001f3235482ed83dc214e4c766e5caa6e1706`, Observation Profile `1.0.0`, read-model revision `1.0.0`, and the exact semantic publication record.
+This directory contains the current machine representation of `evidence.query@0.1.0`, Observation Profile `1.0.0` and read-model revision `1.0.0`. Its registry binds local semantic companions and the exact Observation registry/schema/validator bytes inside this repository.
 
-Its status is `FROZEN` and its maximum claim is `VALIDATOR_ONLY`. Passing a JSON schema alone is never a production or cross-implementation conformance claim; implementations must still prove their own physical behavior against this exact revision.
+Registry status is `CURRENT`; the maximum claim remains `VALIDATOR_ONLY`. Schema validation does not establish runtime or cross-implementation conformance.
 
 ## Surface
 
@@ -22,10 +22,9 @@ Its status is `FROZEN` and its maximum claim is `VALIDATOR_ONLY`. Passing a JSON
 npm ci
 npm test
 npm run check
-npm run build:publication
 npm test
 ```
 
-`build:publication` deterministically regenerates the frozen publication record for unchanged package bytes. The qualified candidate record is never regenerated or overwritten.
+Current qualification uses `node release/cli/qualify.cjs --install` from the repository root. Historical publication records are not regenerated or used to qualify current source.
 
-The validator consumes the exact published Observation registry/schema/validator coordinates named in the Wave6 manifest. It does not expose Raw data, SQL/storage shapes, projection-effect names, credentials, or a write interface.
+The validator reads current local input coordinates and does not expose Raw data, SQL/storage shapes, credentials, or a write interface.

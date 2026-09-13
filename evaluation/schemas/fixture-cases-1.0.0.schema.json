@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://github.com/firestige/system-contracts/evaluation/schemas/fixture-cases-1.0.0.schema.json",
+  "$id": "https://github.com/firestige/crystra-contracts/evaluation/schemas/fixture-cases-1.0.0.schema.json",
   "type": "object",
   "additionalProperties": false,
   "required": ["fixture_version", "base_catalog", "positive", "negative"],

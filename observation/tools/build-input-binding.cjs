@@ -1,0 +1,10 @@
+const fs = require('node:fs');
+const path = require('node:path');
+const crypto = require('node:crypto');
+const root = path.resolve(__dirname,'../..');
+const digest = bytes => crypto.createHash('sha256').update(bytes).digest('hex');
+const entry = file => ({path:file,sha256:digest(fs.readFileSync(path.join(root,file)))});
+const semantic = ['observation-catalog.md','observation-catalog.zh-CN.md','otel-observation-profile.md','otel-observation-profile.zh-CN.md'].map(name=>entry(`docs/contracts/observation/${name}`));
+const machine = ['registries/observation-profile-1.0.0.json','schemas/observation-record-1.0.0.schema.json','tools/validator.cjs'].map(name=>entry(`observation/${name}`));
+const binding = {schemaVersion:'crystra.contract-input-binding@1.0.0',coordinate:'observation-profile@1.0.0',semantic,machine};
+fs.writeFileSync(path.join(root,'observation/current-input-binding.json'),JSON.stringify(binding,null,2)+'\n');

@@ -6,7 +6,7 @@
     "package": {
       "name": "example-minimal-review",
       "version": "1.0.0",
-      "digest": "sha256:b29e3f3c3901d26ad341b004dd79cbfad7742a58c52cbb232dca269db941eb87"
+      "digest": "sha256:508c2fe79f4db1f9729fbbdd9c433037c70aa5a8352e75ea6c8e8627dae37ec9"
     },
     "definition": {
       "id": "minimal-review",
@@ -198,6 +198,6 @@
       "noAmbientFallback": true,
       "allBindingsExact": true
     },
-    "digest": "sha256:3699d4f9c60be8a913607c2ca02b95a04bec32e981747123e6629bb250911e05"
+    "digest": "sha256:f0237011546695f3dedfbf8d6b3845227f55e0487999c3fd8653359c8784a2a5"
   }
 }

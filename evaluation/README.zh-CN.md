@@ -32,7 +32,8 @@
 npm ci
 npm test
 npm run check:example
-npm run build:publication
 ```
 
 测试从 normative example 创建隔离的 invalid mutation，并验证每项都因预期原因 fail closed。本 published package 仅作出 `VALIDATOR_ONLY` conformance claim；它不实现或认证 Projection、BI、Runtime、production execution 或 physical conformance。
+
+Current Crystra validation: run `node release/cli/qualify.cjs --install` from the repository root. Historical publication generation is no longer a supported development command; old records do not qualify current source.

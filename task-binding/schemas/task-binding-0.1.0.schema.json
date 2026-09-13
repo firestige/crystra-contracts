@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://workflow-self-recursive.dev/contracts/task-binding-0.1.0.schema.json",
+  "$id": "urn:crystra:contracts:task-binding:0.1.0",
   "$ref": "#/$defs/taskSelection",
   "$defs": {
     "taskId": {

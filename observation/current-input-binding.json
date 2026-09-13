@@ -1,0 +1,36 @@
+{
+  "schemaVersion": "crystra.contract-input-binding@1.0.0",
+  "coordinate": "observation-profile@1.0.0",
+  "semantic": [
+    {
+      "path": "docs/contracts/observation/observation-catalog.md",
+      "sha256": "39a56068270477c820fcf54c4dc7d86002d06f059f140db2ddb0014d8500a055"
+    },
+    {
+      "path": "docs/contracts/observation/observation-catalog.zh-CN.md",
+      "sha256": "d36a2441deae3ec4dc92f740bbb8e9abb43592e12e01c959783b0faf10e2a0e4"
+    },
+    {
+      "path": "docs/contracts/observation/otel-observation-profile.md",
+      "sha256": "52474649507c78ccf145945b38e0f8ba369cfd583dadd2d0e317c399b5ccea40"
+    },
+    {
+      "path": "docs/contracts/observation/otel-observation-profile.zh-CN.md",
+      "sha256": "5bb7162feab680d7b5b6de5a7ae17120bef5e38d813732919405952338433d01"
+    }
+  ],
+  "machine": [
+    {
+      "path": "observation/registries/observation-profile-1.0.0.json",
+      "sha256": "ddbd65262237680799aea90a49c843cb2f924cdaa884876e97cd27895aa42eed"
+    },
+    {
+      "path": "observation/schemas/observation-record-1.0.0.schema.json",
+      "sha256": "e851c40ab47f38e73f6ab115f43b36f8eb4f6965a8d3b43c7b4d0ec431f47842"
+    },
+    {
+      "path": "observation/tools/validator.cjs",
+      "sha256": "729cb4d54ffc9e66aeb19ba37b9e6c5954cdd93bcb8e1bd8799f45d5053eb4e4"
+    }
+  ]
+}

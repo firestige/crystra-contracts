@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "urn:wsr:execution:resolved-role-provider-bindings:2.0.0",
+  "$id": "urn:crystra:execution:resolved-role-provider-bindings:2.0.0",
   "type": "object",
   "required": ["schemaVersion", "resolvedRoles", "resolvedMapDigest"],
   "properties": {

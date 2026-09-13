@@ -22,11 +22,11 @@ fs.mkdirSync(path.join(GENERATED, "schemas"), { recursive: true });
 fs.mkdirSync(path.join(GENERATED, "examples"), { recursive: true });
 
 const schema = readJson(path.join(SOURCE, "schemas", "metric-catalog-1.0.0.schema.json"));
-schema.$id = "https://github.com/firestige/system-contracts/evaluation-2-candidate/generated/schemas/metric-catalog-2.0.0.schema.json";
+schema.$id = "https://github.com/firestige/crystra-contracts/evaluation-2-candidate/generated/schemas/metric-catalog-2.0.0.schema.json";
 schema.title = "Evaluation Metric Catalog 2.0.0 review candidate";
 schema.properties.version.const = "2.0.0";
 schema.properties.status.const = "REVIEW_CANDIDATE";
-schema.properties.semantic_authority.const = "workflow-self-recursive/docs/contracts/evaluation/metric-catalog-2-candidate.md@metric-catalog-2-candidate";
+schema.properties.semantic_authority.const = "crystra-contracts/docs/contracts/evaluation/metric-catalog-2-candidate.md@metric-catalog-2-candidate";
 schema.properties.metrics.minItems = 12;
 schema.properties.metrics.maxItems = 12;
 writeJson(path.join(GENERATED, "schemas", "metric-catalog-2.0.0.schema.json"), schema);
@@ -34,7 +34,7 @@ writeJson(path.join(GENERATED, "schemas", "metric-catalog-2.0.0.schema.json"), s
 const catalog = readJson(path.join(SOURCE, "examples", "metric-catalog-1.0.0.json"));
 catalog.version = "2.0.0";
 catalog.status = "REVIEW_CANDIDATE";
-catalog.semantic_authority = "workflow-self-recursive/docs/contracts/evaluation/metric-catalog-2-candidate.md@metric-catalog-2-candidate";
+catalog.semantic_authority = "crystra-contracts/docs/contracts/evaluation/metric-catalog-2-candidate.md@metric-catalog-2-candidate";
 catalog.metrics = catalog.metrics.filter(metric => !REMOVED.has(metric.metric_id));
 catalog.input_definitions = catalog.input_definitions.filter(input => ![
   "observation.packet-identity",

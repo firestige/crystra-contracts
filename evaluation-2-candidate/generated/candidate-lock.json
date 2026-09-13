@@ -1,7 +1,7 @@
 {
   "coordinate": "agentops.evaluation.metric-catalog@2.0.0",
   "status": "REVIEW_CANDIDATE",
-  "catalog_sha256": "851692f9d4a549d21f3c741470737eabb0d40b5f03cf10ffae76e1892023741e",
+  "catalog_sha256": "3b498ea3c0dcd3269b77ae918746ed75817a35c654593719bd26b1504fbd2638",
   "metric_ids": [
     "role-template-rework-rate",
     "role-template-trajectory-partial-cost",

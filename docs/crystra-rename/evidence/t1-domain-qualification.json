@@ -1,0 +1,101 @@
+{
+  "schemaVersion": "crystra.contract-qualification@1.0.0",
+  "status": "PASS",
+  "commands": [
+    {
+      "resource": "workflow-dsl",
+      "script": "test",
+      "exitCode": 0
+    },
+    {
+      "resource": "workflow-dsl",
+      "script": "check:minimal",
+      "exitCode": 0
+    },
+    {
+      "resource": "workflow-dsl",
+      "script": "test:corpus",
+      "exitCode": 0
+    },
+    {
+      "resource": "workflow-dsl-2-candidate",
+      "script": "test",
+      "exitCode": 0
+    },
+    {
+      "resource": "workflow-dsl-2-candidate",
+      "script": "check:minimal",
+      "exitCode": 0
+    },
+    {
+      "resource": "observation",
+      "script": "build:binding",
+      "exitCode": 0
+    },
+    {
+      "resource": "observation",
+      "script": "test",
+      "exitCode": 0
+    },
+    {
+      "resource": "observation",
+      "script": "check",
+      "exitCode": 0
+    },
+    {
+      "resource": "evaluation",
+      "script": "test",
+      "exitCode": 0
+    },
+    {
+      "resource": "evaluation",
+      "script": "check:example",
+      "exitCode": 0
+    },
+    {
+      "resource": "evaluation-2-candidate",
+      "script": "test",
+      "exitCode": 0
+    },
+    {
+      "resource": "evidence-query",
+      "script": "test",
+      "exitCode": 0
+    },
+    {
+      "resource": "evidence-query",
+      "script": "check",
+      "exitCode": 0
+    },
+    {
+      "resource": "delivery-admission",
+      "script": "test",
+      "exitCode": 0
+    },
+    {
+      "resource": "evidence-task-query",
+      "script": "test",
+      "exitCode": 0
+    },
+    {
+      "resource": "execution-provider-binding",
+      "script": "test",
+      "exitCode": 0
+    },
+    {
+      "resource": "observation-task-binding",
+      "script": "test",
+      "exitCode": 0
+    },
+    {
+      "resource": "task-binding",
+      "script": "test",
+      "exitCode": 0
+    }
+  ],
+  "context": {
+    "date": "2026-09-13",
+    "kind": "local-working-tree",
+    "notRelease": true
+  }
+}

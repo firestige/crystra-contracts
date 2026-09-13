@@ -1,4 +1,4 @@
-name: Promote qualified contract publication
+name: Promote qualified Crystra contracts
 
 on:
   workflow_dispatch:
@@ -35,25 +35,29 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
           CANDIDATE_TAG: ${{ inputs.candidate_tag }}
+          FINAL_TAG: ${{ inputs.final_tag }}
           EXPECTED_COMMIT: ${{ steps.candidate.outputs.sha }}
         run: |
           mkdir "$RUNNER_TEMP/qualified-release"
           gh release download "$CANDIDATE_TAG" --repo "$GITHUB_REPOSITORY" --dir "$RUNNER_TEMP/qualified-release"
           node release/cli/release.cjs verify "$RUNNER_TEMP/qualified-release"
-          node -e 'const fs=require("node:fs"),crypto=require("node:crypto"),path=require("node:path"); const p=path.join(process.env.RUNNER_TEMP,"qualified-release"),q=JSON.parse(fs.readFileSync(path.join(p,"release-qualification.json"))),m=fs.readFileSync(path.join(p,"release-metadata.json")); if(q.commit!==process.env.EXPECTED_COMMIT||q.candidateTag!==process.env.CANDIDATE_TAG||q.artifactMetadataSha256!=="sha256:"+crypto.createHash("sha256").update(m).digest("hex")||q.localAcceptance.status!=="PASS"||q.remoteQualification.status!=="PASS") process.exit(1)'
-          ! gh release view "${{ inputs.final_tag }}" --repo "$GITHUB_REPOSITORY"
-          ! git ls-remote --exit-code --tags origin "refs/tags/${{ inputs.final_tag }}"
+          node -e 'const fs=require("node:fs"),crypto=require("node:crypto"),path=require("node:path"); const p=path.join(process.env.RUNNER_TEMP,"qualified-release"),q=JSON.parse(fs.readFileSync(path.join(p,"release-qualification.json"))),m=fs.readFileSync(path.join(p,"release-metadata.json")); if(q.schemaVersion!=="crystra.release-qualification@1.0.0"||q.commit!==process.env.EXPECTED_COMMIT||q.candidateTag!==process.env.CANDIDATE_TAG||q.artifactMetadataSha256!=="sha256:"+crypto.createHash("sha256").update(m).digest("hex")||q.localAcceptance.status!=="PASS"||q.remoteQualification.status!=="PASS") process.exit(1)'
+          node -e 'const c=process.env.CANDIDATE_TAG,f=process.env.FINAL_TAG;if(!/^crystra-contracts-v(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)-rc\.[1-9][0-9]*$/.test(c)||f!==c.replace(/-rc\.[1-9][0-9]*$/, ""))process.exit(1)'
+          ! gh release view "$FINAL_TAG" --repo "$GITHUB_REPOSITORY"
+          ! git ls-remote --exit-code --tags origin "refs/tags/$FINAL_TAG"
       - name: Mint short-lived release App token for final publish only
         id: release-app-token
         uses: actions/create-github-app-token@v3
         with:
-          client-id: ${{ vars.WSR_RELEASE_CLIENT_ID }}
-          private-key: ${{ secrets.WSR_RELEASE_APP_PRIVATE_KEY }}
+          client-id: ${{ vars.CRYSTRA_RELEASE_CLIENT_ID }}
+          private-key: ${{ secrets.CRYSTRA_RELEASE_APP_PRIVATE_KEY }}
           owner: firestige
-          repositories: wsr-contracts
+          repositories: crystra-contracts
           permission-contents: write
           permission-workflows: write
       - name: Create stable Release as the last operation
         env:
           GH_TOKEN: ${{ steps.release-app-token.outputs.token }}
-        run: gh release create "${{ inputs.final_tag }}" --repo "$GITHUB_REPOSITORY" "$RUNNER_TEMP/qualified-release/"* --target "${{ steps.candidate.outputs.sha }}"
+          FINAL_TAG: ${{ inputs.final_tag }}
+          EXPECTED_COMMIT: ${{ steps.candidate.outputs.sha }}
+        run: gh release create "$FINAL_TAG" --repo "$GITHUB_REPOSITORY" "$RUNNER_TEMP/qualified-release/"* --target "$EXPECTED_COMMIT"

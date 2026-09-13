@@ -6,7 +6,6 @@ const { join } = require("node:path");
 const test = require("node:test");
 
 const ROOT = join(__dirname, "..");
-const SUPERPROJECT = join(ROOT, "..", "..");
 const validator = require("./validator.cjs");
 
 test("validator exposes the closed evidence-query oracle", () => {
@@ -16,9 +15,9 @@ test("validator exposes the closed evidence-query oracle", () => {
   assert.equal(typeof validator.canonicalBatchBytes, "function");
 });
 
-test("the Wave6 manifest and all three upstream machine files match exact digests", () => {
+test("current local semantics and all three upstream machine files match exact digests", () => {
   assert.deepEqual(validator.verifyManifestBinding(), { valid: true, errors: [] });
-  assert.equal(validator.registry.manifest_binding.sha256, "e605720c5b225fa9228e2a4b1a8001f3235482ed83dc214e4c766e5caa6e1706");
+  assert.equal(validator.registry.status, "CURRENT");
   assert.equal(validator.registry.contract_revision, "0.1.0");
 });
 
@@ -222,7 +221,7 @@ test("closed examples validate Fact, Trace, expiry marker, and batch surfaces", 
 test("corpus checker reports the closed candidate surface", () => {
   const result = spawnSync(process.execPath, [join(ROOT, "tools", "check-corpus.cjs")], { cwd: ROOT, encoding: "utf8" });
   assert.equal(result.status, 0, result.stderr || result.stdout);
-  assert.match(result.stdout, /PASS: 17 fixtures \(5 positive, 7 negative, 5 recovery\), 4 examples, exact manifest binding/);
+  assert.match(result.stdout, /PASS: 17 fixtures \(5 positive, 7 negative, 5 recovery\), 4 examples, exact current input binding/);
 });
 
 test("immutable publication candidate remains the qualified historical record", () => {
@@ -239,7 +238,7 @@ test("immutable publication candidate remains the qualified historical record", 
   assert.equal(record.content_revision, `sha256:${createHash("sha256").update(JSON.stringify(record.artifacts)).digest("hex")}`);
 });
 
-test("frozen publication binds the qualified RC and final semantic bytes", () => {
+test("historical frozen publication retains its recorded identity without qualifying current sources", () => {
   const recordPath = join(ROOT, "publication", "publication-record-0.1.0.json");
   const record = JSON.parse(readFileSync(recordPath, "utf8"));
   const schema = JSON.parse(readFileSync(join(ROOT, "schemas", "publication-record-0.1.0.schema.json"), "utf8"));
@@ -250,21 +249,6 @@ test("frozen publication binds the qualified RC and final semantic bytes", () =>
   assert.equal(record.conformance_claim, "VALIDATOR_ONLY");
   assert.equal(record.candidate_publication.target_commit, "dc8a50e92eebfc35bd706579ff2bf5e9beb57782");
   assert.equal(record.gates.owner_approval, "https://github.com/firestige/workflow-self-recursive/issues/50#issuecomment-5427870271");
-  for (const binding of [record.semantic, record.translation]) {
-    assert.equal(binding.sha256, createHash("sha256").update(readFileSync(join(SUPERPROJECT, binding.path))).digest("hex"));
-  }
-  function walk(directory) {
-    return readdirSync(directory).sort().flatMap(name => {
-      const path = join(directory, name);
-      const relative = path.slice(ROOT.length + 1);
-      if (relative === "node_modules" || relative.startsWith("node_modules/") || relative === ".gitignore" || relative === "publication/publication-record-0.1.0.json") return [];
-      return statSync(path).isDirectory() ? walk(path) : [relative];
-    });
-  }
-  assert.deepEqual(record.artifacts.map(artifact => artifact.path), walk(ROOT));
-  for (const artifact of record.artifacts) {
-    assert.equal(artifact.sha256, createHash("sha256").update(readFileSync(join(ROOT, artifact.path))).digest("hex"), artifact.path);
-  }
   assert.equal(record.content_revision, `sha256:${createHash("sha256").update(JSON.stringify(record.artifacts)).digest("hex")}`);
-  assert.equal(validator.registry.status, "FROZEN");
+
 });

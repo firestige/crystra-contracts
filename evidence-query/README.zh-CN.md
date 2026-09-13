@@ -2,9 +2,9 @@
 
 [English](README.md) | 中文
 
-本目录是 `evidence.query@0.1.0` 的 frozen machine-readable representation，精确绑定 Wave6 input manifest SHA-256 `e605720c5b225fa9228e2a4b1a8001f3235482ed83dc214e4c766e5caa6e1706`、Observation Profile `1.0.0`、read-model revision `1.0.0` 与 exact semantic publication record。
+本目录维护 `evidence.query@0.1.0`、Observation Profile `1.0.0` 和 read-model revision `1.0.0` 的当前机器表示。Registry 精确绑定本仓库中的语义文档及 Observation registry/schema/validator 字节。
 
-状态为 `FROZEN`，最大 claim 为 `VALIDATOR_ONLY`。仅通过 JSON Schema 绝不构成 production 或 cross-implementation conformance claim；实现仍须针对该精确 revision 证明自身 physical behavior。
+Registry 状态为 `CURRENT`，最大 claim 仍为 `VALIDATOR_ONLY`。Schema 验证不构成运行时或跨实现符合性证明。
 
 ## Surface
 
@@ -22,10 +22,9 @@
 npm ci
 npm test
 npm run check
-npm run build:publication
 npm test
 ```
 
-Package byte 不变时，`build:publication` 会确定性重新生成 frozen publication record。qualified candidate record 永不重新生成或覆盖。
+从仓库根目录运行 `node release/cli/qualify.cjs --install` 完成当前资格验证；历史发布记录不重新生成，也不用于证明当前源码通过。
 
-Validator 消费 Wave6 manifest 指定的 exact published Observation registry/schema/validator coordinates；不暴露 Raw data、SQL/storage shape、projection-effect name、credential 或 write interface。
+Validator 读取当前本地输入坐标；不暴露 Raw data、SQL/storage shape、credential 或 write interface。

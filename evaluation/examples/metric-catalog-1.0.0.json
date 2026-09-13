@@ -2,7 +2,7 @@
   "catalog_id": "agentops.evaluation.metric-catalog",
   "version": "1.0.0",
   "status": "PUBLISHED",
-  "semantic_authority": "workflow-self-recursive/docs/contracts/evaluation/metric-catalog.md@evaluation.identity.001",
+  "semantic_authority": "crystra-contracts/docs/contracts/evaluation/metric-catalog.md@evaluation.identity.001",
   "input_definitions": [
     {
       "input_id": "evaluation.defined-task-snapshot",
@@ -802,12 +802,11 @@
   ],
   "dependencies": [
     {
-      "coordinate": "observation-contract@1.0.0",
-      "status": "PUBLISHED",
-      "semantic_revision": "sha256:1a3fea6d202bf08a36aaf76abc3c6601fa71dc6c581715f9c74d11456f2ae735",
-      "machine_revision": "sha256:cf5b6c54af452085f66cf3c28b7ffb14e58451b926a97fa317b9a92a18c8d774",
-      "publication_sha256": "04a4658118ebbb31507eae56f0300ab1035fb7b369ee9b7301dbae3b5a519755",
-      "gitlink_commit": "3d60d16c954b325e7d3eb3148d5ace33880641e8"
+      "coordinate": "observation-profile@1.0.0",
+      "status": "CURRENT",
+      "semantic_revision": "sha256:fc8e2e3b91d3c498b7b7147884fa87d42a1cf8909322d504272d74e77b703fe2",
+      "machine_revision": "sha256:3ab481544a12c81c3a1ecea9f6b5f1323bf974b8e42b364bf1f57d14e726f5a6",
+      "input_binding_sha256": "ab3f217e63af63ace386e566d401c883117bb90b3b18dead19ff2bc2e60b37ff"
     }
   ],
   "minimum_sample_policy": "below minimum_sample the metric value is not published; coverage numerator, denominator, raw ratio, state and alert are still published",

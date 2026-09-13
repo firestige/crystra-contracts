@@ -1,12 +1,12 @@
 {
-  "name": "@workflow-self-recursive/observation-contract",
+  "name": "@crystra/observation-contract",
   "version": "1.0.2",
   "private": true,
-  "description": "Published machine schemas, registry, fixtures, and bounded validator for the MVP Observation Contract.",
+  "description": "Current machine schemas, registry, fixtures, and bounded validator for the MVP Observation Contract.",
   "scripts": {
-    "build:publication": "node tools/build-publication-record.cjs",
     "test": "node --test tools/test-*.cjs",
-    "check": "node tools/check-corpus.cjs"
+    "check": "node tools/check-corpus.cjs",
+    "build:binding": "node tools/build-input-binding.cjs"
   },
   "dependencies": {
     "ajv": "8.20.0",

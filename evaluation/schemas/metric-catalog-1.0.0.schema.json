@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://github.com/firestige/system-contracts/evaluation/schemas/metric-catalog-1.0.0.schema.json",
+  "$id": "https://github.com/firestige/crystra-contracts/evaluation/schemas/metric-catalog-1.0.0.schema.json",
   "title": "Evaluation Metric Catalog 1.0.0",
   "type": "object",
   "additionalProperties": false,
@@ -9,7 +9,7 @@
     "catalog_id": { "const": "agentops.evaluation.metric-catalog" },
     "version": { "const": "1.0.0" },
     "status": { "const": "PUBLISHED" },
-    "semantic_authority": { "const": "workflow-self-recursive/docs/contracts/evaluation/metric-catalog.md@evaluation.identity.001" },
+    "semantic_authority": { "const": "crystra-contracts/docs/contracts/evaluation/metric-catalog.md@evaluation.identity.001" },
     "dependencies": {
       "type": "array",
       "minItems": 1,
@@ -17,14 +17,29 @@
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["coordinate", "status", "semantic_revision", "machine_revision", "publication_sha256", "gitlink_commit"],
+        "required": [
+          "coordinate",
+          "status",
+          "semantic_revision",
+          "machine_revision",
+          "input_binding_sha256"
+        ],
         "properties": {
-          "coordinate": { "const": "observation-contract@1.0.0" },
-          "status": { "const": "PUBLISHED" },
-          "semantic_revision": { "const": "sha256:1a3fea6d202bf08a36aaf76abc3c6601fa71dc6c581715f9c74d11456f2ae735" },
-          "machine_revision": { "const": "sha256:cf5b6c54af452085f66cf3c28b7ffb14e58451b926a97fa317b9a92a18c8d774" },
-          "publication_sha256": { "const": "04a4658118ebbb31507eae56f0300ab1035fb7b369ee9b7301dbae3b5a519755" },
-          "gitlink_commit": { "const": "3d60d16c954b325e7d3eb3148d5ace33880641e8" }
+          "coordinate": {
+            "const": "observation-profile@1.0.0"
+          },
+          "status": {
+            "const": "CURRENT"
+          },
+          "semantic_revision": {
+            "const": "sha256:fc8e2e3b91d3c498b7b7147884fa87d42a1cf8909322d504272d74e77b703fe2"
+          },
+          "machine_revision": {
+            "const": "sha256:3ab481544a12c81c3a1ecea9f6b5f1323bf974b8e42b364bf1f57d14e726f5a6"
+          },
+          "input_binding_sha256": {
+            "const": "ab3f217e63af63ace386e566d401c883117bb90b3b18dead19ff2bc2e60b37ff"
+          }
         }
       }
     },

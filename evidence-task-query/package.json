@@ -1,5 +1,5 @@
 {
-  "name": "@workflow-self-recursive/evidence-task-query-candidate",
+  "name": "@crystra/evidence-task-query-candidate",
   "version": "1.0.0",
   "private": true,
   "scripts": {

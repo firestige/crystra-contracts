@@ -1,10 +1,10 @@
 const { createHash } = require("node:crypto");
-const { existsSync, readFileSync } = require("node:fs");
+const { readFileSync } = require("node:fs");
 const { join } = require("node:path");
 const Ajv = require("ajv");
 
 const ROOT = join(__dirname, "..");
-const SUPER = join(ROOT, "..", "..");
+const REPOSITORY = join(ROOT, "..");
 const load = path => JSON.parse(readFileSync(join(ROOT, path), "utf8"));
 const registry = load("registries/evidence-query-0.1.0.json");
 const observationRegistry = JSON.parse(readFileSync(join(ROOT, "..", "observation", "registries", "observation-profile-1.0.0.json"), "utf8"));
@@ -356,21 +356,26 @@ function planMembers(input) {
     .map(({ resource_kind, owner_key }) => ({ resource_kind, owner_key }))
     .sort((a, b) => Buffer.compare(encodeScalar(memberArray(a)), encodeScalar(memberArray(b))));
 }
-function verifyManifestBinding() {
+// This binds current local inputs, not historical release approval.
+function verifyManifestBinding(repository = REPOSITORY) {
   const errors = [];
-  const binding = registry.manifest_binding;
-  const manifestPath = join(SUPER, binding.path);
-  if (!existsSync(manifestPath)) return { valid: false, errors: ["parent Wave6 manifest unavailable"] };
-  const bytes = readFileSync(manifestPath);
-  if (digest(bytes) !== binding.sha256) errors.push("Wave6 manifest digest mismatch");
-  const manifest = JSON.parse(bytes);
-  if (`${manifest.contract.name}@${manifest.contract.revision}` !== "evidence.query@0.1.0") errors.push("contract coordinate mismatch");
-  if (manifest.contract.semantic_sha256 !== binding.semantic_sha256 || manifest.contract.translation_sha256 !== binding.translation_sha256) errors.push("semantic binding mismatch");
-  if (manifest.semantic_sections.truth_table.sha256 !== binding.truth_table_sha256 || manifest.semantic_sections.lifecycle_defaults.sha256 !== binding.lifecycle_defaults_sha256) errors.push("section binding mismatch");
-  for (const key of ["registry", "schema", "validator"]) {
-    const coordinate = registry.upstream_machine[key];
-    const path = join(ROOT, "..", coordinate.path.replace(/^observation\//, "observation/"));
-    if (!existsSync(path) || digest(readFileSync(path)) !== coordinate.sha256) errors.push(`upstream ${key} digest mismatch`);
+  for (const coordinate of [
+    registry.semantic_binding.semantic,
+    registry.semantic_binding.translation,
+    ...["registry", "schema", "validator"].map(key => registry.upstream_machine[key])
+  ]) {
+    if (!coordinate || typeof coordinate.path !== "string"
+      || coordinate.path.split("/").some(part => !/^[A-Za-z0-9_.-]+$/.test(part) || part === "." || part === "..")
+      || !/^[a-f0-9]{64}$/.test(coordinate.sha256)) {
+      errors.push("invalid current input coordinate");
+      continue;
+    }
+    const inputPath = join(repository, coordinate.path);
+    try {
+      if (digest(readFileSync(inputPath)) !== coordinate.sha256) errors.push(`current input digest mismatch: ${coordinate.path}`);
+    } catch (error) {
+      errors.push(`current input unavailable: ${coordinate.path} (${error.code || error.message})`);
+    }
   }
   return { valid: errors.length === 0, errors };
 }

@@ -1,0 +1,834 @@
+{
+  "date": "2026-09-13",
+  "status": "analysis proposal; no renames applied",
+  "rows": [
+    {
+      "id": "N001",
+      "category": "仓库",
+      "old": "firestige/workflow-self-recursive",
+      "new": "firestige/crystra",
+      "action": "rename-repository",
+      "status": "命名方案",
+      "note": "更名现有仓库；更新当前 remote、checkout、链接和发布坐标。crystra 只承担组合发布。"
+    },
+    {
+      "id": "N002",
+      "category": "仓库",
+      "old": "firestige/wsr-contracts",
+      "new": "firestige/crystra-contracts",
+      "action": "rename-repository",
+      "status": "命名方案",
+      "note": "更名现有仓库；更新当前 remote、checkout、链接和发布坐标。crystra 只承担组合发布。"
+    },
+    {
+      "id": "N003",
+      "category": "仓库",
+      "old": "firestige/wsr-execution",
+      "new": "firestige/crystra-execution",
+      "action": "rename-repository",
+      "status": "命名方案",
+      "note": "更名现有仓库；更新当前 remote、checkout、链接和发布坐标。crystra 只承担组合发布。"
+    },
+    {
+      "id": "N004",
+      "category": "仓库",
+      "old": "firestige/wsr-evidence",
+      "new": "firestige/crystra-evidence",
+      "action": "rename-repository",
+      "status": "命名方案",
+      "note": "更名现有仓库；更新当前 remote、checkout、链接和发布坐标。crystra 只承担组合发布。"
+    },
+    {
+      "id": "N005",
+      "category": "仓库",
+      "old": "firestige/wsr-evolution",
+      "new": "firestige/crystra-evolution",
+      "action": "rename-repository",
+      "status": "命名方案",
+      "note": "更名现有仓库；更新当前 remote、checkout、链接和发布坐标。crystra 只承担组合发布。"
+    },
+    {
+      "id": "N006",
+      "category": "仓库",
+      "old": "firestige/wsr-dsh",
+      "new": "firestige/crystra-dsh",
+      "action": "rename-repository",
+      "status": "已确定",
+      "note": "更名现有仓库；更新当前 remote、checkout、链接和发布坐标。crystra 只承担组合发布。"
+    },
+    {
+      "id": "N007",
+      "category": "仓库",
+      "old": "firestige/wsr-ui",
+      "new": "firestige/crystra-ui",
+      "action": "rename-repository",
+      "status": "命名方案",
+      "note": "更名现有仓库；更新当前 remote、checkout、链接和发布坐标。crystra 只承担组合发布。"
+    },
+    {
+      "id": "N008",
+      "category": "仓库",
+      "old": "firestige/wsr-workflow-package",
+      "new": "firestige/crystra-workflow-package",
+      "action": "rename-repository",
+      "status": "命名方案",
+      "note": "更名现有仓库；更新当前 remote、checkout、链接和发布坐标。crystra 只承担组合发布。"
+    },
+    {
+      "id": "N009",
+      "category": "品牌",
+      "old": "WSR / Workflow Self-Recursive / workflow-self-recursive",
+      "new": "Crystra",
+      "action": "rewrite",
+      "status": "已确定",
+      "note": "用于当前产品称谓；README 定位需重写，不宣称已实现自主递归优化。"
+    },
+    {
+      "id": "N010",
+      "category": "品牌",
+      "old": "WSR Studio / WSR BI",
+      "new": "Crystra Studio / Crystra BI",
+      "action": "rename-display",
+      "status": "建议落定",
+      "note": "可保留为功能视图名，不代表独立插件。"
+    },
+    {
+      "id": "N011",
+      "category": "DSH 插件",
+      "old": "dsh-wsr-execution",
+      "new": "dsh-crystra",
+      "action": "merge",
+      "status": "已确定",
+      "note": "一个公开发布包；旧包停止分发，无别名；Intake 独有功能需先核对。"
+    },
+    {
+      "id": "N012",
+      "category": "DSH 插件",
+      "old": "dsh-wsr-studio",
+      "new": "dsh-crystra",
+      "action": "merge",
+      "status": "已确定",
+      "note": "一个公开发布包；旧包停止分发，无别名；Intake 独有功能需先核对。"
+    },
+    {
+      "id": "N013",
+      "category": "DSH 插件",
+      "old": "dsh-wsr",
+      "new": "dsh-crystra",
+      "action": "merge",
+      "status": "已确定",
+      "note": "一个公开发布包；旧包停止分发，无别名；Intake 独有功能需先核对。"
+    },
+    {
+      "id": "N014",
+      "category": "DSH 插件",
+      "old": "wsr-dsh-intake",
+      "new": "dsh-crystra",
+      "action": "merge",
+      "status": "已确定",
+      "note": "一个公开发布包；旧包停止分发，无别名；Intake 独有功能需先核对。"
+    },
+    {
+      "id": "N015",
+      "category": "DSH 插件",
+      "old": "wsr-dsh 与 wsr-execution 的 dsh-plugin Topic",
+      "new": "仅 firestige/crystra-dsh 保留 dsh-plugin",
+      "action": "single-registration",
+      "status": "已确定",
+      "note": "同时移除 Execution 插件关键词和安装宣传；核对外部市场，不宣称已清理。"
+    },
+    {
+      "id": "N016",
+      "category": "DSH 插件",
+      "old": "marketplace/packages.json 的三个条目",
+      "new": "一个 dsh-crystra 条目",
+      "action": "merge",
+      "status": "已确定",
+      "note": "只注册 crystra-dsh 仓库；displayName 建议 Crystra。"
+    },
+    {
+      "id": "N017",
+      "category": "DSH 插件",
+      "old": "wsr-dsh-monorepo 根包 + 三个 workspace",
+      "new": "根包 dsh-crystra + 内部功能目录",
+      "action": "restructure",
+      "status": "建议落定",
+      "note": "建议根包直接发布；原 suite 不再是空壳，内部模块不单独发布。"
+    },
+    {
+      "id": "N018",
+      "category": "DSH 插件",
+      "old": "Cordis id: wsr-execution / wsr-studio",
+      "new": "crystra-* 内部节点；name 仅用 dsh-crystra 或其子路径",
+      "action": "unify-package",
+      "status": "建议落定",
+      "note": "一个包可有多个 Cordis 行；无需硬合成一个节点。旧 workspace UI 替换只生效一次。"
+    },
+    {
+      "id": "N019",
+      "category": "DSH 插件",
+      "old": "服务端 name: workflow-execution / wsr-studio",
+      "new": "crystra-* 包内功能名",
+      "action": "internalize",
+      "status": "建议落定",
+      "note": "允许多个内部 apply／inject；都从唯一公开包导出，生命周期正确。"
+    },
+    {
+      "id": "N020",
+      "category": "DSH 插件",
+      "old": "ModuleLoader id: dsh-wsr-execution / dsh-wsr-studio",
+      "new": "dsh-crystra 包内浏览器装配",
+      "action": "unify-package",
+      "status": "建议落定",
+      "note": "不要求所有代码手工合成一个浏览器模块；以 DSH 包发现和构建机制验证。"
+    },
+    {
+      "id": "N021",
+      "category": "DSH 插件",
+      "old": "客户端 name: wsr-execution-client / wsr-studio-client",
+      "new": "客户端 name: crystra-client",
+      "action": "merge",
+      "status": "建议落定",
+      "note": "依赖注入取并集，slot、timer、disposer 合并。"
+    },
+    {
+      "id": "N022",
+      "category": "DSH 插件",
+      "old": "/wsr 命令",
+      "new": "/crystra",
+      "action": "rename-command",
+      "status": "建议落定",
+      "note": "帮助、提示词、消息 source.workflowCommand、命令解析和测试一起修改。"
+    },
+    {
+      "id": "N023",
+      "category": "DSH 插件",
+      "old": "workflow_execution_intake 工具",
+      "new": "crystra_workflow",
+      "action": "rename-tool",
+      "status": "建议落定",
+      "note": "建议消除对外 Intake 身份；保留原操作语义，所有提示词／调用方一起改。"
+    },
+    {
+      "id": "N024",
+      "category": "DSH 插件",
+      "old": "skills/workflow-execution 与 /workflow-execution 指令",
+      "new": "skills/crystra-workflow 与 /crystra-workflow",
+      "action": "rename-skill",
+      "status": "建议落定",
+      "note": "建议名称；只在插件安装的此 Skill 与调用方中修改，不全局改技术词。"
+    },
+    {
+      "id": "N025",
+      "category": "DSH 插件",
+      "old": "installation.dshMode: execution | studio | suite",
+      "new": "移除 dshMode；固定单插件坐标",
+      "action": "remove-mode",
+      "status": "建议落定",
+      "note": "功能降级按服务状态处理，不再作为安装插件选择。"
+    },
+    {
+      "id": "N026",
+      "category": "DSH 插件",
+      "old": "compatibility.packages.{execution,studio,suite}",
+      "new": "compatibility.plugin: dsh-crystra@<version>",
+      "action": "reshape-manifest",
+      "status": "建议落定",
+      "note": "建议字段；producer、installer、validator、fixtures 同步修改。"
+    },
+    {
+      "id": "N027",
+      "category": "DSH 插件",
+      "old": "两个平级配置 overlay",
+      "new": "dsh-crystra 内部模块的配置装配",
+      "action": "reshape-config",
+      "status": "建议落定",
+      "note": "允许多个内部节点或统一外层；每个模块接收自己 schema 支持的字段。"
+    },
+    {
+      "id": "N028",
+      "category": "DSH 插件",
+      "old": "dsh plugin add 核心库坐标 + 所选插件",
+      "new": "只选择 dsh-crystra；核心库为精确普通依赖",
+      "action": "reshape-install",
+      "status": "建议落定",
+      "note": "禁止把核心库宣传／注册为第二个插件；依赖包数量不要求为一。"
+    },
+    {
+      "id": "N029",
+      "category": "包与模块",
+      "old": "@wsr/product-operations",
+      "new": "取消独立分发；必要代码作为插件内部模块",
+      "action": "rename-package",
+      "status": "T0 已落定",
+      "note": "建议取消面向 DSH 用户的独立安装入口；可移除独立分发或转内部库，不先机械更名发布。"
+    },
+    {
+      "id": "N030",
+      "category": "包与模块",
+      "old": "wsr-execution",
+      "new": "crystra-execution",
+      "action": "rename-package",
+      "status": "建议落定",
+      "note": "独立普通运行时库，不是 DSH 插件。"
+    },
+    {
+      "id": "N031",
+      "category": "包与模块",
+      "old": "wsr-ui-core",
+      "new": "crystra-ui-core",
+      "action": "rename-package",
+      "status": "建议落定",
+      "note": "独立普通 UI 库，不是 DSH 插件。"
+    },
+    {
+      "id": "N032",
+      "category": "包与模块",
+      "old": "wsr-ui 根 workspace",
+      "new": "crystra-ui",
+      "action": "rename-workspace",
+      "status": "建议落定",
+      "note": "同步 npm --workspace、构建、lockfile。"
+    },
+    {
+      "id": "N033",
+      "category": "包与模块",
+      "old": "@workflow-self-recursive/*",
+      "new": "@crystra/*",
+      "action": "rename-scope",
+      "status": "建议落定",
+      "note": "名称可用性／scope 权限待核实；保持各契约后缀。"
+    },
+    {
+      "id": "N034",
+      "category": "契约包",
+      "old": "@workflow-self-recursive/delivery-admission-contract",
+      "new": "@crystra/delivery-admission-contract",
+      "action": "rename-package",
+      "status": "建议落定",
+      "note": "保持原契约语义；candidate 不因更名自动变为稳定契约。"
+    },
+    {
+      "id": "N035",
+      "category": "契约包",
+      "old": "@workflow-self-recursive/evaluation-contract",
+      "new": "@crystra/evaluation-contract",
+      "action": "rename-package",
+      "status": "建议落定",
+      "note": "保持原契约语义；candidate 不因更名自动变为稳定契约。"
+    },
+    {
+      "id": "N036",
+      "category": "契约包",
+      "old": "@workflow-self-recursive/evidence-query-contract",
+      "new": "@crystra/evidence-query-contract",
+      "action": "rename-package",
+      "status": "建议落定",
+      "note": "保持原契约语义；candidate 不因更名自动变为稳定契约。"
+    },
+    {
+      "id": "N037",
+      "category": "契约包",
+      "old": "@workflow-self-recursive/evidence-task-query-candidate",
+      "new": "@crystra/evidence-task-query-candidate",
+      "action": "rename-package",
+      "status": "建议落定",
+      "note": "保持原契约语义；candidate 不因更名自动变为稳定契约。"
+    },
+    {
+      "id": "N038",
+      "category": "契约包",
+      "old": "@workflow-self-recursive/execution-provider-binding-candidate",
+      "new": "@crystra/execution-provider-binding-candidate",
+      "action": "rename-package",
+      "status": "建议落定",
+      "note": "保持原契约语义；candidate 不因更名自动变为稳定契约。"
+    },
+    {
+      "id": "N039",
+      "category": "契约包",
+      "old": "@workflow-self-recursive/observation-task-binding-candidate",
+      "new": "@crystra/observation-task-binding-candidate",
+      "action": "rename-package",
+      "status": "建议落定",
+      "note": "保持原契约语义；candidate 不因更名自动变为稳定契约。"
+    },
+    {
+      "id": "N040",
+      "category": "契约包",
+      "old": "@workflow-self-recursive/observation-contract",
+      "new": "@crystra/observation-contract",
+      "action": "rename-package",
+      "status": "建议落定",
+      "note": "保持原契约语义；candidate 不因更名自动变为稳定契约。"
+    },
+    {
+      "id": "N041",
+      "category": "契约包",
+      "old": "@workflow-self-recursive/task-binding-contract",
+      "new": "@crystra/task-binding-contract",
+      "action": "rename-package",
+      "status": "建议落定",
+      "note": "保持原契约语义；candidate 不因更名自动变为稳定契约。"
+    },
+    {
+      "id": "N042",
+      "category": "契约包",
+      "old": "@workflow-self-recursive/workflow-dsl-contract",
+      "new": "@crystra/workflow-dsl-contract",
+      "action": "rename-package",
+      "status": "建议落定",
+      "note": "保持原契约语义；candidate 不因更名自动变为稳定契约。"
+    },
+    {
+      "id": "N043",
+      "category": "Python",
+      "old": "wsr-evidence",
+      "new": "crystra-evidence",
+      "action": "rename-distribution",
+      "status": "建议落定",
+      "note": "同步 pyproject、entry point、import、Dockerfile、部署和测试；不移动旧环境。"
+    },
+    {
+      "id": "N044",
+      "category": "Python",
+      "old": "wsr-evolution",
+      "new": "crystra-evolution",
+      "action": "rename-distribution",
+      "status": "建议落定",
+      "note": "同步 pyproject、entry point、import、Dockerfile、部署和测试；不移动旧环境。"
+    },
+    {
+      "id": "N045",
+      "category": "Python",
+      "old": "wsr_evidence",
+      "new": "crystra_evidence",
+      "action": "rename-module",
+      "status": "建议落定",
+      "note": "同步 pyproject、entry point、import、Dockerfile、部署和测试；不移动旧环境。"
+    },
+    {
+      "id": "N046",
+      "category": "Python",
+      "old": "wsr_evolution",
+      "new": "crystra_evolution",
+      "action": "rename-module",
+      "status": "建议落定",
+      "note": "同步 pyproject、entry point、import、Dockerfile、部署和测试；不移动旧环境。"
+    },
+    {
+      "id": "N047",
+      "category": "CLI",
+      "old": "wsr / product-operations/bin/wsr.mjs",
+      "new": "crystra / product-operations/bin/crystra.mjs",
+      "action": "rename-command",
+      "status": "优先取消独立入口；内部实现待定",
+      "note": "若取消独立安装器，可不保留该公开 CLI；初始化／诊断能力归插件内部。"
+    },
+    {
+      "id": "N048",
+      "category": "CLI",
+      "old": "wsr-compose / wsr-host-preflight.mjs",
+      "new": "crystra-compose / crystra-host-preflight.mjs",
+      "action": "rename-command",
+      "status": "建议落定",
+      "note": "修改模板源与生成引用，不迁移旧生成包。"
+    },
+    {
+      "id": "N049",
+      "category": "CLI",
+      "old": "execution-config",
+      "new": "execution-config",
+      "action": "keep",
+      "status": "保留",
+      "note": "当前不含旧品牌，保持领域 CLI；若统一公共 CLI 属于额外产品设计。"
+    },
+    {
+      "id": "N050",
+      "category": "配置与状态",
+      "old": "WSR_* 环境变量",
+      "new": "CRYSTRA_*",
+      "action": "rename-family",
+      "status": "建议落定",
+      "note": "配置、部署、Actions、测试变量和文档同步；不双读旧名称。"
+    },
+    {
+      "id": "N051",
+      "category": "配置与状态",
+      "old": ".wsr/role-provider-bindings.json",
+      "new": ".crystra/role-provider-bindings.json",
+      "action": "rename-path",
+      "status": "建议落定",
+      "note": "新安装读写新目录；旧数据不自动导入。"
+    },
+    {
+      "id": "N052",
+      "category": "配置与状态",
+      "old": "~/Library/Application Support/WSR",
+      "new": "~/Library/Application Support/Crystra",
+      "action": "rename-path",
+      "status": "建议落定",
+      "note": "仅创建新路径。"
+    },
+    {
+      "id": "N053",
+      "category": "配置与状态",
+      "old": "~/.config/wsr 与 ~/.local/state/wsr",
+      "new": "~/.config/crystra 与 ~/.local/state/crystra",
+      "action": "rename-path",
+      "status": "建议落定",
+      "note": "保持 XDG 根目录覆盖语义。"
+    },
+    {
+      "id": "N054",
+      "category": "配置与状态",
+      "old": "Windows APPDATA/WSR 与 LOCALAPPDATA/WSR",
+      "new": "Windows APPDATA/Crystra 与 LOCALAPPDATA/Crystra",
+      "action": "rename-path",
+      "status": "建议落定",
+      "note": "保持平台目录选择，不做旧路径扫描迁移。"
+    },
+    {
+      "id": "N055",
+      "category": "配置与状态",
+      "old": "wsr.* 浏览器存储键 / wsrBiParent",
+      "new": "crystra.* / crystraBiParent",
+      "action": "rename-state",
+      "status": "建议落定",
+      "note": "sessionStorage、localStorage、history 生产／读取双方同步，新会话开始。"
+    },
+    {
+      "id": "N056",
+      "category": "配置与状态",
+      "old": "wsr_evidence 数据库及 _admin/_runtime/_backup 角色",
+      "new": "crystra_evidence 及对应角色",
+      "action": "rename-database",
+      "status": "建议落定",
+      "note": "新实例初始化、备份／恢复脚本同步；不迁移旧 DB。"
+    },
+    {
+      "id": "N057",
+      "category": "配置与状态",
+      "old": "wsr-* Compose 项目、volume、服务标识",
+      "new": "crystra-* 对应标识",
+      "action": "rename-deployment",
+      "status": "建议落定",
+      "note": "不重命名或接管旧卷；普通 postgres 等第三方服务名不改。"
+    },
+    {
+      "id": "N058",
+      "category": "配置与状态",
+      "old": "io.wsr.state-identity / .wsr-state-identity",
+      "new": "io.crystra.state-identity / .crystra-state-identity",
+      "action": "rename-state",
+      "status": "建议落定",
+      "note": "标签写入与资源所有权检查一致。"
+    },
+    {
+      "id": "N059",
+      "category": "协议与内部标识",
+      "old": "wsr.compatibility@1.0.0",
+      "new": "crystra.compatibility@1.0.0",
+      "action": "new-schema",
+      "status": "建议落定",
+      "note": "建议从新 namespace 起步；移除三模式字段，必须配套新 schema 定义。"
+    },
+    {
+      "id": "N060",
+      "category": "协议与内部标识",
+      "old": "wsr.global-config@1.0.0",
+      "new": "crystra.global-config@1.0.0",
+      "action": "new-schema",
+      "status": "建议落定",
+      "note": "只支持新配置格式；字段结构见统一插件建议。"
+    },
+    {
+      "id": "N061",
+      "category": "协议与内部标识",
+      "old": "wsr.presentation@<revision>",
+      "new": "crystra.presentation@<revision>",
+      "action": "rename-schema",
+      "status": "建议落定",
+      "note": "revision 不机械重置；先审查仍使用的格式，所有消费者同步。"
+    },
+    {
+      "id": "N062",
+      "category": "协议与内部标识",
+      "old": "其它现行 wsr.* schema namespace",
+      "new": "crystra.*",
+      "action": "rename-family",
+      "status": "建议落定",
+      "note": "排除历史证据；DSH、产品运维、UI release namespace 一起处理。"
+    },
+    {
+      "id": "N063",
+      "category": "协议与内部标识",
+      "old": "urn:wsr:*",
+      "new": "urn:crystra:*",
+      "action": "rename-schema-id",
+      "status": "建议落定",
+      "note": "保留具体领域和版本后缀，更新引用与校验。"
+    },
+    {
+      "id": "N064",
+      "category": "协议与内部标识",
+      "old": "workflow-self-recursive.dev schema IDs",
+      "new": "urn:crystra:<domain>:<contract>:<version>",
+      "action": "replace-schema-id",
+      "status": "建议落定",
+      "note": "建议使用 URN；新域名所有权未知，不假设 crystra.dev 可用；配套逐个 $ref 更新。"
+    },
+    {
+      "id": "N065",
+      "category": "协议与内部标识",
+      "old": "firestige/system-contracts 等更早仓库 schema URLs",
+      "new": "firestige/crystra-contracts 对应 schema 地址或明确 URN",
+      "action": "normalize-legacy-coordinate",
+      "status": "建议落定",
+      "note": "旧名称不一定含 wsr，需额外扫描旧仓库别名。"
+    },
+    {
+      "id": "N066",
+      "category": "协议与内部标识",
+      "old": "/wsr-studio RPC",
+      "new": "/crystra-studio RPC",
+      "action": "rename-channel",
+      "status": "建议落定",
+      "note": "内部功能 channel 不等于独立插件；保留 loopback 与 allowlist。"
+    },
+    {
+      "id": "N067",
+      "category": "协议与内部标识",
+      "old": "wsr-* CSS 类／--wsr-* 变量／品牌 DOM ID",
+      "new": "crystra-* / --crystra-*",
+      "action": "rename-family",
+      "status": "建议落定",
+      "note": "跨 UI 和 DSH 同步；生成 bundle 从源码重建。"
+    },
+    {
+      "id": "N068",
+      "category": "协议与内部标识",
+      "old": "Wsr／wsr 品牌代码符号与 WSR_* 错误码",
+      "new": "Crystra／crystra 与 CRYSTRA_*",
+      "action": "rename-symbols",
+      "status": "建议落定",
+      "note": "如 parseWsrCommand；错误码和消费者同步，不误改第三方或无关技术概念。"
+    },
+    {
+      "id": "N069",
+      "category": "发布资产",
+      "old": "wsr-product-operations-<version>.tgz[.sha256]",
+      "new": "crystra-product-operations-<version>.tgz[.sha256]",
+      "action": "new-artifact",
+      "status": "建议落定",
+      "note": "新构建与新摘要；方括号表示可选 checksum 后缀。"
+    },
+    {
+      "id": "N070",
+      "category": "发布资产",
+      "old": "wsr-product-<version>.release.json / .config.example.json",
+      "new": "crystra-product-<version>.release.json / .config.example.json",
+      "action": "new-artifact",
+      "status": "建议落定",
+      "note": "重建新组合清单与新配置样例。"
+    },
+    {
+      "id": "N071",
+      "category": "发布资产",
+      "old": "wsr-services-<version>.tar.gz / .release.json",
+      "new": "crystra-services-<version>.tar.gz / .release.json",
+      "action": "new-artifact",
+      "status": "建议落定",
+      "note": "全新 Compose 包，精确引用新镜像。"
+    },
+    {
+      "id": "N072",
+      "category": "发布资产",
+      "old": "wsr-execution-<version>.tgz / wsr-ui-core-<version>.tgz",
+      "new": "crystra-execution-<version>.tgz / crystra-ui-core-<version>.tgz",
+      "action": "new-artifact",
+      "status": "建议落定",
+      "note": "独立组件普通制品，插件安装透明依赖。"
+    },
+    {
+      "id": "N073",
+      "category": "发布资产",
+      "old": "三个 dsh-wsr* 插件 tarball",
+      "new": "dsh-crystra-<version>.tgz",
+      "action": "merge-artifact",
+      "status": "已确定",
+      "note": "发布验证只期待一个插件 tarball；metadata／SBOM 可另行存在。"
+    },
+    {
+      "id": "N074",
+      "category": "发布资产",
+      "old": "wsr_evidence-* / wsr_evolution-* wheel、sdist",
+      "new": "crystra_evidence-* / crystra_evolution-*",
+      "action": "new-artifact",
+      "status": "建议落定",
+      "note": "Python 工具生成规范文件名，不手工改旧归档。"
+    },
+    {
+      "id": "N075",
+      "category": "发布资产",
+      "old": "ghcr.io/firestige/wsr-evidence / wsr-evolution",
+      "new": "ghcr.io/firestige/crystra-evidence / crystra-evolution",
+      "action": "new-image",
+      "status": "建议落定",
+      "note": "新镜像、新 digest、source label 和分发权限。"
+    },
+    {
+      "id": "N076",
+      "category": "发布资产",
+      "old": "wsr-ui-bi:local",
+      "new": "crystra-ui-bi:local",
+      "action": "rename-build-target",
+      "status": "建议落定",
+      "note": "本地构建与 smoke 脚本同步。"
+    },
+    {
+      "id": "N077",
+      "category": "发布资产",
+      "old": "旧 product-* tag 与组件旧版本",
+      "new": "<新仓库名>-v0.1.0[-rc.N]；以后独立版本",
+      "action": "new-release",
+      "status": "T0 已落定",
+      "note": "全新发行 epoch；契约 revision 不重置；未打 tag 或发布。"
+    },
+    {
+      "id": "N078",
+      "category": "发布配置",
+      "old": "WSR_RELEASE_CLIENT_ID / WSR_RELEASE_APP_PRIVATE_KEY",
+      "new": "CRYSTRA_RELEASE_CLIENT_ID / CRYSTRA_RELEASE_APP_PRIVATE_KEY",
+      "action": "rename-setting",
+      "status": "建议落定",
+      "note": "只改配置键及引用；实际外部权限另核实，不读取或复制 secret 值。"
+    },
+    {
+      "id": "N079",
+      "category": "发布配置",
+      "old": "authority_ref + 主仓库 gitlink 决定组件源码",
+      "new": "组件 main 上选定的精确源码提交",
+      "action": "decouple",
+      "status": "职责已确定，机制建议",
+      "note": "组件发布自身选择；组合侧后选可用制品，不隐式追随 latest。"
+    },
+    {
+      "id": "N080",
+      "category": "发布配置",
+      "old": "UI push: iter5/implementation；Execution／Workflow 无 push main",
+      "new": "各组件 CI 覆盖 main",
+      "action": "change-trigger",
+      "status": "职责已确定，机制建议",
+      "note": "main 开发不等于 main push 自动公开发布。"
+    },
+    {
+      "id": "N081",
+      "category": "发布配置",
+      "old": "release/next 候选渠道",
+      "new": "可保留，从组件 main 选定提交",
+      "action": "keep-or-adjust",
+      "status": "待实现选择",
+      "note": "不把保留发布分支误写为违反 main 开发。"
+    },
+    {
+      "id": "N082",
+      "category": "本地路径与文档",
+      "old": "独立 checkout 名称 wsr-*",
+      "new": "对应 crystra-*",
+      "action": "rename-local-path",
+      "status": "建议落定",
+      "note": "实施时更新脚本引用；不操作本轮工作树。"
+    },
+    {
+      "id": "N083",
+      "category": "本地路径与文档",
+      "old": "主仓库 submodule path: wsr-dsh / wsr-ui",
+      "new": "crystra-dsh / crystra-ui",
+      "action": "rename-gitlink-path",
+      "status": "建议落定",
+      "note": "如继续保留子模块则更名；忽略当前子模块未提交变化。"
+    },
+    {
+      "id": "N084",
+      "category": "本地路径与文档",
+      "old": "workflow-package / execution-system / evidence-system / evolution-system / system-contracts 子模块路径",
+      "new": "可保留这些无品牌功能路径",
+      "action": "keep",
+      "status": "建议保留",
+      "note": "只要求 URL 跟随仓库更名，不为名称整齐扩大路径迁移。"
+    },
+    {
+      "id": "N085",
+      "category": "本地路径与文档",
+      "old": "project-ops.config requirements.repository 旧主仓库坐标",
+      "new": "firestige/crystra",
+      "action": "rename-coordinate",
+      "status": "建议落定",
+      "note": "只跟随仓库更名；是否迁移 Issue authority 待定。"
+    },
+    {
+      "id": "N086",
+      "category": "本地路径与文档",
+      "old": "主仓库当前 docs/contracts 与 docs/systems 开发依据",
+      "new": "对应组件的现行文档／独立契约输入",
+      "action": "relocate-current-docs",
+      "status": "建议落定",
+      "note": "按责任归属逐项落定；组合仓库保留安装／组合／产品入口；不整理历史归档。"
+    },
+    {
+      "id": "N087",
+      "category": "视觉",
+      "old": "Marketplace icon.svg 的 WSR 标题和 W 图形",
+      "new": "Crystra 标题和新品牌图形",
+      "action": "replace-current-visual",
+      "status": "建议落定",
+      "note": "需要设计或选择新品牌图形；只改 SVG title 不够。"
+    },
+    {
+      "id": "N088",
+      "category": "视觉",
+      "old": "现用 banner、architecture、social-preview 与演示图",
+      "new": "当前 Crystra 版本",
+      "action": "replace-current-visual",
+      "status": "建议落定",
+      "note": "文件名可保留通用名称；更新画面、alt、引用；历史验收截图排除。"
+    },
+    {
+      "id": "N089",
+      "category": "保留与排除",
+      "old": "Crystra tokens／geometry／theme 已有文件名",
+      "new": "保持现名，审查内部 wsr 引用",
+      "action": "keep-name-update-content",
+      "status": "保留",
+      "note": "不用再次重命名已经正确的资产。"
+    },
+    {
+      "id": "N090",
+      "category": "保留与排除",
+      "old": "Workflow / Execution / Evidence / Delivery / Runner 等领域词",
+      "new": "保持",
+      "action": "keep",
+      "status": "保留",
+      "note": "单插件不等于取消组件边界；Evolution 是否改领域名不在本次范围。"
+    },
+    {
+      "id": "N091",
+      "category": "保留与排除",
+      "old": "@deepseek-ai/*、第三方产品、通用 recursive 调用",
+      "new": "保持",
+      "action": "keep",
+      "status": "保留",
+      "note": "不修改第三方命名及递归技术操作。"
+    },
+    {
+      "id": "N092",
+      "category": "保留与排除",
+      "old": "旧制品／Release／历史清单／provenance／截图",
+      "new": "不迁移、不改写",
+      "action": "exclude",
+      "status": "已确定",
+      "note": "移除现行代码对旧输入的依赖，但本轮不实际删除旧资产。"
+    }
+  ]
+}

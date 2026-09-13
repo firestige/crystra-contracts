@@ -32,7 +32,8 @@ This directory contains the published machine representation of the 14-metric MV
 npm ci
 npm test
 npm run check:example
-npm run build:publication
 ```
 
 Tests create isolated invalid mutations from the normative example and verify that each fails for its intended reason. This published package makes a `VALIDATOR_ONLY` conformance claim; it does not implement or certify Projection, BI, Runtime, production execution or physical conformance.
+
+Current Crystra validation: run `node release/cli/qualify.cjs --install` from the repository root. Historical publication generation is no longer a supported development command; old records do not qualify current source.

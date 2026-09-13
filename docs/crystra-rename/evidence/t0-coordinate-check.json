@@ -1,0 +1,230 @@
+{
+  "checkedAt": "2026-09-13",
+  "repositories": [
+    {
+      "name": "workflow-self-recursive",
+      "main": "3fc8aef3142bda61f63174ad9998c41c4b42c4bb",
+      "permissions": {
+        "admin": true,
+        "maintain": true,
+        "push": true,
+        "triage": true,
+        "pull": true
+      },
+      "defaultBranch": "main",
+      "secretNames": [],
+      "variableNames": [],
+      "metadataStatus": 200
+    },
+    {
+      "name": "wsr-contracts",
+      "main": "b4b6ab8f89aa2467e09d40f68766e7e40e6a6763",
+      "permissions": {
+        "admin": true,
+        "maintain": true,
+        "push": true,
+        "triage": true,
+        "pull": true
+      },
+      "defaultBranch": "main",
+      "secretNames": [
+        "WSR_RELEASE_APP_PRIVATE_KEY"
+      ],
+      "variableNames": [
+        "WSR_RELEASE_APP_ID",
+        "WSR_RELEASE_CLIENT_ID"
+      ],
+      "metadataStatus": 200
+    },
+    {
+      "name": "wsr-execution",
+      "main": "dbec4ec441f384ec83788890e5ed614a7c405dec",
+      "permissions": {
+        "admin": true,
+        "maintain": true,
+        "push": true,
+        "triage": true,
+        "pull": true
+      },
+      "defaultBranch": "main",
+      "secretNames": [
+        "WSR_RELEASE_APP_PRIVATE_KEY"
+      ],
+      "variableNames": [
+        "WSR_RELEASE_APP_ID",
+        "WSR_RELEASE_CLIENT_ID"
+      ],
+      "metadataStatus": 200
+    },
+    {
+      "name": "wsr-evidence",
+      "main": "1557a38b863be50e24b037796b7dbfa73af4b2f8",
+      "permissions": {
+        "admin": true,
+        "maintain": true,
+        "push": true,
+        "triage": true,
+        "pull": true
+      },
+      "defaultBranch": "main",
+      "secretNames": [
+        "WSR_RELEASE_APP_PRIVATE_KEY"
+      ],
+      "variableNames": [
+        "WSR_RELEASE_APP_ID",
+        "WSR_RELEASE_CLIENT_ID"
+      ],
+      "metadataStatus": 200
+    },
+    {
+      "name": "wsr-evolution",
+      "main": "da2ffeddfeadaa659883bccfe380aefe1b5b6d7c",
+      "permissions": {
+        "admin": true,
+        "maintain": true,
+        "push": true,
+        "triage": true,
+        "pull": true
+      },
+      "defaultBranch": "main",
+      "secretNames": [
+        "WSR_RELEASE_APP_PRIVATE_KEY"
+      ],
+      "variableNames": [
+        "WSR_RELEASE_APP_ID",
+        "WSR_RELEASE_CLIENT_ID"
+      ],
+      "metadataStatus": 200
+    },
+    {
+      "name": "wsr-ui",
+      "main": "666a5506ffab723ebf54660c899900eaebda22e0",
+      "permissions": {
+        "admin": true,
+        "maintain": true,
+        "push": true,
+        "triage": true,
+        "pull": true
+      },
+      "defaultBranch": "main",
+      "secretNames": [
+        "WSR_RELEASE_APP_PRIVATE_KEY"
+      ],
+      "variableNames": [
+        "WSR_RELEASE_APP_ID",
+        "WSR_RELEASE_CLIENT_ID"
+      ],
+      "metadataStatus": 200
+    },
+    {
+      "name": "wsr-workflow-package",
+      "main": "14ceea87f08ee4e468b2782c9beecfd5c136fe65",
+      "permissions": {
+        "admin": true,
+        "maintain": true,
+        "push": true,
+        "triage": true,
+        "pull": true
+      },
+      "defaultBranch": "main",
+      "secretNames": [
+        "WSR_RELEASE_APP_PRIVATE_KEY"
+      ],
+      "variableNames": [
+        "WSR_RELEASE_APP_ID",
+        "WSR_RELEASE_CLIENT_ID"
+      ],
+      "metadataStatus": 200
+    },
+    {
+      "name": "wsr-dsh",
+      "main": "117b54cc2711b303bb63b278836ea2c1174f3d34",
+      "permissions": {
+        "admin": true,
+        "maintain": true,
+        "push": true,
+        "triage": true,
+        "pull": true
+      },
+      "defaultBranch": "main",
+      "secretNames": [
+        "WSR_RELEASE_APP_PRIVATE_KEY"
+      ],
+      "variableNames": [
+        "WSR_RELEASE_APP_ID",
+        "WSR_RELEASE_CLIENT_ID"
+      ],
+      "metadataStatus": 200
+    }
+  ],
+  "targets": [
+    {
+      "name": "crystra",
+      "status": "404",
+      "exists": false
+    },
+    {
+      "name": "crystra-contracts",
+      "status": "404",
+      "exists": false
+    },
+    {
+      "name": "crystra-execution",
+      "status": "404",
+      "exists": false
+    },
+    {
+      "name": "crystra-evidence",
+      "status": "404",
+      "exists": false
+    },
+    {
+      "name": "crystra-evolution",
+      "status": "404",
+      "exists": false
+    },
+    {
+      "name": "crystra-ui",
+      "status": "404",
+      "exists": false
+    },
+    {
+      "name": "crystra-workflow-package",
+      "status": "404",
+      "exists": false
+    },
+    {
+      "name": "crystra-dsh",
+      "status": "404",
+      "exists": false
+    }
+  ],
+  "npm": [
+    {
+      "package": "dsh-crystra",
+      "status": 404
+    },
+    {
+      "package": "crystra-execution",
+      "status": 404
+    },
+    {
+      "package": "crystra-ui-core",
+      "status": 404
+    },
+    {
+      "package": "@crystra/workflow-dsl-contract",
+      "status": 404
+    },
+    {
+      "package": "@crystra/observation-contract",
+      "status": 404
+    }
+  ],
+  "npmIdentity": {
+    "status": 1,
+    "username": null,
+    "error": "unavailable"
+  },
+  "notes": "Read-only. Secret and variable values not retained. Registry 404 does not establish ownership or publish authorization."
+}

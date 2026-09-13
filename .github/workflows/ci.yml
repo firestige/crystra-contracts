@@ -1,4 +1,4 @@
-name: Contract qualification
+name: Crystra contract qualification
 
 on:
   pull_request:
@@ -15,64 +15,20 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
-      - name: Check out frozen semantic authority
+      - name: Check out this component
         uses: actions/checkout@v6
-        with:
-          repository: firestige/workflow-self-recursive
-          ref: 26bd662f26dfbee113df52d29a7734bd3a8f0339
-
-      - name: Check out contracts under qualification
-        uses: actions/checkout@v6
-        with:
-          path: system-contracts
-
-      - name: Check out frozen consumer binding
-        uses: actions/checkout@v6
-        with:
-          repository: firestige/wsr-workflow-package
-          ref: ed2a0bddda1eeaba77f19c5e543fe0c82d55fefb
-          path: workflow-package
-
       - name: Set up Node.js
         uses: actions/setup-node@v7
         with:
           node-version: 24.12.0
           cache: npm
-          cache-dependency-path: |
-            system-contracts/workflow-dsl/package-lock.json
-            system-contracts/observation/package-lock.json
-            system-contracts/evaluation/package-lock.json
-
-      - name: Install Workflow DSL dependencies
-        working-directory: system-contracts/workflow-dsl
-        run: npm ci
-
-      - name: Test Workflow DSL contract
-        working-directory: system-contracts/workflow-dsl
-        run: npm test
-
-      - name: Check minimal Workflow DSL package
-        working-directory: system-contracts/workflow-dsl
-        run: npm run check:minimal
-
-      - name: Run Workflow DSL conformance corpus
-        working-directory: system-contracts/workflow-dsl
-        run: npm run test:corpus
-
-      - name: Test Delivery Admission contract
-        working-directory: system-contracts/delivery-admission
-        run: npm test
-
-      - name: Test Observation contract and corpus
-        working-directory: system-contracts/observation
+          cache-dependency-path: '**/package-lock.json'
+      - name: Qualify every current contract locally
+        run: node release/cli/qualify.cjs --install > "$RUNNER_TEMP/contract-qualification.json"
+      - name: Test release tooling
+        run: node --test test/tooling/release/*.test.cjs
+      - name: Check source generation and current resource integrity
         run: |
-          npm ci
-          npm test
-          npm run check
-
-      - name: Test Evaluation contract and frozen Observation binding
-        working-directory: system-contracts/evaluation
-        run: |
-          npm ci
-          npm test
-          npm run check:example
+          git diff --exit-code
+          node release/cli/current-bundle.cjs build "$RUNNER_TEMP/current-contracts" "$GITHUB_SHA"
+          node release/cli/current-bundle.cjs verify "$RUNNER_TEMP/current-contracts"

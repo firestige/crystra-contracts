@@ -1,119 +1,82 @@
-const { createHash } = require("node:crypto");
-const { cp, mkdir, readFile, readdir, writeFile } = require("node:fs/promises");
-const path = require("node:path");
-
-const CONFIG_KEYS = [
-  "schemaVersion", "repository", "releaseBranch", "triggerBranch", "assetMode",
-  "acceptanceCommand", "buildCommand", "verifyCommand", "publisherAdapter",
-  "remoteInstallMode", "stablePolicy", "capabilities",
-];
-
-class ReleaseError extends Error {}
-
-function assertConfiguration(value) {
-  if (!value || typeof value !== "object" || Array.isArray(value)
-    || Object.keys(value).sort().join(",") !== [...CONFIG_KEYS].sort().join(",")
-    || value.schemaVersion !== "wsr.release-component@1.0.0"
-    || value.releaseBranch !== "main" || !/^release\/[a-z0-9._-]+$/.test(value.triggerBranch)
-    || value.stablePolicy !== "qualified-candidate-exact-assets"
-    || !Array.isArray(value.capabilities) || value.capabilities.length === 0
-    || new Set(value.capabilities).size !== value.capabilities.length) {
-    throw new ReleaseError("RELEASE_CONFIGURATION_INVALID");
+const { createHash } = require('node:crypto');
+const { execFileSync } = require('node:child_process');
+const { mkdir, mkdtemp, readFile, readdir, rm, writeFile } = require('node:fs/promises');
+const { tmpdir } = require('node:os');
+const path = require('node:path');
+const { buildCurrentBundle, verifyCurrentBundle } = require('./current-bundle.cjs');
+const sha256 = bytes => `sha256:${createHash('sha256').update(bytes).digest('hex')}`;
+const ARCHIVE = 'crystra-contracts.tgz';
+const REPOSITORY = 'firestige/crystra-contracts';
+const fail = code => { throw new Error(code); };
+function archive(command, source, destination) {
+  execFileSync('python3', [path.join(__dirname,'archive.py'),command,source,destination], {stdio:'pipe'});
+}
+function assertConfiguration(config) {
+  if (config?.schemaVersion !== 'crystra.release-component@1.0.0' || config.repository !== REPOSITORY
+    || config.assetMode !== 'current-contract-resources' || config.releaseBranch !== 'main'
+    || config.triggerBranch !== 'release/next' || config.publisherAdapter !== 'current-contracts+github-release'
+    || config.stablePolicy !== 'qualified-candidate-exact-assets') fail('RELEASE_CONFIGURATION_INVALID');
+}
+function validateRequest(request) {
+  if (!request || Object.keys(request).join(',') !== 'candidate_tag'
+    || !/^crystra-contracts-v(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)-rc\.[1-9][0-9]*$/.test(request.candidate_tag)) fail('RELEASE_REQUEST_INVALID');
+  return request.candidate_tag;
+}
+async function buildReleaseAssets(repository, destination, revision) {
+  const temporary = await mkdtemp(path.join(tmpdir(),'crystra-release-'));
+  try {
+    const bundle = path.join(temporary,'bundle');
+    await buildCurrentBundle(repository,bundle,revision);
+    await mkdir(destination); // Existing output is never overwritten.
+    archive('pack',bundle,path.join(destination,ARCHIVE));
+    const bytes = await readFile(path.join(destination,ARCHIVE));
+    const metadata = {schemaVersion:'crystra.contract-release@1.0.0',repository:REPOSITORY,revision,artifact:{name:ARCHIVE,bytes:bytes.length,sha256:sha256(bytes)}};
+    await writeFile(path.join(destination,'release-metadata.json'),JSON.stringify(metadata,null,2)+'\n');
+    return await verifyReleaseAssets(destination);
+  } finally { await rm(temporary,{recursive:true,force:true}); }
+}
+async function verifyReleaseAssets(destination) {
+  const metadata = JSON.parse(await readFile(path.join(destination,'release-metadata.json'),'utf8'));
+  const artifact = metadata.artifact;
+  if (metadata.schemaVersion !== 'crystra.contract-release@1.0.0' || metadata.repository !== REPOSITORY
+    || !/^[a-f0-9]{40}$/.test(metadata.revision) || artifact?.name !== ARCHIVE
+    || !Number.isSafeInteger(artifact.bytes) || artifact.bytes < 1 || !/^sha256:[a-f0-9]{64}$/.test(artifact.sha256)) fail('RELEASE_METADATA_INVALID');
+  const names = await readdir(destination);
+  if (names.some(name=> ![ARCHIVE,'release-metadata.json','release-qualification.json'].includes(name))) fail('RELEASE_ARTIFACT_SET_INVALID');
+  const bytes = await readFile(path.join(destination,ARCHIVE));
+  if (bytes.length !== artifact.bytes || sha256(bytes) !== artifact.sha256) fail('RELEASE_ARTIFACT_DIGEST_MISMATCH');
+  const temporary = await mkdtemp(path.join(tmpdir(),'crystra-verify-'));
+  try {
+    const bundle = path.join(temporary,'bundle');
+    archive('unpack',path.resolve(destination,ARCHIVE),bundle);
+    const fileCount = await verifyCurrentBundle(bundle);
+    const inner = JSON.parse(await readFile(path.join(bundle,'release-metadata.json'),'utf8'));
+    if (inner.revision !== metadata.revision) fail('RELEASE_REVISION_MISMATCH');
+    return {fileCount,revision:metadata.revision,artifactSha256:artifact.sha256};
+  } finally { await rm(temporary,{recursive:true,force:true}); }
+}
+async function run() {
+  const [command,destination,revision] = process.argv.slice(2);
+  const root = path.resolve(__dirname,'../..');
+  if (command === 'config') { assertConfiguration(JSON.parse(await readFile(path.join(root,'release/config/component.json'),'utf8'))); return {status:'PASS'}; }
+  if (command === 'request') return {candidate_tag:validateRequest(JSON.parse(await readFile(path.join(root,'release/request.json'),'utf8')))};
+  if (command === 'verify' && destination) return verifyReleaseAssets(path.resolve(destination));
+  if (command === 'build' && destination && revision) {
+    // Release builds use the committed tree, not ignored/untracked files in the checkout.
+    if (execFileSync('git',['rev-parse','HEAD'],{cwd:root,encoding:'utf8'}).trim() !== revision) fail('RELEASE_SOURCE_REVISION_MISMATCH');
+    execFileSync('git',['diff','--exit-code','HEAD','--'],{cwd:root,stdio:'pipe'});
+    const temp = await mkdtemp(path.join(tmpdir(),'crystra-source-'));
+    try {
+      const sourceArchive = path.join(temp,'source.tar');
+      execFileSync('git',['archive','--format=tar',`--output=${sourceArchive}`,revision],{cwd:root,stdio:'pipe'});
+      // git archive includes directory entries; extract our trusted local git tree with git's tar consumer.
+      const source = path.join(temp,'source');
+      await mkdir(source);
+      execFileSync('tar',['-xf',sourceArchive,'-C',source],{stdio:'pipe'});
+      return await buildReleaseAssets(source,path.resolve(destination),revision);
+    } finally { await rm(temp,{recursive:true,force:true}); }
   }
+  fail('RELEASE_CLI_USAGE_INVALID');
 }
-
-function simulateLifecycle(scenario) {
-  if (["happy", "candidate-main-divergence"].includes(scenario)) return "STABLE";
-  if (scenario === "npm-partial-failure") return "UNSUPPORTED_SCENARIO";
-  const failures = {
-    "digest-mismatch": "RELEASE_ARTIFACT_DIGEST_MISMATCH",
-    "tag-collision": "RELEASE_TAG_COLLISION",
-    "permission-denied": "RELEASE_PERMISSION_DENIED",
-    "builtin-token-final-publish": "RELEASE_APP_TOKEN_REQUIRED",
-  };
-  if (failures[scenario]) throw new ReleaseError(failures[scenario]);
-  throw new ReleaseError("RELEASE_SCENARIO_UNKNOWN");
-}
-
-function sha256(bytes) {
-  return `sha256:${createHash("sha256").update(bytes).digest("hex")}`;
-}
-
-async function publicationFiles(repository) {
-  const entries = await readdir(repository, { recursive: true, withFileTypes: true });
-  return entries
-    .filter((entry) => entry.isFile() && entry.parentPath.includes(`${path.sep}publication`)
-      && entry.name.endsWith(".json"))
-    .map((entry) => path.join(entry.parentPath, entry.name))
-    .sort();
-}
-
-async function buildPublicationBundle(repository, destination, revision) {
-  if (!/^[a-f0-9]{40}$/.test(revision)) throw new ReleaseError("RELEASE_REVISION_INVALID");
-  await mkdir(destination, { recursive: true });
-  const artifacts = [];
-  for (const source of await publicationFiles(repository)) {
-    const relative = path.relative(repository, source);
-    const name = relative.split(path.sep).join("--");
-    const target = path.join(destination, name);
-    await cp(source, target);
-    const bytes = await readFile(target);
-    artifacts.push({ name, bytes: bytes.byteLength, sha256: sha256(bytes), source: relative });
-  }
-  if (artifacts.length === 0) throw new ReleaseError("RELEASE_ARTIFACT_SET_INVALID");
-  const manifest = {
-    schemaVersion: "wsr.contract-publication-release@1.0.0",
-    revision,
-    artifacts,
-  };
-  await writeFile(path.join(destination, "release-metadata.json"), `${JSON.stringify(manifest, null, 2)}\n`);
-  return { artifactCount: await verifyPublicationBundle(destination) };
-}
-
-async function verifyPublicationBundle(destination) {
-  let manifest;
-  try { manifest = JSON.parse(await readFile(path.join(destination, "release-metadata.json"))); }
-  catch (error) { throw new ReleaseError("RELEASE_METADATA_INVALID", { cause: error }); }
-  if (manifest.schemaVersion !== "wsr.contract-publication-release@1.0.0"
-    || !/^[a-f0-9]{40}$/.test(manifest.revision) || !Array.isArray(manifest.artifacts)
-    || manifest.artifacts.length === 0) throw new ReleaseError("RELEASE_METADATA_INVALID");
-  for (const artifact of manifest.artifacts) {
-    let bytes;
-    try { bytes = await readFile(path.join(destination, artifact.name)); }
-    catch (error) { throw new ReleaseError("RELEASE_ARTIFACT_SET_INVALID", { cause: error }); }
-    if (artifact.bytes !== bytes.byteLength || artifact.sha256 !== sha256(bytes)) {
-      throw new ReleaseError("RELEASE_ARTIFACT_DIGEST_MISMATCH");
-    }
-  }
-  return manifest.artifacts.length;
-}
-
-async function run(args = process.argv.slice(2)) {
-  const [command, value, revision] = args;
-  const repository = path.resolve(__dirname, "../..");
-  if (command === "config") {
-    const config = JSON.parse(await readFile(path.join(repository, "release/config/component.json")));
-    assertConfiguration(config);
-    return { repository: config.repository, status: "PASS" };
-  }
-  if (command === "simulate" && value) return { scenario: value, state: simulateLifecycle(value) };
-  if (command === "build" && value && revision) {
-    return { ...(await buildPublicationBundle(repository, path.resolve(value), revision)), status: "PASS" };
-  }
-  if (command === "verify" && value) {
-    return { artifactCount: await verifyPublicationBundle(path.resolve(value)), status: "PASS" };
-  }
-  throw new ReleaseError("RELEASE_CLI_USAGE_INVALID");
-}
-
-module.exports = {
-  ReleaseError,
-  assertConfiguration,
-  buildPublicationBundle,
-  simulateLifecycle,
-  verifyPublicationBundle,
-};
-
-if (require.main === module) {
-  run().then((result) => process.stdout.write(`${JSON.stringify(result)}\n`));
-}
+module.exports = {assertConfiguration,buildReleaseAssets,verifyReleaseAssets,validateRequest};
+if (require.main === module) run().then(value=>process.stdout.write(JSON.stringify(value)+'\n')).catch(error=>{process.stderr.write(error.message+'\n');process.exitCode=1;});

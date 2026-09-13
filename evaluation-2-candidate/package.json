@@ -1,5 +1,5 @@
 {
-  "name": "@workflow-self-recursive/evaluation-contract-2-candidate",
+  "name": "@crystra/evaluation-contract-2-candidate",
   "version": "2.0.0-candidate.0",
   "private": true,
   "description": "Standalone review candidate for agentops.evaluation.metric-catalog@2.0.0; published 1.0.0 inputs remain immutable.",
@@ -11,4 +11,3 @@
     "ajv": "8.20.0"
   }
 }
-

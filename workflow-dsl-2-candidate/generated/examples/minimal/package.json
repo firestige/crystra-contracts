@@ -16,7 +16,7 @@
       "version": "1.0.0",
       "contentIdentity": "sha256:cfafda239874a59ac8433539f9798b3f74c7967de5d5d21e4d60ffe64a473b40"
     },
-    "digest": "sha256:aae8419479d8eda06724557fe8a42fa7466aff5910c95daaf461fbc25ddd449d"
+    "digest": "sha256:06e711a48003f1531edfa30e352839eaaaf5eacf7064f878df0b2822e114ed5a"
   },
   "documents": {
     "workflow": "workflow.json",
@@ -99,7 +99,7 @@
         "kind": "skill",
         "owner": "referenced",
         "sourceLocator": {
-          "repository": "workflow-package",
+          "repository": "crystra-workflow-package",
           "path": ".agents/skills/grilling/SKILL.md",
           "ref": "main"
         },
@@ -111,7 +111,7 @@
         "kind": "driver",
         "owner": "referenced",
         "sourceLocator": {
-          "repository": "workflow-self-recursive",
+          "repository": "crystra-workflow-package",
           "path": "bindings/managed-cli-driver.yaml"
         },
         "contentIdentity": "sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
@@ -122,7 +122,7 @@
         "kind": "tool",
         "owner": "referenced",
         "sourceLocator": {
-          "repository": "workflow-self-recursive",
+          "repository": "crystra-workflow-package",
           "path": "tools/repo-read.yaml"
         },
         "contentIdentity": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
@@ -133,7 +133,7 @@
         "kind": "validator",
         "owner": "referenced",
         "sourceLocator": {
-          "repository": "workflow-self-recursive",
+          "repository": "crystra-workflow-package",
           "path": "scripts/budget/review.mjs"
         },
         "contentIdentity": "sha256:ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",

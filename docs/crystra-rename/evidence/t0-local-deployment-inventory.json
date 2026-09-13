@@ -1,0 +1,122 @@
+{
+  "checkedAt": "2026-09-13",
+  "readOnly": true,
+  "roots": [
+    {
+      "path": "/Users/firestige/Library/Application Support/WSR",
+      "exists": true,
+      "entries": [
+        "config.json",
+        "state"
+      ]
+    },
+    {
+      "path": "/Users/firestige/.config/wsr",
+      "exists": true,
+      "entries": [
+        "credentials"
+      ]
+    }
+  ],
+  "profiles": [],
+  "configuration": {
+    "schema": "wsr.global-config@1.0.0",
+    "installation": {
+      "dshMode": "suite",
+      "dshProfile": "web"
+    },
+    "ports": {
+      "dsh": 3080,
+      "evidence": 4318,
+      "evolution": 8000
+    }
+  },
+  "containers": {
+    "status": 0,
+    "matches": [
+      "wsr_services_b72b8623e4d4-evolution-1\twsr_services_b72b8623e4d4-evolution\tExited (0) 7 days ago",
+      "wsr_services_b72b8623e4d4-evidence-1\twsr_services_b72b8623e4d4-evidence\tExited (0) 7 days ago",
+      "wsr_services_b72b8623e4d4-migrate-1\twsr_services_b72b8623e4d4-migrate\tExited (0) 7 days ago",
+      "wsr_services_b72b8623e4d4-database-1\tpostgres:18.4-bookworm\tExited (0) 7 days ago",
+      "wsr_services_2116dc58d0f1-evolution-1\twsr_services_2116dc58d0f1-evolution\tExited (0) 7 days ago",
+      "wsr_services_2116dc58d0f1-evidence-1\twsr_services_2116dc58d0f1-evidence\tExited (0) 7 days ago",
+      "wsr_services_2116dc58d0f1-migrate-1\twsr_services_2116dc58d0f1-migrate\tExited (0) 7 days ago",
+      "wsr_services_2116dc58d0f1-database-1\tpostgres:18.4-bookworm\tExited (0) 7 days ago",
+      "wsr_services_82ec32a70e4e-evolution-1\twsr_services_82ec32a70e4e-evolution\tExited (0) 7 days ago",
+      "wsr_services_82ec32a70e4e-evidence-1\twsr_services_82ec32a70e4e-evidence\tExited (0) 7 days ago",
+      "wsr_services_82ec32a70e4e-migrate-1\twsr_services_82ec32a70e4e-migrate\tExited (0) 7 days ago",
+      "wsr_services_82ec32a70e4e-database-1\tpostgres:18.4-bookworm\tExited (0) 7 days ago",
+      "wsr_services_fc0c51fc43d6-evolution-1\twsr_services_fc0c51fc43d6-evolution\tExited (0) 8 days ago",
+      "wsr_services_fc0c51fc43d6-evidence-1\twsr_services_fc0c51fc43d6-evidence\tExited (0) 8 days ago",
+      "wsr_services_fc0c51fc43d6-migrate-1\twsr_services_fc0c51fc43d6-migrate\tExited (0) 8 days ago",
+      "wsr_services_fc0c51fc43d6-database-1\tpostgres:18.4-bookworm\tExited (0) 8 days ago",
+      "wsr_services_0a9ca6763995-evolution-1\twsr_services_0a9ca6763995-evolution\tExited (0) 8 days ago",
+      "wsr_services_0a9ca6763995-evidence-1\twsr_services_0a9ca6763995-evidence\tExited (0) 8 days ago",
+      "wsr_services_0a9ca6763995-migrate-1\twsr_services_0a9ca6763995-migrate\tExited (0) 8 days ago",
+      "wsr_services_0a9ca6763995-database-1\tpostgres:18.4-bookworm\tExited (0) 8 days ago",
+      "wsr_services_f4d64b327eec-evolution-1\twsr_services_f4d64b327eec-evolution\tExited (0) 8 days ago",
+      "wsr_services_f4d64b327eec-evidence-1\twsr_services_f4d64b327eec-evidence\tExited (0) 8 days ago",
+      "wsr_services_f4d64b327eec-migrate-1\twsr_services_f4d64b327eec-migrate\tExited (0) 8 days ago",
+      "wsr_services_f4d64b327eec-database-1\tpostgres:18.4-bookworm\tExited (0) 8 days ago",
+      "wsr_services_176fb35e6010-evolution-1\twsr_services_176fb35e6010-evolution\tExited (0) 8 days ago",
+      "wsr_services_176fb35e6010-evidence-1\twsr_services_176fb35e6010-evidence\tExited (0) 8 days ago",
+      "wsr_services_176fb35e6010-migrate-1\twsr_services_176fb35e6010-migrate\tExited (0) 8 days ago",
+      "wsr_services_176fb35e6010-database-1\tpostgres:18.4-bookworm\tExited (0) 8 days ago",
+      "wsr_services_e47f1d792bd6-evolution-1\twsr_services_e47f1d792bd6-evolution\tExited (0) 8 days ago",
+      "wsr_services_e47f1d792bd6-evidence-1\twsr_services_e47f1d792bd6-evidence\tExited (0) 8 days ago",
+      "wsr_services_e47f1d792bd6-migrate-1\twsr_services_e47f1d792bd6-migrate\tExited (0) 8 days ago",
+      "wsr_services_e47f1d792bd6-database-1\tpostgres:18.4-bookworm\tExited (0) 8 days ago",
+      "wsr_services_d3626cf4c3a6-evolution-1\twsr_services_d3626cf4c3a6-evolution\tExited (0) 8 days ago",
+      "wsr_services_d3626cf4c3a6-evidence-1\twsr_services_d3626cf4c3a6-evidence\tExited (0) 8 days ago",
+      "wsr_services_d3626cf4c3a6-migrate-1\twsr_services_d3626cf4c3a6-migrate\tExited (0) 8 days ago",
+      "wsr_services_d3626cf4c3a6-database-1\tpostgres:18.4-bookworm\tExited (0) 8 days ago",
+      "wsr_issue187_056-evolution-1\tghcr.io/firestige/wsr-evolution:0.1.0-rc.1\tUp 9 days (healthy)",
+      "wsr_issue187_056-evidence-1\tghcr.io/firestige/wsr-evidence:0.1.0-rc.3\tUp 9 days (healthy)",
+      "wsr_issue187_056-migrate-1\tghcr.io/firestige/wsr-evidence:0.1.0-rc.3\tExited (0) 9 days ago",
+      "wsr_issue187_056-database-1\tpostgres:18.4-bookworm\tUp 9 days (healthy)",
+      "wsr_issue187_055-evolution-1\tghcr.io/firestige/wsr-evolution:0.1.0-rc.1\tUp 9 days (healthy)",
+      "wsr_issue187_055-evidence-1\tghcr.io/firestige/wsr-evidence:0.1.0-rc.3\tUp 9 days (healthy)",
+      "wsr_issue187_055-migrate-1\tghcr.io/firestige/wsr-evidence:0.1.0-rc.3\tExited (0) 9 days ago",
+      "wsr_issue187_055-database-1\tpostgres:18.4-bookworm\tUp 9 days (healthy)",
+      "wsr_issue187_054-evolution-1\tghcr.io/firestige/wsr-evolution:0.1.0-rc.1\tUp 9 days (healthy)",
+      "wsr_issue187_054-evidence-1\tghcr.io/firestige/wsr-evidence:0.1.0-rc.3\tUp 9 days (healthy)",
+      "wsr_issue187_054-migrate-1\tghcr.io/firestige/wsr-evidence:0.1.0-rc.3\tExited (0) 9 days ago",
+      "wsr_issue187_054-database-1\tpostgres:18.4-bookworm\tUp 9 days (healthy)",
+      "wsr_issue187_053-evolution-1\tghcr.io/firestige/wsr-evolution:0.1.0-rc.1\tUp 9 days (healthy)",
+      "wsr_issue187_053-evidence-1\tghcr.io/firestige/wsr-evidence:0.1.0-rc.3\tUp 9 days (healthy)",
+      "wsr_issue187_053-migrate-1\tghcr.io/firestige/wsr-evidence:0.1.0-rc.3\tExited (0) 9 days ago",
+      "wsr_issue187_053-database-1\tpostgres:18.4-bookworm\tUp 9 days (healthy)",
+      "wsr_issue187_052b-evolution-1\tghcr.io/firestige/wsr-evolution:0.1.0-rc.1\tExited (0) 9 days ago",
+      "wsr_issue187_052b-evidence-1\tghcr.io/firestige/wsr-evidence:0.1.0-rc.3\tExited (0) 9 days ago",
+      "wsr_issue187_052b-migrate-1\tghcr.io/firestige/wsr-evidence:0.1.0-rc.3\tExited (0) 9 days ago",
+      "wsr_issue187_052b-database-1\tpostgres:18.4-bookworm\tExited (0) 9 days ago"
+    ],
+    "error": null
+  },
+  "volumes": {
+    "status": 0,
+    "matches": [
+      "wsr-evidence-0a9ca6763995",
+      "wsr-evidence-60c8de2978d9",
+      "wsr-evidence-82ec32a70e4e",
+      "wsr-evidence-176fb35e6010",
+      "wsr-evidence-2116dc58d0f1",
+      "wsr-evidence-b72b8623e4d4",
+      "wsr-evidence-d3626cf4c3a6",
+      "wsr-evidence-data",
+      "wsr-evidence-e47f1d792bd6",
+      "wsr-evidence-f4d64b327eec",
+      "wsr-evidence-fc0c51fc43d6",
+      "wsr-evidence-issue187-057",
+      "wsr-evidence-issue187-058",
+      "wsr-evidence-issue187-wave6",
+      "wsr-evidence-issue187-wave6-051",
+      "wsr-issue187-056",
+      "wsr_issue187_052b_evidence",
+      "wsr_issue187_053_evidence",
+      "wsr_issue187_054_evidence",
+      "wsr_issue187_055_evidence"
+    ],
+    "error": null
+  }
+}

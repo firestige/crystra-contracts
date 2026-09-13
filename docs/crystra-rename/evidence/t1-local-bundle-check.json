@@ -1,0 +1,10 @@
+{
+  "date": "2026-09-13",
+  "kind": "local-working-tree-smoke-test",
+  "revision": "b4b6ab8f89aa2467e09d40f68766e7e40e6a6763",
+  "sourceCaveat": "Working tree includes uncommitted T1 additions; revision identifies base only. Not a release or source attestation.",
+  "output": "/tmp/crystra-contracts-check-7UR2K7/bundle",
+  "fileCount": 241,
+  "resourceCount": 11,
+  "verifiedFileCount": 241
+}

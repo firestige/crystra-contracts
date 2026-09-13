@@ -1,5 +1,5 @@
 {
-  "name": "@workflow-self-recursive/execution-provider-binding-candidate",
+  "name": "@crystra/execution-provider-binding-candidate",
   "version": "2.0.0",
   "private": true,
   "scripts": {
