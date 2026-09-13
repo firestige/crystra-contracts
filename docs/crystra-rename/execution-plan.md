@@ -124,17 +124,17 @@ T0 产出必须链接在本文中，可以建立同目录的决策附件；不�
 
 | 字段 | 当前值 |
 |---|---|
-| 检查点 | C017：插件坐标已集成；组合与发布资格收尾 |
+| 检查点 | C019：插件证据已集成；组合 #271 待审核，发布工具草稿 #272 已保存 |
 | 当前任务 | T5 IN_PROGRESS；T0–T4 DONE |
 | 已完成 | 八仓库更名、origin 更新；Execution 0a708b5、Evolution 984a0dc、Workflow 2fc61f0 新 tag 坐标修复与 CI 成功 |
 | 未完成 | T5 当前资产、组合发布代码、权限配置；T6–T8 |
 | 本轮产品变更 | 新 Workflow tag 命名在发行端与两消费端一致；移除 Evolution 历史制品回退 |
 | 本轮仓库／发布／部署操作 | repository-renames.json 记录相同仓库 ID；没有新发布或旧部署清理 |
 | 工作路径 | 台账 /Users/firestige/Projects/wsr-contracts；组件仍用旧本地目录；组合隔离工作树 /tmp/crystra-combination-stage，codex/crystra-combination |
-| 文档持久化 | C016 与 t5-progress.md 随本轮文档提交保存 |
-| 活跃进程／作业 | DSH PR #35 已合并；新发布证据 PR、组合 PR #271 CI 进行中；无发布作业 |
-| 已知阻塞 | 自动审批拒绝复制发布 App 私钥及补充安装范围；明确授权问题已发出，尚无答复；其它 T5 工作继续 |
-| 下一条动作 | 读取 DSH 发布证据修复 PR 和组合 PR #271 的 CI；继续旧安装器／发布器退出与新组合发行流程 |
+| 文档持久化 | C019 与 t5-progress.md、repository-discovery.json 已纳入本轮文档持久化 |
+| 活跃进程／作业 | DSH #35/#36 已合并；组合 #271 CI 均通过但 REVIEW_REQUIRED；#272 草稿 CI 待读回；无发布作业 |
+| 已知阻塞 | 发布凭据自动审批等待明确授权；组合 PR #271 被 REVIEW_REQUIRED 阻止，未绕过；独立准备继续 |
+| 下一条动作 | 先读回 #272 CI；在 codex/crystra-combination-publisher 完成发布 workflow 接线、资格／晋升检查及旧安装器退出。#271 合并授权与发布凭据授权分别等待答复，详见 t5-progress.md |
 | 禁止误恢复项 | 不重做仓库更名；不绕过凭据审批；保护原组合子模块脏内容，不消费旧制品 |
 
 
@@ -219,3 +219,5 @@ T0 已完成附件：[t0-decisions.md](t0-decisions.md)。新首轮分发采用 
 
 
 | L016 | 2026-09-13 | T5 IN_PROGRESS | 八仓库 ID 校验更名；新 Workflow tag 消费／发行一致，三个组件 CI 成功；凭据操作被自动审批拒绝并等待明确授权 | 独立推进 DSH 输入与组合发布收尾 |
+
+| L019 | 2026-09-13 | T5 IN_PROGRESS | DSH #35/#36 main 集成；GitHub 唯一插件 Topic 读回；组合 #271 CI 通过待审核；#272 草稿 9569df79、46 测试通过，发布接线待完成 | 按 C019 继续；不绕过两个明确门槛 |
