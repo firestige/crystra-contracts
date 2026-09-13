@@ -3,10 +3,10 @@
 - 计划 ID：CRYSTRA-RENAME-20260913
 - 文档版本：2
 - 最后更新：2026-09-13
-- 总体状态：IN_PROGRESS（T0、T1、T2-UI 完成，T2-EX 进行中）
-- 当前执行任务：T2-EX
-- 当前执行者：本任务 Codex；T2-EX
-- 下一步：Execution 独立测试输入、生成器与命名／CI 解耦；恢复细节见第 8 节
+- 总体状态：IN_PROGRESS（T0、T1、T2-UI、T2-EX 完成，T2-WP 完成，T2-EV 进行中）
+- 当前执行任务：T2-EV
+- 当前执行者：本任务 Codex；T2-EV
+- 下一步：Evidence 包与环境变量更名、CI／发布输入解耦；恢复细节见第 8 节
 
 ## 1. 本文的作用与优先级
 
@@ -53,13 +53,13 @@ T0 已落定具体实现选择，见 [T0 决策](t0-decisions.md)。新坐标的
 |---|---|---|---|---|---|
 | T0 | 固定命名与新安装闭环 | 无 | DONE | 本任务 Codex | [决策与检查](t0-decisions.md) |
 | T1 | Contracts 更名、自包含验证与 CI 解耦 | T0 DONE | DONE | 本任务 Codex | main `f2d373a`；[CI 成功](https://github.com/firestige/wsr-contracts/actions/runs/34758259364)；[实现与验证](t1-progress.md) |
-| T2 | 普通组件与 Workflow 的聚合任务 | 按下列子任务分别推进 | IN_PROGRESS | 本任务 Codex | UI 已开始，五项全部完成后收口 |
-| T2-EX | Execution 更名与 CI／发布解耦 | T1 DONE | IN_PROGRESS | 本任务 Codex | [进行中与恢复说明](t2-execution-progress.md)；main 基线 dbec4ec |
+| T2 | 普通组件与 Workflow 的聚合任务 | 按下列子任务分别推进 | IN_PROGRESS | 本任务 Codex | UI、Execution、Workflow 完成；Evidence 进行中 |
+| T2-EX | Execution 更名与 CI／发布解耦 | T1 DONE | DONE | 本任务 Codex | [完成证据](t2-execution-progress.md)；main cd7f178；CI 34759925679 成功 |
 | T2-UI | UI 库更名与 main CI | T0 DONE；如引入契约依赖须显式登记 | DONE | 本任务 Codex | main `482f6f1`；[验证与 CI](t2-ui-progress.md) |
-| T2-EV | Evidence 更名与服务配置 | T1 DONE | READY | 未分配 | — |
+| T2-EV | Evidence 更名与服务配置 | T1 DONE | IN_PROGRESS | 本任务 Codex | main 基线 1557a38；依赖准备及新环境变量回归开始 |
 | T2-EO | Evolution 更名与发布解耦 | T1 DONE | READY | 未分配 | — |
-| T2-WP | Workflow 资源更名与 main CI | T1 DONE | READY | 未分配 | — |
-| T3 | 统一 dsh-crystra 包与模块装配 | T2-EX、T2-UI DONE | PENDING | 未分配 | — |
+| T2-WP | Workflow 资源更名与 main CI | T1 DONE | DONE | 本任务 Codex | main 8746d18；[验证记录与 CI](t2-workflow-progress.md) |
+| T3 | 统一 dsh-crystra 包与模块装配 | T2-EX、T2-UI DONE | READY | 未分配 | — |
 | T4 | 插件初始化、取消独立安装步骤 | T3 DONE；完整服务验收需 T2-EV、T2-EO、T2-WP DONE | PENDING | 未分配 | — |
 | T5 | 当前品牌收尾与外部坐标切换 | 准备可在 T0 后；实际切换需 T1–T4 DONE | PENDING | 未分配 | — |
 | T6 | 新组件候选与隔离环境组合验证 | T5 DONE | PENDING | 未分配 | — |
@@ -70,7 +70,7 @@ T0 已落定具体实现选择，见 [T0 决策](t0-decisions.md)。新坐标的
 
 ## 5. T0 完成记录与 T1 入口
 
-T0 已完成，见 [T0 决策](t0-decisions.md)。当前任务为 T1；下列 T0 清单保留为完成记录。T1 从 [首批实现与剩余项](t1-progress.md)继续，不重复 T0 职责拆解。
+T0 已完成，见 [T0 决策](t0-decisions.md)。当前任务以第 4 节台账为准；下列 T0 清单保留为完成记录。T1 从 [首批实现与剩余项](t1-progress.md)继续，不重复 T0 职责拆解。
 
 ### 输入
 
@@ -124,17 +124,17 @@ T0 产出必须链接在本文中，可以建立同目录的决策附件；不�
 
 | 字段 | 当前值 |
 |---|---|
-| 检查点 | C006：T2-UI DONE；Execution 输入解耦开始 |
-| 当前任务 | T2-EX IN_PROGRESS；T2-UI DONE；EV／EO／WP READY |
-| 已完成 | T0；T1 本地更名／当前绑定／独立 main CI／确定性归档实现；11 模块 18 条资格命令通过，见 T1 第二批记录 |
+| 检查点 | C009：Execution／Workflow DONE；Evidence 开始 |
+| 当前任务 | T2-EV IN_PROGRESS；EX／UI／WP DONE；EO／T3 READY |
+| 已完成 | T0、T1、T2-EX、T2-UI、T2-WP；各组件 main、独立 CI 与制品验证见对应记录 |
 | 未完成 | T2–T8 实施任务 |
 | 本轮产品变更 | Contracts 私有包／schema 身份更名；领域当前输入绑定与独立资格验证；CI 和发布入口解耦；未发布 |
-| 本轮仓库／发布／部署操作 | 仅读取远端信息及旧部署元数据；未更名、发布、安装或清理 |
-| 工作路径 | 台账：/Users/firestige/Projects/wsr-contracts；当前代码：/Users/firestige/Projects/wsr-execution |
+| 本轮仓库／发布／部署操作 | Contracts／UI／Execution／Workflow main 已提交推送并通过 CI；未更名远端仓库、发布候选或清理旧部署 |
+| 工作路径 | 台账：/Users/firestige/Projects/wsr-contracts；当前代码：/Users/firestige/Projects/wsr-evidence |
 | 文档持久化 | 分析／计划及 T1 已随 main f2d373a 推送；本检查点随后单独提交 |
-| 活跃进程／作业 | Execution 依赖安装正在完成；恢复时先核对实际进程和 node_modules，再继续测试；没有发布／部署作业 |
+| 活跃进程／作业 | Evidence uv sync 准备依赖；没有发布／部署作业 |
 | 已知阻塞 | 无；新 App 配置仍属于 T5，T1 未执行候选发布 |
-| 下一条动作 | Execution：确认 pnpm 依赖安装结果，生成器改用 .crystra-inputs/contracts；逐项替换父目录测试依赖，并进行命名／发布改造 |
+| 下一条动作 | Evidence：先验证 tests/unit/test_config.py 新环境变量回归失败，再更名包／服务环境变量，独立发布输入改造 |
 | 禁止误恢复项 | 不清理组合子模块脏状态，不安装旧资产，不把分析完成计为组件实现完成 |
 
 每次推进后直接更新此表，不追加第二份“最新”检查点；旧事件保留在日志。终端会话 ID 仅供定位，跨会话必须验证是否仍有效。
@@ -184,6 +184,10 @@ T0 产出必须链接在本文中，可以建立同目录的决策附件；不�
 
 | L006 | 2026-09-13 | T2-UI DONE；T2-EX IN_PROGRESS | UI main 482f6f1 与 CI 34758649497 成功；Execution main FF dbec4ec，准备精确 Contracts／Workflow 测试输入，无组合仓库改动 | Execution 独立资格与更名 |
 
+| L007 | 2026-09-13 | T2-EX DONE；T2-WP IN_PROGRESS | Execution main cd7f178、736 测试及独立 CI 34759925679 全部通过；Workflow main 8746d18、3 包契约／9 发行／23 CLI 测试通过 | 读取 Workflow CI |
+
+| L008 | 2026-09-13 | T2-WP DONE；T2-EV IN_PROGRESS | Workflow main 8746d18 与 CI 34760157407 成功；开始 Evidence uv 依赖及新配置回归 | Evidence 更名／验证 |
+
 后续日志至少记录：任务 ID、状态变化、修改范围／仓库、实际分支或提交、验证结果／证据位置、阻塞及下一步。范围变化还需说明它替代哪条决策，并同步相关附件。没有变化时不堆积“继续等待”日志。
 
 ## 12. 全项目结束条件
@@ -197,3 +201,4 @@ T0 产出必须链接在本文中，可以建立同目录的决策附件；不�
 - 本文更新为 DONE，最终检查点记录实际新路径、交付版本和证据索引。
 
 T0 已完成附件：[t0-decisions.md](t0-decisions.md)。新首轮分发采用 GitHub 精确制品，Contracts scope 保持 private；T5 发布权限仍需实配。
+
