@@ -48,3 +48,10 @@
 当前领域验证结果见 [T1 资格记录](evidence/t1-domain-qualification.json)。发布工具新增路径／链接恶意归档、内外 revision 不一致、重复构建一致性和失败资格测试。之前的 241 文件检查仅是第一批历史快照，不能作为当前制品清单。
 
 **当前恢复动作覆盖前文“下一次动作”：** 完成此次本地提交、从精确提交验证资源构建，再推送组件 main 并读回 CI；若 CI 失败修复实际诊断。T1 尚不能标 DONE。T5 才切换远端仓库与配置，T6 才产出正式候选。
+
+## T1 完成证据
+
+- main 提交：`f2d373a1eaea945dc8ca0b9a66ff383f2b0117ce`，已推送。
+- [独立 CI 成功](https://github.com/firestige/wsr-contracts/actions/runs/34758259364)：全部模块资格、14 项发布工具测试及生成／资源检查通过。
+- 从该提交执行发布 CLI 构建并校验：239 文件，归档 SHA-256 `cf0ae2ab8d794050b5f47421f6998b1305366d603b9303777f7625751b28adc4`。本地产物 `/tmp/crystra-exact-source-taHcJP/release` 是 dev 验证输出，不是已发布候选。
+- T1 已 DONE；前文的待集成说明作为过程记录保留，后续从执行计划的 T2 状态继续。
