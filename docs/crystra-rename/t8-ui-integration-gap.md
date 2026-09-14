@@ -240,3 +240,12 @@ DSH 正式源码仍为 `6395d13`，开发 bundle 仅在独立 3082 更新；3080
 ## C059 五工作面结构准入（2026-09-15）
 
 草案 admission 现在对每个 available value 使用对应只读 UI shape 校验。覆盖必需字段、嵌套列表、重复稳定 ID、枚举、完整运行身份与未知字段拒绝。Gate 消费形状为显式 gates 列表；空列表是 adapter 的明确输入，不把不存在的响应推成空队列。239 DSH 测试通过。结构校验不验证确认记录真实性、readiness 算法或 provenance，只解决错误结构进入 UI 的问题。继续将已准入投影接入订阅式页面渲染。
+
+
+## C060 订阅式草案 Task 页面（2026-09-15）
+
+createDraftTaskPanel 订阅已准入 controller，按当前 taskId 拒绝 foreign 内容，五工作面复用公共 UI，失效后卸载原内容。Gate 只读队列选择不产生批准动作；未提供证据/Analysis 深链时不启用；计划图/全文/运行图依赖显式 renderer。241 DSH 测试通过。
+
+3082 显式启用 `CRYSTRA_TASK_EXPLORATION=1`，增加 `draft-projection-v8` 静态样本，真实任务列表继续保留。开发专用未跟踪 `.task-projection-preview.js` 和 `.v8-dev-build.mjs` 提供静态数据与失效验证按钮，不得打包发布。五工作面均经过 envelope + value 准入；样本 Gate 的多余 `wide` 展示字段被拒绝后，adapter 仅映射 UI 声明的字段，没有放宽校验。实际浏览器验证：需求页 1.5 秒自然到期移除旧内容，审核页撤权立即显示 ACCESS_REQUIRED；显式恢复后执行总览 → Wave 内部图成功。没有关联/发送原生会话。
+
+仍缺：正式 Task projection adapter、精确计划全文与证据引用路由、真实 Workflow 资源/定义及包会话绑定、写草案 store、Native Input 附件与发送联调。v8 显式探索不等于新 RC 正式资格。
