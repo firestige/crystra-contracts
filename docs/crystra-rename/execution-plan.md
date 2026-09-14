@@ -126,7 +126,7 @@ T0 产出必须链接在本文中，可以建立同目录的决策附件；不�
 
 | 字段 | 当前值 |
 |---|---|
-| 检查点 | C028：真实执行与入库通过；生产 Workflow 重定向缺口已修复，Evolution rc.3 自动资格中 |
+| 检查点 | C029：严格真实链路通过；Evolution rc.3 已核验，服务 rc.3 自动资格中 |
 | 当前任务 | T5 DONE；T6 IN_PROGRESS；T0–T4 DONE |
 | 已完成 | 八仓库远端更名及唯一插件身份；现行发布代码／文档 PR 全部合并；原发行 App 改名但 ID 不变；八仓库新 Actions 变量与 Secret 上传并读回 |
 | 未完成 | T6 新服务／插件及组合 RC 的远端资格与跨服务联调；T7–T8；本地 checkout 路径仅在协调窗口调整 |
@@ -136,7 +136,7 @@ T0 产出必须链接在本文中，可以建立同目录的决策附件；不�
 | 文档持久化 | 先前 Contracts #17 已合并；C025 继续写入 Contracts #18 的 bot 审核分支，不直推 main |
 | 活跃进程／作业 | #276、DSH #37、Contracts #17 均已合并；Contracts、Workflow、UI RC 成功并下载验证；Evidence 34800958905、Evolution 34800959153 成功并复验镜像；Execution 34801187270 成功且下载字节一致；无 GA 或清理作业 |
 | 已知阻塞 | 不存在人工发布 RC 的门槛；原先提前要求底层 GA 是执行判断错误，已撤回。先完成 RC 联调；本次不处理 GA 晋级 |
-| 下一条动作 | Workflow 聚合 RC 发现已修复：Execution #46／Evolution #10 及 rc.2 全部 CI 通过。服务 rc.2 已发布，真实执行／入库通过；发现 Evolution 生产下载未跟随 302，c5aa85e 修复后 196 测试及开发镜像真实下载通过。先核验 rc.3，再更新服务／插件／组合 RC。GA 不在当前范围 |
+| 下一条动作 | Workflow 聚合 RC 发现已修复：Execution #46／Evolution #10 及 rc.2 全部 CI 通过。服务 rc.2 已发布，真实执行／入库通过；发现 Evolution 生产下载未跟随 302，c5aa85e 修复后 196 测试及开发镜像真实下载通过。Evolution rc.3 34814993261 成功并复验；服务 rc.3 4a6269b8 真实链路通过（Workflow AVAILABLE），34815338639 自动发布中；插件最终输入 199 测试通过。继续插件／组合 RC。GA 不在当前范围 |
 | 禁止误恢复项 | 不重做仓库更名；不绕过凭据审批；保护原组合子模块脏内容，不消费旧制品 |
 
 
@@ -235,3 +235,5 @@ T0 已完成附件：[t0-decisions.md](t0-decisions.md)。新首轮分发采用 
 | L029 | 2026-09-14 | T6 IN_PROGRESS | Execution 757 测试／Evolution 195 测试通过；bot PR #46/#10；RC2 作业 34813625789/34813559700 成功，下载摘要及 OCI 来源绑定通过；两消费端都验证了 3 个真实 Workflow RC 包，见 [证据](evidence/t6-workflow-rc-source.json) | 服务 RC2 本地资格通过，继续跨服务联调与新插件组合 |
 
 | L030 | 2026-09-14 | T6 IN_PROGRESS | 真实交付成功并入库，评估发现生产 Workflow 302 缺口；已补回归并修复 c5aa85e，196 测试与开发容器生产下载通过，Evolution rc.3 自动资格中 | 更新服务 rc.3 并重跑严格完整链路 |
+
+| L031 | 2026-09-14 | T6 IN_PROGRESS | Evolution rc.3 镜像复验 PASS；服务 rc.3 本地完整执行→入库→Trace→评估通过，Workflow AVAILABLE、任务 COMPLETED，见 [真实链路证据](evidence/t6-real-service-chain.json)；自动发布 34815338639 | 插件 rc.2 全套资格与最终组合 rc.1 |

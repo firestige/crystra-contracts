@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "crystra.evolution-image-qualification@1.0.0",
+  "candidateTag": "crystra-evolution-v0.1.0-rc.3",
+  "version": "0.1.0",
+  "commit": "c5aa85ec25781d11df31354b076764fa900754a7",
+  "authority": {
+    "repository": "firestige/crystra-evolution",
+    "revision": "c5aa85ec25781d11df31354b076764fa900754a7"
+  },
+  "publisherRevision": "c5aa85ec25781d11df31354b076764fa900754a7",
+  "image": "ghcr.io/firestige/crystra-evolution:crystra-evolution-v0.1.0-rc.3@sha256:e82c5e0e7e8d21fc67748f0c34a521c287d0c8c139bf5b0183f603f4fdf5b4cf",
+  "ociDigest": "sha256:e82c5e0e7e8d21fc67748f0c34a521c287d0c8c139bf5b0183f603f4fdf5b4cf",
+  "source": "https://github.com/firestige/crystra-evolution",
+  "platforms": [
+    "linux/amd64",
+    "linux/arm64"
+  ],
+  "provenance": {
+    "mode": "max",
+    "status": "PASS"
+  },
+  "sbom": {
+    "requested": true
+  },
+  "remoteProvenanceAndConfig": "PASS",
+  "run": 34814993261
+}

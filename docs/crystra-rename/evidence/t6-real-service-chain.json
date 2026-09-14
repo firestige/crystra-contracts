@@ -1,0 +1,662 @@
+{
+  "scope": "Real published Execution and Workflow artifacts, real Evidence/PostgreSQL/Evolution; deterministic LLM provider fixture",
+  "taskId": "task-316040ec-1bc2-4046-8a8d-b93fd839bbcc",
+  "queries": {
+    "facts": {
+      "contract": {
+        "name": "evidence.query",
+        "revision": "0.1.0"
+      },
+      "observation_profile": "1.0.0",
+      "read_model_revision": "1.0.0",
+      "snapshot": "6K68coC5j8SgjyU-O9Mc3a45SvKqflQk",
+      "items": [
+        {
+          "id": "fact:span:[\"span\",\"81e8e896940738504f8e93bd5ec8c2e4\",\"22f5c3d33615add2\"]:DELIVERY_ROOT_BINDING:[\"81e8e896940738504f8e93bd5ec8c2e4\"]",
+          "kind": "DELIVERY_ROOT_BINDING",
+          "source": {
+            "kind": "SPAN",
+            "trace_id": "81e8e896940738504f8e93bd5ec8c2e4",
+            "span_id": "22f5c3d33615add2"
+          },
+          "recorded_at": "2026-09-14T06:51:54.993707Z",
+          "provenance": {
+            "accepted_digest": "ad4ca0e8e3e4dc323084e5316aa9c3bcb37d4c81a88c0202f8f65f6290417da1",
+            "profile_version": "1.0.0",
+            "family_schema": null,
+            "owner_key": [
+              "81e8e896940738504f8e93bd5ec8c2e4"
+            ]
+          },
+          "compatibility": {
+            "family_schema": null,
+            "event_name": null,
+            "completeness": null,
+            "dimensions": []
+          },
+          "truth": {
+            "completeness": null,
+            "availability": "AVAILABLE",
+            "expiry": "ACTIVE",
+            "expires_at": "2027-09-14T06:51:54.993707Z"
+          },
+          "fields": [
+            {
+              "field": "C01",
+              "value": "316040ec-1bc2-4046-8a8d-b93fd839bbcc"
+            },
+            {
+              "field": "C06",
+              "value": "runtime-profile.runner.langgraph-agent-providers"
+            },
+            {
+              "field": "C07",
+              "value": "0e809ddee2d59ddffb439ed4196db255c4f9afd797c171c0a9b4da450eb83f93"
+            },
+            {
+              "field": "C08",
+              "value": "hello-world-workflow"
+            }
+          ],
+          "relationships": [
+            {
+              "kind": "DELIVERY_ROOT",
+              "from": {
+                "kind": "SPAN",
+                "key": [
+                  "81e8e896940738504f8e93bd5ec8c2e4",
+                  "22f5c3d33615add2"
+                ]
+              },
+              "to": {
+                "kind": "DELIVERY",
+                "key": [
+                  "316040ec-1bc2-4046-8a8d-b93fd839bbcc"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "fact:event:[\"event\",\"delivery-summary-b6cb6e6c01e6bffc3af47775\"]:EVENT_CONTRIBUTION:[\"delivery.summary\",\"delivery-summary-b6cb6e6c01e6bffc3af47775\"]",
+          "kind": "EVENT_CONTRIBUTION",
+          "source": {
+            "kind": "EVENT",
+            "event_id": "delivery-summary-b6cb6e6c01e6bffc3af47775"
+          },
+          "recorded_at": "2026-09-14T06:51:55.003385Z",
+          "provenance": {
+            "accepted_digest": "966bf1bf76fa3ba4cf2811adb06068d96d106cfe86109fb9b9676e8708970d6a",
+            "profile_version": "1.0.0",
+            "family_schema": "hello-world-workflow@1",
+            "owner_key": [
+              "delivery.summary",
+              "delivery-summary-b6cb6e6c01e6bffc3af47775"
+            ]
+          },
+          "compatibility": {
+            "family_schema": "hello-world-workflow@1",
+            "event_name": "delivery.summary",
+            "completeness": "FINAL",
+            "dimensions": []
+          },
+          "truth": {
+            "completeness": "FINAL",
+            "availability": "AVAILABLE",
+            "expiry": "ACTIVE",
+            "expires_at": "2027-09-14T06:51:55.003385Z"
+          },
+          "fields": [
+            {
+              "field": "C08",
+              "value": "hello-world-workflow"
+            },
+            {
+              "field": "C09",
+              "value": "delivery-summary-b6cb6e6c01e6bffc3af47775"
+            },
+            {
+              "field": "C10",
+              "value": "COMPLETED"
+            },
+            {
+              "field": "C11",
+              "value": "FINAL"
+            },
+            {
+              "field": "C49",
+              "value": "hello-world-workflow@1"
+            },
+            {
+              "field": "C55",
+              "value": 306
+            }
+          ],
+          "relationships": []
+        }
+      ],
+      "next_cursor": null
+    },
+    "traces": {
+      "contract": {
+        "name": "evidence.query",
+        "revision": "0.1.0"
+      },
+      "observation_profile": "1.0.0",
+      "read_model_revision": "1.0.0",
+      "snapshot": "yV6KHKXrEJfqMIovszp2_XHRljXD6RQZ",
+      "items": [
+        {
+          "id": "trace:span:[\"span\",\"81e8e896940738504f8e93bd5ec8c2e4\",\"22f5c3d33615add2\"]:NODE:[\"81e8e896940738504f8e93bd5ec8c2e4\",\"22f5c3d33615add2\"]",
+          "trace_id": "81e8e896940738504f8e93bd5ec8c2e4",
+          "kind": "NODE",
+          "source": {
+            "kind": "SPAN",
+            "trace_id": "81e8e896940738504f8e93bd5ec8c2e4",
+            "span_id": "22f5c3d33615add2"
+          },
+          "recorded_at": "2026-09-14T06:51:54.993707Z",
+          "truth": {
+            "completeness": null,
+            "availability": "AVAILABLE",
+            "expiry": "ACTIVE",
+            "expires_at": "2026-10-14T06:51:54.993707Z"
+          },
+          "node": {
+            "span_kind": "INTERNAL",
+            "span_name": "invoke_workflow hello-world-workflow@0.2.0",
+            "span_flags": 257,
+            "span_status": "OK",
+            "trace_state": null,
+            "end_time_unix_nano": "1789368714987000000",
+            "start_time_unix_nano": "1789368714681000000",
+            "span_id": "22f5c3d33615add2",
+            "fields": [
+              {
+                "field": "C01",
+                "value": "316040ec-1bc2-4046-8a8d-b93fd839bbcc"
+              },
+              {
+                "field": "C02",
+                "value": "task-316040ec-1bc2-4046-8a8d-b93fd839bbcc"
+              },
+              {
+                "field": "C03",
+                "value": "hello-world-workflow@0.2.0"
+              },
+              {
+                "field": "C04",
+                "value": "0.2.0"
+              },
+              {
+                "field": "C05",
+                "value": "hello-world-workflow@0.2.0"
+              },
+              {
+                "field": "C06",
+                "value": "runtime-profile.runner.langgraph-agent-providers"
+              },
+              {
+                "field": "C07",
+                "value": "0e809ddee2d59ddffb439ed4196db255c4f9afd797c171c0a9b4da450eb83f93"
+              },
+              {
+                "field": "C08",
+                "value": "hello-world-workflow"
+              }
+            ]
+          },
+          "edge": null
+        }
+      ],
+      "next_cursor": null,
+      "trace_summaries": [
+        {
+          "trace_id": "81e8e896940738504f8e93bd5ec8c2e4",
+          "state": "AVAILABLE"
+        }
+      ],
+      "trace_state": "AVAILABLE"
+    }
+  },
+  "evolution": {
+    "status": 200,
+    "body": {
+      "api_version": 1,
+      "mode": "SINGLE",
+      "result": {
+        "tag": "SIDE_RESULT",
+        "receipt": {
+          "context_version": 1,
+          "selection": {
+            "selection_version": 1,
+            "task_ids": [
+              "task-316040ec-1bc2-4046-8a8d-b93fd839bbcc"
+            ]
+          },
+          "as_of": "2026-09-14T06:51:55.054880Z",
+          "resolved_at": "2026-09-14T06:52:00.883133Z",
+          "task_population": [
+            {
+              "task_id": "task-316040ec-1bc2-4046-8a8d-b93fd839bbcc",
+              "memberships": [
+                {
+                  "delivery_id": "316040ec-1bc2-4046-8a8d-b93fd839bbcc",
+                  "manifest_digest": "0e809ddee2d59ddffb439ed4196db255c4f9afd797c171c0a9b4da450eb83f93",
+                  "accepted_digest": "25dbfe97cc007db4dab2e213176e8480b61aa0119535c4d4a053f494ad881723",
+                  "profile_version": "2.0.0",
+                  "source_identity": "event:task-binding-bc7a321b6d187f0dc8025ff4",
+                  "recorded_at": "2026-09-14T06:51:54.822002Z"
+                }
+              ],
+              "cohort_coordinates": {},
+              "exclusions": [],
+              "terminal_reading": "COMPLETED"
+            }
+          ],
+          "catalog": {
+            "catalog_id": "agentops.evaluation.metric-catalog",
+            "version": "2.0.0",
+            "semantic_digest": "851692f9d4a549d21f3c741470737eabb0d40b5f03cf10ffae76e1892023741e",
+            "observation_profile": "1.0.0"
+          },
+          "evidence_bindings": [
+            {
+              "route": "/v1/evidence/facts",
+              "canonical_filter": {
+                "delivery_id": "316040ec-1bc2-4046-8a8d-b93fd839bbcc"
+              },
+              "contract_revision": "0.1.0",
+              "observation_profile": "1.0.0",
+              "read_model_revision": "1.0.0",
+              "route_snapshot": "weGeB9SwSRL1TVlf1uQxd7GivwU5cXpz",
+              "completion_state": "COMPLETE"
+            },
+            {
+              "route": "/v1/evidence/tasks",
+              "canonical_filter": {
+                "as_of": "2026-09-14T06:51:55.054880Z",
+                "task_id": "task-316040ec-1bc2-4046-8a8d-b93fd839bbcc"
+              },
+              "contract_revision": "1.0.0",
+              "observation_profile": "2.0.0",
+              "read_model_revision": "2.0.0",
+              "route_snapshot": "QbRV_OBP4_QzrW4ZfsrKhjDxcaqFLNCi",
+              "completion_state": "COMPLETE"
+            },
+            {
+              "route": "/v1/evidence/traces",
+              "canonical_filter": {
+                "delivery_id": "316040ec-1bc2-4046-8a8d-b93fd839bbcc"
+              },
+              "contract_revision": "0.1.0",
+              "observation_profile": "1.0.0",
+              "read_model_revision": "1.0.0",
+              "route_snapshot": "iuttuG8aCFnD3QYn7F5bJW8kL7IpHKiu",
+              "completion_state": "COMPLETE"
+            }
+          ],
+          "input_refs": [
+            {
+              "kind": "FACT",
+              "identity": "fact:event:[\"event\",\"delivery-summary-b6cb6e6c01e6bffc3af47775\"]:EVENT_CONTRIBUTION:[\"delivery.summary\",\"delivery-summary-b6cb6e6c01e6bffc3af47775\"]",
+              "provenance_ref": "966bf1bf76fa3ba4cf2811adb06068d96d106cfe86109fb9b9676e8708970d6a"
+            },
+            {
+              "kind": "FACT",
+              "identity": "fact:span:[\"span\",\"81e8e896940738504f8e93bd5ec8c2e4\",\"22f5c3d33615add2\"]:DELIVERY_ROOT_BINDING:[\"81e8e896940738504f8e93bd5ec8c2e4\"]",
+              "provenance_ref": "ad4ca0e8e3e4dc323084e5316aa9c3bcb37d4c81a88c0202f8f65f6290417da1"
+            },
+            {
+              "kind": "TASK_MEMBERSHIP",
+              "identity": "task-316040ec-1bc2-4046-8a8d-b93fd839bbcc/316040ec-1bc2-4046-8a8d-b93fd839bbcc",
+              "provenance_ref": "event:task-binding-bc7a321b6d187f0dc8025ff4"
+            },
+            {
+              "kind": "TRACE_NODE",
+              "identity": "trace:span:[\"span\",\"81e8e896940738504f8e93bd5ec8c2e4\",\"22f5c3d33615add2\"]:NODE:[\"81e8e896940738504f8e93bd5ec8c2e4\",\"22f5c3d33615add2\"]",
+              "provenance_ref": "span:81e8e896940738504f8e93bd5ec8c2e4/22f5c3d33615add2"
+            }
+          ],
+          "workflow_resolutions": [
+            {
+              "manifest_digest": "0e809ddee2d59ddffb439ed4196db255c4f9afd797c171c0a9b4da450eb83f93",
+              "manifest_projection_digest": "8b3435ea5e669cadfc59c9f6796d885e60070cd3541bf8923b1a1a2aeab4eb36",
+              "accepted_digest": "25dbfe97cc007db4dab2e213176e8480b61aa0119535c4d4a053f494ad881723",
+              "profile_version": "2.0.0",
+              "source_identity": "event:task-binding-bc7a321b6d187f0dc8025ff4",
+              "package_name": "hello-world-workflow",
+              "exact_package_version": "0.2.0",
+              "package_digest": "sha256:21a50f1ef2a47307fe4fe1e13bbda02ee71112c0631209c1d03ce1ab40465683",
+              "workflow_id": "hello-world-workflow",
+              "workflow_version": "0.2.0",
+              "snapshot_id": "snapshot.hello-world-workflow.0.2.0",
+              "snapshot_digest": "sha256:d270535dcc2bfaec93db3ed6e3cb42306694e9dcac92008e2b50e0dbdeb26524",
+              "state": "AVAILABLE",
+              "matched_source_id": "official",
+              "matched_source_index": 0,
+              "matched_repository": "firestige/crystra-workflow-package",
+              "validated_archive_digest": "sha256:afb1d32ec30494f6ce141cede8398fb9a30054cfd5ee2486c4364a912fb39f4e",
+              "validated_package_digest": "sha256:21a50f1ef2a47307fe4fe1e13bbda02ee71112c0631209c1d03ce1ab40465683",
+              "validated_snapshot_digest": "sha256:d270535dcc2bfaec93db3ed6e3cb42306694e9dcac92008e2b50e0dbdeb26524",
+              "attempts": []
+            }
+          ],
+          "population_state": "COMPLETE"
+        },
+        "metric_results": [
+          {
+            "metric_id": "role-template-rework-rate",
+            "metric_version": "2.0.0",
+            "slices": [
+              {
+                "slice_key": {},
+                "state": "UNAVAILABLE",
+                "withholding_reason": "NO_APPLICABLE_POPULATION",
+                "measures": {},
+                "coverage": {
+                  "numerator": "0",
+                  "denominator": "0",
+                  "state": "NO_POPULATION",
+                  "raw_ratio": null,
+                  "alert": null
+                },
+                "compatibility": {},
+                "exclusions": [],
+                "missing_inputs": [],
+                "provenance_refs": []
+              }
+            ]
+          },
+          {
+            "metric_id": "role-template-trajectory-partial-cost",
+            "metric_version": "2.0.0",
+            "slices": [
+              {
+                "slice_key": {},
+                "state": "UNAVAILABLE",
+                "withholding_reason": "NO_APPLICABLE_POPULATION",
+                "measures": {},
+                "coverage": {
+                  "numerator": "0",
+                  "denominator": "0",
+                  "state": "NO_POPULATION",
+                  "raw_ratio": null,
+                  "alert": null
+                },
+                "compatibility": {},
+                "exclusions": [],
+                "missing_inputs": [],
+                "provenance_refs": []
+              }
+            ]
+          },
+          {
+            "metric_id": "role-model-task-outcome-rate",
+            "metric_version": "2.0.0",
+            "slices": [
+              {
+                "slice_key": {},
+                "state": "UNAVAILABLE",
+                "withholding_reason": "NO_APPLICABLE_POPULATION",
+                "measures": {},
+                "coverage": {
+                  "numerator": "0",
+                  "denominator": "0",
+                  "state": "NO_POPULATION",
+                  "raw_ratio": null,
+                  "alert": null
+                },
+                "compatibility": {},
+                "exclusions": [],
+                "missing_inputs": [],
+                "provenance_refs": []
+              }
+            ]
+          },
+          {
+            "metric_id": "operational-latency-ms",
+            "metric_version": "2.0.0",
+            "slices": [
+              {
+                "slice_key": {},
+                "state": "UNAVAILABLE",
+                "withholding_reason": "NO_APPLICABLE_POPULATION",
+                "measures": {},
+                "coverage": {
+                  "numerator": "0",
+                  "denominator": "0",
+                  "state": "NO_POPULATION",
+                  "raw_ratio": null,
+                  "alert": null
+                },
+                "compatibility": {},
+                "exclusions": [],
+                "missing_inputs": [],
+                "provenance_refs": []
+              }
+            ]
+          },
+          {
+            "metric_id": "trajectory-partial-cost",
+            "metric_version": "2.0.0",
+            "slices": [
+              {
+                "slice_key": {},
+                "state": "UNAVAILABLE",
+                "withholding_reason": "MISSING_INPUT",
+                "measures": {},
+                "coverage": {
+                  "numerator": "0",
+                  "denominator": "1",
+                  "raw_ratio": "0",
+                  "state": "NO_COVERAGE",
+                  "alert": "LOW_COVERAGE"
+                },
+                "compatibility": {},
+                "exclusions": [],
+                "missing_inputs": [],
+                "provenance_refs": []
+              }
+            ]
+          },
+          {
+            "metric_id": "task-cohort-comparison-eligibility",
+            "metric_version": "2.0.0",
+            "slices": [
+              {
+                "slice_key": {},
+                "state": "UNAVAILABLE",
+                "withholding_reason": "SAMPLE_INSUFFICIENT",
+                "measures": {},
+                "numerator": "1",
+                "denominator": "1",
+                "coverage": {
+                  "numerator": "1",
+                  "denominator": "1",
+                  "raw_ratio": "1",
+                  "state": "FULL",
+                  "alert": null
+                },
+                "compatibility": {},
+                "exclusions": [],
+                "missing_inputs": [],
+                "provenance_refs": [
+                  "966bf1bf76fa3ba4cf2811adb06068d96d106cfe86109fb9b9676e8708970d6a"
+                ]
+              }
+            ]
+          },
+          {
+            "metric_id": "delivery-stage-reach",
+            "metric_version": "2.0.0",
+            "slices": [
+              {
+                "slice_key": {},
+                "state": "UNAVAILABLE",
+                "withholding_reason": "MISSING_INPUT",
+                "measures": {},
+                "coverage": {
+                  "numerator": "0",
+                  "denominator": "1",
+                  "raw_ratio": "0",
+                  "state": "NO_COVERAGE",
+                  "alert": "LOW_COVERAGE"
+                },
+                "compatibility": {},
+                "exclusions": [],
+                "missing_inputs": [],
+                "provenance_refs": []
+              }
+            ]
+          },
+          {
+            "metric_id": "delivery-terminal-outcome-rate",
+            "metric_version": "2.0.0",
+            "slices": [
+              {
+                "slice_key": {
+                  "outcome": "COMPLETED"
+                },
+                "state": "AVAILABLE",
+                "value": {
+                  "kind": "RATIO",
+                  "value": "1",
+                  "unit": "ratio"
+                },
+                "measures": {},
+                "numerator": "1",
+                "denominator": "1",
+                "coverage": {
+                  "numerator": "1",
+                  "denominator": "1",
+                  "raw_ratio": "1",
+                  "state": "FULL",
+                  "alert": null
+                },
+                "compatibility": {},
+                "exclusions": [],
+                "missing_inputs": [],
+                "provenance_refs": [
+                  "966bf1bf76fa3ba4cf2811adb06068d96d106cfe86109fb9b9676e8708970d6a"
+                ]
+              }
+            ]
+          },
+          {
+            "metric_id": "delivery-cycle-time-ms",
+            "metric_version": "2.0.0",
+            "slices": [
+              {
+                "slice_key": {},
+                "state": "AVAILABLE",
+                "value": {
+                  "kind": "DURATION_MS",
+                  "value": "306",
+                  "unit": "milliseconds"
+                },
+                "measures": {
+                  "sum_ms": "306"
+                },
+                "contributing_count": "1",
+                "coverage": {
+                  "numerator": "1",
+                  "denominator": "1",
+                  "raw_ratio": "1",
+                  "state": "FULL",
+                  "alert": null
+                },
+                "compatibility": {},
+                "exclusions": [],
+                "missing_inputs": [],
+                "provenance_refs": [
+                  "966bf1bf76fa3ba4cf2811adb06068d96d106cfe86109fb9b9676e8708970d6a"
+                ]
+              }
+            ]
+          },
+          {
+            "metric_id": "operational-token-usage",
+            "metric_version": "2.0.0",
+            "slices": [
+              {
+                "slice_key": {},
+                "state": "UNAVAILABLE",
+                "withholding_reason": "NO_APPLICABLE_POPULATION",
+                "measures": {},
+                "coverage": {
+                  "numerator": "0",
+                  "denominator": "0",
+                  "state": "NO_POPULATION",
+                  "raw_ratio": null,
+                  "alert": null
+                },
+                "compatibility": {},
+                "exclusions": [],
+                "missing_inputs": [],
+                "provenance_refs": []
+              }
+            ]
+          },
+          {
+            "metric_id": "operational-attributable-cost",
+            "metric_version": "2.0.0",
+            "slices": [
+              {
+                "slice_key": {},
+                "state": "UNAVAILABLE",
+                "withholding_reason": "NO_APPLICABLE_POPULATION",
+                "measures": {},
+                "coverage": {
+                  "numerator": "0",
+                  "denominator": "0",
+                  "state": "NO_POPULATION",
+                  "raw_ratio": null,
+                  "alert": null
+                },
+                "compatibility": {},
+                "exclusions": [],
+                "missing_inputs": [],
+                "provenance_refs": []
+              }
+            ]
+          },
+          {
+            "metric_id": "operational-usage-availability",
+            "metric_version": "2.0.0",
+            "slices": [
+              {
+                "slice_key": {},
+                "state": "UNAVAILABLE",
+                "withholding_reason": "NO_APPLICABLE_POPULATION",
+                "measures": {},
+                "coverage": {
+                  "numerator": "0",
+                  "denominator": "0",
+                  "state": "NO_POPULATION",
+                  "raw_ratio": null,
+                  "alert": null
+                },
+                "compatibility": {},
+                "exclusions": [],
+                "missing_inputs": [],
+                "provenance_refs": []
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "status": "PASS",
+  "servicesCandidate": "crystra-services-v0.1.0-rc.3",
+  "servicesCommit": "4a6269b8b3b8d6dadce0de12df6e22221fbd99fc",
+  "executionCandidate": "crystra-execution-v0.1.0-rc.2",
+  "evolutionCandidate": "crystra-evolution-v0.1.0-rc.3",
+  "workflowCandidate": "crystra-workflow-package-v0.1.0-rc.1",
+  "limitations": [
+    "Deterministic provider responses; no live LLM token or cost claims",
+    "Production Execution API used; final installed DSH package qualification still follows"
+  ],
+  "logSha256": "1e1576051719fff3b8cc56aa0f705bef5df110e8e51884b202b26d23954e0122"
+}
