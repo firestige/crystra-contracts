@@ -127,11 +127,11 @@ T0 产出必须链接在本文中，可以建立同目录的决策附件；不�
 
 | 字段 | 当前值 |
 |---|---|
-| 检查点 | C040：用户指出实际页面远离 v8；改为视觉及交互逐页对齐优先，暂停新增草案字段 |
+| 检查点 | C041：完整 Analysis v8 组合已抽取为显式数据端口并在 3082 样本探索；Task/Workflow 和真实数据端口继续推进 |
 | 当前任务 | T0–T7 DONE；T8 IN_PROGRESS |
 | 已完成 | 更名／配置复用；crystra-v0.1.0-rc.1 远端六文件与本地相同；真实执行、入库、Trace、评估及 Workflow AVAILABLE；旧部署备份隔离完成 |
 | 未完成 | 实际 DSH 安装验收与公开安装入口收尾；bot PR #277、DSH #38、Execution #46、Evolution #10、Contracts #18 尚需按审批规则合并 |
-| 工作路径 | 新 UI /tmp/crystra-ui-host-integration `3cbcc9c`；新宿主 /tmp/crystra-dsh-t6 `388c040`（未发布）。原组合 /tmp/crystra-combination-stage 1593f589；/tmp/crystra-dsh-t6 产品候选 9a9777d、另有 test-only 742e1de；实际 ~/.dsh/profiles/web；台账 /Users/firestige/Projects/wsr-contracts |
+| 工作路径 | 新 UI /tmp/crystra-ui-host-integration `0a54cd8`；新宿主 /tmp/crystra-dsh-t6 `388c040`（未发布）。原组合 /tmp/crystra-combination-stage 1593f589；/tmp/crystra-dsh-t6 产品候选 9a9777d、另有 test-only 742e1de；实际 ~/.dsh/profiles/web；台账 /Users/firestige/Projects/wsr-contracts |
 | 活跃进程／作业 | 本次安装／归档命令完成；现有 DSH PID 40455（全局 web，3080）保留。精确 DSH 0.1.1-rc.2 已作为普通依赖安装于 ~/Library/Application Support/Crystra/tools，未降级全局 CLI |
 | 隔离档案 | /Users/firestige/Library/Application Support/Crystra-quarantine/20260914-wsr；17 个校验归档、旧运行目录原件、15 个无容器引用的离线卷 |
 | 已知阻塞 | 锁屏已解除；3080 旧进程未加载磁盘新插件。固定 DSH 0.1.1-rc.2 在 3081 独立验收，复用实际安装 node_modules、隔离 DSH_HOME；setup 三服务健康，工作区绑定缺失诊断准确。实际 Workflow 解析被 GitHub 匿名额度 HTTP 403 阻挡，约 08:51 UTC 后重验；[UI 证据](evidence/t8-ui-acceptance.json)。无 GA 门槛 |
@@ -263,3 +263,5 @@ T0 已完成附件：[t0-decisions.md](t0-decisions.md)。新首轮分发采用 
 | L043 | 2026-09-14 | T8 草案基础完成 | 草案来源锁覆盖 12 份设计文档；DSH e0aaf82 增加条件化 envelope 准入，5 项新回归及全量 214 项通过。UI 14f8fa0 / DSH 388c040 同步 D21 的对比分析命名；尚未接草案读取和持久化，不能声称五工作面完成 | 接各工作面 value 校验与隔离 adapter；正式化不得由 RC 隐式触发 |
 
 | L044 | 2026-09-14 | T8 实施方向纠正 | 用户指出实际 Chrome 页与 v8 差距很大；在 3082 与只读 4185 原 HTML 同尺寸对照确认 Shell/页面结构差异，不能以数据读取或单测通过替代 v8 验收。暂停新增草案字段，先对齐视觉与交互 | 见 [C040](t8-ui-integration-gap.md#c040-v8-视觉与交互纠正) |
+
+| L045 | 2026-09-14 | T8 Analysis 完整组合 | UI 0a54cd8 抽取 AnalysisWorkspace，保留日期/布局/目录/Trace/对比分析插槽，生产入口不默认引入样本或改宿主 URL；394 Vitest+34 Node、28 原浏览器回归及 1 新完整页面回归通过。3082 显式启用 v8 设计样本探索并标注；不代表真实数据接入或 RC | 继续同尺寸视觉与交互检查、Task/Workflow 组件化、真实/草案端口接入 |

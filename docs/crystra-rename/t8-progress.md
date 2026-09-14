@@ -59,3 +59,16 @@ UI `14f8fa0`、DSH `388c040` 另修正 D21 后续确认的“对比分析”名�
 ## C040：按 v8 效果纠正实施顺序
 
 用户指出当前页面视觉与 v8 相差很大，已通过实际截图确认；优先恢复完整页面组合，暂停新增草案字段。首轮仅修正 Shell 响应宽度、品牌/按钮/导航、行内共享搜索及主题覆盖；主内容仍明显不符定稿。详细差异与下一步见 [C040 对照](t8-ui-integration-gap.md#c040-v8-视觉与交互纠正)。3082 开发 bundle 已更新，3080 不改。
+
+
+## C041：完整 Analysis 组合与显式探索数据
+
+UI `0a54cd8` 将原 AnalysisObservationStudy 的完整组合移入公共 AnalysisWorkspace，保留 v8 日期范围、刷新周期、布局编辑/导入导出、Widget 网格、DeliveryDirectory、Trace toolbar 与对比分析插槽。原 Study 成为样本与静态页面路由适配器；公共组件不自行读写 location/history，也不订阅全局导航 DOM。布局默认值改用已有 PRESET_LAYOUTS，去除 layout codec/editor 的 dashboard fixture 运行依赖。relative date 改为宿主显式 referenceDate，不把 2026-09-09 样本时间当实际今天。
+
+生产端口暂时包含 tasks/samples/roles/workflows/deliveries/searchFields、sources/queries/trace 和 renderComparison。它们是 UI 适配接口，不是新正式服务协议。对比分析完整样本仍由 renderComparison 显式注入；其业务统计/设置持久化还没有正式化。旧简化页与真实数据桥仍保留供继续接线，不能视为最终页面。
+
+3082 本轮显式运行完整 Analysis **探索模式**，右下角标明“草案探索 · v8 设计样本，非真实运行数据”。总览 112.04 等值、42 条目录、版本费用图均为定稿 fixture，不能写成真实服务指标。Shell 的真实 Task list 与样本分析范围不是领域绑定；跨两者的 Task/Delivery 深链尚未接入，禁止混用。实际 3080 和固定 RC 3081 未改。
+
+恢复：UI clone `npm run build`；`node scripts/build-analysis-exploration.mjs /tmp/crystra-analysis-exploration` 构建仅供探索的独立 bundle。DSH clone 的临时 scripts/.v8-dev-build.mjs 支持 CRYSTRA_ANALYSIS_EXPLORATION=1，先按本计划 source-lock 复验原设计文件，再覆盖 Analysis factory；不设置该变量则回到现有真实数据开发桥。仅将输出 /tmp/crystra-v8-client.js 复制到 /tmp/crystra-v8-dsh-home/profiles/web/node_modules/dsh-crystra/lib/client.js。临时 helper 不进入正式制品，发布不得带此开关和本地路径。
+
+验证：394 Vitest + 34 Node 通过；原 28 浏览器测试通过；新增完整组合浏览器用例验证编辑状态跨页保持、目录展开和 Tree 切换；真实 DSH 浏览器确认完整总览与对比分析三列设置编辑器可打开。lint/type/build/format/deps 通过；新增构建脚本单独验证。已发现并修正 Header 图标垂直堆叠（恢复已接受的 identity flex 组合）。仍需最终同尺寸截图复验、完整主页面接入和实际数据联调，T8 不变。
