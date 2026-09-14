@@ -33,7 +33,7 @@
 | D09 | 忽略主仓库子模块未提交变化 | 不重置、不清空、不把它们当成此次待修复项；其它用户改动也应保护 |
 | D10 | 先验证新候选，再清理真实旧部署 | T6 在隔离空白环境验证，T7 人工清理，T8 实际切换 |
 | D11 | 保留当前领域与服务架构 | 不因单插件或更名隐式更换数据库／合并领域职责；必要配置可在插件引导 |
-| D13 | 当前仅发布 RC，先完成联调 | RC 自动由候选分支触发，不要求人工 GA 前置；正式版以后从已验证 RC 晋级 |
+| D13 | 本次更名仅要求可用 RC 组合，不要求 GA | RC 自动由候选分支触发，不要求人工 GA 前置；RC 证明内容未被破坏并有可用组合，即满足此次发行验收；GA 不属于更名完成条件 |
 | D12 | 优先复用现有发行资产 | 用户将发行 App 改名为 crystra-release；沿用原 App ID、Client ID 和私钥，不新建 App。八仓库配置范围已明确授权 |
 
 T0 已落定具体实现选择，见 [T0 决策](t0-decisions.md)。新坐标的实际发布权限配置仍属 T5；不把只读可用性检查写成可发布。
@@ -64,9 +64,9 @@ T0 已落定具体实现选择，见 [T0 决策](t0-decisions.md)。新坐标的
 | T3 | 统一 dsh-crystra 包与模块装配 | T2-EX、T2-UI DONE | DONE | 本任务 Codex | main b951b9c；PR #33、CI 34762427482 成功；[恢复记录](t3-progress.md) |
 | T4 | 插件初始化、取消独立安装步骤 | T3 DONE；完整服务验收需 T2-EV、T2-EO、T2-WP DONE | DONE | 本任务 Codex | PR #34；CI 34764469211；195 测试、空白浏览器和真实服务通过；[恢复记录](t4-progress.md) |
 | T5 | 当前品牌收尾与外部坐标切换 | 准备可在 T0 后；实际切换需 T1–T4 DONE | DONE | 本任务 Codex | 配置复用与读回见 release-configuration.json；发布和文档 PR #275/#276、DSH #37 已合并 |
-| T6 | 新组件候选与隔离环境组合验证 | T5 DONE | IN_PROGRESS | 本任务 Codex | Contracts 首个 RC 已通过远端字节与资格回执核验；见 [T6 记录](t6-progress.md) |
+| T6 | 新组件候选与隔离环境组合验证 | T5 DONE | IN_PROGRESS | 本任务 Codex | 六组件、服务、单插件 RC 均已核验；剩余组合与真实 Workflow 联调；见 [T6 记录](t6-progress.md) |
 | T7 | 一次性人工清理实际旧部署 | T6 DONE；只读盘点可在 T0 开始 | PENDING | 未分配 | — |
-| T8 | 实际安装验收与发布收尾 | T7 DONE；使用 T6 验证制品 | PENDING | 未分配 | — |
+| T8 | 实际 RC 安装验收与更名收尾 | T7 DONE；使用 T6 验证制品 | PENDING | 未分配 | — |
 
 详细范围见 [T0–T8 实施说明](implementation-plan.md)。允许独立推进不表示已启动其它 Agent、创建其它任务或进行了分支切换。
 
@@ -126,17 +126,17 @@ T0 产出必须链接在本文中，可以建立同目录的决策附件；不�
 
 | 字段 | 当前值 |
 |---|---|
-| 检查点 | C026：撤回提前 GA 门槛；服务和单插件 RC 已发布并核验，继续组合与实际联调 |
+| 检查点 | C027：Execution／Evolution rc.2 发布并核验；服务 rc.2 本地资格通过，继续真实跨服务联调 |
 | 当前任务 | T5 DONE；T6 IN_PROGRESS；T0–T4 DONE |
 | 已完成 | 八仓库远端更名及唯一插件身份；现行发布代码／文档 PR 全部合并；原发行 App 改名但 ID 不变；八仓库新 Actions 变量与 Secret 上传并读回 |
-| 未完成 | T6 服务归档、插件及组合 RC 的远端资格与联调；T7–T8；本地 checkout 路径仅在协调窗口调整 |
+| 未完成 | T6 新服务／插件及组合 RC 的远端资格与跨服务联调；T7–T8；本地 checkout 路径仅在协调窗口调整 |
 | 本轮产品变更 | 新 Workflow tag 命名在发行端与两消费端一致；移除 Evolution 历史制品回退 |
 | 本轮仓库／发布／部署操作 | 已按用户明确授权复用旧发行私钥配置八仓库；无需改动 App 安装范围；T6 候选推进中，未触发 GA、未清理部署 |
 | 工作路径 | 台账 /Users/firestige/Projects/wsr-contracts，codex/crystra-release-configuration-bot；Contracts /tmp/crystra-contracts-t6；Execution /tmp/crystra-t6-components/execution；其余隔离路径见 t6-progress.md；原组件本地路径保持不动 |
 | 文档持久化 | 先前 Contracts #17 已合并；C025 继续写入 Contracts #18 的 bot 审核分支，不直推 main |
 | 活跃进程／作业 | #276、DSH #37、Contracts #17 均已合并；Contracts、Workflow、UI RC 成功并下载验证；Evidence 34800958905、Evolution 34800959153 成功并复验镜像；Execution 34801187270 成功且下载字节一致；无 GA 或清理作业 |
-| 已知阻塞 | 不存在人工发布 RC 的门槛；原先提前要求底层 GA 是执行判断错误，已撤回。先完成 RC 联调，再处理正式晋级资格 |
-| 下一条动作 | 插件 RC 34803216172 已通过；构建组合 RC，并修复／验证 Workflow 聚合 RC 的实际发现路径及跨服务交付联调。GA 不在当前范围 |
+| 已知阻塞 | 不存在人工发布 RC 的门槛；原先提前要求底层 GA 是执行判断错误，已撤回。先完成 RC 联调；本次不处理 GA 晋级 |
+| 下一条动作 | Workflow 聚合 RC 发现已修复：Execution #46／Evolution #10 及 rc.2 全部 CI 通过。服务 rc.2 本地容器资格通过，正在真实执行→证据→评估联调；随后发布服务／插件／组合 RC。GA 不在当前范围 |
 | 禁止误恢复项 | 不重做仓库更名；不绕过凭据审批；保护原组合子模块脏内容，不消费旧制品 |
 
 
@@ -214,7 +214,7 @@ T0 产出必须链接在本文中，可以建立同目录的决策附件；不�
 - 正常安装无需独立产品安装器；必要后台服务和配置有可用的就绪／诊断流程。
 - 组件 main 可独立演进，组合仓库能发布固定且经过验证的新制品组合。
 - 实际旧 WSR 部署已人工打包隔离清理；不迁移旧历史制品。
-- 真实环境验收、发布及市场状态均有可核查证据，未决事项已关闭或明确移出范围。
+- 真实环境 RC 组合验收及更名状态均有可核查证据，未决事项已关闭或明确移出范围；GA 不作为本次完成条件。
 - 本文更新为 DONE，最终检查点记录实际新路径、交付版本和证据索引。
 
 T0 已完成附件：[t0-decisions.md](t0-decisions.md)。新首轮分发采用 GitHub 精确制品，Contracts scope 保持 private；T5 发布权限仍需实配。
@@ -229,3 +229,7 @@ T0 已完成附件：[t0-decisions.md](t0-decisions.md)。新首轮分发采用 
 | L026 | 2026-09-14 | T6 IN_PROGRESS | 用户明确当前只发 RC、继续联调；撤回 C025 的提前 GA 暂停及晋级提案执行要求，保留六组件有效资格证据 | 自动推进服务、插件、组合 RC |
 
 | L027 | 2026-09-14 | T6 IN_PROGRESS | 服务 RC 34802450361 与插件 RC 34803216172 均成功并下载复验；bot PR #277/#38 非 Draft，CI 均通过；修复 pnpm URL 子依赖安装障碍 | 组合 RC、Workflow 候选发现与真实交付联调；不发 GA |
+
+| L028 | 2026-09-14 | T6 IN_PROGRESS | 用户明确本次更名不要求 GA，只需 RC 证明更名未破坏内容并形成可用组合；同步 T8／结束条件 | 修复候选发现并完成组合联调 |
+
+| L029 | 2026-09-14 | T6 IN_PROGRESS | Execution 757 测试／Evolution 195 测试通过；bot PR #46/#10；RC2 作业 34813625789/34813559700 成功，下载摘要及 OCI 来源绑定通过；两消费端都验证了 3 个真实 Workflow RC 包，见 [证据](evidence/t6-workflow-rc-source.json) | 服务 RC2 本地资格通过，继续跨服务联调与新插件组合 |

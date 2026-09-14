@@ -1,0 +1,29 @@
+{
+  "status": "PASS",
+  "scope": "Component RC qualification; cross-service combination still in progress",
+  "execution": {
+    "tag": "crystra-execution-v0.1.0-rc.2",
+    "commit": "82a88ea4222e40810a387863d654a12e008a5b26",
+    "run": 34813625789,
+    "pr": 46,
+    "tests": 757,
+    "statementsCoverage": 90.03,
+    "archiveSha256": "72a30478e47183752b84c9294999ffc6a31469bb227c16300c910f119e4567c8",
+    "localRemoteBytes": "IDENTICAL"
+  },
+  "evolution": {
+    "tag": "crystra-evolution-v0.1.0-rc.2",
+    "commit": "b7163f2b7065c9b1cd8e4be18bd49dd775e59fe6",
+    "run": 34813559700,
+    "pr": 10,
+    "tests": 195,
+    "image": "ghcr.io/firestige/crystra-evolution:crystra-evolution-v0.1.0-rc.2@sha256:520674dd76298cd86ebb9bb213f24d7153df405c53a46d58dbf035e14883fac8",
+    "remoteProvenanceAndImageConfig": "PASS"
+  },
+  "workflowSource": {
+    "exactQualifiedAggregateRC": "PASS",
+    "execution": "{\"name\":\"hello-world-workflow\",\"version\":\"0.2.0\",\"archiveDigest\":\"sha256:afb1d32ec30494f6ce141cede8398fb9a30054cfd5ee2486c4364a912fb39f4e\",\"status\":\"PASS\"}\n{\"name\":\"implementation-workflow\",\"version\":\"0.4.12\",\"archiveDigest\":\"sha256:78722e9a78b7a0e8f773a48d7af4672bad134c56b584c77495eeca053d2a67e0\",\"status\":\"PASS\"}\n{\"name\":\"system-design-workflow\",\"version\":\"0.4.10\",\"archiveDigest\":\"sha256:76dbae812cb7f398a4724cf8fc5a267df6a8ad3549f186732c9845444c517066\",\"status\":\"PASS\"}\n",
+    "evolution": "{\"name\": \"hello-world-workflow\", \"version\": \"0.2.0\", \"archiveDigest\": \"sha256:afb1d32ec30494f6ce141cede8398fb9a30054cfd5ee2486c4364a912fb39f4e\", \"status\": \"PASS\"}\n{\"name\": \"implementation-workflow\", \"version\": \"0.4.12\", \"archiveDigest\": \"sha256:78722e9a78b7a0e8f773a48d7af4672bad134c56b584c77495eeca053d2a67e0\", \"status\": \"PASS\"}\n{\"name\": \"system-design-workflow\", \"version\": \"0.4.10\", \"archiveDigest\": \"sha256:76dbae812cb7f398a4724cf8fc5a267df6a8ad3549f186732c9845444c517066\", \"status\": \"PASS\"}\n"
+  },
+  "gaRequired": false
+}
