@@ -63,3 +63,6 @@ DSH 426f3ed 增加只读 resolveTaskSessionBinding，复用正式 control-plane 
 DSH 51b7a89；UI 4180cb8。需求、交付、审核三面以 caller-supplied projection 接口实现，测试样本单独位于 test-harness；没有以 UI 的可交付/选择动作冒充授权或关闭。UI 399 Vitest、34 Node、32 浏览器测试全部通过；format/lint/type/build/deps 通过。日志 /tmp/crystra-c048-ui-*.log。DSH 226 项通过。上述检查不等于新制品或组合 RC 资格，正式 DSH lib 仍待重建。
 
 3082 已实际展示三面与唯一原生 Composer。首次接审核时开发 helper 的默认 JSX transform 导致 React is not defined，已在未跟踪 helper 设置 automatic JSX 并复验恢复；该问题不在已发布制品。再次清空测试 textarea 后等待再重载，旧草稿仍返回，说明不能归因为单纯持久化等待不足；保留为待诊断项，未发送任何消息。C049 继续计划文档、DAG 和执行层级接入。
+
+
+C049 输入清理复验：使用原生键盘事件全选并 Backspace 后，页面显示空 textarea、发送按钮 disabled；稍后重载仍为空。因此此次测试草稿已清空。此前 browser fill 空值未实现同样的持久化，后续原生 Composer 验收应优先用真实键盘编辑事件，并核对状态，不能只看 DOM value。没有更改宿主实现。

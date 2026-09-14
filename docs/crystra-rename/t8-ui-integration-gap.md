@@ -136,3 +136,23 @@ C042 的“需要扩展宿主”结论过早，现撤回必需性判断。shell.
 ## C044 · 复用 Input 与会话隔离
 
 用户明确复用原生 Input 的组件和交互，不要求共用原生 DSH Session 管理器，并倾向互不可见。取消 C042 对跨 Harness/Crystra 同一 Conversation 实例的必要性。输入连续性以 Crystra 自身导航范围为准。下一步检查组件、scope、输入状态机、Session 服务与 RPC 装配，优先复用实现并隔离会话，不能只隐藏原生会话列表就宣称完成。详见 drafts/dsh-host-layout.md C044。
+
+
+## C049 Task 工作面与只读上下文
+
+UI fc463a1：TaskPlanPanel 提供摘要/文档/完整 DAG 三层只读组合；TaskExecutionPanel 区分 Plan Run 与 Wave 内部 Workflow Run，分析回调只接显式 identity；TaskEvidenceContext 提供审核证据检查和返回。计划/执行图从定稿 v8 SVG 静态提取为 test-harness/task-design-graphs.json，未执行 HTML 内脚本；源 SHA256 b5eefc9739ab1d995e4c10cbb0e90c8dcb2fa099cc4b707ec47a574a46b2af87。样本仍仅用于显式探索，正式组件不加载它们。
+
+UI 401 Vitest + 34 Node 通过；计划/执行新增层级时整套 33 浏览器通过，随后新增审核证据检查的四项专项浏览器通过；type/lint/build/format 通过。不是最终 PR/RC 资格声明。DSH 2de5bf1 为 inventory 和 session read 加请求顺序保护；两项回归先复现旧响应覆盖新状态，再修复，全套 228/228 通过。
+
+3082 实测：唯一原生 Input 旁展示五工作面探索内容；点击 Wave 1B 进入指定 Workflow Run，原始未发送草稿使用键盘事件删除后重载仍为空。native 3080 未操作。开发 helper 增加 automatic JSX 与测试样式显式注入；不进入制品。
+
+仍未完成：完整 DAG minimap/分支折叠、运行观测扩展与动效、Gate 到 Plan/Analysis 的精确跨页关联、五工作面 value validator 和持续失效处理、真实端口联调、Workflow 页面、侧栏余项及 RC。不能把本节的设计样本当运行事实，也不能把组件已渲染当全量 v8 已对齐。下一项 C050 侧栏折叠与原生几何联动正在实施。
+
+
+## C050 侧栏折叠与原生几何
+
+侧栏使用定稿 24px 晶体矢量和 19px 品牌字、64px rail、原有分组浮出导航、Escape/外部点击关闭；UI 不自行读取宿主存储，初始偏好及保存回调由 DSH 提供。DSH 070933e 将 Task 与 new-task 原生区域统一使用侧栏宽度变量，折叠偏好保存在本实例浏览器 sessionStorage。
+
+3082 的 1280×720 实测先复现折叠后原生 left220 而目标 left64；修复后两者均 left64/top112/width462.078125/height608。重载保留折叠且 Input 仍为空。通用按钮样式曾覆盖隐藏与矢量尺寸，导致折叠 logo 被挤为 1px；修复后实测24px，收起按钮隐藏。UI 402 Vitest +34 Node、type/lint/format/build 通过，最终整套浏览器34项通过。品牌字号旧测试22px已按定稿19px修正。
+
+DSH 首轮并行负载下冷启动登记既有测试超时；单独复验17ms通过，单独重跑整套229/229通过（/tmp/crystra-c050-dsh-tests-rerun.log）。未修改这项既有运行逻辑或放宽超时。不存在用户决策阻塞；C051 继续按定稿 Task Browser 接真实列表和明确未知字段。
