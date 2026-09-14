@@ -219,3 +219,12 @@ UI bb7df75：WorkflowResourceViewer消费调用方提供的workspace/catalog，�
 3082资源页已显示完整分组、文件检查与原生MarkdownText（当前dsh-client-ui-primitives 0.1.1-rc.2公开导出，参数text）；标题/表格/正文实测正常。资源页窄Header原来操作组覆盖页签，先复现后将context列改为max-content并保留原横向滚动；增加选择器优先级，防止首次加载又被共享Header覆盖。工作区补studio-display容器，恢复760/520断点。资源组inert沿用宿主兼容处理。
 
 UI418+34单测、43浏览器、type/lint/format/build/deps通过；DSH正式源码本轮未改，仍6395d13。新的完整开发bundle已复制3082，当前浏览器未重新加载最后Header样式修正（重新加载会回流程设计，再点资源配置）；普通来源仍不具备正式目录接口。helper增加资源源hash核验并注入已验证的MarkdownText。未发消息、未碰3080、未发RC。C057下一步结晶数据端口，预测与实测严格分开。
+
+
+## C057 结晶分析独立投影（2026-09-15）
+
+UI `f1c5bc0` 将 WorkflowCrystallizationView 与静态设计数据分开。公共入口只消费显式 proposal / baseline / candidate、前后 IR 与对应布局、历史依据、预测假设及实测；没有历史或实测时不补设计数字。应用到草稿保持 unavailable；未绑定会话时讨论动作禁用。设计样本仍在探索 wrapper，普通入口不默认导入。
+
+Workflow 三页签已在 3082 独立开发实例显示完整的设计样本，包括结晶前后图、检查弹窗和三类证据。渲染检查发现旧颜色变量缺失导致黑色节点、连线不可见；失败浏览器断言复现后复用现有 workflow-map.tokens 修复。419 Vitest + 34 Node、44 浏览器及 type/lint/format/build/deps 通过。Input 替身草稿跨页保留通过；本样本没有本实例 package/session 绑定，不代表原生 Workflow Input 已接通。
+
+DSH 正式源码仍为 `6395d13`，开发 bundle 仅在独立 3082 更新；3080/3081 未操作。尚未发布新 RC。继续 C058：投影到期、权限撤销、上下文切换及迟到读取结果必须清除旧有效投影；五工作面 value 校验及实际 adapter 仍待接入。
