@@ -265,3 +265,10 @@ Workflow resolver 按精确 definitionId/revision、包 workspaceId/path 和本�
 独立 3082 通过 `CRYSTRA_WORKFLOW_INPUT_TEST=1` 将定稿样本显式绑定到一次性 `/private/tmp/crystra-workflow-input-acceptance` 工作区和新建未发送会话。UI harness 接受 native input 插槽。浏览器实测三种几何完全对齐：400px、416px、侧栏从64到220px；三工作面保留原生草稿；测试PNG可粘贴、跨页保留、原生预览、移除；进入Analysis隐藏原生Input。文字草稿和图片已清空，发送按钮恢复disabled，模型请求为0。[证据](drafts/evidence/c062-workflow-input.json)。
 
 未跟踪 `.workflow-input-preview.js` 的绑定仅有效1小时、来源变无效后关闭Input，正常入口没有自动启用。Task/Workflow 导航切换先停用两者再启用目标，避免两个控制器抢夺会话。正式 package adapter、发送/审批链路仍未完成。当前是原生组件装配验收，不是新RC或正式发布资格。
+
+
+## C063 隔离草案存储基础（2026-09-15）
+
+新增 draft-authoring-only store，一个显式 root 绑定一个 workspace/resource 流与来源锁。提交核对 baseRevision、不可重用 candidateRevision、proposal 幂等、候选校验与提交前权限；候选/校验上下文使用隔离副本。新不可变版本、pending 事件和幂等回执在同一文件原子替换；并发锁竞争拒绝而不覆盖，验证失败不留下半个候选。252 DSH 测试通过，包括重建store恢复、重复提案、revision冲突、来源漂移、撤权、validator修改入参及并发。
+
+这是存储基础，尚未接UI/Agent写入入口或通知派发。不会写真实包目录，不会执行/批准/发布。异常退出遗留lock需要显式恢复，不自动删锁；不声称跨服务或断电事务保证。

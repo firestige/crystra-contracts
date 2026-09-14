@@ -289,3 +289,5 @@ T0 已完成附件：[t0-decisions.md](t0-decisions.md)。新首轮分发采用 
 | L056 | 2026-09-15 | T8 IN_PROGRESS | C061 UI2514fb8 / DSH2eab864：Workflow目录保存检索/版本/视图/页码及精确revision定位；窄Header遮挡修复，421+34/45浏览器/242 DSH通过；3082目录往返复验 | 继续实际数据与精确对象关联，不等待用户指令 |
 
 | L057 | 2026-09-15 | T8 IN_PROGRESS | C062 Workflow原生Input精确绑定、三种几何/草稿保持/附件粘贴预览移除/Analysis隐藏实测通过；247 DSH测试；无模型发送 | 继续精确引用、隔离草案写入和实际服务adapter；测试绑定不发行 |
+
+| L058 | 2026-09-15 | T8 IN_PROGRESS | C063 隔离草案store基线检查/幂等/版本和pending事件原子替换，252 DSH测试；未接UI/Agent写入或派发 | 继续精确对象引用与只读/草案adapter连通，保持正式执行边界 |
