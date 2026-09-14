@@ -1,0 +1,163 @@
+{
+  "checkedAt": "2026-09-14T02:10:02.072027+00:00",
+  "authorization": "User confirmed reuse of existing release App and credentials; App name changed by user, IDs unchanged",
+  "app": {
+    "id": 4716644,
+    "clientId": "Iv23liIS3BZCeQOUWhDX",
+    "slug": "crystra-release",
+    "name": "crystra-release"
+  },
+  "installation": {
+    "id": 156531932,
+    "repositorySelection": "selected",
+    "permissions": {
+      "contents": "write",
+      "metadata": "read",
+      "workflows": "write"
+    }
+  },
+  "selectedRepositories": [
+    {
+      "id": 1336515269,
+      "full_name": "firestige/crystra"
+    },
+    {
+      "id": 1336515314,
+      "full_name": "firestige/crystra-workflow-package"
+    },
+    {
+      "id": 1336515356,
+      "full_name": "firestige/crystra-execution"
+    },
+    {
+      "id": 1336515394,
+      "full_name": "firestige/crystra-evidence"
+    },
+    {
+      "id": 1336515431,
+      "full_name": "firestige/crystra-evolution"
+    },
+    {
+      "id": 1336515477,
+      "full_name": "firestige/crystra-contracts"
+    },
+    {
+      "id": 1348270053,
+      "full_name": "firestige/crystra-ui"
+    },
+    {
+      "id": 1350488250,
+      "full_name": "firestige/crystra-dsh"
+    }
+  ],
+  "installationChanges": [],
+  "repositories": [
+    {
+      "repository": "firestige/crystra",
+      "variable": {
+        "name": "CRYSTRA_RELEASE_CLIENT_ID",
+        "updatedAt": "2026-09-14T02:09:15Z",
+        "matchesExistingAppClientId": true
+      },
+      "secret": {
+        "name": "CRYSTRA_RELEASE_APP_PRIVATE_KEY",
+        "updatedAt": "2026-09-14T02:09:16Z",
+        "uploadSucceeded": true
+      }
+    },
+    {
+      "repository": "firestige/crystra-contracts",
+      "variable": {
+        "name": "CRYSTRA_RELEASE_CLIENT_ID",
+        "updatedAt": "2026-09-14T02:09:20Z",
+        "matchesExistingAppClientId": true
+      },
+      "secret": {
+        "name": "CRYSTRA_RELEASE_APP_PRIVATE_KEY",
+        "updatedAt": "2026-09-14T02:09:22Z",
+        "uploadSucceeded": true
+      }
+    },
+    {
+      "repository": "firestige/crystra-execution",
+      "variable": {
+        "name": "CRYSTRA_RELEASE_CLIENT_ID",
+        "updatedAt": "2026-09-14T02:09:25Z",
+        "matchesExistingAppClientId": true
+      },
+      "secret": {
+        "name": "CRYSTRA_RELEASE_APP_PRIVATE_KEY",
+        "updatedAt": "2026-09-14T02:09:27Z",
+        "uploadSucceeded": true
+      }
+    },
+    {
+      "repository": "firestige/crystra-evidence",
+      "variable": {
+        "name": "CRYSTRA_RELEASE_CLIENT_ID",
+        "updatedAt": "2026-09-14T02:09:31Z",
+        "matchesExistingAppClientId": true
+      },
+      "secret": {
+        "name": "CRYSTRA_RELEASE_APP_PRIVATE_KEY",
+        "updatedAt": "2026-09-14T02:09:32Z",
+        "uploadSucceeded": true
+      }
+    },
+    {
+      "repository": "firestige/crystra-evolution",
+      "variable": {
+        "name": "CRYSTRA_RELEASE_CLIENT_ID",
+        "updatedAt": "2026-09-14T02:09:36Z",
+        "matchesExistingAppClientId": true
+      },
+      "secret": {
+        "name": "CRYSTRA_RELEASE_APP_PRIVATE_KEY",
+        "updatedAt": "2026-09-14T02:09:37Z",
+        "uploadSucceeded": true
+      }
+    },
+    {
+      "repository": "firestige/crystra-ui",
+      "variable": {
+        "name": "CRYSTRA_RELEASE_CLIENT_ID",
+        "updatedAt": "2026-09-14T02:09:41Z",
+        "matchesExistingAppClientId": true
+      },
+      "secret": {
+        "name": "CRYSTRA_RELEASE_APP_PRIVATE_KEY",
+        "updatedAt": "2026-09-14T02:09:43Z",
+        "uploadSucceeded": true
+      }
+    },
+    {
+      "repository": "firestige/crystra-workflow-package",
+      "variable": {
+        "name": "CRYSTRA_RELEASE_CLIENT_ID",
+        "updatedAt": "2026-09-14T02:09:46Z",
+        "matchesExistingAppClientId": true
+      },
+      "secret": {
+        "name": "CRYSTRA_RELEASE_APP_PRIVATE_KEY",
+        "updatedAt": "2026-09-14T02:09:48Z",
+        "uploadSucceeded": true
+      }
+    },
+    {
+      "repository": "firestige/crystra-dsh",
+      "variable": {
+        "name": "CRYSTRA_RELEASE_CLIENT_ID",
+        "updatedAt": "2026-09-14T02:09:52Z",
+        "matchesExistingAppClientId": true
+      },
+      "secret": {
+        "name": "CRYSTRA_RELEASE_APP_PRIVATE_KEY",
+        "updatedAt": "2026-09-14T02:09:53Z",
+        "uploadSucceeded": true
+      }
+    }
+  ],
+  "oldConfiguration": "preserved",
+  "privateKey": "reused existing local key; not included in evidence",
+  "verificationBoundary": "Secret upload succeeded and name/timestamp read back; encrypted value is not readable. Existing key authenticated the unchanged App. No workflow was dispatched and no release was published."
+}

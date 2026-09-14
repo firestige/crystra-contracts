@@ -4,9 +4,9 @@
 - 文档版本：2
 - 最后更新：2026-09-14
 - 总体状态：IN_PROGRESS（T0–T4 完成，T5 进行中）
-- 当前执行任务：T5
-- 当前执行者：本任务 Codex；T5
-- 下一步：发布接线 PR 验证与审核、当前文档归属及发布权限收尾；恢复细节见第 8 节
+- 当前执行任务：T6
+- 当前执行者：本任务 Codex；T6
+- 下一步：完成 Contracts 远端候选核验，再推进其余组件；恢复细节见第 8 节
 
 ## 1. 本文的作用与优先级
 
@@ -33,6 +33,7 @@
 | D09 | 忽略主仓库子模块未提交变化 | 不重置、不清空、不把它们当成此次待修复项；其它用户改动也应保护 |
 | D10 | 先验证新候选，再清理真实旧部署 | T6 在隔离空白环境验证，T7 人工清理，T8 实际切换 |
 | D11 | 保留当前领域与服务架构 | 不因单插件或更名隐式更换数据库／合并领域职责；必要配置可在插件引导 |
+| D12 | 优先复用现有发行资产 | 用户将发行 App 改名为 crystra-release；沿用原 App ID、Client ID 和私钥，不新建 App。八仓库配置范围已明确授权 |
 
 T0 已落定具体实现选择，见 [T0 决策](t0-decisions.md)。新坐标的实际发布权限配置仍属 T5；不把只读可用性检查写成可发布。
 
@@ -61,8 +62,8 @@ T0 已落定具体实现选择，见 [T0 决策](t0-decisions.md)。新坐标的
 | T2-WP | Workflow 资源更名与 main CI | T1 DONE | DONE | 本任务 Codex | main 8746d18；[验证记录与 CI](t2-workflow-progress.md) |
 | T3 | 统一 dsh-crystra 包与模块装配 | T2-EX、T2-UI DONE | DONE | 本任务 Codex | main b951b9c；PR #33、CI 34762427482 成功；[恢复记录](t3-progress.md) |
 | T4 | 插件初始化、取消独立安装步骤 | T3 DONE；完整服务验收需 T2-EV、T2-EO、T2-WP DONE | DONE | 本任务 Codex | PR #34；CI 34764469211；195 测试、空白浏览器和真实服务通过；[恢复记录](t4-progress.md) |
-| T5 | 当前品牌收尾与外部坐标切换 | 准备可在 T0 后；实际切换需 T1–T4 DONE | IN_PROGRESS | 本任务 Codex | 八仓库已更名且 ID 不变；组件 CI 通过；发布凭据配置等待明确授权；[恢复记录](t5-progress.md) |
-| T6 | 新组件候选与隔离环境组合验证 | T5 DONE | PENDING | 未分配 | — |
+| T5 | 当前品牌收尾与外部坐标切换 | 准备可在 T0 后；实际切换需 T1–T4 DONE | DONE | 本任务 Codex | 配置复用与读回见 release-configuration.json；发布和文档 PR #275/#276、DSH #37 已合并 |
+| T6 | 新组件候选与隔离环境组合验证 | T5 DONE | IN_PROGRESS | 本任务 Codex | Contracts 首个 RC 已通过远端字节与资格回执核验；见 [T6 记录](t6-progress.md) |
 | T7 | 一次性人工清理实际旧部署 | T6 DONE；只读盘点可在 T0 开始 | PENDING | 未分配 | — |
 | T8 | 实际安装验收与发布收尾 | T7 DONE；使用 T6 验证制品 | PENDING | 未分配 | — |
 
@@ -124,17 +125,17 @@ T0 产出必须链接在本文中，可以建立同目录的决策附件；不�
 
 | 字段 | 当前值 |
 |---|---|
-| 检查点 | C023：#275 已合并；现行文档收尾，发布权限待明确授权 |
-| 当前任务 | T5 IN_PROGRESS；T0–T4 DONE |
-| 已完成 | 八仓库更名、origin 更新；Execution 0a708b5、Evolution 984a0dc、Workflow 2fc61f0 新 tag 坐标修复与 CI 成功 |
-| 未完成 | T5 现行文档 PR 与权限配置；本地目录协调窗口；T6–T8 |
+| 检查点 | C024：沿用更名后的发行 App，八仓库配置就绪；进入 Contracts 候选资格 |
+| 当前任务 | T5 DONE；T6 IN_PROGRESS；T0–T4 DONE |
+| 已完成 | 八仓库远端更名及唯一插件身份；现行发布代码／文档 PR 全部合并；原发行 App 改名但 ID 不变；八仓库新 Actions 变量与 Secret 上传并读回 |
+| 未完成 | T6 全部新组件、服务、插件及组合的远端资格；T7–T8；本地 checkout 路径仅在协调窗口调整 |
 | 本轮产品变更 | 新 Workflow tag 命名在发行端与两消费端一致；移除 Evolution 历史制品回退 |
-| 本轮仓库／发布／部署操作 | repository-renames.json 记录相同仓库 ID；没有新发布或旧部署清理 |
-| 工作路径 | 台账 /Users/firestige/Projects/wsr-contracts，codex/crystra-rename-checkpoint-c022；DSH 文档 codex/crystra-lifecycle-docs-bot；组合隔离 /tmp/crystra-combination-stage，codex/crystra-docs-ownership-bot，基线 5fa0fc17a1dbd03dbd1cab43d0e8fc6a29867c05 |
-| 文档持久化 | C022/C023 已提交 Contracts bot PR #17，非 Draft；main 合并前以本恢复分支为最新，不直推 main |
-| 活跃进程／作业 | #275 已由用户合并，合并提交 5fa0fc17；组合 #276 与 DSH #37 均 CI 成功、bot 非 Draft；Contracts #17 同步本台账；无候选发布作业 |
-| 已知阻塞 | 八仓库均缺 CRYSTRA_RELEASE_CLIENT_ID／CRYSTRA_RELEASE_APP_PRIVATE_KEY；详见 release-authorization.md，发布凭据复制与必要安装范围补充仍待明确授权 |
-| 下一条动作 | 读回本轮文档 PR／CI，用户审核；明确授权后按 release-authorization.md 配置发布权限，再推进 T6；不清理原组合子模块或旧部署 |
+| 本轮仓库／发布／部署操作 | 已按用户明确授权复用旧发行私钥配置八仓库；无需改动 App 安装范围；T6 候选推进中，未触发 GA、未清理部署 |
+| 工作路径 | 台账 /Users/firestige/Projects/wsr-contracts，codex/crystra-release-configuration-bot；Contracts T6 干净克隆 /tmp/crystra-contracts-t6，13adf4d；原组件本地路径保持不动 |
+| 文档持久化 | 先前 Contracts #17 已合并；C024 在独立 bot 审核分支保存，不直推 main |
+| 活跃进程／作业 | #276、DSH #37、Contracts #17 均已合并；Contracts RC workflow 34798564767 成功，下载验证通过；无 GA 或清理作业 |
+| 已知阻塞 | 发布配置授权已解除；没有继续等待授权的凭据操作。App 更名由用户完成，原 ID 与 Client ID 不变 |
+| 下一条动作 | 按 t6-progress.md 推进其余组件候选、服务归档、单插件与最终组合；Contracts RC 可作为精确已核验输入；GA 仍由人决定 |
 | 禁止误恢复项 | 不重做仓库更名；不绕过凭据审批；保护原组合子模块脏内容，不消费旧制品 |
 
 
