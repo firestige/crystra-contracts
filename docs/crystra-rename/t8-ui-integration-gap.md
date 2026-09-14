@@ -306,3 +306,11 @@ DSH `7ec3228`用声明资源目录约束资源和路径，复用C063隔离store�
 实际3082通过显式测试桥连接127.0.0.1:4192；桥只接受3082 Origin、校验12项source lock；开发helper未纳入发布。首次保存因样本包0.4.6误作资源版本被正确拒绝；修正adapter为v8-resource-snapshot后，保存成功且浏览器刷新恢复。README候选含C067验收标记，原始snapshot及源包未修改。编辑后旧关系图和对话引用暂停，以免误用旧revision。证据`drafts/evidence/c067-resource-authoring.json`。
 
 425 Vitest+34 Node、45浏览器、259 DSH测试通过；type/lint/format/build/deps通过。新RC未发布。当前只证明隔离草案存储和UI联调，不证明正式包文件写入、Agent读取候选、可靠事件投递、跨Workflow未保存编辑保留或正式领域契约完成。
+
+## C068 未保存资源草稿导航恢复（2026-09-15）
+
+UI `d3b93e6`：显式资源保存端口的本地草稿按definitionId、definition revision、workspace root隔离。保存后清除本地dirty状态；未保存编辑在组件卸载后保留，返回同一身份恢复选择文件、内容与编辑模式，其他revision不能继承。只要仍有dirty草稿，跨页面也保留beforeunload保护；此机制是内存恢复，不声称刷新后持久化未保存内容。
+
+新增隔离/remount与unload回归。实际3082编辑README、退到工作流目录、返回同一版本并打开资源页，预览和源码文末均出现C068未保存标记；源码为虚拟化行，必须定位文末而非仅取当前DOM文本。最终取消测试编辑，页面显示无未保存修改。426 Vitest+34 Node、45浏览器、type/lint/format/build通过。DSH仍7ec3228/259测试；未发RC。
+
+远端只读核对：firestige/crystra#277、crystra-dsh#38、crystra-contracts#18仍open、非Draft、project-ops-agent bot；crystra-ui无openPR。不能把本地UI完成等同远端已发布。
