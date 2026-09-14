@@ -127,11 +127,11 @@ T0 产出必须链接在本文中，可以建立同目录的决策附件；不�
 
 | 字段 | 当前值 |
 |---|---|
-| 检查点 | C069：UI 4f3d22a 已自动发布 crystra-ui-v0.1.0-rc.2，下载资格校验通过；DSH e2b3c2b 消费精确 RC2，259 测试及打包验证通过；UI PR #8 为 bot／非 Draft，CI 全绿。新 DSH RC 与组合仍待完成 |
+| 检查点 | C070/C071 进行中：真实 Trace 目录已接现有 Delivery inventory 与 Evidence 根关联，DSH 264 测试及3082真实空目录/抽屉通过；用已存真实响应发现 UI RC2 Facts 解码器字段名缺陷，UI 05c4c12 已修正为 registry ID，428+34/45及完整本地门禁通过，RC3作业34880090833运行中。暂不以 RC2 声明目录可用 |
 | 当前任务 | T0–T7 DONE；T8 IN_PROGRESS |
 | 已完成 | 更名／配置复用；crystra-v0.1.0-rc.1 远端六文件与本地相同；真实执行、入库、Trace、评估及 Workflow AVAILABLE；旧部署备份隔离完成 |
 | 未完成 | 实际 DSH 安装验收与公开安装入口收尾；bot PR #277、DSH #38、Execution #46、Evolution #10、Contracts #18 尚需按审批规则合并 |
-| 工作路径 | UI /tmp/crystra-ui-host-integration `4f3d22a`；DSH /tmp/crystra-dsh-t6 `e2b3c2b`；Contracts /Users/firestige/Projects/wsr-contracts。隔离开发3082与资源测试4192；3080用户实例、3081旧RC验收实例不改动 |
+| 工作路径 | UI /tmp/crystra-ui-host-integration `05c4c12`；DSH /tmp/crystra-dsh-t6 `e2b3c2b`；Contracts /Users/firestige/Projects/wsr-contracts。隔离开发3082与资源测试4192；3080用户实例、3081旧RC验收实例不改动 |
 | 活跃进程／作业 | 隔离开发DSH3082；资源草案测试桥4192（session82908，需复验存活）；UI预览4191。3080与3081不改动。4192仅测试helper，未纳入发布 |
 | 隔离档案 | /Users/firestige/Library/Application Support/Crystra-quarantine/20260914-wsr；17 个校验归档、旧运行目录原件、15 个无容器引用的离线卷 |
 | 已知阻塞 | 当前无用户决策阻塞。正式Task/Workflow adapter、草案事件消费、模型/provider/approval联调及新DSH RC与组合仍未完成。已验证确定性命令与附件保管，不据此宣称模型链路通过 |
@@ -303,3 +303,7 @@ T0 已完成附件：[t0-decisions.md](t0-decisions.md)。新首轮分发采用 
 | L063 | 2026-09-15 | T8 IN_PROGRESS | C068 UI d3b93e6：资源草稿按精确身份保留、跨页卸载仍保护刷新；实际3082目录往返后编辑器文末恢复；426+34/45通过。远端root277、DSH38、Contracts18仍open非Draft/bot；UI无openPR | 真实数据与候选消费链路；不要求用户此刻合并 |
 
 | L064 | 2026-09-15 | T8 IN_PROGRESS | C069 UI PR #8 bot／非 Draft，CI 34877525947 与 RC 34877591941 成功；RC2 下载4资产资格校验通过；DSH e2b3c2b 精确输入、259测试、pack通过 | 接真实Trace目录等数据端口；继续DSH RC与组合，不发GA |
+
+| L065 | 2026-09-15 | T8 IN_PROGRESS | C070真实目录及失效清空已实现；C071真实服务留档回放揭示Facts decoder拒绝正式字段ID，已在UI复现并修正，待新RC验证 | 完成UI完整门禁与后续RC，再更新DSH输入及组合 |
+
+| L066 | 2026-09-15 | T8 IN_PROGRESS | C071 UI05c4c12：Facts字段ID修复完整本地门禁通过，bot更新PR8非Draft，RC3自动作业34880090833；C072资源精确历史版本读取3项针对性测试通过 | 下载RC3、DSH真实回放及新候选；Agent通知仍未实现 |

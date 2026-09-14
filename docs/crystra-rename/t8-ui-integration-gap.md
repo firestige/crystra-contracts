@@ -320,3 +320,9 @@ UI `d3b93e6`：显式资源保存端口的本地草稿按definitionId、definiti
 UI `4f3d22a78d8e9f474299d6a4b5a8739e03a8f0ad` 已通过完整本地资格（426 Vitest、34 Node、45 browser、type/lint/format/build/deps、package、React18、Docker）及远端 CI 34877525947。自动 RC 34877591941 成功，发布 [crystra-ui-v0.1.0-rc.2](https://github.com/firestige/crystra-ui/releases/tag/crystra-ui-v0.1.0-rc.2)。下载四个资产执行 `release.mjs verify --qualified` 通过；包 SHA256 `884ff9c2a344846fad787cde91eea5833e467d60b2f840e45211a92a399f361f`。
 
 [UI PR #8](https://github.com/firestige/crystra-ui/pull/8) 为 project-ops-agent bot、非 Draft，合并仍归用户。DSH `e2b3c2b` 更新发布 URL、锁文件、候选输入元数据及缓存，使用公开命名导出重建正式 bundle；259 项测试、输入校验、pack 验证通过。开发 fixture helper 未进入正式 bundle。此结果只证明 UI 组件制品及 DSH 消费输入，新 DSH RC、完整页面真实数据与组合资格仍未完成。
+
+## C070/C071 真实 Trace 目录与 Facts 解码修正（进行中）
+
+DSH 目录按当前实例 Delivery inventory 的真实 Task、Workflow 和 startedAt 投影，用 Evidence `DELIVERY_ROOT` 的 SPAN → DELIVERY 精确关联打开 Trace；缺失、多根、过期、分页快照变化和来源撤销均不猜测。目录复用公开 DeliveryDirectory 和 Trace 插槽，3082 关闭 Analysis 样本后验证真实空目录、抽屉及错误输入；全量264 DSH测试通过。
+
+追加现有 T6 真实服务留档回放（`evidence/t6-real-service-chain.json` 的 root fact）发现 RC2 Facts decoder 仍按 ingestion 属性名判断 fields/dimensions，拒绝正式 `C01` 等 registry ID。已在 UI 补两个失败回归并修正，保持 ID 顺序、重复、未知字段拒绝。当前428 Vitest与34 Node通过；完整门禁及新RC待完成。此处记录的是已确认软件缺陷，不需要更改正式契约或用户决策。
