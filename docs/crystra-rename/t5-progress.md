@@ -113,3 +113,5 @@ T6 尚未发布候选。T7 尚未清理任何真实旧部署。
 - 原组合脏子模块、所有旧运行数据未动；本地 checkout 名暂不移动，仍待协调窗口。T5 未完成，T6–T8 未执行。
 
 - 文档 PR 已读回：组合 [#276](https://github.com/firestige/crystra/pull/276)，head 9ce01cae4230ebf21959fdd2c7b41ab7d4727c68；DSH [#37](https://github.com/firestige/crystra-dsh/pull/37)，head 88f48d8baeaa87408365d5b7e51a09ab8b71289e。均 project-ops-agent[bot]、非 Draft，未自动合并。
+
+- 远端 CI：组合 #276 qualify 34795084552、release-governance 34795084555 均成功；DSH #37 verify 34795095534 成功。恢复台账已通过 bot PR [Contracts #17](https://github.com/firestige/crystra-contracts/pull/17) 提交，非 Draft；此前本地 C022 与本轮 C023 均包含在该审核分支中。发布权限授权问题已重新提出，尚未收到明确答复；未执行凭据配置。

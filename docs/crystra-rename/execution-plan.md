@@ -131,8 +131,8 @@ T0 产出必须链接在本文中，可以建立同目录的决策附件；不�
 | 本轮产品变更 | 新 Workflow tag 命名在发行端与两消费端一致；移除 Evolution 历史制品回退 |
 | 本轮仓库／发布／部署操作 | repository-renames.json 记录相同仓库 ID；没有新发布或旧部署清理 |
 | 工作路径 | 台账 /Users/firestige/Projects/wsr-contracts，codex/crystra-rename-checkpoint-c022；DSH 文档 codex/crystra-lifecycle-docs-bot；组合隔离 /tmp/crystra-combination-stage，codex/crystra-docs-ownership-bot，基线 5fa0fc17a1dbd03dbd1cab43d0e8fc6a29867c05 |
-| 文档持久化 | 前一轮 C022 已本地提交 b684f59；本轮 C023 通过 bot PR 同步，不直推 Contracts main |
-| 活跃进程／作业 | #275 已由用户合并，合并提交 5fa0fc17；当前文档 PR 为组合 #276、DSH #37，均 bot 非 Draft；无候选发布作业 |
+| 文档持久化 | C022/C023 已提交 Contracts bot PR #17，非 Draft；main 合并前以本恢复分支为最新，不直推 main |
+| 活跃进程／作业 | #275 已由用户合并，合并提交 5fa0fc17；组合 #276 与 DSH #37 均 CI 成功、bot 非 Draft；Contracts #17 同步本台账；无候选发布作业 |
 | 已知阻塞 | 八仓库均缺 CRYSTRA_RELEASE_CLIENT_ID／CRYSTRA_RELEASE_APP_PRIVATE_KEY；详见 release-authorization.md，发布凭据复制与必要安装范围补充仍待明确授权 |
 | 下一条动作 | 读回本轮文档 PR／CI，用户审核；明确授权后按 release-authorization.md 配置发布权限，再推进 T6；不清理原组合子模块或旧部署 |
 | 禁止误恢复项 | 不重做仓库更名；不绕过凭据审批；保护原组合子模块脏内容，不消费旧制品 |
