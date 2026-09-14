@@ -127,11 +127,11 @@ T0 产出必须链接在本文中，可以建立同目录的决策附件；不�
 
 | 字段 | 当前值 |
 |---|---|
-| 检查点 | C046：双实例会话列表/历史/改名及新增事件隔离已验证；新建页保留 Crystra Shell 并复用原生 Input，216 测试通过 |
+| 检查点 | C047：新建页原生 Input 与双实例隔离已验证；精确 Task 会话解析完成，尚未接页面；220 测试通过 |
 | 当前任务 | T0–T7 DONE；T8 IN_PROGRESS |
 | 已完成 | 更名／配置复用；crystra-v0.1.0-rc.1 远端六文件与本地相同；真实执行、入库、Trace、评估及 Workflow AVAILABLE；旧部署备份隔离完成 |
 | 未完成 | 实际 DSH 安装验收与公开安装入口收尾；bot PR #277、DSH #38、Execution #46、Evolution #10、Contracts #18 尚需按审批规则合并 |
-| 工作路径 | 新 UI /tmp/crystra-ui-host-integration `97df006`；新宿主 /tmp/crystra-dsh-t6 `72725a6`（未发布）。原组合 /tmp/crystra-combination-stage 1593f589；/tmp/crystra-dsh-t6 产品候选 9a9777d、另有 test-only 742e1de；实际 ~/.dsh/profiles/web；台账 /Users/firestige/Projects/wsr-contracts |
+| 工作路径 | 新 UI /tmp/crystra-ui-host-integration `97df006`；新宿主 /tmp/crystra-dsh-t6 `426f3ed`（未发布）。原组合 /tmp/crystra-combination-stage 1593f589；/tmp/crystra-dsh-t6 产品候选 9a9777d、另有 test-only 742e1de；实际 ~/.dsh/profiles/web；台账 /Users/firestige/Projects/wsr-contracts |
 | 活跃进程／作业 | 本次安装／归档命令完成；现有 DSH PID 40455（全局 web，3080）保留。精确 DSH 0.1.1-rc.2 已作为普通依赖安装于 ~/Library/Application Support/Crystra/tools，未降级全局 CLI |
 | 隔离档案 | /Users/firestige/Library/Application Support/Crystra-quarantine/20260914-wsr；17 个校验归档、旧运行目录原件、15 个无容器引用的离线卷 |
 | 已知阻塞 | Input 复用与会话隔离的装配方案待验证，不是待用户批准共享会话或 fork；见 drafts/dsh-host-layout.md C044。旧 Workflow 匿名额度 403 仅为此前证据，当前未复验，不按旧恢复时刻推定仍被限流。无 GA 门槛 |
@@ -275,3 +275,5 @@ T0 已完成附件：[t0-decisions.md](t0-decisions.md)。新首轮分发采用 
 | L049 | 2026-09-14 | T8 隔离装配核对 | 确认 Input 按 Session scope 依赖输入状态机与 RPC；默认会话与工作区存储归 DSH_HOME。3082 独立 home、空会话列表已核对；native picker 无网页菜单不能直接定性为故障，原生窗口检查工具长时返回仍未找到 picker | [装配核对与验证顺序](drafts/input-session-assembly.md)；继续专属实例隔离及 v8 Input 组合验证，无 fork 授权阻塞 |
 
 | L050 | 2026-09-14 | T8 Input 接入与隔离实证 | 两个一次性实例通过会话读写和新增事件隔离；3082 新建任务保留 Crystra Shell，原生菜单与未发送草稿往返通过，Analysis 隐藏底层输入；216/216 Node 通过 | drafts/input-session-assembly.md C046；继续 Task/Workflow 精确绑定与完整工作面，不代表新 RC |
+
+| L051 | 2026-09-14 | T8 Task 会话解析 | DSH 426f3ed：按正式 Task identity / sessionCorrelation 与当前实例成员解析，零关联不绑定、多候选不猜测、foreign+local 仍歧义、失效来源拒绝；新增 4 回归，完整 220/220 通过 | 解析器尚未接 Task 页面，不代表已有 Task Input 可用；下一步接当前实例的实时成员、control-plane 与页面状态 |

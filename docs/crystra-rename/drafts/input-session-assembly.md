@@ -42,3 +42,7 @@ DSH 新增 new-task 产品路由；点击新建任务清空当前选择并留在
 剩余：Task/Workflow 精确会话绑定与工作面布局、Crystra 页内返回导航的草稿连续性、附件/审批/发送真实链路、品牌 hero 与 v8 完整页面接入、组件 RC 与组合重新资格验证。新建页成功不等于这些已完成。
 
 实现提交：DSH 72725a6。一次性 3083/3084 验证进程已停止，测试目录与结果保留；3082 开发实例继续运行。
+
+## C047 精确 Task 会话解析
+
+DSH 426f3ed 增加只读 resolveTaskSessionBinding，复用正式 control-plane 校验，要求 ready 来源与本实例 ready 成员列表。相同 Task 多 Delivery 同 Session 可归一；不同 Session 必须保留歧义；foreign+local 不因过滤而变成单候选；空关联或失效来源不猜测。四项针对性回归与全套 220/220 通过（/tmp/crystra-c047-tests.log）。解析器尚未连接页面或执行 sessions.open；下一步装配实时 control-plane、Session 成员和 Task 页面，并验证过期/切页竞态。新建页开发 bundle 仍为 C046 行为，无新 RC。
