@@ -21,3 +21,9 @@ RPC 使用既有 loopback `/crystra-exploration` 下的 `workflow/catalog/read`�
 客户端每 5 秒复核。有效读取租期最多 10 秒，并且不超过快照 expiry；卡住的刷新不能延长旧内容。相同投影复用对象，避免轮询重置图布局；来源/绑定失效后清空，之后的新有效读取可恢复。
 
 验证：局部端口/页面测试、侧栏身份及轮询保持修复后的 285 项完整回归、build、boundaries 均通过。3083 本地 DSH 代码 + 已发布 UI RC3 实际呈现三工作面，破坏 binding 后目录及当前结晶内容撤下，恢复后可再读取。这里只证明条件探索投影可用，不宣称正式 Workflow owner、原生会话、资源写入和 Agent 通知已接通。当前 C076 尚未发布，公开基线仍是 DSH RC3 与组合 RC2。
+
+## C077 可选原生输入绑定
+
+projection 可显式提供 `inputBinding:{workspaceId,packageRoot,sessionId}`。这里的 workspaceId 是专属 DSH 实例的工作区身份，独立于 selection 中的逻辑工作区身份；packageRoot 必须是绝对路径。客户端要求工作区列表和会话列表均 ready、精确路径与成员归属一致、未归档，并只在当前 Workflow 的精确 revision 上选中该会话。不创建会话、不传递凭据、不发送消息。来源撤销、换页或成员失效时隐藏输入。
+
+DSH 4624028，287项回归/build/boundaries通过。3083 实测复用原生 Composer；切工作面及 Analysis 往返保留未发送草稿，Analysis 可访问输入数0；foreign-session身份使输入撤下，恢复原精确身份后草稿仍在。测试会话与用户3080分离。测试草稿已用键盘清空，重载确认仍为空，发送按钮disabled。原生输入接通不等于已实现对象引用、候选读取或 Agent 通知。

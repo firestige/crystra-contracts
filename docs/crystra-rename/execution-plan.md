@@ -131,11 +131,11 @@ T0 产出必须链接在本文中，可以建立同目录的决策附件；不�
 | 当前任务 | T0–T7 DONE；T8 IN_PROGRESS |
 | 已完成 | 更名／配置复用；crystra-v0.1.0-rc.1 远端六文件与本地相同；真实执行、入库、Trace、评估及 Workflow AVAILABLE；旧部署备份隔离完成 |
 | 未完成 | 实际 DSH 安装验收与公开安装入口收尾；bot PR #277、DSH #38、Execution #46、Evolution #10、Contracts #18 尚需按审批规则合并 |
-| 工作路径 | UI /tmp/crystra-ui-host-integration `05c4c12`；DSH /tmp/crystra-dsh-t6 `79fa278`；干净资格副本 /tmp/crystra-dsh-candidate-rc3；Contracts /Users/firestige/Projects/wsr-contracts。隔离开发3082与资源测试4192；3080用户实例、3081旧RC验收实例不改动 |
-| 活跃进程／作业 | 3083 /tmp/crystra-task-file-dsh-home，session41610：C076本地源码与bundle覆盖RC3，仅开发验证。原RC3源码备份 /tmp/crystra-c076-installed-rc3-source；C075曾确认541文件一致。3082、4192、4191保留，跨恢复复验存活；3080/3081不改动。 |
+| 工作路径 | UI /tmp/crystra-ui-host-integration `05c4c12`；DSH /tmp/crystra-dsh-t6 `4624028`；干净资格副本 /tmp/crystra-dsh-candidate-rc3；Contracts /Users/firestige/Projects/wsr-contracts。隔离开发3082与资源测试4192；3080用户实例、3081旧RC验收实例不改动 |
+| 活跃进程／作业 | 3083 /tmp/crystra-task-file-dsh-home，session12360：C077本地源码与bundle覆盖RC3，仅开发验证。原RC3源码备份 /tmp/crystra-c076-installed-rc3-source；C075曾确认541文件一致。3082、4192、4191保留，跨恢复复验存活；3080/3081不改动。 |
 | 隔离档案 | /Users/firestige/Library/Application Support/Crystra-quarantine/20260914-wsr；17 个校验归档、旧运行目录原件、15 个无容器引用的离线卷 |
 | 已知阻塞 | 无用户决策阻塞。Workflow 生产端口、精确计划/文档/证据关联、草案事件消费及模型/provider/approval 联调尚待完成。确定性命令通过不等于模型链路通过。 |
-| 下一条动作 | C077：接入条件 Workflow projection 的可选 inputBinding，复用精确本实例工作区/会话成员验证。已写 focused 测试并通过；尚未提交。准备在3083新建无模型测试会话验证原生Input和切页草稿连续性，再接资源草案消费。C076实现已提交79fa278、285回归通过；暂不发布新RC，不发GA。 |
+| 下一条动作 | C078：接通 Workflow 资源的精确引用/候选读取，沿用不可变草案 store 和原生 Input facade。C077已提交4624028、287回归通过，3083原生Input/切页连续性/foreign会话拒绝实测完成；测试草稿重载后仍为空，发送按钮disabled。暂不发布新RC，不发GA。 |
 | 禁止误恢复项 | 不重做更名；不删除 ~/.config/wsr/credentials 复用私钥；不动原组合子模块脏内容；不消费旧档案；不自动合并／发 GA |
 
 
@@ -315,3 +315,5 @@ T0 已完成附件：[t0-decisions.md](t0-decisions.md)。新首轮分发采用 
 | L069 | 2026-09-15 | T8 IN_PROGRESS | C075：DSH RC3 下载与本地冻结字节一致，组合 RC2 六资产一致；3083 实际发布包 541 文件校验且五工作面显示，控制台无新错误 | C076 Workflow 配置式草案读取进行中；不发 GA |
 
 | L070 | 2026-09-15 | T8 IN_PROGRESS | C076 Workflow 配置式目录与三工作面接入，285回归/build/boundaries通过，3083版本失效撤销恢复通过 | 继续原生 Workflow 输入精确绑定和资源草案读取/消费；C076暂不发新RC |
+
+| L071 | 2026-09-15 | T8 IN_PROGRESS | C077 4624028：287回归/build/boundaries通过；3083原生Workflow输入、切页保留、foreign会话拒绝与恢复实测通过 | 接资源引用/候选读取与草案消费；测试草稿已清空且重载确认 |
