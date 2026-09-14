@@ -127,11 +127,11 @@ T0 产出必须链接在本文中，可以建立同目录的决策附件；不�
 
 | 字段 | 当前值 |
 |---|---|
-| 检查点 | C066：DSH a710b07 / UI 243e79c。原生非空Session页头通过公开slot装配，256 DSH回归；实际3082从Delivery回Crystra恢复chat且保留草稿。C065确定性命令与附件保管通过，模型steps=0。未发布新RC |
+| 检查点 | C067：UI 198cf76 / DSH 7ec3228。显式资源草案保存、刷新恢复、版本冲突与撤权保持、UTF-8容量校验通过；425+34 UI单测、45浏览器、259 DSH测试。C066非空Input页头已装配。未发布新RC |
 | 当前任务 | T0–T7 DONE；T8 IN_PROGRESS |
 | 已完成 | 更名／配置复用；crystra-v0.1.0-rc.1 远端六文件与本地相同；真实执行、入库、Trace、评估及 Workflow AVAILABLE；旧部署备份隔离完成 |
 | 未完成 | 实际 DSH 安装验收与公开安装入口收尾；bot PR #277、DSH #38、Execution #46、Evolution #10、Contracts #18 尚需按审批规则合并 |
-| 工作路径 | UI /tmp/crystra-ui-host-integration `243e79c`；DSH /tmp/crystra-dsh-t6 `a710b07`；Contracts /Users/firestige/Projects/wsr-contracts。隔离开发3082；3080用户实例、3081旧RC验收实例不改动 |
+| 工作路径 | UI /tmp/crystra-ui-host-integration `198cf76`；DSH /tmp/crystra-dsh-t6 `7ec3228`；Contracts /Users/firestige/Projects/wsr-contracts。隔离开发3082；3080用户实例、3081旧RC验收实例不改动 |
 | 活跃进程／作业 | 本次安装／归档命令完成；现有 DSH PID 40455（全局 web，3080）保留。精确 DSH 0.1.1-rc.2 已作为普通依赖安装于 ~/Library/Application Support/Crystra/tools，未降级全局 CLI |
 | 隔离档案 | /Users/firestige/Library/Application Support/Crystra-quarantine/20260914-wsr；17 个校验归档、旧运行目录原件、15 个无容器引用的离线卷 |
 | 已知阻塞 | 当前无用户决策阻塞。正式Task/Workflow adapter、资源草案保存接入、模型/provider/approval联调及新RC仍未完成。已验证确定性命令与附件保管，不据此宣称模型链路通过 |
@@ -297,3 +297,5 @@ T0 已完成附件：[t0-decisions.md](t0-decisions.md)。新首轮分发采用 
 | L060 | 2026-09-15 | T8 IN_PROGRESS | C065原生doctor提交与诊断返回、有效图片持久化SHA核对、错误附件拒绝和草稿保持通过；模型steps=0。管理命令按既有策略拒绝附件 | 处理有历史Session后的重复原生Header，继续资源草案写入/正式adapter；不宣称模型或审批链路通过 |
 
 | L061 | 2026-09-15 | T8 IN_PROGRESS | C066 DSH a710b07：公开Header shadowing复用原生store；256回归通过，实际Delivery返回chat、历史与草稿保留、旧Header恢复已验 | 资源草案保存接入；继续正式adapter与新RC资格，不需要用户决策 |
+
+| L062 | 2026-09-15 | T8 IN_PROGRESS | C067 UI198cf76/DSH7ec3228：资源显式异步保存、隔离持久化、刷新恢复；来源未修改，旧版本拒绝、撤权和UTF-8边界通过；425+34/45/259测试 | 接真实数据端口、草案事件消费与Agent读取精确候选；未发布RC |

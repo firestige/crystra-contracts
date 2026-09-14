@@ -43,7 +43,7 @@ response 具有相同 binding，并带 `snapshotRevision`、`expiresAt`（UTC IS
 
 提案带 proposalId、task/workspace/resource identity、baseRevision、candidateRevision、完整候选及 source refs。隔离 store 在一个事务中核对 baseRevision、结构/引用、适用授权，再保存不可变新版本和待通知事件；同 proposalId+相同内容幂等，不同内容冲突；失败不得留下半份新版本。权限与 authority 在提交时再次核验。Input 为 Task 唯一写入口，Workflow 按其后续已确认裁定提供资源写入口。草案提交成功不是正式计划批准或执行授权。
 
-C063 隔离 store 实现了单资源流内的基线比较、不可变版本、proposal 幂等、读取/提交时上下文复核、候选校验隔离副本，以及新版本和 pending 事件的同文件原子替换。并发 writer 拒绝 STORE_BUSY；进程异常遗留 lock 不自动抢占。尚未接资源 UI、Agent 写入或事件投递，不宣称跨服务事务或通知成功。首条消息持久化、subject 原子更新、确认记录的语义核验、Task 指标算法、DSL 映射、可靠事件投递逐项验证前均为 unavailable。草案可渲染性与正式运行链路分别验收。
+C063 隔离 store 实现了单资源流内的基线比较、不可变版本、proposal 幂等、读取/提交时上下文复核、候选校验隔离副本，以及新版本和 pending 事件的同文件原子替换。并发 writer 拒绝 STORE_BUSY；进程异常遗留 lock 不自动抢占。C067已接显式资源UI测试端口；尚未接Agent写入或事件投递，不宣称跨服务事务或通知成功。首条消息持久化、subject 原子更新、确认记录的语义核验、Task 指标算法、DSL 映射、可靠事件投递逐项验证前均为 unavailable。草案可渲染性与正式运行链路分别验收。
 
 ## 推进顺序
 
@@ -53,3 +53,5 @@ C063 隔离 store 实现了单资源流内的基线比较、不可变版本、pr
 4. 记录效果、反例和仍不成立的前提；决定保留/修订/作废草案。正式化需要单独承认，不能因进入 RC 自动发生。
 
 执行状态继续只在 [执行计划](../execution-plan.md) 中维护。
+
+C067资源端口按声明的resourceId/path和精确文件版本工作，外部异步保存必须更新快照后再确认。当前存储是独立候选，不修改源包；编辑后旧语义关系和引用暂停。开发4192桥不进入制品。

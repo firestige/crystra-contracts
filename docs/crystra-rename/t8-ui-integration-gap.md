@@ -296,3 +296,13 @@ DSH `a710b07` 使用0.1.1-rc.2公开`conversation.session.header` shadowing和�
 256回归通过。实际3082非空会话不再呈现原生标题/模式/旧标签；退出到隔离Harness原Header恢复，选择Delivery后返回Crystra自动恢复对话，未发送草稿完整保留；最终清空测试草稿、发送按钮禁用。原生历史含C065有效图片，截图可见。Conversation精确SHA增加qualification guard。未改3080/3081、未调用模型、未发RC。
 
 边界：使用公开注册表的shared store seat；不兼容宿主保留原Header，不宣称跨版本支持。原生工具详情/轨迹的完整交互尚需带真实工具结果继续验收。
+
+## C067 资源草案编辑和持久化（2026-09-15）
+
+UI `198cf76`增加显式`onSaveDraft`异步端口；默认只读。请求携带resourceId/path/baseRevision/baseContent/content，文件精确revision优先于workspace版本。宿主必须完成持久化并提供刷新后的snapshot再resolve。保存中锁定重复提交，冲突和失败保留草稿；保存期间撤权不接受迟到结果。不会直接改写传入snapshot。
+
+DSH `7ec3228`用声明资源目录约束资源和路径，复用C063隔离store，按文件流保存不可变候选、幂等proposal与pending事件。上下文身份失效拒绝。UTF-8字节上限替代字符计数，避免中文大内容写入后无法读回。
+
+实际3082通过显式测试桥连接127.0.0.1:4192；桥只接受3082 Origin、校验12项source lock；开发helper未纳入发布。首次保存因样本包0.4.6误作资源版本被正确拒绝；修正adapter为v8-resource-snapshot后，保存成功且浏览器刷新恢复。README候选含C067验收标记，原始snapshot及源包未修改。编辑后旧关系图和对话引用暂停，以免误用旧revision。证据`drafts/evidence/c067-resource-authoring.json`。
+
+425 Vitest+34 Node、45浏览器、259 DSH测试通过；type/lint/format/build/deps通过。新RC未发布。当前只证明隔离草案存储和UI联调，不证明正式包文件写入、Agent读取候选、可靠事件投递、跨Workflow未保存编辑保留或正式领域契约完成。
