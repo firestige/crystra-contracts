@@ -127,7 +127,7 @@ T0 产出必须链接在本文中，可以建立同目录的决策附件；不�
 
 | 字段 | 当前值 |
 |---|---|
-| 检查点 | C056：UI f1c5bc0 / DSH 6395d13 接显式只读资源目录/内容/关系，原生Markdown已实测；UI419+34单测、43浏览器通过。C057结晶投影分离进行中，未发布新RC |
+| 检查点 | C061：UI 2514fb8 / DSH 2eab864。Workflow 三工作面与五 Task 工作面显式草案探索已在3082验证；投影到期/撤权清空、目录版本和List恢复通过；UI421+34单测、45浏览器，DSH242测试。未发布新RC |
 | 当前任务 | T0–T7 DONE；T8 IN_PROGRESS |
 | 已完成 | 更名／配置复用；crystra-v0.1.0-rc.1 远端六文件与本地相同；真实执行、入库、Trace、评估及 Workflow AVAILABLE；旧部署备份隔离完成 |
 | 未完成 | 实际 DSH 安装验收与公开安装入口收尾；bot PR #277、DSH #38、Execution #46、Evolution #10、Contracts #18 尚需按审批规则合并 |
@@ -135,7 +135,7 @@ T0 产出必须链接在本文中，可以建立同目录的决策附件；不�
 | 活跃进程／作业 | 本次安装／归档命令完成；现有 DSH PID 40455（全局 web，3080）保留。精确 DSH 0.1.1-rc.2 已作为普通依赖安装于 ~/Library/Application Support/Crystra/tools，未降级全局 CLI |
 | 隔离档案 | /Users/firestige/Library/Application Support/Crystra-quarantine/20260914-wsr；17 个校验归档、旧运行目录原件、15 个无容器引用的离线卷 |
 | 已知阻塞 | Input 专属实例隔离与 Task 几何已验证，附件/发送完整链路仍待验证；无须先批准共享会话或 fork。旧 Workflow 匿名额度 403 仅为此前证据，当前未复验，不按旧恢复时刻推定仍被限流。无 GA 门槛 |
-| 下一条动作 | C057 接结晶组件，分离预测/实测与设计样本；资源与活动图已在3082显式探索，随后补 Workflow 目录草案/真实来源和跨页恢复；随后接草案 value 验证与持续失效、真实数据端口；继续处理[新 UI 接入缺口](t8-ui-integration-gap.md)，再发布新 RC；原 UI 验收仅证明旧链路可运行。限流为独立复验项。公开 RC 安装入口已更新至 #277/#38，PR 保持 bot／非 Draft，等待正常合并 |
+| 下一条动作 | 继续精确证据/计划关联、真实 Task/Workflow adapter、包工作区原生会话与附件/发送联调；需要新契约的内容保持条件化草案。完成可用组合后发布RC，不发布GA；PR合并仍由用户执行 |
 | 禁止误恢复项 | 不重做更名；不删除 ~/.config/wsr/credentials 复用私钥；不动原组合子模块脏内容；不消费旧档案；不自动合并／发 GA |
 
 
@@ -285,3 +285,5 @@ T0 已完成附件：[t0-decisions.md](t0-decisions.md)。新首轮分发采用 
 | L054 | 2026-09-15 | T8 IN_PROGRESS | C059 五工作面结构校验接入 draft admission，239 DSH 测试通过；草案 README 同步实现边界 | C060 订阅式草案页面渲染与持续失效实测 |
 
 | L055 | 2026-09-15 | T8 IN_PROGRESS | C060 订阅式五工作面草案渲染，241 DSH 测试；3082 显式样本自然到期/撤权移除旧内容和 Wave 运行图交互通过 | 继续精确目标关联、真实 adapter、原生 Input 联调；开发样本不发行 |
+
+| L056 | 2026-09-15 | T8 IN_PROGRESS | C061 UI2514fb8 / DSH2eab864：Workflow目录保存检索/版本/视图/页码及精确revision定位；窄Header遮挡修复，421+34/45浏览器/242 DSH通过；3082目录往返复验 | 继续实际数据与精确对象关联，不等待用户指令 |

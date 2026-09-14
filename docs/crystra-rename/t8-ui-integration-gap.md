@@ -249,3 +249,10 @@ createDraftTaskPanel 订阅已准入 controller，按当前 taskId 拒绝 foreig
 3082 显式启用 `CRYSTRA_TASK_EXPLORATION=1`，增加 `draft-projection-v8` 静态样本，真实任务列表继续保留。开发专用未跟踪 `.task-projection-preview.js` 和 `.v8-dev-build.mjs` 提供静态数据与失效验证按钮，不得打包发布。五工作面均经过 envelope + value 准入；样本 Gate 的多余 `wide` 展示字段被拒绝后，adapter 仅映射 UI 声明的字段，没有放宽校验。实际浏览器验证：需求页 1.5 秒自然到期移除旧内容，审核页撤权立即显示 ACCESS_REQUIRED；显式恢复后执行总览 → Wave 内部图成功。没有关联/发送原生会话。
 
 仍缺：正式 Task projection adapter、精确计划全文与证据引用路由、真实 Workflow 资源/定义及包会话绑定、写草案 store、Native Input 附件与发送联调。v8 显式探索不等于新 RC 正式资格。
+
+
+## C061 Workflow 目录恢复（2026-09-15）
+
+UI `2514fb8` / DSH `2eab864`：恢复检索、状态筛选、排序、latest/all versions、Gallery/List、分组、页码/页大小和精确 definitionId+revision 定位。持久状态有长度、版本和字段白名单；打开工作流前保存定位；离开目录后拒绝迟到回调。浏览器回归还发现窄 Header 操作覆盖版本切换，改为按内容宽度列与横向滚动。421 Vitest+34 Node、45 浏览器、242 DSH 测试通过。
+
+3082 实测 Implementation 检索 + 全部版本 + List → exact v8-2eecd430 → 全部工作流，三项选择保留。开发实例仍显式启用 Analysis/Workflow/Task fixture，未发布RC。当前原生 Workflow 会话、真实目录来源与资源事务仍未就绪，不以目录恢复替代这些能力。
