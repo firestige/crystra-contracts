@@ -326,3 +326,17 @@ UI `4f3d22a78d8e9f474299d6a4b5a8739e03a8f0ad` 已通过完整本地资格（426 
 DSH 目录按当前实例 Delivery inventory 的真实 Task、Workflow 和 startedAt 投影，用 Evidence `DELIVERY_ROOT` 的 SPAN → DELIVERY 精确关联打开 Trace；缺失、多根、过期、分页快照变化和来源撤销均不猜测。目录复用公开 DeliveryDirectory 和 Trace 插槽，3082 关闭 Analysis 样本后验证真实空目录、抽屉及错误输入；全量264 DSH测试通过。
 
 追加现有 T6 真实服务留档回放（`evidence/t6-real-service-chain.json` 的 root fact）发现 RC2 Facts decoder 仍按 ingestion 属性名判断 fields/dimensions，拒绝正式 `C01` 等 registry ID。已在 UI 补两个失败回归并修正，保持 ID 顺序、重复、未知字段拒绝。当前428 Vitest与34 Node通过；完整门禁及新RC待完成。此处记录的是已确认软件缺陷，不需要更改正式契约或用户决策。
+
+## C073 配置式 Task 草案进入插件归档
+
+UI `05c4c12` 的 RC3 自动作业 34880090833 成功，下载四资产资格验证通过；包 SHA256 `010a92aa53cd38afcab6bdb2bd7fdd7de584eed35ae939d1f8beac96e11e3e19`。DSH `83b0ecd` 已固定该发布输入，真实T6根关联回放通过。
+
+DSH新增默认关闭的 `exploration` 配置和只读 loopback `/crystra-exploration` 端口，逐次核验本地文件、来源锁及12份来源摘要、精确Task/Goal/Plan绑定、有效期和fixture opt-in。浏览器5秒刷新，10秒读取租期或快照到期时先清空；请求卡住也不能无限显示旧草案。正式Task同ID优先，不继承草案工作面。不创建会话、不注入模型、不提供批准/执行回调。
+
+3083 新独立home消费实际打包的插件和UI RC3，不使用开发源码alias；显式JSON源来自v8设计数据，页面注明fixture。需求、计划、执行、审核、交付均加载；改变binding使目录及旧内容清空，恢复文件后读取恢复。Plan图、全文、运行图与证据没有提供，因此显示unavailable。此验收证明配置式草案传输与公共组件组合，不能宣称真实Task业务数据已完成。273 DSH测试、打包、发布输入检查通过。
+
+C074干净副本 `/tmp/crystra-dsh-candidate-rc3` 冻结归档到 `/tmp/crystra-dsh-rc3-local`，完整安装/生命周期/provider/Harness/离线恢复资格进行中。3080用户、3081旧RC、3082设计探索保留。
+
+C074 最终 DSH 提交 `3ac11ad5c3e5c9a7bdfa8fd4b5cbcd76cc6b6486` 的六门禁全部 PASS；资格归档 `/tmp/crystra-dsh-rc3-local-b`，插件 SHA256 `10953b107d3a5093003e66ac9535b184f28155706a0a734508b2f6cfc22a76fd`。初轮失败为原脚本假设启动即显示 Harness composer；修正为先验证 Crystra 默认页，再点公开返回入口，完整保留后续原生命令、会话、Studio 与离线断言。最终制品资格验证通过。bot PR38 已更新非 Draft，远端 Foundation CI 成功，自动 RC3 作业34882477091进行中。
+
+C075 组合专用 worktree `/tmp/crystra-combination-stage` 提交 `b12f9583`，新增 `release/combinations/0.1.0-rc.2.json`，只更新 UI/DSH 输入与对应 gitlink，其余服务/组件保持已验证组合；50项组合测试通过。DSH远端下载校验前不发布组合；原RC1清单保持不可变。

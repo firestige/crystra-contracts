@@ -57,3 +57,5 @@ C063 隔离 store 实现了单资源流内的基线比较、不可变版本、pr
 C067资源端口按声明的resourceId/path和精确文件版本工作，外部异步保存必须更新快照后再确认。当前存储是独立候选，不修改源包；编辑后旧语义关系和引用暂停。开发4192桥不进入制品。
 
 C072 为隔离资源 store 增加 `readRevision(resourceId, path, revision)`：显式读取源版本或不可变草案版本；不存在的版本拒绝，不把 latest 当作精确坐标，授权/来源锁仍在读取时复核。已验证新版本保存后旧版本读取稳定及撤权拒绝。该接口供后续事件消费者读取候选，尚未注入 Agent 上下文或确认可靠投递。
+
+C073 的可选 `exploration` 配置将 Task 文件 adapter 纳入插件：绝对路径 taskFile/sourceLockFile、sourceLockDigest 和显式 allowFixtures；`crystra-task-file@1` 保存独立 selection 与 projection。默认关闭，调用者不能指定文件路径，来源锁/来源字节/绑定/expiry逐次复核。客户端5秒刷新，10秒读取租期或快照expiry先到则清空，不以卡住的请求延长旧内容。正式Task身份优先，未提供的Plan图/全文/证据不可用。3083实际归档读取及撤销恢复已验；不是正式领域契约，也不接 Agent 通知。
