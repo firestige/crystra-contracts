@@ -29,5 +29,6 @@
     "observedAt": "2026-09-14T08:33:00Z",
     "approximateReset": "2026-09-14T08:51:00Z"
   },
-  "next": "Retry existing task evaluation after GitHub quota resets; do not replay execution or alter credentials."
+  "next": "Retry existing task evaluation after GitHub quota resets; do not replay execution or alter credentials.",
+  "scopeCorrection": "Verified renamed legacy UI only; new Crystra page composition and host routes are not integrated. See t8-ui-integration-gap.md."
 }

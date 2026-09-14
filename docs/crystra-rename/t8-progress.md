@@ -18,3 +18,7 @@
 浏览器插件列表确认 crystra 已挂载。通过正常 API 创建 `/tmp/crystra-rc-acceptance-workspace` 后，在浏览器发送 `/crystra setup`，实际启动 namespace `crystra_services_d2951050567f` 三个健康容器。setup 与 doctor 均准确报告 `CRYSTRA_ROLE_BINDINGS_REQUIRED`；这不是 READY 或真实 LLM 执行通过。Studio 可打开并从真实 Evidence 读取空任务列表。继续重放 T6 确定性 provider fixture 至实际服务，验证 UI；不改用户认证。
 
 实际服务重放已完成执行、Facts、Trace 和 12 指标评估。浏览器验证任务列表、100% terminal outcome、Evidence 下钻及精确 Trace `aed6fbb2d3ce5d2a902c74af06f89bb8`（324 ms）。Workflow AVAILABLE 断言失败：容器直查 GitHub 发布 API 返回 HTTP 403、remaining=0，约 08:51 UTC 恢复；属于外部匿名额度限制。待恢复后只重验已有任务评估，不重复生成任务，不扩大凭据访问。证据：[实际 UI 验收](evidence/t8-ui-acceptance.json)。
+
+## 验收纠正
+
+当前界面验证仅覆盖旧页面的更名后运行。用户指出的新 UI 和路由接入缺失已确认，见 [缺口分析](t8-ui-integration-gap.md)。T8 尚未完成；限流不是新 UI 未生效的原因。

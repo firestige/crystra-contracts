@@ -126,7 +126,7 @@ T0 产出必须链接在本文中，可以建立同目录的决策附件；不�
 
 | 字段 | 当前值 |
 |---|---|
-| 检查点 | C033：Mac 已解锁；实际 RC setup、doctor 与 Studio 读取已验证 |
+| 检查点 | C034：用户指出新 UI 未接入；已确认当前 RC 仍挂载旧页面，T8 未完成 |
 | 当前任务 | T0–T7 DONE；T8 IN_PROGRESS |
 | 已完成 | 更名／配置复用；crystra-v0.1.0-rc.1 远端六文件与本地相同；真实执行、入库、Trace、评估及 Workflow AVAILABLE；旧部署备份隔离完成 |
 | 未完成 | 实际 DSH 安装验收与公开安装入口收尾；bot PR #277、DSH #38、Execution #46、Evolution #10、Contracts #18 尚需按审批规则合并 |
@@ -134,7 +134,7 @@ T0 产出必须链接在本文中，可以建立同目录的决策附件；不�
 | 活跃进程／作业 | 本次安装／归档命令完成；现有 DSH PID 40455（全局 web，3080）保留。精确 DSH 0.1.1-rc.2 已作为普通依赖安装于 ~/Library/Application Support/Crystra/tools，未降级全局 CLI |
 | 隔离档案 | /Users/firestige/Library/Application Support/Crystra-quarantine/20260914-wsr；17 个校验归档、旧运行目录原件、15 个无容器引用的离线卷 |
 | 已知阻塞 | 锁屏已解除；3080 旧进程未加载磁盘新插件。固定 DSH 0.1.1-rc.2 在 3081 独立验收，复用实际安装 node_modules、隔离 DSH_HOME；setup 三服务健康，工作区绑定缺失诊断准确。实际 Workflow 解析被 GitHub 匿名额度 HTTP 403 阻挡，约 08:51 UTC 后重验；[UI 证据](evidence/t8-ui-acceptance.json)。无 GA 门槛 |
-| 下一条动作 | 实际执行、评估、Evidence 和 Trace 的 UI 已验证；GitHub 匿名额度恢复（约 08:51 UTC）后重验现有 task-5f9ecaae-8f06-42f9-93bd-22ac3a551bc7 的 Workflow AVAILABLE，不重复执行或扩大凭据。公开 RC 安装入口已更新至 #277/#38，PR 保持 bot／非 Draft，等待正常合并 |
+| 下一条动作 | 优先处理[新 UI 接入缺口](t8-ui-integration-gap.md)：核对公共导出、宿主页面及路由、真实数据端口，再发布新 RC；原 UI 验收仅证明旧链路可运行。限流为独立复验项。公开 RC 安装入口已更新至 #277/#38，PR 保持 bot／非 Draft，等待正常合并 |
 | 禁止误恢复项 | 不重做更名；不删除 ~/.config/wsr/credentials 复用私钥；不动原组合子模块脏内容；不消费旧档案；不自动合并／发 GA |
 
 
@@ -246,3 +246,5 @@ T0 已完成附件：[t0-decisions.md](t0-decisions.md)。新首轮分发采用 
 | L035 | 2026-09-14 | T8 IN_PROGRESS | 用户解锁；3081 固定运行时复用已安装 RC，Crystra 已挂载；实际 setup 三服务健康、doctor 明确报告角色绑定缺失，Studio Load tasks 正常返回空列表；共享 3080 保留 | 实际服务任务与 Studio 联调 |
 
 | L036 | 2026-09-14 | T8 部分验证完成 | 实际任务执行入库，Studio 12 指标、Evidence、Recorded Trace 验证通过；Workflow 来源受 GitHub 匿名额度 403 阻挡，未宣称 T8 DONE；五份 bot PR 当前均 OPEN／非 Draft／CI SUCCESS | 额度恢复后仅重验已有任务评估；正常合并仍由用户执行 |
+
+| L037 | 2026-09-14 | T8 验收范围纠正 | 用户指出新组件和路由未生效；远端 UI main 与 RC 来源一致，但新工作台仍为预览入口，DSH 继续旧 Shell/Evaluate 页面。不能以更名及旧链路通过宣称新界面完成 | 见 t8-ui-integration-gap.md；补真实宿主接入与新 RC 资格验证 |
