@@ -126,7 +126,7 @@ T0 产出必须链接在本文中，可以建立同目录的决策附件；不�
 
 | 字段 | 当前值 |
 |---|---|
-| 检查点 | C034：用户指出新 UI 未接入；已确认当前 RC 仍挂载旧页面，T8 未完成 |
+| 检查点 | C035：按 PR #7 与定稿 v8 接入；Trace 首项修正及 Directory 导出已实现，新 Shell/路由待完成 |
 | 当前任务 | T0–T7 DONE；T8 IN_PROGRESS |
 | 已完成 | 更名／配置复用；crystra-v0.1.0-rc.1 远端六文件与本地相同；真实执行、入库、Trace、评估及 Workflow AVAILABLE；旧部署备份隔离完成 |
 | 未完成 | 实际 DSH 安装验收与公开安装入口收尾；bot PR #277、DSH #38、Execution #46、Evolution #10、Contracts #18 尚需按审批规则合并 |
@@ -248,3 +248,5 @@ T0 已完成附件：[t0-decisions.md](t0-decisions.md)。新首轮分发采用 
 | L036 | 2026-09-14 | T8 部分验证完成 | 实际任务执行入库，Studio 12 指标、Evidence、Recorded Trace 验证通过；Workflow 来源受 GitHub 匿名额度 403 阻挡，未宣称 T8 DONE；五份 bot PR 当前均 OPEN／非 Draft／CI SUCCESS | 额度恢复后仅重验已有任务评估；正常合并仍由用户执行 |
 
 | L037 | 2026-09-14 | T8 验收范围纠正 | 用户指出新组件和路由未生效；远端 UI main 与 RC 来源一致，但新工作台仍为预览入口，DSH 继续旧 Shell/Evaluate 页面。不能以更名及旧链路通过宣称新界面完成 | 见 t8-ui-integration-gap.md；补真实宿主接入与新 RC 资格验证 |
+
+| L038 | 2026-09-14 | T8 新 UI 接入进行中 | 用户确认 PR #7 主线资产并授权依照定稿 v8；完成区域清单、Trace 消费侧纠正、Directory 公共导出与针对性测试；DSH 199 项通过。源代码尚未发布，不宣称新 Shell 完成 | 依 t8-ui-integration-gap.md 子步骤继续 Shell/路由、数据端口、新 RC 与实际验收 |
