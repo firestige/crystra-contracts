@@ -61,3 +61,5 @@ C072 为隔离资源 store 增加 `readRevision(resourceId, path, revision)`：�
 C073 的可选 `exploration` 配置将 Task 文件 adapter 纳入插件：绝对路径 taskFile/sourceLockFile、sourceLockDigest 和显式 allowFixtures；`crystra-task-file@1` 保存独立 selection 与 projection。默认关闭，调用者不能指定文件路径，来源锁/来源字节/绑定/expiry逐次复核。客户端5秒刷新，10秒读取租期或快照expiry先到则清空，不以卡住的请求延长旧内容。正式Task身份优先，未提供的Plan图/全文/证据不可用。3083实际归档读取及撤销恢复已验；不是正式领域契约，也不接 Agent 通知。
 
 C076 将 Workflow 三工作面接入显式文件读取，范围与失效前提见 [Workflow 文件投影条件草案](workflow-file-projection.md)。生产包不包含设计 fixture 或开发源码别名；设计数据仅由隔离配置提供。当前不增加写入、发布或 Agent 消费权限。
+
+- [Task 文档与图投影草案](task-rich-projection.md)：C082 精确身份绑定的计划文档、摘要/DAG 与运行图；条件有效，未升级为正式契约。

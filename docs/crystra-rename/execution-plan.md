@@ -127,15 +127,15 @@ T0 产出必须链接在本文中，可以建立同目录的决策附件；不�
 
 | 字段 | 当前值 |
 |---|---|
-| 检查点 | C080：DSH38998b7将配置式Workflow目录、三工作面、原生Input、资源候选保存/重载、精确引用与绑定Agent读取接入，298回归/build/boundaries通过；实际候选读取摘要一致，事件仍pending。公开基线UI RC3/DSH RC3/组合RC2已下载核验，新提交尚未重新发RC。 |
+| 检查点 | C083：DSH ae74ed9已接Task全文/图端口和独立原生Input，304回归/build/boundaries通过。3083实际验证图与身份撤回、Task/Workflow草稿隔离、Analysis隐藏和foreign会话拒绝；测试草稿已清空。bot PR38非Draft已更新，C084干净克隆DSH RC4资格进行中。C081：UI01fc070公开受限Task图组件，修正v8摘要图错误提取；431 Vitest+34 Node/46浏览器及format/lint/type/deps/package/React18/Docker通过。bot PR8已更新，UI RC4自动候选作业34890155457成功且已下载核验。C080：DSH38998b7将配置式Workflow目录、三工作面、原生Input、资源候选保存/重载、精确引用与绑定Agent读取接入，298回归/build/boundaries通过；实际候选读取摘要一致，事件仍pending。公开基线UI RC3/DSH RC3/组合RC2已下载核验，新提交尚未重新发RC。 |
 | 当前任务 | T0–T7 DONE；T8 IN_PROGRESS |
 | 已完成 | 更名／配置复用；crystra-v0.1.0-rc.1 远端六文件与本地相同；真实执行、入库、Trace、评估及 Workflow AVAILABLE；旧部署备份隔离完成 |
 | 未完成 | 实际 DSH 安装验收与公开安装入口收尾；bot PR #277、DSH #38、Execution #46、Evolution #10、Contracts #18 尚需按审批规则合并 |
-| 工作路径 | UI /tmp/crystra-ui-host-integration `05c4c12`；DSH /tmp/crystra-dsh-t6 `38998b7`；干净资格副本 /tmp/crystra-dsh-candidate-rc3；Contracts /Users/firestige/Projects/wsr-contracts。隔离开发3082与资源测试4192；3080用户实例、3081旧RC验收实例不改动 |
-| 活跃进程／作业 | 3083 /tmp/crystra-task-file-dsh-home，session4519：C080本地源码与bundle覆盖RC3，仅开发验证。原RC3源码备份 /tmp/crystra-c076-installed-rc3-source；C075曾确认541文件一致。3082、4192、4191保留，跨恢复复验存活；3080/3081不改动。 |
+| 工作路径 | UI /tmp/crystra-ui-host-integration `01fc070`；DSH /tmp/crystra-dsh-t6 `ae74ed9`；干净资格副本 /tmp/crystra-dsh-candidate-rc4；Contracts /Users/firestige/Projects/wsr-contracts。隔离开发3082与资源测试4192；3080用户实例、3081旧RC验收实例不改动 |
+| 活跃进程／作业 | 3083 /tmp/crystra-task-file-dsh-home，session18230：C082/83本地源码与UI RC4 bundle覆盖RC3，仅开发验证。原RC3源码备份 /tmp/crystra-c076-installed-rc3-source；C075曾确认541文件一致。3082、4192、4191保留，跨恢复复验存活；3080/3081不改动。 |
 | 隔离档案 | /Users/firestige/Library/Application Support/Crystra-quarantine/20260914-wsr；17 个校验归档、旧运行目录原件、15 个无容器引用的离线卷 |
 | 已知阻塞 | 无用户决策阻塞。Workflow 生产端口、精确计划/文档/证据关联、草案事件消费及模型/provider/approval 联调尚待完成。确定性命令通过不等于模型链路通过。 |
-| 下一条动作 | C081：补Task计划文档/计划DAG/运行图的配置式草案接入，优先复用锁定v8图资产与现有组件；缺失部分仍是条件草案。C080已提交38998b7、298回归通过，实际UI保存重载和真实Agent工具读取候选通过；事件仍pending。3083 session4519，候选目录/tmp/crystra-c080-resource-candidates；C076–80暂未发布新RC。不发GA。 |
+| 下一条动作 | C084：/tmp/crystra-dsh-candidate-rc4 安装精确依赖并构建/tmp/crystra-dsh-rc4-local，随后六项候选资格通过才推release/next，再更新组合RC3。UI RC4成功，DSH ae74ed9已提交且PR38 bot非Draft。3083 session18230为开发验证；模型链路及事件消费未冒充完成。不发GA。 |
 | 禁止误恢复项 | 不重做更名；不删除 ~/.config/wsr/credentials 复用私钥；不动原组合子模块脏内容；不消费旧档案；不自动合并／发 GA |
 
 
@@ -323,3 +323,7 @@ T0 已完成附件：[t0-decisions.md](t0-decisions.md)。新首轮分发采用 
 | L073 | 2026-09-15 | T8 IN_PROGRESS | C079 be5957f：290回归/build/boundaries通过，实际DSH工具管线精确读取及失配会话拒绝通过，无模型请求 | C080配置式资源保存/候选读取与pending事件消费待继续 |
 
 | L074 | 2026-09-15 | T8 IN_PROGRESS | C080 38998b7：298回归/build/boundaries通过，UI保存重载、源摘要不变、候选引用及真实工具精确读取通过；事件pending | C081补Task计划文档/DAG/运行图草案端口，随后重做RC组合资格 |
+
+| L075 | 2026-09-15 | T8 IN_PROGRESS | C081 UI01fc070：公开TaskDiagram/Explorer，闭合SVG词汇、显式选择，恢复760×250摘要；431+34/46及完整本地资格通过，bot PR8非Draft，RC4作业34890155457 | C082 Task富投影端口与真实DSH验收，随后新DSH/组合RC |
+
+| L076 | 2026-09-15 | T8 IN_PROGRESS | C082/83：Task正文/摘要/DAG/运行图草案端口、Task原生Input精确会话绑定；UI RC4已下载核验，304回归/build/boundaries通过；3083图导航、身份撤回、跨页草稿隔离及foreign会话拒绝通过 | 提交DSH并准备新RC资格；事件消费及模型链路不冒充完成 |

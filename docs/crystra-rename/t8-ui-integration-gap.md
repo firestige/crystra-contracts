@@ -350,3 +350,7 @@ C075 组合专用 worktree `/tmp/crystra-combination-stage` 提交 `b12f9583`，
 ## C077–C080 输入、资源与Agent读取
 
 Workflow 原生Input现要求显式本实例工作区/会话绑定；资源候选保存只在显式root与写权限下启用。引用追加到原生草稿，Agent工具按精确版本读取，均不自动发送/执行/采用。298回归与实际保存重载、候选引用、工具读取验证通过，详见 [条件契约和证据](drafts/workflow-file-projection.md)。事件仍pending。下一缺口是Task计划文档、DAG及运行图，C081继续；C076–80尚未发布新RC，旧RC资格不覆盖新提交。
+
+## C081–C084：Task 富投影与独立 Input
+
+UI01fc070 RC4公开Task图组件，修复摘要误提取；431 Vitest+34 Node、46浏览器及全资格通过。DSH ae74ed9消费下载核验RC4，接入正文/图与Task独立会话，304回归/build/boundaries通过。实际3083图选择、来源撤回、Task/Workflow独立未发送草稿、Analysis隐藏和foreign会话拒绝均通过。条件草案详见[Task富投影](drafts/task-rich-projection.md)。C084新DSH/组合RC资格进行中，旧RC资格不得覆盖新提交。
