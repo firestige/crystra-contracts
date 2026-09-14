@@ -32,3 +32,14 @@ GitHub 匿名限流仍是已有链路的独立复验项，不是新 UI 未生效
 UI 原工作树 .gitignore 等用户更改未动；使用从 main 建立的隔离 clone。DSH 修正基于已有候选分支继续，尚未发布新字节。浏览器最终验收必须覆盖 v8 入口、页面切换和返回状态，不只看品牌或底层服务。
 
 本地恢复提交：UI `97b3c04`，DSH `8635a72`。均未发布新 RC；下一项是 v8 Shell 与宿主路由接入。
+
+### Shell 与导航实现续记
+
+- UI 隔离分支新增 `CrystraShell` 组合组件，复用 PR #7 的基础组件及 v8 区域标识；仍需逐项补齐 v8 视觉/交互一致性，不能称已定稿接入。
+- DSH 新增 `product-navigation.js`：精确对象路由、Harness/Crystra 切换、返回历史、允许字段的每页上下文恢复；不把输入草稿放入路由。
+- DSH 新增 `product-surface.js` 宿主桥接工厂，使用 `shell.overlay` 和 `sidebar.footer.action`；不替换 root/conversation。**尚未接到 root client，因此当前实际安装不受影响。**
+- Task Browser 桥接只读取现有 Evidence task list；Task/Workflow 工作面尚未接完，显示未接入状态。不要把这些占位状态作为最终实现交付。
+- 新增导航/挂载边界 5 项测试通过（含 Workflow 精确 revision 恢复）；UI Shell 操作、Directory 精确选择与空结果 3 项针对性测试通过。完整 UI 回归本轮另记日志。
+- 下一动作：补齐 v8 Shell 折叠/搜索/视图设置及主内容页面，建立真实数据端口，接到 root client 后再做实际 DSH 验收。不能只把现有旧 Studio 包在新 Shell 内就宣称完成。
+
+恢复提交：UI `c1a9182`，DSH `3c61f5a`；源分支本轮改动仅本地提交，未发布候选。UI lint/types/test/build 已通过，Shell 定稿视觉对照与实际 DSH 激活尚未验证。
