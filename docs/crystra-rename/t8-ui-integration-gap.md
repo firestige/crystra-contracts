@@ -170,3 +170,12 @@ DSH product-surface 已改为消费 Core.TaskBrowser。projectEvidenceTasks 只�
 
 
 C051 保存提交：UI 71ab3ca，DSH 961c493。最终 UI 407+34 单测、36 浏览器、type/lint/format/build/deps 通过，DSH230/230通过；日志 /tmp/crystra-c051-*.log。3082 当前为真实 Task 详情，Task Browser 的旧本地浏览状态在跨页返回时尚未持久化，C052 正在补这一点及菜单；不要将这些门槛称作整个 T8 完成。
+
+
+## C052 目录返回与菜单
+
+UI 45569e5 / DSH 82c4d88：Task Browser 保存经过白名单验证的查询、筛选、排序、Gallery/List、分组、页码/页长及精确 anchorId 到原有 navigation context.view；先保存再打开 Task，过期组件回调不能覆盖当前 Task 上下文。返回重新挂载时恢复列表或 Gallery 条目，不保存业务事实或选择权限。分组折叠仍仅在 Browser 挂载期跨查询/视图保留。
+
+共享 Menu 支持图标触发、menuitemradio、上下方向及 auto 放置，复用键盘焦点、Escape/外部关闭。React refs 静态检查发现排序回调间接读取滚动 ref，已移到查询变更 effect；不关闭规则。UI409 Vitest+34 Node、38浏览器、lint/type/format/build/deps通过；DSH231/231通过。日志 /tmp/crystra-c052-*.log。
+
+3082 当前仍为真实 Task 来源、Analysis 显式探索；实测 List 搜索 5f9ecaae → 打开精确 task-5f9ecaae-8f06-42f9-93bd-22ac3a551bc7 → 侧栏全部任务，保留 List 与查询；排序菜单在宿主正确定位。没有操作3080，没有发送消息，没有发布新RC。接着 C053 Workflow Explorer：先复用定稿资源浏览配方，精确 definition+revision，最新项在筛选前确定且不回退；真实目录未知能力必须明确，不能混入样本。
