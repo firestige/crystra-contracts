@@ -25,7 +25,7 @@ GitHub 匿名限流仍是已有链路的独立复验项，不是新 UI 未生效
 | v8 区域清单 | 完成 | evidence/t8-v8-sections.json：Task Work 342 个、其余各 83–84 个稳定区域标识 |
 | Analysis Trace 消费侧纠正 | 已实现、未发布 | /tmp/crystra-dsh-t6：去掉 Statistics，向 Waterfall/Tree 传 showSummary=false；针对性 RED→GREEN；全套 199 项通过 |
 | PR #7 Directory 公共导出 | 已实现、未发布 | /tmp/crystra-ui-host-integration，codex/crystra-host-ui-integration：导出 DeliveryDirectory 和数据类型；精确身份选择／真实空结果测试；格式/lint/types/test/build/deps 及 26 项浏览器回归通过 |
-| 新 Shell / 页面导航及恢复 | 待实现 | 按 v8 的 Task、Workflow、Analysis 入口和品牌切换接入 DSH，不保留旧入口作为最终页面 |
+| 新 Shell / 页面导航及恢复 | 部分实现，开发浏览器已挂载 | 按 v8 的 Task、Workflow、Analysis 入口和品牌切换接入 DSH，不保留旧入口作为最终页面 |
 | 新页面真实数据接入 | 待实现 | WorkflowMapWorkbench 当前默认 samples、AnalysisObservationStudy 当前 observation fixture 都不能直接作为生产数据；需拆出宿主数据输入与明确缺失状态 |
 | 新 RC 及实际页面复验 | 待前述完成 | 不覆写旧候选，不以当前局部修正标记 T8 完成 |
 
@@ -43,3 +43,22 @@ UI 原工作树 .gitignore 等用户更改未动；使用从 main 建立的隔�
 - 下一动作：补齐 v8 Shell 折叠/搜索/视图设置及主内容页面，建立真实数据端口，接到 root client 后再做实际 DSH 验收。不能只把现有旧 Studio 包在新 Shell 内就宣称完成。
 
 恢复提交：UI `c1a9182`，DSH `3c61f5a`；源分支本轮改动仅本地提交，未发布候选。UI lint/types/test/build 已通过，Shell 定稿视觉对照与实际 DSH 激活尚未验证。
+
+
+### C037 实际开发实例挂载
+
+恢复提交：UI `2fa2b98`（/tmp/crystra-ui-host-integration），DSH `1a1e1ed`（/tmp/crystra-dsh-t6）。DSH root client 现已注册内部 product 模块，公开插件仍只有 dsh-crystra。
+
+开发实例为 http://127.0.0.1:3082，DSH_HOME=/tmp/crystra-v8-dsh-home；使用固定 DSH 0.1.1-rc.2。该 profile 复制 dsh-crystra，仅用 /tmp/crystra-v8-client.js 覆盖本实例 client bundle，其他依赖链接原 profile。浏览器无需模型密钥即可检验任务读取。现有 3080 用户会话和 3081 RC 验收实例保留。
+
+浏览器首先复现 `TypeError: props.renderSlot is not a function`：shell.overlay 不提供子插槽渲染器。新增回归先失败，再修复为返回 Harness 设置入口；尚未实现一键打开设置。BiSurface 的 style 属性会被组件覆盖，因此宿主全屏定位改为专用 CSS 类，同时显式传入接受组件要求的 data-crystra-theme=dark。最终截图确认新主题与完整覆盖层生效。
+
+已验证：从 Evidence 读取真实 task-5f9ecaae-8f06-42f9-93bd-22ac3a551bc7；选择任务；品牌切回 Harness；由 Crystra 按钮返回同一精确 Task。未验证草稿或滚动恢复。Task 详情目前仍为明确缺口提示；Analysis 三入口仍共用旧 Studio，Workflow 无真实目录输入。当前效果不符合完整 v8 验收，不可作为完成交付。
+
+验证日志：/tmp/crystra-product-root-tests.log，205/205 通过；其中导航及 overlay 6 项通过。此套测试的生成 lib/client.js 仍是原已提交版本，因此不代表新正式 bundle 资格。新的浏览器证明来自明确标注的开发 bundle。
+
+开发构建恢复：先在 UI clone 运行 npm run build；随后在 DSH clone 运行 node scripts/.v8-dev-build.mjs（临时 helper，不进入发布），其 alias 指向 UI clone 的 packages/bi/dist/index.js 与 styles.css，输出 /tmp/crystra-v8-client.js。仅复制到上述开发 profile 的 dsh-crystra/lib/client.js 后刷新 3082。不得覆盖实际 ~/.dsh 安装或把本地路径写入发布依赖。正式 lib/client.js 必须在新 UI RC 被固定后重建和资格验证。
+
+下一步：按 v8 补齐 Shell 展开搜索/视图设置，完成 Task Browser 与 Task 工作面、Workflow 目录/精确版本工作面、Analysis 独立页面的数据适配；已有 Gateway 仅暴露 tasks/list 等查询，不能假定存在 tasks/get 或 Workflow 编辑写入契约。需逐项核对后接入，缺失契约单独列明。之后新 UI/DSH RC、组合重固定及真实页面验收。
+
+C037 同轮续记：UI 最新提交 `b4214dc`，Shell 改用 PR #7 ExpandableSearchField，验证点击展开、任务过滤和 Esc 清空；导航箭头改用共享 Icon。387 个 Vitest 和 34 个 Node 测试通过，lint/types/build 通过（日志 /tmp/crystra-shell-search-*.log）。已重建 3082 开发 bundle；完整页面、视图选项、折叠布局与正式 RC 仍未完成。
