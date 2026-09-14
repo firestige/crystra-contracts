@@ -3,7 +3,7 @@
 - 计划 ID：CRYSTRA-RENAME-20260913
 - 文档版本：2
 - 最后更新：2026-09-14
-- 总体状态：IN_PROGRESS（T0–T5 完成，T6 进行中）
+- 总体状态：IN_PROGRESS（T0–T7 完成，T8 进行中）
 - 当前执行任务：T8
 - 当前执行者：本任务 Codex；T8
 - 下一步：补齐 v8 页面、数据端口与宿主交互，发布新 UI/DSH RC 后重新固定组合；不要求 GA
@@ -34,6 +34,7 @@
 | D10 | 先验证新候选，再清理真实旧部署 | T6 在隔离空白环境验证，T7 人工清理，T8 实际切换 |
 | D11 | 保留当前领域与服务架构 | 不因单插件或更名隐式更换数据库／合并领域职责；必要配置可在插件引导 |
 | D13 | 本次更名仅要求可用 RC 组合，不要求 GA | RC 自动由候选分支触发，不要求人工 GA 前置；RC 证明内容未被破坏并有可用组合，即满足此次发行验收；GA 不属于更名完成条件 |
+| D14 | 缺失契约允许条件化草案探索 | 优先复用指定设计目录已有结论；不足时按 UI 提出最小契约。草案不是正式版本，前提不满足即作废；不得提升现有正式契约权威 |
 | D12 | 优先复用现有发行资产 | 用户将发行 App 改名为 crystra-release；沿用原 App ID、Client ID 和私钥，不新建 App。八仓库配置范围已明确授权 |
 
 T0 已落定具体实现选择，见 [T0 决策](t0-decisions.md)。新坐标的实际发布权限配置仍属 T5；不把只读可用性检查写成可发布。
@@ -126,11 +127,11 @@ T0 产出必须链接在本文中，可以建立同目录的决策附件；不�
 
 | 字段 | 当前值 |
 |---|---|
-| 检查点 | C038：Analysis 独立接入真实评估与 Trace，新建 Task 不提前创建 Session；完整 v8 页面和新 RC 未完成 |
+| 检查点 | C039：用户授权缺失契约按条件化草案推进，建立来源锁与最小接入契约；完整 v8 页面和新 RC 未完成 |
 | 当前任务 | T0–T7 DONE；T8 IN_PROGRESS |
 | 已完成 | 更名／配置复用；crystra-v0.1.0-rc.1 远端六文件与本地相同；真实执行、入库、Trace、评估及 Workflow AVAILABLE；旧部署备份隔离完成 |
 | 未完成 | 实际 DSH 安装验收与公开安装入口收尾；bot PR #277、DSH #38、Execution #46、Evolution #10、Contracts #18 尚需按审批规则合并 |
-| 工作路径 | 新 UI /tmp/crystra-ui-host-integration `bca3552`；新宿主 /tmp/crystra-dsh-t6 `8a42836`（未发布）。原组合 /tmp/crystra-combination-stage 1593f589；/tmp/crystra-dsh-t6 产品候选 9a9777d、另有 test-only 742e1de；实际 ~/.dsh/profiles/web；台账 /Users/firestige/Projects/wsr-contracts |
+| 工作路径 | 新 UI /tmp/crystra-ui-host-integration `14f8fa0`；新宿主 /tmp/crystra-dsh-t6 `388c040`（未发布）。原组合 /tmp/crystra-combination-stage 1593f589；/tmp/crystra-dsh-t6 产品候选 9a9777d、另有 test-only 742e1de；实际 ~/.dsh/profiles/web；台账 /Users/firestige/Projects/wsr-contracts |
 | 活跃进程／作业 | 本次安装／归档命令完成；现有 DSH PID 40455（全局 web，3080）保留。精确 DSH 0.1.1-rc.2 已作为普通依赖安装于 ~/Library/Application Support/Crystra/tools，未降级全局 CLI |
 | 隔离档案 | /Users/firestige/Library/Application Support/Crystra-quarantine/20260914-wsr；17 个校验归档、旧运行目录原件、15 个无容器引用的离线卷 |
 | 已知阻塞 | 锁屏已解除；3080 旧进程未加载磁盘新插件。固定 DSH 0.1.1-rc.2 在 3081 独立验收，复用实际安装 node_modules、隔离 DSH_HOME；setup 三服务健康，工作区绑定缺失诊断准确。实际 Workflow 解析被 GitHub 匿名额度 HTTP 403 阻挡，约 08:51 UTC 后重验；[UI 证据](evidence/t8-ui-acceptance.json)。无 GA 门槛 |
@@ -256,3 +257,7 @@ T0 已完成附件：[t0-decisions.md](t0-decisions.md)。新首轮分发采用 
 | L040 | 2026-09-14 | T8 新 Shell 实际挂载 | 3082 独立开发实例挂载 root client；修复 overlay 无 renderSlot 异常及主题/定位；真实 Task 选择、Harness 往返身份保持通过；DSH 205 项回归通过。开发 bundle 使用本地 UI alias，不是已发布 RC 字节 | 补完整页面、Shell 交互和真实数据端口；新 UI RC 固定后才更新正式生成 bundle |
 
 | L041 | 2026-09-14 | T8 Analysis 接入 | UI bca3552、DSH 8a42836；独立 Analysis 总览/Trace 连接真实接口；修复 Trace 注册字段 ID 解码、零宽图布局及新建 Task 提前创建 Session。UI 391+34 单测、27 浏览器测试、DSH 209 项通过；完整 v8 和新 RC 未完成 | 见 C038 接入记录；继续现有接口可支持的 UI，O01/O10/C07 领域扩展待用户确认 |
+
+| L042 | 2026-09-14 | T8 草案范围获授权 | 用户允许优先复用设计结论，其次提出 UI 最小契约，全部标记草案并绑定生效/作废前提；替代 C038 的领域扩展待确认状态。见 [草案入口](drafts/README.md) | 先实现可撤销的只读投影准入，再接工作面；正式 authority 与发行门禁保持 |
+
+| L043 | 2026-09-14 | T8 草案基础完成 | 草案来源锁覆盖 12 份设计文档；DSH e0aaf82 增加条件化 envelope 准入，5 项新回归及全量 214 项通过。UI 14f8fa0 / DSH 388c040 同步 D21 的对比分析命名；尚未接草案读取和持久化，不能声称五工作面完成 | 接各工作面 value 校验与隔离 adapter；正式化不得由 RC 隐式触发 |

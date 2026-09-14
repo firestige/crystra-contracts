@@ -1,0 +1,56 @@
+{
+  "draftId": "crystra-ui-exploration",
+  "revision": "draft.1",
+  "status": "DRAFT",
+  "sourceRoot": "/Users/firestige/Projects/workflow-self-recursive/tmp/20260907/Crystra-ui-design",
+  "sources": [
+    {
+      "path": "pages/task-detail/README.md",
+      "sha256": "9c82f1406e11a7b71a7556e7094eee0576a49011c7dec3f699298b4aec2c8482"
+    },
+    {
+      "path": "pages/task-detail/grilling.md",
+      "sha256": "31565115dcfa17cc47273cda292446aee0b9edc9b17276dec283a90635171fcb"
+    },
+    {
+      "path": "pages/task-detail/plan.md",
+      "sha256": "c08efced7c0ab8780f0c951665381660464c50cf676aaf43857f789a3167f418"
+    },
+    {
+      "path": "pages/task-detail/execution.md",
+      "sha256": "a94a9b04230113b54b3791dc54f0ee4e2a592030966c968ff6bdb0c8c162f638"
+    },
+    {
+      "path": "pages/task-detail/gate.md",
+      "sha256": "0a2f7acfac1022b4c65ece2b5677fbfdd354cc3f54663e622bb4ff18e06fcb8d"
+    },
+    {
+      "path": "pages/task-detail/delivery.md",
+      "sha256": "02f69bf5e060de37d85a8faa50a9b071b9bb0a9c12c27afbbccb46bc36542f37"
+    },
+    {
+      "path": "pages/new-task.md",
+      "sha256": "8c8905b6357b6181169164286e8267997ed6a441785742227fded3df48c5bb77"
+    },
+    {
+      "path": "pages/task-browser.md",
+      "sha256": "6c34903601f8033c63b3b11ccc9d08e8fdc3790af540e8f0216e3f36131bf03f"
+    },
+    {
+      "path": "pages/workflow-studio-contracts.md",
+      "sha256": "d7642bf36f9d931528c0e9284fa1f0090e16a2f3497ad2502c0faf3d844e04b0"
+    },
+    {
+      "path": "pages/analysis-audit.md",
+      "sha256": "ce4f0cb031fe3ea1c3c640d5c4a50641bf89621be59b5bfd594d7c7c4ab254e6"
+    },
+    {
+      "path": "foundations/navigation.md",
+      "sha256": "169e2e2ac4c05199e2ed85f3b702489d0cc29332b3e6c648de922e359fcf2a53"
+    },
+    {
+      "path": "handoff/decisions-and-open-questions.md",
+      "sha256": "f9a40abbee47ea5cae693e6e47ecdcdfb5cc229207943d7c4a02afefad20c255"
+    }
+  ]
+}

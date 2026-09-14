@@ -43,3 +43,14 @@
 仍未完成：完整 Task Browser/工作面、Workflow 目录/版本页、Trace 可搜索目录和 Evidence 下钻、Overview 定稿配置能力、设置与覆盖层焦点管理、新 UI/DSH RC 和组合重固定。当前开发 bundle 通过本地 UI alias，正式 lib/client.js 尚未重建，不能用本轮结果宣称发布资格。
 
 范围边界：定稿 handoff/decisions-and-open-questions.md 的 O01、O10、C07 尚未定义 Task IR、Plan/Wave/Gate、readiness、持久化事务等领域接口。是否扩大本次范围定义后端契约的问题已提出，尚无明确选择；后续“继续”按现有 UI 接入授权执行，不视为扩大领域范围。下一步先处理现有能力的接入，禁止以 fixture 填补生产数据。
+
+
+## C039：条件化草案授权与实现入口
+
+用户授权已解除 C038 的领域范围待确认项：优先使用指定设计目录中的现成结论，不足则按 UI 提出最小契约；全部保留草案身份、前提不满足即作废。正式语义未被改写。见 [草案与映射表](drafts/README.md) 和 [精确来源锁](drafts/source-lock.json)。
+
+DSH `e0aaf82` 实现 `src/client/draft-projection.js`：仅 exploration + draft.1，绑定来源摘要、适配器、Task 与目标/计划 revision，权限/过期/来源变化拒绝，fixture 必须显式启用；无效结果不携带旧 projection。5 项新增回归及 DSH 214 项全量通过。该模块目前没有挂入正式数据入口，只验证 envelope，不验证 value 的业务语义，也不授予执行权。待接入 UI 时必须在过期与上下文变化时重新准入。
+
+UI `14f8fa0`、DSH `388c040` 另修正 D21 后续确认的“对比分析”名称；UI 5 项相关测试、1 项页面往返浏览器回归与 build 通过。开发 3082 bundle 已更新；正式依赖、RC 与用户 3080 实例未改。
+
+下一动作：为五工作面定义并验证最小 value，接隔离 adapter 的读取和明确的探索来源；复用已接受组件展示效果。之后再实现隔离 authoring CAS 与恢复，不把 fixture、结构通过或草案保存当正式业务效果。Task 生命周期、正式领域映射和 RC 资格仍需各自证据。
