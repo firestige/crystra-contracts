@@ -127,15 +127,15 @@ T0 产出必须链接在本文中，可以建立同目录的决策附件；不�
 
 | 字段 | 当前值 |
 |---|---|
-| 检查点 | C084：UI RC4 (01fc070) 已发布下载核验；DSH ae74ed9 的304回归与六项本地制品资格通过，自动RC4作业34891888318成功，下载归档与本地字节一致。组合197869ea的RC3已发布，50回归及资格通过，下载六资产与本地一致，PR277已更新。Task图/正文/独立原生Input和Workflow资源候选读写/精确Agent读取已实际验证，事件仍pending。 |
+| 检查点 | C088：UI RC5 e3246e1、DSH RC5 82ce38b、组合RC4 b029f1b2已发布并下载核验。宿主313回归/六项本地与远端资格通过；组合50回归和资格通过、六资产远端本地一致。3084正常安装公开RC5，555文件与归档一致，审核上下文/返回和资源候选失效实际通过。 |
 | 当前任务 | T0–T7 DONE；T8 IN_PROGRESS |
 | 已完成 | 更名／配置复用；crystra-v0.1.0-rc.1 远端六文件与本地相同；真实执行、入库、Trace、评估及 Workflow AVAILABLE；旧部署备份隔离完成 |
 | 未完成 | 实际 DSH 安装验收与公开安装入口收尾；bot PR #277、DSH #38、Execution #46、Evolution #10、Contracts #18 尚需按审批规则合并 |
-| 工作路径 | UI /tmp/crystra-ui-host-integration `01fc070`；DSH /tmp/crystra-dsh-t6 `ae74ed9`；干净资格副本 /tmp/crystra-dsh-candidate-rc4；Contracts /Users/firestige/Projects/wsr-contracts。隔离开发3082与资源测试4192；3080用户实例、3081旧RC验收实例不改动 |
-| 活跃进程／作业 | 3083 /tmp/crystra-task-file-dsh-home，session29162：正常DSH安装的RC4，554文件与发布归档一致；显式草案配置继续用于探索。原RC3源码备份 /tmp/crystra-c076-installed-rc3-source；C075曾确认541文件一致。3082、4192、4191保留，跨恢复复验存活；3080/3081不改动。 |
+| 工作路径 | UI /tmp/crystra-ui-host-integration e3246e1；DSH /tmp/crystra-dsh-t6 82ce38b；组合 /tmp/crystra-combination-stage b029f1b2；干净资格副本 /tmp/crystra-dsh-candidate-rc5；Contracts /Users/firestige/Projects/wsr-contracts。原始子模块未修改。 |
+| 活跃进程／作业 | 3084 /tmp/crystra-c085-dsh-home session77289：正常安装公开RC5，日志/tmp/crystra-c088-published-dsh.log，555文件一致。3083 /tmp/crystra-task-file-dsh-home session29162仍为RC4原件。3082/4192/4191保留；3080/3081不改动。 |
 | 隔离档案 | /Users/firestige/Library/Application Support/Crystra-quarantine/20260914-wsr；17 个校验归档、旧运行目录原件、15 个无容器引用的离线卷 |
 | 已知阻塞 | 无用户决策阻塞。Workflow 生产端口、精确计划/文档/证据关联、草案事件消费及模型/provider/approval 联调尚待完成。确定性命令通过不等于模型链路通过。 |
-| 下一条动作 | C088：UI RC5 e3246e1已发布并核验；DSH82ce38b（审核上下文、详情滚动、资源关联图）313回归/build/boundaries及3084浏览器验收通过。DSH RC5自动作业34896020077与本地六项资格进行中；完成后验证下载字节、准备组合RC4并安装实际发布包。3084 session70997，home/tmp/crystra-c085-dsh-home，patch/tmp/crystra-c085-dsh.patch.yml，独立服务24318/28000。3083保持已发布RC4原件。事件消费与模型链路未声明完成；不发GA，无用户决策阻塞。 |
+| 下一条动作 | C089：依据已接受workflow-studio-contracts.md第75–77行继续资源事件状态与交付边界；pending事件不能显示成已通知。先暴露精确持久化事件状态，再检查可用原生系统上下文通路。RC4组合已可用，后续改动不沿用其资格。没有模型调用或新的用户决策阻塞，不发GA。 |
 | 禁止误恢复项 | 不重做更名；不删除 ~/.config/wsr/credentials 复用私钥；不动原组合子模块脏内容；不消费旧档案；不自动合并／发 GA |
 
 
@@ -337,3 +337,5 @@ T0 已完成附件：[t0-decisions.md](t0-decisions.md)。新首轮分发采用 
 | L080 | 2026-09-15 | T8 IN_PROGRESS | C087 精确 UI RC5 输入后宿主313项回归、build、boundaries通过；旧图拒绝候选变化/畸形文件、组件身份跨轮询保持。正常CLI已将最终开发包安装到3084，日志/tmp/crystra-c087-final-dsh.log | 继续真实浏览器验收及DSH RC5/组合RC4资格；3083仍为未修改RC4，未发生模型调用 |
 
 | L081 | 2026-09-15 | T8 IN_PROGRESS | DSH82ce38b：3084节点详情跨轮询保持、声明资源跳转、候选保存后旧图撤回均通过；审核返回按钮在面板内（235.5>=196），返回成功。DSH RC5自动作业34896020077启动，本地资格在/tmp/crystra-dsh-candidate-rc5 | 继续RC5归档资格、组合RC4及发布制品实际安装；3084 session70997，3083未改；无用户决策阻塞 |
+
+| L082 | 2026-09-15 | T8 IN_PROGRESS | C088：DSH RC5作业34896020077成功，SHA256 597d0a9861144004cf239a71dc9cc79dbb0dea531fd6a7519c4537ced3d9192e；本地六资格与远端相同插件字节。组合RC4 b029f1b2作业34896509843成功，六资产相同。3084正常安装后555文件一致、审核差异和持久化候选撤回通过 | 继续C089事件状态；公开候选与开发分开，未发布GA |
