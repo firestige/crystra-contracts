@@ -103,3 +103,13 @@ T6 尚未发布候选。T7 尚未清理任何真实旧部署。
 
 - bot PR [#275](https://github.com/firestige/crystra/pull/275) 已创建，非 Draft，作者 project-ops-agent[bot]，head 90ebcc48ba248582fb35f5179e37e855fbec94ff。临时 token 已撤销。远端 release-governance 34771021792、qualify 34771021839 均 SUCCESS，待用户正常审核。
 - 计划持久化的直接 main 推送被自动审批拒绝，理由为绕过 bot PR 审核路径。没有重试直推；本轮台账改为保存至本地恢复分支 codex/crystra-rename-checkpoint-c022。该分支尚未推送，不把本地记录视为远端 main 已更新。
+
+## C023：#275 已合并；文档入口与发布前置条件
+
+- 读回 #275 MERGED，2026-09-14T01:03:52Z，main 5fa0fc17a1dbd03dbd1cab43d0e8fc6a29867c05；已在隔离组合树从此提交创建 codex/crystra-docs-ownership-bot。
+- 组合文档提交 9ce01cae：替换仍引用已退役部署脚本／多插件入口的八份中英文指南，更新命名规范的新品牌／包规则，新增组件文档归属入口。保留领域 ID 与历史设计状态，不把草稿变为实现承诺。81 个本地／组件引用目标存在，diff 检查通过。
+- DSH 文档提交 88f48d8：release-lifecycle.md 改为当前单插件、普通依赖、服务绑定与原字节候选晋升。保留用户 .gitignore 和 project-ops.config。
+- 只读发布配置结果记录于 release-readiness.json：八仓库均缺新 workflow 所需的两个 CRYSTRA_RELEASE 输入。可审核的配置范围见 release-authorization.md；尚未授权复制发布密钥或修改发行 App 安装范围，因此不启动候选。
+- 原组合脏子模块、所有旧运行数据未动；本地 checkout 名暂不移动，仍待协调窗口。T5 未完成，T6–T8 未执行。
+
+- 文档 PR 已读回：组合 [#276](https://github.com/firestige/crystra/pull/276)，head 9ce01cae4230ebf21959fdd2c7b41ab7d4727c68；DSH [#37](https://github.com/firestige/crystra-dsh/pull/37)，head 88f48d8baeaa87408365d5b7e51a09ab8b71289e。均 project-ops-agent[bot]、非 Draft，未自动合并。
