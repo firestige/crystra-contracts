@@ -27,3 +27,25 @@ RPC 使用既有 loopback `/crystra-exploration` 下的 `workflow/catalog/read`�
 projection 可显式提供 `inputBinding:{workspaceId,packageRoot,sessionId}`。这里的 workspaceId 是专属 DSH 实例的工作区身份，独立于 selection 中的逻辑工作区身份；packageRoot 必须是绝对路径。客户端要求工作区列表和会话列表均 ready、精确路径与成员归属一致、未归档，并只在当前 Workflow 的精确 revision 上选中该会话。不创建会话、不传递凭据、不发送消息。来源撤销、换页或成员失效时隐藏输入。
 
 DSH 4624028，287项回归/build/boundaries通过。3083 实测复用原生 Composer；切工作面及 Analysis 往返保留未发送草稿，Analysis 可访问输入数0；foreign-session身份使输入撤下，恢复原精确身份后草稿仍在。测试会话与用户3080分离。测试草稿已用键盘清空，重载确认仍为空，发送按钮disabled。原生输入接通不等于已实现对象引用、候选读取或 Agent 通知。
+
+## C078 精确资源读取及对话引用
+
+DSH f5e10e6，288项完整回归/build/boundaries通过。loopback `workflow/resource/read` 接受 selection 三字段 + resourceId/path/resourceRevision；只读已准入目录内的完整文件，拒绝 latest、越出目录、截断内容和来源失效。文件无独立 revision 时以明确的 projection.snapshotRevision 作为设计快照版本。artifact-lifecycle.md 实际读取12170 bytes，SHA256 `890ca34e1d05e7b0e541e25b22b2966277658e3107c9da397a5ea88adf3d282d`，与指定设计内容相同。
+
+资源讨论、活动与结晶引用接入原生 Input facade。引用回调要求当前投影仍相同且输入绑定active，只追加草案身份与对象精确坐标，不发送、不替换原草稿、不授权执行。3083资源讨论实测保留原文字并追加resourceId/path/resourceRevision，测试草稿随后键盘清空。Agent读取工具C079正在实现，尚不能宣称端到端模型消费或事件投递成功。
+
+## C079 绑定 Agent 的读取工具
+
+DSH be5957f 提供 `crystra_workflow_draft_read`，仅在显式 workflowFile 配置时注册。参数为 definitionId/definitionRevision/resourceId/path/resourceRevision 和可选 offset；先核验真实 Agent 身份、canonical 工作区及会话成员，再核验投影的原生 inputBinding。每次重新验证来源及expiry，只读请求的精确版本；最多10000字符，返回全文SHA256、totalCharacters和nextOffset。工具不是自动通知、写入或采用授权。
+
+290项完整回归/build/boundaries通过。3083真实 tools.execute 管线（无LLM）成功返回 artifact-lifecycle.md，9422字符，全文摘要与C078相同。随后改变inputBinding会话，原Agent调用返回 DRAFT_SESSION_UNAVAILABLE，不含文件内容。正/反例证据 `/tmp/crystra-c079-tool-result.json`、`/tmp/crystra-c079-tool-denied.json`。临时测试插件只安装在专属测试profile，没有进入产品源码/归档；完成后从patch移除并重启实例。当前资源候选的持久化、精确读取已有store实现，但配置式Workflow端口尚未整合编辑/保存/待消费事件。
+
+## C080 配置式资源保存与候选精确读取
+
+DSH 38998b7：新增显式 resourceDraftRoot 和 allowResourceWrites；默认无写权限。每个精确来源快照使用独立候选命名空间。保存通过原不可变store，写入前后异步复核来源、绑定与expiry；不会写设计源文件。前端校验完整回执，失配/迟到响应不更新当前workspace；丢失回执后重试复用proposalId。同步getContext仍受支持，异步初始化来源失败不会产生未处理Promise拒绝。
+
+`workflow/resources/read` 返回当前候选列表；`workflow/resources/save` 接受 selection + proposal。Agent读取仍按resourceRevision精确选择源版本或不可变候选，不跟随latest。UI保存后讨论引用使用候选draft-sha256版本。
+
+298项完整回归/build/boundaries通过。3083实际编辑、保存、重载成功；源artifact-lifecycle.md摘要仍为C078值。保存候选 `draft-sha256:48e27ead12f2006854090d15c88b49b339be1fb8bbf5835219bd5514fa6f8939`，内容摘要 `378cc357f36d2e3a0b68d8160cbe70ec26dae1791295573f8c422cbd583b5adc`。真实DSH工具管线读回相同候选及摘要（9450字符），无模型请求。证据 `/tmp/crystra-c080-save-evidence.json` 与 `/tmp/crystra-c080-tool-result.json`；事件仍pending，不宣称可靠通知或Agent采用。临时测试入口移除并重启后POST回405，已不是验证处理器。
+
+当前3083 session4519，显式候选目录 `/tmp/crystra-c080-resource-candidates`，保留测试候选供恢复；原生输入中的测试引用已键盘清空。源包、用户3080和旧RC3081未改动。C076–80尚未发布新RC。

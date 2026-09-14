@@ -346,3 +346,7 @@ C075 组合专用 worktree `/tmp/crystra-combination-stage` 提交 `b12f9583`，
 目录、流程设计、资源配置、结晶分析已通过正式插件入口接入公开 UI RC3 组件。配置/端口及前提见 [Workflow 文件投影草案](drafts/workflow-file-projection.md)。285 回归、build、boundaries 通过；3083 实际检查三工作面、目录、失效撤销和恢复。侧栏 definitionId→id 映射和轮询保持投影身份均有回归用例。
 
 3083 现为 C076 本地代码覆盖已发布 RC3 的隔离实例，不能继续称作未修改的发布包；原 RC3 source/modules/lib 备份在 `/tmp/crystra-c076-installed-rc3-source`，会话41610。已发布的 UI RC3、DSH RC3、组合 RC2 的下载验证结论不变。C076尚未发布。资源编辑与原生 Workflow 会话、Agent 消费仍待接入；不据条件设计样本宣称正式运行事实。
+
+## C077–C080 输入、资源与Agent读取
+
+Workflow 原生Input现要求显式本实例工作区/会话绑定；资源候选保存只在显式root与写权限下启用。引用追加到原生草稿，Agent工具按精确版本读取，均不自动发送/执行/采用。298回归与实际保存重载、候选引用、工具读取验证通过，详见 [条件契约和证据](drafts/workflow-file-projection.md)。事件仍pending。下一缺口是Task计划文档、DAG及运行图，C081继续；C076–80尚未发布新RC，旧RC资格不覆盖新提交。
