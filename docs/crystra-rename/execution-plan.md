@@ -279,3 +279,5 @@ T0 已完成附件：[t0-decisions.md](t0-decisions.md)。新首轮分发采用 
 | L051 | 2026-09-14 | T8 Task 会话解析 | DSH 426f3ed：按正式 Task identity / sessionCorrelation 与当前实例成员解析，零关联不绑定、多候选不猜测、foreign+local 仍歧义、失效来源拒绝；新增 4 回归，完整 220/220 通过 | 解析器尚未接 Task 页面，不代表已有 Task Input 可用；下一步接当前实例的实时成员、control-plane 与页面状态 |
 
 | L052 | 2026-09-14 | T8 持续接入中 | TaskInputController 接实时 control-plane 与本实例 Session，复用 Execution 轮询；Task 工作台本地关联为空时不借用其他会话。测试关联下原生 Input 与目标区域四边一致，切 bench/Analysis 往返保留草稿与页签；测试代码只在未跟踪 .v8-dev-build.mjs 的显式开关中 | 3082 暂处 Input 装配探索：Task关联及内容为样本，非正式业务状态；继续组件和完整验证，不等待用户指令 |
+
+| L053 | 2026-09-15 | T8 IN_PROGRESS | C057 UI f1c5bc0：结晶分析独立投影，3082 草案样本复验，419+34 单测/44 浏览器通过；C058 草案持续失效控制器 236 DSH 测试通过，尚未接生产页面 | C059 五工作面 value 校验与显式 adapter 接入；RC 未发布，继续推进 |
