@@ -35,9 +35,9 @@
 
 传入 `read(context)`；context 是宿主可信边界提供的 expected binding，不取自待验证 response。字段：draftId、revision、sourceLockDigest、environment、taskId、goalRevision、planRevision（允许 null）、accessAllowed、adapterId。adapterId 是显式选择的适配器身份，不靠 response 自报建立信任。
 
-response 具有相同 binding，并带 `snapshotRevision`、`expiresAt`（UTC ISO）、`provenance`（`service` 或 `fixture`）、`surfaces`。每个工作面为 `{state:'available', value}` 或 `{state:'unavailable', reason}`；五个 key 固定为 grilling/plan/execution/gate/delivery。缺 key 不是无内容，属于格式错误。value 结构由对应下一版工作面适配器校验；本轮 envelope 校验不声称验证业务语义。
+response 具有相同 binding，并带 `snapshotRevision`、`expiresAt`（UTC ISO）、`provenance`（`service` 或 `fixture`）、`surfaces`。每个工作面为 `{state:'available', value}` 或 `{state:'unavailable', reason}`；五个 key 固定为 grilling/plan/execution/gate/delivery。缺 key 不是无内容，属于格式错误。value 已增加五工作面结构校验（C059）：grilling/plan/execution/delivery 分别对应现有只读 UI projection；gate 为 `{gates: TaskGateProjection[]}`。必需字段、嵌套列表、稳定 ID 唯一性、完整运行引用和允许字段均检查；未知命令字段拒绝。结构通过仍不声称验证业务语义、确认真实性或正式来源。
 
-生产查询的旧 task list 可作为 Browser 部分字段输入；不能为了填满五工作面将 taskId 变成 Plan/Gate 内容。不同 goal/plan revision 的内容不合并。`expiresAt` 到期必须重新读取；UI 的定时失效属于接入验收，单次解码不能证明持续有效。
+生产查询的旧 task list 可作为 Browser 部分字段输入；不能为了填满五工作面将 taskId 变成 Plan/Gate 内容。不同 goal/plan revision 的内容不合并。`expiresAt` 到期必须重新读取；C058 controller 提供定时失效、上下文变化清空、撤权拒绝、乱序丢弃与销毁处理；UI 挂载后的持续失效仍须接入验收，不能以 controller 单测代替。
 
 ## 后续最小写探索草案（本轮未实现）
 
