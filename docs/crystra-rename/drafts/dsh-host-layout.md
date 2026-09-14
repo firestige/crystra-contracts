@@ -2,6 +2,29 @@
 
 状态：DRAFT · host-layout.draft.1。**本文不是已获准的 DSH 修改，也不改变正式 SlotRegistry 规则。** 草案用于解决 v8 Task/Workflow Input 连续性；数据草案授权仍有效，本项待确认的是增加宿主组件修改/维护范围。
 
+## C044 用户裁定：复用实现，不共享原生会话
+
+用户明确：原生 Input 的复用目标是组件和交互逻辑，不要求 Crystra 与原生 DSH 使用同一个 Session 管理器，不要求两边可见，并倾向两边不可见。由此撤销下文“与原 Harness 同一个 Conversation React 节点/session scope”的必要性。C042 的宿主扩展方案仅保留历史备选，不再作为当前实施前提。
+
+当前约束：
+
+- 复用 DSH 消息流、Composer、附件、工具、审批等已有实现；不把 v8 静态 Chat 样本发展成另一套交互实现。
+- Crystra 会话由 Crystra 独立管理或使用隔离的 DSH 服务实例；优先复用现有实现，不预先要求重写会话管理器。
+- 原生 DSH 与 Crystra 不互相列出或自动绑定对方会话。不能仅隐藏侧栏条目就宣称数据隔离已成立，需验证查询、订阅、历史和写入路由。
+- 输入连续性只要求在 Crystra 自身 Task/Workflow 的规定导航范围内成立；不要求返回原生 Harness 时共享草稿、历史或保持同一个 React 节点。
+- Task/Gate 与 Crystra 自有会话须精确绑定，禁止猜测最近原生 Session。复用已有 control-plane correlation 前须确认其会话归属。
+- 保留实际 3080 用户实例不动的操作约束；这不等于产品应共享其数据。
+
+下一步核对 Conversation 的组件、scope、输入状态机、Session 服务及 RPC 依赖，选择能复用组件与交互且隔离会话的最小装配方案，再在隔离环境验证。现有 rc.2 类型声明显示 ConversationController 按 session scope 寻址，并依赖会话输入状态机；这说明需处理服务装配，尚不能宣称只替换一个 React prop 即可完成。
+
+## C043 更正：本提案仅为备选
+
+此前从 overlay 缺少子 renderer 直接推导必须修改宿主，证据不足。当前 rc.2 仍明确推荐 shell.overlay。2026-09-14 重新读取 Taylor-Cat/dsh-macos-desktop 的 lib/client.js：该插件使用 shell.overlay 注册自有界面，通过 `.pI_x6G_frame` 和 `[data-shell-overlay]` 相关结构选择器调整原宿主外层位置，保留原生 Conversation；并非从 overlay 调用 renderSlot。没有完成旧新版对照或运行复验，不能声称版本升级让此类方案失效。
+
+下一步先验证仅改变宿主外层几何的受控适配，保持 Input 内部样式与行为边界，检查版本/DOM 前提、唯一实例、输入连续性及卸载恢复。下文不使用私有 CSS 的要求是本扩展提案的技术选择，不是用户已确认的全局禁令。只有适配路线被实验证明不能满足设计时，才重新评估宿主扩展范围。
+
+源码：https://github.com/Taylor-Cat/dsh-macos-desktop/blob/HEAD/lib/client.js （本次读取副本 /tmp/crystra-desktop-reference.js；HEAD 是浮动引用，不作为发布固定依据）。
+
 ## 当前可复验证据
 
 固定运行时为 @deepseek-ai/dsh 0.1.1-rc.2。检查的是 `/tmp/crystra-dsh-t6/node_modules/@deepseek-ai/` 的实际安装字节：

@@ -1,0 +1,51 @@
+{
+  "at": "2026-09-14T13:57:48.441Z",
+  "scope": "two disposable DSH 0.1.1-rc.2 instances; no prompt sent",
+  "records": [
+    {
+      "port": 3083,
+      "sessionId": "crystra-isolation-ece7f5c2-6e48-4819-8fc7-fba8d85c7988",
+      "ownHistory": true,
+      "foreignHistoryError": {
+        "code": "session-not-found",
+        "message": "session \"crystra-isolation-b2ee0490-fcf9-4777-974b-f7c11b1b014a\" not found",
+        "details": {
+          "sessionId": "crystra-isolation-b2ee0490-fcf9-4777-974b-f7c11b1b014a"
+        }
+      },
+      "foreignRenameError": {
+        "code": "session-not-found",
+        "message": "session \"crystra-isolation-b2ee0490-fcf9-4777-974b-f7c11b1b014a\" not found",
+        "details": {
+          "sessionId": "crystra-isolation-b2ee0490-fcf9-4777-974b-f7c11b1b014a"
+        }
+      },
+      "eventSessionId": "crystra-event-14f936f2-0383-466a-a127-84b8bfbd15ec"
+    },
+    {
+      "port": 3084,
+      "sessionId": "crystra-isolation-b2ee0490-fcf9-4777-974b-f7c11b1b014a",
+      "ownHistory": true,
+      "foreignHistoryError": {
+        "code": "session-not-found",
+        "message": "session \"crystra-isolation-ece7f5c2-6e48-4819-8fc7-fba8d85c7988\" not found",
+        "details": {
+          "sessionId": "crystra-isolation-ece7f5c2-6e48-4819-8fc7-fba8d85c7988"
+        }
+      },
+      "foreignRenameError": {
+        "code": "session-not-found",
+        "message": "session \"crystra-isolation-ece7f5c2-6e48-4819-8fc7-fba8d85c7988\" not found",
+        "details": {
+          "sessionId": "crystra-isolation-ece7f5c2-6e48-4819-8fc7-fba8d85c7988"
+        }
+      },
+      "eventSessionId": "crystra-event-97cb59ce-f002-4c22-8678-6adbb39f28d2"
+    }
+  ],
+  "hostEvents": {
+    "ownUpdatesReceived": true,
+    "foreignSessionIdsAbsent": true,
+    "observationMs": 1500
+  }
+}

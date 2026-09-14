@@ -128,3 +128,11 @@ TaskWorkbench 已按 v8 Header、38:62 分栏、Input 最小 360 / Control 最�
 读取实际 DSH SlotRegistry/AppFrame 后，确认 ctx.renderSlot 仅能渲染 root、其它 seat 只能由 owner 的子 renderer 使用；当前 overlay 没有 Conversation 子 seat，root 不允许插件再次注册。为满足同一 Input 和定稿布局，需要扩展 DSH ui-layout 的受支持布局/产品 seat。已准备[具体草案](drafts/dsh-host-layout.md)，新增宿主组件修改或受控 fork 的范围尚需用户明确授权；没有改宿主源码、私有 CSS 或另造 Composer 来绕过。
 
 UI 工作树包含完整 Analysis 和 Task frame；DSH 正式源码仍 388c040，3082 仅启用了有明确样本标识的 Analysis 探索。真实 Task/Workflow Input 接入在上述范围决定前暂停；其它页面组件化与数据适配不受影响。T8 仍 IN_PROGRESS。
+
+## C043 · overlay 路线复核
+
+C042 的“需要扩展宿主”结论过早，现撤回必需性判断。shell.overlay 在当前 rc.2 仍可用；缺少 props.renderSlot 不等于不能与原生 Conversation 并排布局。dsh-macos-desktop 实际通过 overlay + 宿主外层 CSS 定位实现。尚未实测其在固定 rc.2 的完整兼容性，也没有版本回归证据；先在隔离环境验证外层适配，宿主扩展保留为备选。详见 drafts/dsh-host-layout.md 的 C043 更正。
+
+## C044 · 复用 Input 与会话隔离
+
+用户明确复用原生 Input 的组件和交互，不要求共用原生 DSH Session 管理器，并倾向互不可见。取消 C042 对跨 Harness/Crystra 同一 Conversation 实例的必要性。输入连续性以 Crystra 自身导航范围为准。下一步检查组件、scope、输入状态机、Session 服务与 RPC 装配，优先复用实现并隔离会话，不能只隐藏原生会话列表就宣称完成。详见 drafts/dsh-host-layout.md C044。

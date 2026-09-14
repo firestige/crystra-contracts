@@ -127,15 +127,15 @@ T0 产出必须链接在本文中，可以建立同目录的决策附件；不�
 
 | 字段 | 当前值 |
 |---|---|
-| 检查点 | C042：Analysis 完整探索与 Task frame 已验证；真实 Input 接入需要 DSH ui-layout 扩展范围决定 |
+| 检查点 | C046：双实例会话列表/历史/改名及新增事件隔离已验证；新建页保留 Crystra Shell 并复用原生 Input，216 测试通过 |
 | 当前任务 | T0–T7 DONE；T8 IN_PROGRESS |
 | 已完成 | 更名／配置复用；crystra-v0.1.0-rc.1 远端六文件与本地相同；真实执行、入库、Trace、评估及 Workflow AVAILABLE；旧部署备份隔离完成 |
 | 未完成 | 实际 DSH 安装验收与公开安装入口收尾；bot PR #277、DSH #38、Execution #46、Evolution #10、Contracts #18 尚需按审批规则合并 |
-| 工作路径 | 新 UI /tmp/crystra-ui-host-integration `97df006`；新宿主 /tmp/crystra-dsh-t6 `388c040`（未发布）。原组合 /tmp/crystra-combination-stage 1593f589；/tmp/crystra-dsh-t6 产品候选 9a9777d、另有 test-only 742e1de；实际 ~/.dsh/profiles/web；台账 /Users/firestige/Projects/wsr-contracts |
+| 工作路径 | 新 UI /tmp/crystra-ui-host-integration `97df006`；新宿主 /tmp/crystra-dsh-t6 `72725a6`（未发布）。原组合 /tmp/crystra-combination-stage 1593f589；/tmp/crystra-dsh-t6 产品候选 9a9777d、另有 test-only 742e1de；实际 ~/.dsh/profiles/web；台账 /Users/firestige/Projects/wsr-contracts |
 | 活跃进程／作业 | 本次安装／归档命令完成；现有 DSH PID 40455（全局 web，3080）保留。精确 DSH 0.1.1-rc.2 已作为普通依赖安装于 ~/Library/Application Support/Crystra/tools，未降级全局 CLI |
 | 隔离档案 | /Users/firestige/Library/Application Support/Crystra-quarantine/20260914-wsr；17 个校验归档、旧运行目录原件、15 个无容器引用的离线卷 |
-| 已知阻塞 | Task/Workflow 真实 Input 需要 DSH ui-layout 扩展范围决定，见 drafts/dsh-host-layout.md。旧 Workflow 匿名额度 403 仅为此前证据，当前未复验，不按旧恢复时刻推定仍被限流。无 GA 门槛 |
-| 下一条动作 | 优先处理[新 UI 接入缺口](t8-ui-integration-gap.md)：核对公共导出、宿主页面及路由、真实数据端口，再发布新 RC；原 UI 验收仅证明旧链路可运行。限流为独立复验项。公开 RC 安装入口已更新至 #277/#38，PR 保持 bot／非 Draft，等待正常合并 |
+| 已知阻塞 | Input 复用与会话隔离的装配方案待验证，不是待用户批准共享会话或 fork；见 drafts/dsh-host-layout.md C044。旧 Workflow 匿名额度 403 仅为此前证据，当前未复验，不按旧恢复时刻推定仍被限流。无 GA 门槛 |
+| 下一条动作 | 优先核对 Input 组件与 Session/scope/RPC 依赖，形成复用实现、隔离会话的装配方案；继续处理[新 UI 接入缺口](t8-ui-integration-gap.md)，再发布新 RC；原 UI 验收仅证明旧链路可运行。限流为独立复验项。公开 RC 安装入口已更新至 #277/#38，PR 保持 bot／非 Draft，等待正常合并 |
 | 禁止误恢复项 | 不重做更名；不删除 ~/.config/wsr/credentials 复用私钥；不动原组合子模块脏内容；不消费旧档案；不自动合并／发 GA |
 
 
@@ -267,3 +267,11 @@ T0 已完成附件：[t0-decisions.md](t0-decisions.md)。新首轮分发采用 
 | L045 | 2026-09-14 | T8 Analysis 完整组合 | UI 0a54cd8 抽取 AnalysisWorkspace，保留日期/布局/目录/Trace/对比分析插槽，生产入口不默认引入样本或改宿主 URL；394 Vitest+34 Node、28 原浏览器回归及 1 新完整页面回归通过。3082 显式启用 v8 设计样本探索并标注；不代表真实数据接入或 RC | 继续同尺寸视觉与交互检查、Task/Workflow 组件化、真实/草案端口接入 |
 
 | L046 | 2026-09-14 | T8 Task frame 与宿主边界 | TaskWorkbench 容器完成，395 Vitest+34 Node、1920×1080 浏览器切页/输入保持通过；不是五工作面内容完成。固定 DSH overlay 无 Conversation 子插槽且 root 禁止插件重新注册，实际 Input 接入需要新增 ui-layout 修改/受控 fork 范围 | [可审核宿主扩展草案](drafts/dsh-host-layout.md)；该项待用户授权，其它页面/端口工作可独立继续 |
+
+| L047 | 2026-09-14 | T8 宿主判断纠正 | 当前 rc.2 明确支持 shell.overlay；此前 TypeError 仅证明 overlay 未提供 props.renderSlot。重新读取 dsh-macos-desktop 源码，实际以 overlay 加外层 CSS 布局保留原生 Conversation，未证明该方法因版本升级失效。撤回 L046 中必须扩展/fork 的结论 | 先在隔离环境验证布局适配与输入连续性；宿主扩展仅为未启用备选 |
+
+| L048 | 2026-09-14 | T8 Input 复用边界裁定 | 用户明确复用组件和交互即可，不要求与原生 DSH 共用 Session 管理器，倾向互不可见；撤销共享原 Harness Conversation 节点与会话的前提 | 先核对组件与服务装配，优先复用实现并隔离会话；Crystra 内部导航连续性仍需验证 |
+
+| L049 | 2026-09-14 | T8 隔离装配核对 | 确认 Input 按 Session scope 依赖输入状态机与 RPC；默认会话与工作区存储归 DSH_HOME。3082 独立 home、空会话列表已核对；native picker 无网页菜单不能直接定性为故障，原生窗口检查工具长时返回仍未找到 picker | [装配核对与验证顺序](drafts/input-session-assembly.md)；继续专属实例隔离及 v8 Input 组合验证，无 fork 授权阻塞 |
+
+| L050 | 2026-09-14 | T8 Input 接入与隔离实证 | 两个一次性实例通过会话读写和新增事件隔离；3082 新建任务保留 Crystra Shell，原生菜单与未发送草稿往返通过，Analysis 隐藏底层输入；216/216 Node 通过 | drafts/input-session-assembly.md C046；继续 Task/Workflow 精确绑定与完整工作面，不代表新 RC |
