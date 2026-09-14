@@ -1,0 +1,45 @@
+{
+  "checkpoint": "C091",
+  "ui": {
+    "tag": "crystra-ui-v0.1.0-rc.5",
+    "commit": "e3246e17bd875ad32ef8ec4268357ca457530ede",
+    "sha256": "2ecb0b2f0f4cdc23e2932b56eb44fd202b73d892322c8d84b0b836de754def41"
+  },
+  "dsh": {
+    "tag": "crystra-dsh-v0.1.0-rc.6",
+    "commit": "c7cb177e8eb272c2bdf1766c67638f88877fa864",
+    "sha256": "aae9f7fdbecc02c93aa3a0b6d8eefdfaa92f41f1d78766fa7fffeaed37915e08",
+    "run": 34899528837,
+    "localRemoteBytesEqual": true,
+    "gates": {
+      "cleanProfile": "PASS",
+      "lifecycle": "PASS",
+      "realHarness": "PASS",
+      "loopbackOutage": "PASS",
+      "providerRouting": "PASS",
+      "remoteArtifacts": "PASS"
+    }
+  },
+  "combination": {
+    "tag": "crystra-v0.1.0-rc.5",
+    "commit": "4b48c3e3f761e7b51adb335e5334ff3fcd0e291d",
+    "run": 34900018582,
+    "qualification": "PASS",
+    "localRemoteEqualFiles": 6
+  },
+  "installed": {
+    "port": 3085,
+    "profile": "/tmp/crystra-c089-dsh-home",
+    "filesCompared": 558,
+    "differences": [],
+    "notificationRecovery": "two logical events; one current queued copy each; canceled notices explicitly retried",
+    "modelTurns": 0,
+    "modelSteps": 0,
+    "historySha256": "92e0dc3f6c07f8ed6d63582ddc8b9f048336dffe2fcdf8c8e4bdafbf6899ea92"
+  },
+  "limits": [
+    "Conditional drafts remain conditional",
+    "Native queued delivery is not model consumption",
+    "No GA; manual PR merge gate remains"
+  ]
+}

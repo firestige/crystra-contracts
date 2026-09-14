@@ -127,15 +127,15 @@ T0 产出必须链接在本文中，可以建立同目录的决策附件；不�
 
 | 字段 | 当前值 |
 |---|---|
-| 检查点 | C088：UI RC5 e3246e1、DSH RC5 82ce38b、组合RC4 b029f1b2已发布并下载核验。宿主313回归/六项本地与远端资格通过；组合50回归和资格通过、六资产远端本地一致。3084正常安装公开RC5，555文件与归档一致，审核上下文/返回和资源候选失效实际通过。 |
+| 检查点 | C091：UI RC5 e3246e1、DSH RC6 c7cb177、组合RC5 4b48c3e3均已发布并下载核验。DSH331回归/六项资格、组合50回归/资格通过，远端插件字节及组合六资产等于本地。3085正常安装RC6，558文件一致；真实取消恢复/重投及保存通知通过，0模型轮次。见evidence/c091-final-rc-combination.json。 |
 | 当前任务 | T0–T7 DONE；T8 IN_PROGRESS |
 | 已完成 | 更名／配置复用；crystra-v0.1.0-rc.1 远端六文件与本地相同；真实执行、入库、Trace、评估及 Workflow AVAILABLE；旧部署备份隔离完成 |
-| 未完成 | 实际 DSH 安装验收与公开安装入口收尾；bot PR #277、DSH #38、Execution #46、Evolution #10、Contracts #18 尚需按审批规则合并 |
-| 工作路径 | UI /tmp/crystra-ui-host-integration e3246e1；DSH /tmp/crystra-dsh-t6 82ce38b；组合 /tmp/crystra-combination-stage b029f1b2；干净资格副本 /tmp/crystra-dsh-candidate-rc5；Contracts /Users/firestige/Projects/wsr-contracts。原始子模块未修改。 |
-| 活跃进程／作业 | 3084 /tmp/crystra-c085-dsh-home session77289：正常安装公开RC5，日志/tmp/crystra-c088-published-dsh.log，555文件一致。3083 /tmp/crystra-task-file-dsh-home session29162仍为RC4原件。3082/4192/4191保留；3080/3081不改动。 |
+| 未完成 | 人工合并现有bot非Draft PR：UI#8、Execution#46、Evolution#10、DSH#38、Contracts#18，最后组合#277；合并后复核main与固定制品指针再关闭T8。最新安装入口与清理完成状态已更新。 |
+| 工作路径 | UI /tmp/crystra-ui-host-integration e3246e1；DSH /tmp/crystra-dsh-t6 9d56535（相对已发布c7cb177仅README）；组合 /tmp/crystra-combination-stage 4b48c3e3；干净资格副本/tmp/crystra-dsh-candidate-rc6；Contracts /Users/firestige/Projects/wsr-contracts。原始子模块未改。 |
+| 活跃进程／作业 | 3085 session97166，home/tmp/crystra-c089-dsh-home，patch/tmp/crystra-c089-dsh.patch.yml，日志/tmp/crystra-c091-published-dsh.log：公开RC6，558文件一致；3084 session77289仍公开RC5，3083 session29162仍RC4。3082/4192/4191保留；3080/3081不改。 |
 | 隔离档案 | /Users/firestige/Library/Application Support/Crystra-quarantine/20260914-wsr；17 个校验归档、旧运行目录原件、15 个无容器引用的离线卷 |
-| 已知阻塞 | 无用户决策阻塞。Workflow 生产端口、精确计划/文档/证据关联、模型消费及模型/provider/approval 联调尚待完成；C090已验证非唤醒原生队列交付与取消恢复。确定性命令通过不等于模型链路通过。 |
-| 下一条动作 | C091：DSH c7cb177通知实现331回归与3085实际非唤醒投递/重启取消重投通过；RC6推送中，干净副本/tmp/crystra-dsh-candidate-rc6。完成本地/远端六项资格与精确下载核验，再创建组合RC5、安装公开包。UI仍RC5；3084保持公开DSH RC5，3083保持RC4。模型消费与正式领域链路未声明完成，无用户决策阻塞，不发GA。 |
+| 已知阻塞 | 技术资格无失败；剩余为既定人工PR合并门禁（禁止自动合并）。正式领域数据/模型消费与provider/approval链路未声明完成，也不由设计草案或队列回执替代；不扩大成本次GA目标。 |
+| 下一条动作 | 完成现有PR最终head检查；按既定人工合并门禁由用户合并组件与Contracts PR，组合PR最后。合并后只需读回main/固定提交和安装入口、更新T8结束状态；不重发已合格RC，不发GA，不重做更名清理。 |
 | 禁止误恢复项 | 不重做更名；不删除 ~/.config/wsr/credentials 复用私钥；不动原组合子模块脏内容；不消费旧档案；不自动合并／发 GA |
 
 
@@ -343,3 +343,5 @@ T0 已完成附件：[t0-decisions.md](t0-decisions.md)。新首轮分发采用 
 | L083 | 2026-09-15 | T8 IN_PROGRESS | C089 DSH7221c3f：317回归/build/boundaries通过；持久化精确pending状态、幂等与旧版本回执验证；3085真实保存/重载提示通过，session91611。发现原生agent.inject公开接口为不唤醒的next-step上下文，可继续评估可靠投递草案 | C090核验会话身份、flush持久化与去重边界后接原生通知；不把入队当模型读取。3084仍公开RC5，3083仍RC4 |
 
 | L084 | 2026-09-15 | T8 IN_PROGRESS | C090 DSH c7cb177：331回归/build/boundaries通过。明确通知开关，非唤醒原生投递/flush持久化、按事件幂等与资源版本排序。真实重启暴露取消记录，已补取消重投；3085实测两个逻辑事件/三次物理插入/零模型轮次及Token，证据drafts/evidence/c090-native-notifications.json | DSH RC6自动资格和干净副本本地六项资格，随后组合RC5；3085 session8991（末尾no-op防护仅源码测试，最终公开包再安装），3084公开RC5未改 |
+
+| L085 | 2026-09-15 | T8 IN_PROGRESS，人工合并门禁 | C091最终公开组合RC5/DSH RC6验收完成：远端与本地精确字节相同，3085安装558文件一致，原生通知取消恢复两逻辑事件各一队列副本、零模型轮次。DSH9d56535仅刷新README安装指引；组合4b48c3e3更新准确URL/SHA和旧清理完成状态 | 现有bot非Draft PR最终检查后进入人工合并；合并后读回main再关闭T8。没有需要重做的技术资格 |
