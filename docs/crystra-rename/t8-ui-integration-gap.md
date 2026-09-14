@@ -314,3 +314,9 @@ UI `d3b93e6`：显式资源保存端口的本地草稿按definitionId、definiti
 新增隔离/remount与unload回归。实际3082编辑README、退到工作流目录、返回同一版本并打开资源页，预览和源码文末均出现C068未保存标记；源码为虚拟化行，必须定位文末而非仅取当前DOM文本。最终取消测试编辑，页面显示无未保存修改。426 Vitest+34 Node、45浏览器、type/lint/format/build通过。DSH仍7ec3228/259测试；未发RC。
 
 远端只读核对：firestige/crystra#277、crystra-dsh#38、crystra-contracts#18仍open、非Draft、project-ops-agent bot；crystra-ui无openPR。不能把本地UI完成等同远端已发布。
+
+## C069 UI RC2 与宿主精确输入
+
+UI `4f3d22a78d8e9f474299d6a4b5a8739e03a8f0ad` 已通过完整本地资格（426 Vitest、34 Node、45 browser、type/lint/format/build/deps、package、React18、Docker）及远端 CI 34877525947。自动 RC 34877591941 成功，发布 [crystra-ui-v0.1.0-rc.2](https://github.com/firestige/crystra-ui/releases/tag/crystra-ui-v0.1.0-rc.2)。下载四个资产执行 `release.mjs verify --qualified` 通过；包 SHA256 `884ff9c2a344846fad787cde91eea5833e467d60b2f840e45211a92a399f361f`。
+
+[UI PR #8](https://github.com/firestige/crystra-ui/pull/8) 为 project-ops-agent bot、非 Draft，合并仍归用户。DSH `e2b3c2b` 更新发布 URL、锁文件、候选输入元数据及缓存，使用公开命名导出重建正式 bundle；259 项测试、输入校验、pack 验证通过。开发 fixture helper 未进入正式 bundle。此结果只证明 UI 组件制品及 DSH 消费输入，新 DSH RC、完整页面真实数据与组合资格仍未完成。
