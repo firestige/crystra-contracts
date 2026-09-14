@@ -27,3 +27,19 @@
 ## 新 Shell 开发验证（C037）
 
 3082 独立开发实例已经显示新 Shell、读取真实 Task，并验证 Harness 往返保留精确任务身份。UI 2fa2b98、DSH 1a1e1ed 为本地源码检查点；205 项 DSH 回归通过。开发 bundle 通过本地 UI alias 构建，未更新已发布 RC、真实安装或组合；完整 v8 页面尚未完成。详细恢复路径、已修复错误与未完成项见 [接入记录](t8-ui-integration-gap.md#c037-实际开发实例挂载)。
+
+
+## Analysis 与新建空白态（C038）
+
+源码检查点：UI `bca3552`，DSH `8a42836`，均为隔离 clone 本地提交，尚未发布。3082 已重建开发 bundle；3080 用户实例和已部署 RC 未改。
+
+- 新 Analysis 三页框架使用定稿布局与组件，总览调用现有评估控制器，Trace 使用正式解码器、分页加载器与 Waterfall/Tree（showSummary=false）。研究报表没有生产接口，明确显示缺口。
+- 修复正式 Trace 查询解码：注册字段应为 C01/C02 等 ID，而不是原始 agentops 名；拒绝未知 ID、重复/乱序字段。Facts 解码兼容性尚未在新工作面验证。
+- Trace 查询处理错误、absent、partial、分页与竞态；错误时移除旧图。保留空目录 aside，修复定稿网格将主图压入零宽列的问题。
+- 实际 3082 验证真实 task-5f9ecaae-8f06-42f9-93bd-22ac3a551bc7 的 12 指标、100% terminal outcome；Trace aed6fbb2d3ce5d2a902c74af06f89bb8（324 ms），Waterfall/Tree 切换、页面往返保留结果和视图，非法 ID 清除旧图。未声称刷新后恢复查询。
+- 宿主 startSession 会经 connectWorkspace 调用 sessions.create，创建完整 Session+Agent；新建 Task 改用 sessions.clear 进入空白 Harness。回归先失败后修复；3082 点击后显示空白页且会话目录仍为空。工作区选择后的持久化时机仍需按宿主契约单独检查。
+- UI format/lint/type/build/deps 通过，391 Vitest + 34 Node + 27 浏览器用例通过。DSH 宿主完整回归 209/209 通过（允许 localhost 监听），日志 /tmp/crystra-analysis-dsh-tests.log；沙箱 EPERM 不是逻辑测试失败。UI clone 缓存位于自身 node_modules，不修改原 UI 工作树。
+
+仍未完成：完整 Task Browser/工作面、Workflow 目录/版本页、Trace 可搜索目录和 Evidence 下钻、Overview 定稿配置能力、设置与覆盖层焦点管理、新 UI/DSH RC 和组合重固定。当前开发 bundle 通过本地 UI alias，正式 lib/client.js 尚未重建，不能用本轮结果宣称发布资格。
+
+范围边界：定稿 handoff/decisions-and-open-questions.md 的 O01、O10、C07 尚未定义 Task IR、Plan/Wave/Gate、readiness、持久化事务等领域接口。是否扩大本次范围定义后端契约的问题已提出，尚无明确选择；后续“继续”按现有 UI 接入授权执行，不视为扩大领域范围。下一步先处理现有能力的接入，禁止以 fixture 填补生产数据。

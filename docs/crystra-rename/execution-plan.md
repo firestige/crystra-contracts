@@ -126,11 +126,11 @@ T0 产出必须链接在本文中，可以建立同目录的决策附件；不�
 
 | 字段 | 当前值 |
 |---|---|
-| 检查点 | C037：新 Shell 已在独立 DSH 开发实例挂载，真实 Task 与往返身份验证通过；完整 v8 页面和新 RC 未完成 |
+| 检查点 | C038：Analysis 独立接入真实评估与 Trace，新建 Task 不提前创建 Session；完整 v8 页面和新 RC 未完成 |
 | 当前任务 | T0–T7 DONE；T8 IN_PROGRESS |
 | 已完成 | 更名／配置复用；crystra-v0.1.0-rc.1 远端六文件与本地相同；真实执行、入库、Trace、评估及 Workflow AVAILABLE；旧部署备份隔离完成 |
 | 未完成 | 实际 DSH 安装验收与公开安装入口收尾；bot PR #277、DSH #38、Execution #46、Evolution #10、Contracts #18 尚需按审批规则合并 |
-| 工作路径 | 新 UI /tmp/crystra-ui-host-integration `b4214dc`；新宿主 /tmp/crystra-dsh-t6 `1a1e1ed`（未发布）。原组合 /tmp/crystra-combination-stage 1593f589；/tmp/crystra-dsh-t6 产品候选 9a9777d、另有 test-only 742e1de；实际 ~/.dsh/profiles/web；台账 /Users/firestige/Projects/wsr-contracts |
+| 工作路径 | 新 UI /tmp/crystra-ui-host-integration `bca3552`；新宿主 /tmp/crystra-dsh-t6 `8a42836`（未发布）。原组合 /tmp/crystra-combination-stage 1593f589；/tmp/crystra-dsh-t6 产品候选 9a9777d、另有 test-only 742e1de；实际 ~/.dsh/profiles/web；台账 /Users/firestige/Projects/wsr-contracts |
 | 活跃进程／作业 | 本次安装／归档命令完成；现有 DSH PID 40455（全局 web，3080）保留。精确 DSH 0.1.1-rc.2 已作为普通依赖安装于 ~/Library/Application Support/Crystra/tools，未降级全局 CLI |
 | 隔离档案 | /Users/firestige/Library/Application Support/Crystra-quarantine/20260914-wsr；17 个校验归档、旧运行目录原件、15 个无容器引用的离线卷 |
 | 已知阻塞 | 锁屏已解除；3080 旧进程未加载磁盘新插件。固定 DSH 0.1.1-rc.2 在 3081 独立验收，复用实际安装 node_modules、隔离 DSH_HOME；setup 三服务健康，工作区绑定缺失诊断准确。实际 Workflow 解析被 GitHub 匿名额度 HTTP 403 阻挡，约 08:51 UTC 后重验；[UI 证据](evidence/t8-ui-acceptance.json)。无 GA 门槛 |
@@ -254,3 +254,5 @@ T0 已完成附件：[t0-decisions.md](t0-decisions.md)。新首轮分发采用 
 | L039 | 2026-09-14 | T8 Shell/导航实现中 | 新增 UI Shell 组合、精确路由/返回恢复、DSH additive overlay 桥接工厂；5 项导航/挂载测试通过。尚未激活到 root client，当前安装保持旧 RC | 补 v8 一致性、页面/数据端口后接 root client，不以占位页面交付 |
 
 | L040 | 2026-09-14 | T8 新 Shell 实际挂载 | 3082 独立开发实例挂载 root client；修复 overlay 无 renderSlot 异常及主题/定位；真实 Task 选择、Harness 往返身份保持通过；DSH 205 项回归通过。开发 bundle 使用本地 UI alias，不是已发布 RC 字节 | 补完整页面、Shell 交互和真实数据端口；新 UI RC 固定后才更新正式生成 bundle |
+
+| L041 | 2026-09-14 | T8 Analysis 接入 | UI bca3552、DSH 8a42836；独立 Analysis 总览/Trace 连接真实接口；修复 Trace 注册字段 ID 解码、零宽图布局及新建 Task 提前创建 Session。UI 391+34 单测、27 浏览器测试、DSH 209 项通过；完整 v8 和新 RC 未完成 | 见 C038 接入记录；继续现有接口可支持的 UI，O01/O10/C07 领域扩展待用户确认 |
