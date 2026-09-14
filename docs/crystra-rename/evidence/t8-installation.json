@@ -1,0 +1,15 @@
+{
+  "status": "INSTALLED_VERIFIED",
+  "profile": "/Users/firestige/.dsh/profiles/web",
+  "plugin": "dsh-crystra",
+  "candidateTag": "crystra-dsh-v0.1.0-rc.2",
+  "archiveSha256": "7d6635ef424ee5cffc250c7a13c5e22be62e20e4970ec1db951528d944b6df6f",
+  "verifiedInstalledFiles": 419,
+  "pluginActivations": 1,
+  "runtimeBinary": "/Users/firestige/Library/Application Support/Crystra/tools/node_modules/.bin/dsh",
+  "runtimeVersion": "0.1.1-rc.2",
+  "globalRuntimeChanged": false,
+  "existingDshProcessPreserved": 40455,
+  "browserAcceptance": "PENDING_MAC_UNLOCK",
+  "setupAndWorkspaceBindings": "PENDING_ACTUAL_UI_ACCEPTANCE"
+}

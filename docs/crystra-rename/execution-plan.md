@@ -66,7 +66,7 @@ T0 已落定具体实现选择，见 [T0 决策](t0-decisions.md)。新坐标的
 | T5 | 当前品牌收尾与外部坐标切换 | 准备可在 T0 后；实际切换需 T1–T4 DONE | DONE | 本任务 Codex | 配置复用与读回见 release-configuration.json；发布和文档 PR #275/#276、DSH #37 已合并 |
 | T6 | 新组件候选与隔离环境组合验证 | T5 DONE | DONE | 本任务 Codex | crystra-v0.1.0-rc.1，34816139862 成功；远端字节一致及真实服务联调通过；[最终证据](evidence/t6-final-combination.json) |
 | T7 | 一次性人工清理实际旧部署 | T6 DONE；只读盘点可在 T0 开始 | DONE | 本任务 Codex | 17 归档校验、59 旧／夹具容器移除、15 卷离线保留；旧运行目录已隔离；[清理记录](evidence/t7-cleanup.json) |
-| T8 | 实际 RC 安装验收与更名收尾 | T7 DONE；使用 T6 验证制品 | IN_PROGRESS | 本任务 Codex | 实际 ~/.dsh web profile 安装精确 dsh-crystra rc.2；未改全局 DSH CLI，继续安装验收 |
+| T8 | 实际 RC 安装验收与更名收尾 | T7 DONE；使用 T6 验证制品 | BLOCKED | 本任务 Codex | 实际安装 419 文件逐字节通过、唯一激活；Mac 锁屏阻断实际 UI 验收，需解锁；[安装证据](evidence/t8-installation.json) |
 
 详细范围见 [T0–T8 实施说明](implementation-plan.md)。允许独立推进不表示已启动其它 Agent、创建其它任务或进行了分支切换。
 
@@ -126,15 +126,15 @@ T0 产出必须链接在本文中，可以建立同目录的决策附件；不�
 
 | 字段 | 当前值 |
 |---|---|
-| 检查点 | C031：T6/T7 DONE，首个可用组合 RC 已核验；T8 实际安装中 |
-| 当前任务 | T0–T7 DONE；T8 IN_PROGRESS |
+| 检查点 | C032：T6/T7 DONE；实际插件安装核验完成，Mac 锁屏阻断 T8 UI 验收 |
+| 当前任务 | T0–T7 DONE；T8 BLOCKED（Mac 锁屏） |
 | 已完成 | 更名／配置复用；crystra-v0.1.0-rc.1 远端六文件与本地相同；真实执行、入库、Trace、评估及 Workflow AVAILABLE；旧部署备份隔离完成 |
 | 未完成 | 实际 DSH 安装验收与公开安装入口收尾；bot PR #277、DSH #38、Execution #46、Evolution #10、Contracts #18 尚需按审批规则合并 |
 | 工作路径 | /tmp/crystra-combination-stage 1593f589；/tmp/crystra-dsh-t6 产品候选 9a9777d、另有 test-only 742e1de；实际 ~/.dsh/profiles/web；台账 /Users/firestige/Projects/wsr-contracts |
-| 活跃进程／作业 | npm exec 精确 DSH 0.1.1-rc.2，安装已核验 dsh-crystra rc.2 到实际 web profile；日志 /tmp/crystra-t8-install.log |
+| 活跃进程／作业 | 本次安装／归档命令完成；现有 DSH PID 40455（全局 web，3080）保留。精确 DSH 0.1.1-rc.2 已作为普通依赖安装于 ~/Library/Application Support/Crystra/tools，未降级全局 CLI |
 | 隔离档案 | /Users/firestige/Library/Application Support/Crystra-quarantine/20260914-wsr；17 个校验归档、旧运行目录原件、15 个无容器引用的离线卷 |
-| 已知阻塞 | 无需 GA、无需人工发布 RC；实际工作区角色配置尚待安装验收确定，不能把 NEEDS_CONFIGURATION 谎报 READY |
-| 下一条动作 | 完成实际插件安装，验证唯一激活、setup/doctor、UI 与实际服务链路；补文档与 PR。已发布候选绝不重建替换 |
+| 已知阻塞 | CUA getState 报 Mac locked、自动解锁失败；实际浏览器／会话验收需要用户解锁。现有 DSH 使用受保护的 LAN profile，localhost 返回 401；不得绕过认证或重启共享会话。无 GA 门槛 |
+| 下一条动作 | 用户解锁 Mac 后通过现有授权浏览器验收实际 setup/doctor、工作区配置与 UI；不以已通过的隔离 Harness 冒充实际会话验收。公开 RC 安装入口已更新至 #277/#38，PR 保持 bot／非 Draft，等待正常合并 |
 | 禁止误恢复项 | 不重做更名；不删除 ~/.config/wsr/credentials 复用私钥；不动原组合子模块脏内容；不消费旧档案；不自动合并／发 GA |
 
 
@@ -240,3 +240,5 @@ T0 已完成附件：[t0-decisions.md](t0-decisions.md)。新首轮分发采用 
 | L032 | 2026-09-14 | T6 IN_PROGRESS | 服务 rc.3 34815338639 成功、远端七文件字节相同；插件 rc.2 9a9777d 六项本地资格通过，34815768299 运行；组合 1593f589 清单与 gitlink 固定，50 测试通过 | 下载插件 rc.2、核验并发布组合 rc.1 |
 
 | L033 | 2026-09-14 | T6/T7 DONE；T8 IN_PROGRESS | 组合 RC1 34816139862 成功、六文件原字节复验；旧部署 17 归档校验并隔离，59 容器移除、15 卷离线保留、私钥及共享服务保留 | 实际 DSH 插件安装与收尾 |
+
+| L034 | 2026-09-14 | T8 BLOCKED | 实际 web profile 安装 dsh-crystra rc.2，419 文件与发布归档相同、单激活、精确 DSH runtime 0.1.1-rc.2 已就位；唯一 dsh-plugin topic 仓库读回 crystra-dsh；CUA 报 Mac 锁屏，实际 UI 验收不能继续 | 解锁后继续；已有共享 DSH 进程和认证配置保留 |
