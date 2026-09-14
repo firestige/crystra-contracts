@@ -127,15 +127,15 @@ T0 产出必须链接在本文中，可以建立同目录的决策附件；不�
 
 | 字段 | 当前值 |
 |---|---|
-| 检查点 | C062：Workflow原生Input与附件已在一次性工作区实测，247 DSH测试；C061：UI 2514fb8 / DSH 2eab864。Workflow 三工作面与五 Task 工作面显式草案探索已在3082验证；投影到期/撤权清空、目录版本和List恢复通过；UI421+34单测、45浏览器，DSH242测试。未发布新RC |
+| 检查点 | C066：DSH a710b07 / UI 243e79c。原生非空Session页头通过公开slot装配，256 DSH回归；实际3082从Delivery回Crystra恢复chat且保留草稿。C065确定性命令与附件保管通过，模型steps=0。未发布新RC |
 | 当前任务 | T0–T7 DONE；T8 IN_PROGRESS |
 | 已完成 | 更名／配置复用；crystra-v0.1.0-rc.1 远端六文件与本地相同；真实执行、入库、Trace、评估及 Workflow AVAILABLE；旧部署备份隔离完成 |
 | 未完成 | 实际 DSH 安装验收与公开安装入口收尾；bot PR #277、DSH #38、Execution #46、Evolution #10、Contracts #18 尚需按审批规则合并 |
-| 工作路径 | 新 UI /tmp/crystra-ui-host-integration `f1c5bc0`；新宿主 /tmp/crystra-dsh-t6 `6395d13`（未发布）。原组合 /tmp/crystra-combination-stage 1593f589；/tmp/crystra-dsh-t6 产品候选 9a9777d、另有 test-only 742e1de；实际 ~/.dsh/profiles/web；台账 /Users/firestige/Projects/wsr-contracts |
+| 工作路径 | UI /tmp/crystra-ui-host-integration `243e79c`；DSH /tmp/crystra-dsh-t6 `a710b07`；Contracts /Users/firestige/Projects/wsr-contracts。隔离开发3082；3080用户实例、3081旧RC验收实例不改动 |
 | 活跃进程／作业 | 本次安装／归档命令完成；现有 DSH PID 40455（全局 web，3080）保留。精确 DSH 0.1.1-rc.2 已作为普通依赖安装于 ~/Library/Application Support/Crystra/tools，未降级全局 CLI |
 | 隔离档案 | /Users/firestige/Library/Application Support/Crystra-quarantine/20260914-wsr；17 个校验归档、旧运行目录原件、15 个无容器引用的离线卷 |
-| 已知阻塞 | Input 专属实例隔离与 Task 几何已验证，附件/发送完整链路仍待验证；无须先批准共享会话或 fork。旧 Workflow 匿名额度 403 仅为此前证据，当前未复验，不按旧恢复时刻推定仍被限流。无 GA 门槛 |
-| 下一条动作 | 继续精确证据/计划关联、真实 Task/Workflow adapter、包工作区原生会话与附件/发送联调；需要新契约的内容保持条件化草案。完成可用组合后发布RC，不发布GA；PR合并仍由用户执行 |
+| 已知阻塞 | 当前无用户决策阻塞。正式Task/Workflow adapter、资源草案保存接入、模型/provider/approval联调及新RC仍未完成。已验证确定性命令与附件保管，不据此宣称模型链路通过 |
+| 下一条动作 | 接资源草案编辑/隔离持久化与精确版本冲突；继续真实Task/Workflow adapter和计划/证据关联。完成联调后发布RC，不发布GA；PR合并仍由用户执行 |
 | 禁止误恢复项 | 不重做更名；不删除 ~/.config/wsr/credentials 复用私钥；不动原组合子模块脏内容；不消费旧档案；不自动合并／发 GA |
 
 
@@ -295,3 +295,5 @@ T0 已完成附件：[t0-decisions.md](t0-decisions.md)。新首轮分发采用 
 | L059 | 2026-09-15 | T8 IN_PROGRESS | C064原生公开Input接口追加精确对象引用、保留草稿并聚焦实测通过；254 DSH测试；一次性资源快照103文件已物化 | 原生只读命令提交与附件传递；随后继续可写草案和真实adapter |
 
 | L060 | 2026-09-15 | T8 IN_PROGRESS | C065原生doctor提交与诊断返回、有效图片持久化SHA核对、错误附件拒绝和草稿保持通过；模型steps=0。管理命令按既有策略拒绝附件 | 处理有历史Session后的重复原生Header，继续资源草案写入/正式adapter；不宣称模型或审批链路通过 |
+
+| L061 | 2026-09-15 | T8 IN_PROGRESS | C066 DSH a710b07：公开Header shadowing复用原生store；256回归通过，实际Delivery返回chat、历史与草稿保留、旧Header恢复已验 | 资源草案保存接入；继续正式adapter与新RC资格，不需要用户决策 |

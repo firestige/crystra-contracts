@@ -288,3 +288,11 @@ Workflow 引用桥经公开 `ctx.sessions.scope` / `ctx.conversation.input.for` 
 3082一次性Workflow会话经原生发送按钮执行 `/crystra doctor`，宿主返回测试工作区缺role-provider-bindings，结果回到Conversation，模型steps/llmMs均0。带格式错误测试PNG时宿主拒绝并保留原生草稿；替换有效2×2 PNG后图片已作为user/message attachment持久化，attachmentId SHA256与本地73字节文件一致。管理命令既有策略不接受附件，返回CRYSTRA_ADMIN_COMMAND_INVALID，未执行或回落LLM；不为使测试通过放宽策略。原生草稿和待发送附件已手动移除。[证据](drafts/evidence/c065-native-command.json)。
 
 证明的是原生输入提交、图片序列化/保管、拒绝后的草稿保持及命令边界；不是模型provider成功调用、审批或Workflow执行完成。首次产生历史消息后原生Session Header/旧view tabs出现于左侧Input，尚需按v8组合处理其重复导航，不能继续以空白Session外观覆盖这项验收。
+
+## C066 非空原生 Session 页头装配（2026-09-15）
+
+DSH `a710b07` 使用0.1.1-rc.2公开`conversation.session.header` shadowing和原始共享store；仅精确绑定的Crystra Task/Workflow Input有效时注册。原始Header与children保留，退出或绑定失效即恢复。没有接管Conversation body、Input draft mirror或审批carrier。进入绑定Session以原生setView回到chat；后续原生drilldown提供返回对话按钮，避免隐藏标签后困在其他view。
+
+256回归通过。实际3082非空会话不再呈现原生标题/模式/旧标签；退出到隔离Harness原Header恢复，选择Delivery后返回Crystra自动恢复对话，未发送草稿完整保留；最终清空测试草稿、发送按钮禁用。原生历史含C065有效图片，截图可见。Conversation精确SHA增加qualification guard。未改3080/3081、未调用模型、未发RC。
+
+边界：使用公开注册表的shared store seat；不兼容宿主保留原Header，不宣称跨版本支持。原生工具详情/轨迹的完整交互尚需带真实工具结果继续验收。
