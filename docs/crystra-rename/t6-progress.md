@@ -11,7 +11,7 @@
 | Evolution | 远端资格 PASS | 34800959153；191 测试与本地容器 healthz 通过 |
 | Execution | 远端资格 PASS | 34801187270；736 测试及覆盖率、类型、构建、生成物、Harness、制品验证通过 |
 | 服务归档 | RC 远端资格 PASS | crystra-services-v0.1.0-rc.1；34802450361；真实生命周期通过，全部下载字节与本地一致 |
-| dsh-crystra | 待依赖与服务资源 | 固定已发布的 Execution/UI 依赖和 service-descriptor，资格实际打包的插件 |
+| dsh-crystra | RC 远端资格 PASS | 34803216172；归档原始字节与本地一致；六项日志／回执绑定复验通过 |
 | 最终组合 | 待以上各项 | 核对组件、服务、插件字节与原始资格回执；空白环境验收后才能进入 T7 |
 
 ## Contracts 精确证据
@@ -68,3 +68,7 @@ Execution 34801187270 已成功，重新下载后制品验证通过，tgz、publ
 先前初始化测试意外启动的本次 crystra-host-init-x8XsUr 容器、网络、卷已通过 Compose 标签和临时路径确认后精确清理；旧 WSR 容器未动。开发态测试现已显式注入缺失 descriptor 夹具，不再读取真实发布服务描述启动容器。
 
 插件实际归档六项资格全部 PASS，见 [本地回执](evidence/t6-dsh-local-qualification.json)。插件 RC 作业 34803216172 已自动触发，来源 0074c86；bot PR #38 后续仅更新验证工作流至 e04982d，改为消费已发布 RC 字节，避免将重建开发包误作同一发行归档。该 CI 修正的发行回归测试通过。
+
+插件 RC `crystra-dsh-v0.1.0-rc.1` 已发布，34803216172 成功。下载插件 tgz、兼容矩阵、provenance、metadata 与本地冻结字节相同；插件 tgz SHA-256 `97196ad715f3ff4e162b4ae2b1f7a07456dc3f27c21dceaffbc3d07573d493be`。远端日志、资格回执和 SBOM 时间独立生成，未宣称它们与本地相同；全部 SHA256SUMS 和六组 receipt/log 摘要绑定已复验通过，见 [插件远端核验](evidence/t6-dsh-remote-verification.json)。PR #38 的最新 e04982d CI 34803316628 通过；尚待 main 集成，候选来源仍精确保持 0074c86，二者仅相差验证 CI 修正。
+
+下一步：从上述精确 RC 构建组合候选，继续实际 Workflow 发现和跨服务交付联调。现有普通 GitHub Workflow source 仅发现包级 scoped tag，尚不能直接消费聚合 Workflow RC；这是真实待解决项，不通过提前 GA 绕过，也不将已经通过的服务／插件资格误写为完整交付联调完成。T6 保持 IN_PROGRESS，T7/T8 未启动。
