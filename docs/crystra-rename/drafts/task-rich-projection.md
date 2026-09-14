@@ -23,3 +23,13 @@ C082 实际3083验收：计划摘要、原生Markdown正文、DAG键盘选择、
 C084在Task原生Input提交只读`/crystra doctor`，回显NEEDS_CONFIGURATION（本隔离home尚未setup），非空原生对话页头装配正常，未回落LLM。[命令证据](evidence/c084-task-native-command.json)。这不是模型/审批或真实Task执行成功证据。
 
 C084最终正常安装：3083单插件RC4，554文件逐字节匹配发布归档；Task会话/计划图、Workflow独立会话及C080候选在升级后均恢复。安装初次因pnpm忽略原生构建未完成，限定许可并补建better-sqlite3后普通安装成功；未关闭其他构建限制。
+
+## C085 审核证据上下文（开发中）
+
+可选 `assets.gateContexts`：每项为 `{gateId,evidenceId,context}`，必须对应当前可用 Gate 的已声明证据项，且 `context.id` 与 `evidenceId` 相等。重复配对、跨 Gate 配对、非文本或额外导航字段均拒绝。`context` 使用公开 `TaskEvidenceContextProjection` 的 kind/title/summary/sections/references，正文只作为文本展示，不成为授权、执行指令或自动打开 URL。
+
+审核页可以打开上下文并返回原问题；未提供的精确计划/Trace等关联明确显示不可用。前提撤回时旧上下文随整页撤回。使用锁定 v8 已有的11项静态结论，不把样本回执当真实证据。306项回归/build/boundaries通过；实际开发实例3084验收进行中，3083保留未改的RC4。
+
+C085浏览器已验证双栏签名差异、返回审核和缺失Trace关联的不可用提示。发现共用UI细节：从长审核页打开上下文后沿用滚动位置，返回按钮可能位于tabpanel裁剪区上方；C086先修复此显示问题，再收尾上下文验收。该修复不改变来源或审批契约。
+
+C086 最终3084实测：审核面板top196，返回按钮top235.5/bottom267.5，scrollTop0；返回当前审核问题成功。使用精确UI RC5制品，未滚动原生Input或共享页面。

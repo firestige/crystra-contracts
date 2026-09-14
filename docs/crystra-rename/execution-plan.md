@@ -135,7 +135,7 @@ T0 产出必须链接在本文中，可以建立同目录的决策附件；不�
 | 活跃进程／作业 | 3083 /tmp/crystra-task-file-dsh-home，session29162：正常DSH安装的RC4，554文件与发布归档一致；显式草案配置继续用于探索。原RC3源码备份 /tmp/crystra-c076-installed-rc3-source；C075曾确认541文件一致。3082、4192、4191保留，跨恢复复验存活；3080/3081不改动。 |
 | 隔离档案 | /Users/firestige/Library/Application Support/Crystra-quarantine/20260914-wsr；17 个校验归档、旧运行目录原件、15 个无容器引用的离线卷 |
 | 已知阻塞 | 无用户决策阻塞。Workflow 生产端口、精确计划/文档/证据关联、草案事件消费及模型/provider/approval 联调尚待完成。确定性命令通过不等于模型链路通过。 |
-| 下一条动作 | C085：审核页证据上下文仍为静态条目，使用已公开TaskEvidenceContext及锁定v8结论补条件只读端口；保持3083为未修改RC4验收实例，新开发另行隔离。UI RC4/DSH RC4/组合RC3已发布验证；事件消费与模型链路未声明完成。不发GA。 |
+| 下一条动作 | C088：UI RC5 e3246e1已发布并核验；DSH82ce38b（审核上下文、详情滚动、资源关联图）313回归/build/boundaries及3084浏览器验收通过。DSH RC5自动作业34896020077与本地六项资格进行中；完成后验证下载字节、准备组合RC4并安装实际发布包。3084 session70997，home/tmp/crystra-c085-dsh-home，patch/tmp/crystra-c085-dsh.patch.yml，独立服务24318/28000。3083保持已发布RC4原件。事件消费与模型链路未声明完成；不发GA，无用户决策阻塞。 |
 | 禁止误恢复项 | 不重做更名；不删除 ~/.config/wsr/credentials 复用私钥；不动原组合子模块脏内容；不消费旧档案；不自动合并／发 GA |
 
 
@@ -331,3 +331,9 @@ T0 已完成附件：[t0-decisions.md](t0-decisions.md)。新首轮分发采用 
 | L077 | 2026-09-15 | T8 IN_PROGRESS | C084：DSH RC4 ae74ed9 本地/远端六资格PASS，下载插件SHA256 9c70f87cf8a8f471777e2374a09e5c5cf40eed5f9169e3c4415a0346840b1d1b与本地一致；组合197869ea、50回归通过；3083旧包备份/tmp/crystra-c084-before-release-install | 正常DSH安装RC4并复验；组合RC3资格和自动发布进行中 |
 
 | L078 | 2026-09-15 | T8 IN_PROGRESS | C084完成：组合RC3作业34892523368成功，六资产相同；3083正常安装RC4，554文件相同，单插件、Task会话/图、Workflow独立会话/资源候选恢复通过。旧安装备份保留。pnpm仅补建已许可better-sqlite3，安装最终成功 | C085补审核证据只读上下文，3083保持发布版；不因PR等待停工 |
+
+| L079 | 2026-09-15 | T8 IN_PROGRESS | C085 DSH c879ae8：306回归，11项审核上下文、缺失关联返回及跨Gate撤回验证通过；C086/87 UI e3246e1：432+34/47及全资格通过，RC5自动作业34894661067。DSH资源关系图端口本地实现，来源文件及版本/候选变化/旧回调拒绝用例通过 | 3084实际关系图验收，消费UI RC5后再做新DSH/组合RC；3083仍是RC4原件 |
+
+| L080 | 2026-09-15 | T8 IN_PROGRESS | C087 精确 UI RC5 输入后宿主313项回归、build、boundaries通过；旧图拒绝候选变化/畸形文件、组件身份跨轮询保持。正常CLI已将最终开发包安装到3084，日志/tmp/crystra-c087-final-dsh.log | 继续真实浏览器验收及DSH RC5/组合RC4资格；3083仍为未修改RC4，未发生模型调用 |
+
+| L081 | 2026-09-15 | T8 IN_PROGRESS | DSH82ce38b：3084节点详情跨轮询保持、声明资源跳转、候选保存后旧图撤回均通过；审核返回按钮在面板内（235.5>=196），返回成功。DSH RC5自动作业34896020077启动，本地资格在/tmp/crystra-dsh-candidate-rc5 | 继续RC5归档资格、组合RC4及发布制品实际安装；3084 session70997，3083未改；无用户决策阻塞 |

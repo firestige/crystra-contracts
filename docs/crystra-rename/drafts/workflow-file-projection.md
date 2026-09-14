@@ -49,3 +49,11 @@ DSH 38998b7：新增显式 resourceDraftRoot 和 allowResourceWrites；默认无
 298项完整回归/build/boundaries通过。3083实际编辑、保存、重载成功；源artifact-lifecycle.md摘要仍为C078值。保存候选 `draft-sha256:48e27ead12f2006854090d15c88b49b339be1fb8bbf5835219bd5514fa6f8939`，内容摘要 `378cc357f36d2e3a0b68d8160cbe70ec26dae1791295573f8c422cbd583b5adc`。真实DSH工具管线读回相同候选及摘要（9450字符），无模型请求。证据 `/tmp/crystra-c080-save-evidence.json` 与 `/tmp/crystra-c080-tool-result.json`；事件仍pending，不宣称可靠通知或Agent采用。临时测试入口移除并重启后POST回405，已不是验证处理器。
 
 当前3083 session4519，显式候选目录 `/tmp/crystra-c080-resource-candidates`，保留测试候选供恢复；原生输入中的测试引用已键盘清空。源包、用户3080和旧RC3081未改动。C076–80尚未发布新RC。
+
+## C087 资源关联图（开发中）
+
+复用公开ResourceRelationGraph，只消费已通过条件信封准入的workspace节点、边和文件，不查询“最新资源”。检查节点唯一性、边端点、文件引用、展示字段和隐藏中间节点遍历预算。图与当前文件集合、内容、版本、internal/truncated标志必须一致；任何已保存候选变化均使旧图不可用，保留的旧打开回调也必须重新检查。打开目标只允许当前声明且可展示的文件。
+
+这只是来源快照的关系探索，不能证明运行调用、引用有效性或候选被Agent采用。未保存修改继续服从现有编辑导航确认；保存后的图须等待新的精确投影，不推测重建。UI公开端口和宿主实现验证进行中，3083保持RC4。
+
+C087 宿主提交82ce38b消费已发布UI RC5 e3246e1，313项回归/build/boundaries通过。3084实测关系图、跨轮询节点详情保持及声明文件跳转；保存composition-conformance.md隔离候选后旧图显示来源不一致。候选位于/tmp/crystra-c087-resource-candidates，源包未改。DSH RC5自动作业34896020077进行中，尚不把本地验证当作已发布资格。
