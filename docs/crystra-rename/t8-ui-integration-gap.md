@@ -272,3 +272,12 @@ Workflow resolver 按精确 definitionId/revision、包 workspaceId/path 和本�
 新增 draft-authoring-only store，一个显式 root 绑定一个 workspace/resource 流与来源锁。提交核对 baseRevision、不可重用 candidateRevision、proposal 幂等、候选校验与提交前权限；候选/校验上下文使用隔离副本。新不可变版本、pending 事件和幂等回执在同一文件原子替换；并发锁竞争拒绝而不覆盖，验证失败不留下半个候选。252 DSH 测试通过，包括重建store恢复、重复提案、revision冲突、来源漂移、撤权、validator修改入参及并发。
 
 这是存储基础，尚未接UI/Agent写入入口或通知派发。不会写真实包目录，不会执行/批准/发布。异常退出遗留lock需要显式恢复，不自动删锁；不声称跨服务或断电事务保证。
+
+
+## C064 原生 Input 精确引用（2026-09-15）
+
+Workflow 引用桥经公开 `ctx.sessions.scope` / `ctx.conversation.input.for` / `setDraft` 写入当前草稿，不调用submit。校验当前active定义版本与Session，并拒绝busy Input；资源引用同时保留独立resourceRevision，活动引用保留objectId。保留已有草稿并追加条件化对象引用。254 DSH测试通过。
+
+3082实际资源页“在对话中讨论此文件”追加 definitionId/revision/workspaceId/resourceId/path/resourceRevision，保留原文，焦点在原生TEXTAREA。初次焦点选择仅role属性未命中原生textarea，修正后复验通过。测试文字已清空。为保持引用路径可定位，103份完整设计资源快照仅物化至一次性 `/private/tmp/crystra-workflow-input-acceptance`，并写入各文件digest清单；未执行资源脚本。结晶样本与当前实际流程尚无正式proposal关联，继续禁用其讨论动作。
+
+普通实例没有启用该探索adapter；不宣称引用本身构成正式绑定、审批或执行授权。下一步用只读 /crystra doctor 验证原生提交链路，无需模型API Key。
