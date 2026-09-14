@@ -57,3 +57,19 @@ DSH 38998b7：新增显式 resourceDraftRoot 和 allowResourceWrites；默认无
 这只是来源快照的关系探索，不能证明运行调用、引用有效性或候选被Agent采用。未保存修改继续服从现有编辑导航确认；保存后的图须等待新的精确投影，不推测重建。UI公开端口和宿主实现验证进行中，3083保持RC4。
 
 C087 宿主提交82ce38b消费已发布UI RC5 e3246e1，313项回归/build/boundaries通过。3084实测关系图、跨轮询节点详情保持及声明文件跳转；保存composition-conformance.md隔离候选后旧图显示来源不一致。候选位于/tmp/crystra-c087-resource-candidates，源包未改。DSH RC5自动作业34896020077进行中，尚不把本地验证当作已发布资格。
+
+## C089 精确待通知状态
+
+依据定稿 pages/workflow-studio-contracts.md 第75–77行，当前资源读/保存结果增加 notification：源版本为null；候选为{eventId,status:'pending',resourceRevision}，来自同一不可变版本的持久化事件。重试保持eventId，旧版本读取不借用新事件。客户端拒绝错版本/伪投递回执；旧端口无字段时只显示状态未知。界面统计“当前草案”的待通知资源数，不声称统计全部历史事件或Agent已接收。
+
+DSH7221c3f，317回归/build/boundaries通过；3085实际保存后显示“1个资源…通知待投递”，刷新后保持。独立home/tmp/crystra-c089-dsh-home、patch/tmp/crystra-c089-dsh.patch.yml、资源候选/tmp/crystra-c089-resource-candidates，无会话绑定、无模型调用。当前开发未发布，3084保持公开RC5。
+
+## C090 原生非唤醒通知草案（验证中）
+
+仅显式allowResourceNotifications:true且allowResourceWrites:true启用。保存成功后按资源流revision顺序投递；失败保留已保存内容和pending事件，独立“重试通知”不重新保存。发送端要求精确本实例Agent、Session、workspace/path和当前来源；调用公开agent.inject（next-step、不唤醒），再调用sessions.flush且必须有durability listener成功。eventId映射稳定messageId，重试检验session事件历史中的精确内容，不重复入队；冲突拒绝。确认记录同资源store原子写入。
+
+queued只表示原生会话持久化接受，不证明模型已消费、更不授权修改/执行/发布。未知、不持久化、来源撤回、会话缺失均不写成功回执。最终DSH c7cb177，331回归/build/boundaries通过，3085实际入队、重启取消识别、显式重投和后续保存自动通知均通过。当前不是正式通知契约，不沿用已发布RC5资格。
+
+C090 反例修订：真实DSH重启时agent disposal生成inbox spliced outcome:canceled，历史插入不等于仍待消费。发送端和读取投影现重放公开inbox splice记录，区分queued/claimed/canceled/unavailable；页面的“已写入会话”不代表模型读取。已取消可显式重试同eventId/messageId，队列内已有项不重复；已确认记录而历史缺失时拒绝猜测。取消/重新入队形成多次物理插入但一个逻辑事件，不能把该情况描述为历史日志仅有一条插入。
+
+C090证据：[原生通知记录](evidence/c090-native-notifications.json)。两个逻辑事件、三次物理插入（含一次取消重投），各只有一个当前队列副本；turn/step/Token均0。session /tmp/crystra-c090-session.json，实际历史/tmp/crystra-c090-final-history.json。当前3085为开发包，公开3084仍为RC5；新RC6资格正在运行。

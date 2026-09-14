@@ -134,8 +134,8 @@ T0 产出必须链接在本文中，可以建立同目录的决策附件；不�
 | 工作路径 | UI /tmp/crystra-ui-host-integration e3246e1；DSH /tmp/crystra-dsh-t6 82ce38b；组合 /tmp/crystra-combination-stage b029f1b2；干净资格副本 /tmp/crystra-dsh-candidate-rc5；Contracts /Users/firestige/Projects/wsr-contracts。原始子模块未修改。 |
 | 活跃进程／作业 | 3084 /tmp/crystra-c085-dsh-home session77289：正常安装公开RC5，日志/tmp/crystra-c088-published-dsh.log，555文件一致。3083 /tmp/crystra-task-file-dsh-home session29162仍为RC4原件。3082/4192/4191保留；3080/3081不改动。 |
 | 隔离档案 | /Users/firestige/Library/Application Support/Crystra-quarantine/20260914-wsr；17 个校验归档、旧运行目录原件、15 个无容器引用的离线卷 |
-| 已知阻塞 | 无用户决策阻塞。Workflow 生产端口、精确计划/文档/证据关联、草案事件消费及模型/provider/approval 联调尚待完成。确定性命令通过不等于模型链路通过。 |
-| 下一条动作 | C089：依据已接受workflow-studio-contracts.md第75–77行继续资源事件状态与交付边界；pending事件不能显示成已通知。先暴露精确持久化事件状态，再检查可用原生系统上下文通路。RC4组合已可用，后续改动不沿用其资格。没有模型调用或新的用户决策阻塞，不发GA。 |
+| 已知阻塞 | 无用户决策阻塞。Workflow 生产端口、精确计划/文档/证据关联、模型消费及模型/provider/approval 联调尚待完成；C090已验证非唤醒原生队列交付与取消恢复。确定性命令通过不等于模型链路通过。 |
+| 下一条动作 | C091：DSH c7cb177通知实现331回归与3085实际非唤醒投递/重启取消重投通过；RC6推送中，干净副本/tmp/crystra-dsh-candidate-rc6。完成本地/远端六项资格与精确下载核验，再创建组合RC5、安装公开包。UI仍RC5；3084保持公开DSH RC5，3083保持RC4。模型消费与正式领域链路未声明完成，无用户决策阻塞，不发GA。 |
 | 禁止误恢复项 | 不重做更名；不删除 ~/.config/wsr/credentials 复用私钥；不动原组合子模块脏内容；不消费旧档案；不自动合并／发 GA |
 
 
@@ -339,3 +339,7 @@ T0 已完成附件：[t0-decisions.md](t0-decisions.md)。新首轮分发采用 
 | L081 | 2026-09-15 | T8 IN_PROGRESS | DSH82ce38b：3084节点详情跨轮询保持、声明资源跳转、候选保存后旧图撤回均通过；审核返回按钮在面板内（235.5>=196），返回成功。DSH RC5自动作业34896020077启动，本地资格在/tmp/crystra-dsh-candidate-rc5 | 继续RC5归档资格、组合RC4及发布制品实际安装；3084 session70997，3083未改；无用户决策阻塞 |
 
 | L082 | 2026-09-15 | T8 IN_PROGRESS | C088：DSH RC5作业34896020077成功，SHA256 597d0a9861144004cf239a71dc9cc79dbb0dea531fd6a7519c4537ced3d9192e；本地六资格与远端相同插件字节。组合RC4 b029f1b2作业34896509843成功，六资产相同。3084正常安装后555文件一致、审核差异和持久化候选撤回通过 | 继续C089事件状态；公开候选与开发分开，未发布GA |
+
+| L083 | 2026-09-15 | T8 IN_PROGRESS | C089 DSH7221c3f：317回归/build/boundaries通过；持久化精确pending状态、幂等与旧版本回执验证；3085真实保存/重载提示通过，session91611。发现原生agent.inject公开接口为不唤醒的next-step上下文，可继续评估可靠投递草案 | C090核验会话身份、flush持久化与去重边界后接原生通知；不把入队当模型读取。3084仍公开RC5，3083仍RC4 |
+
+| L084 | 2026-09-15 | T8 IN_PROGRESS | C090 DSH c7cb177：331回归/build/boundaries通过。明确通知开关，非唤醒原生投递/flush持久化、按事件幂等与资源版本排序。真实重启暴露取消记录，已补取消重投；3085实测两个逻辑事件/三次物理插入/零模型轮次及Token，证据drafts/evidence/c090-native-notifications.json | DSH RC6自动资格和干净副本本地六项资格，随后组合RC5；3085 session8991（末尾no-op防护仅源码测试，最终公开包再安装），3084公开RC5未改 |
