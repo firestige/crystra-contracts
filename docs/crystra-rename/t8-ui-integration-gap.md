@@ -119,3 +119,12 @@ UI `0a54cd8` 将原 AnalysisObservationStudy 的完整组合移入公共 Analysi
 恢复：UI clone `npm run build`；`node scripts/build-analysis-exploration.mjs /tmp/crystra-analysis-exploration` 构建仅供探索的独立 bundle。DSH clone 的临时 scripts/.v8-dev-build.mjs 支持 CRYSTRA_ANALYSIS_EXPLORATION=1，先按本计划 source-lock 复验原设计文件，再覆盖 Analysis factory；不设置该变量则回到现有真实数据开发桥。仅将输出 /tmp/crystra-v8-client.js 复制到 /tmp/crystra-v8-dsh-home/profiles/web/node_modules/dsh-crystra/lib/client.js。临时 helper 不进入正式制品，发布不得带此开关和本地路径。
 
 验证：394 Vitest + 34 Node 通过；原 28 浏览器测试通过；新增完整组合浏览器用例验证编辑状态跨页保持、目录展开和 Tree 切换；真实 DSH 浏览器确认完整总览与对比分析三列设置编辑器可打开。lint/type/build/format/deps 通过；新增构建脚本单独验证。已发现并修正 Header 图标垂直堆叠（恢复已接受的 identity flex 组合）。仍需最终同尺寸截图复验、完整主页面接入和实际数据联调，T8 不变。
+
+
+## C042：Task frame 与实际 Input 的宿主边界
+
+TaskWorkbench 已按 v8 Header、38:62 分栏、Input 最小 360 / Control 最小 680 和五工作面导航抽取为公共组合。Input 为必传 ReactNode，切换 bench 不卸载；systemFocus 独立于所选页面。五工作面的具体内容尚未移植。单元测试与 1920×1080 浏览器验证输入节点/草稿保持和布局；395 Vitest + 34 Node、lint/type/build 通过。测试中的 textarea 明确是隔离替身，不声称真实 DSH Composer 接通。
+
+读取实际 DSH SlotRegistry/AppFrame 后，确认 ctx.renderSlot 仅能渲染 root、其它 seat 只能由 owner 的子 renderer 使用；当前 overlay 没有 Conversation 子 seat，root 不允许插件再次注册。为满足同一 Input 和定稿布局，需要扩展 DSH ui-layout 的受支持布局/产品 seat。已准备[具体草案](drafts/dsh-host-layout.md)，新增宿主组件修改或受控 fork 的范围尚需用户明确授权；没有改宿主源码、私有 CSS 或另造 Composer 来绕过。
+
+UI 工作树包含完整 Analysis 和 Task frame；DSH 正式源码仍 388c040，3082 仅启用了有明确样本标识的 Analysis 探索。真实 Task/Workflow Input 接入在上述范围决定前暂停；其它页面组件化与数据适配不受影响。T8 仍 IN_PROGRESS。

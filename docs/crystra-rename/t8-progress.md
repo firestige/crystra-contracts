@@ -72,3 +72,8 @@ UI `0a54cd8` 将原 AnalysisObservationStudy 的完整组合移入公共 Analysi
 恢复：UI clone `npm run build`；`node scripts/build-analysis-exploration.mjs /tmp/crystra-analysis-exploration` 构建仅供探索的独立 bundle。DSH clone 的临时 scripts/.v8-dev-build.mjs 支持 CRYSTRA_ANALYSIS_EXPLORATION=1，先按本计划 source-lock 复验原设计文件，再覆盖 Analysis factory；不设置该变量则回到现有真实数据开发桥。仅将输出 /tmp/crystra-v8-client.js 复制到 /tmp/crystra-v8-dsh-home/profiles/web/node_modules/dsh-crystra/lib/client.js。临时 helper 不进入正式制品，发布不得带此开关和本地路径。
 
 验证：394 Vitest + 34 Node 通过；原 28 浏览器测试通过；新增完整组合浏览器用例验证编辑状态跨页保持、目录展开和 Tree 切换；真实 DSH 浏览器确认完整总览与对比分析三列设置编辑器可打开。lint/type/build/format/deps 通过；新增构建脚本单独验证。已发现并修正 Header 图标垂直堆叠（恢复已接受的 identity flex 组合）。仍需最终同尺寸截图复验、完整主页面接入和实际数据联调，T8 不变。
+
+
+## C042
+
+Task frame 的输入保持与基础几何已通过验证；实际 Input 不能从当前 overlay 重新渲染。DSH ui-layout 扩展的范围、最小提案、生效/作废前提见 [宿主布局草案](drafts/dsh-host-layout.md)。该宿主修改待明确授权，独立 UI/数据工作仍可继续；不修改正式 root 所有权。
