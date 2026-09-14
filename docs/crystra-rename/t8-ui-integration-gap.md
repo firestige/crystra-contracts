@@ -195,3 +195,16 @@ UI d675e74 / DSH6395d13：WorkflowWorkbench使用原page-header组合、三页�
 DSH工作台携带精确definition/revision并按其key重挂载，未知页签回流程设计，不借用Task或Harness Session。未关联时显示包工作区/会话缺口。UI416+34单测、40浏览器、type/lint/format/build/deps通过；DSH233/233通过。3082此时仍是C053 bundle、Workflow Explorer缺口页，C054尚未重新装入开发实例。
 
 C055进行中：原WorkflowMapWorkbench直接加载样本、querySelector外部对话、替换conversation-feed并截获Enter，还有本地保存/发布演示。拆为显式定义/布局/Header/引用回调的只读Viewer，原独立设计包装器保留探索行为；不能将这些样本行为部署成正式Input链路。五工作面数据/Workflow真实目录、草案验证、事务和RC仍未完成。
+
+
+## C055 宿主中立活动图与定稿布局
+
+UI86945a7：WorkflowMapViewer公开入口强制关闭exploration；初始定义、布局resolver、Header目标、对象引用回调均显式提供。不查询宿主Input、不替换conversation-feed、不截获Enter，不开启本地样本保存/发布/验证台。原WorkflowMapWorkbench成为独立设计包装器，继续保留已有演示。引用提供选中对象ID，正式提案/保存通路仍缺。定义/revision变更须由宿主以精确key重挂载；布局失败不将旧坐标绘到新定义。
+
+定稿 assets/workflow-map-candidate.js SHA256=2eecd430380f6a68620fb712e8ff779b4bc78779c0d484ca768bb059f5102cac。用TypeScript AST读取其中data字面量为test-harness/workflow-map-design.json，未执行原脚本。预生成3套样本的精确匹配/展开掩码/分段关系转换沿源实现；不声称支持任意新定义。修复缩略图使用语义edge.id导致同关系分段重复key，改为已有segmentKey；回归先失败再通过。真实DSH旧React忽略JSX布尔inert，已在commit ref设置DOM inert并增加aria-hidden，实测收起width0、inert=true。
+
+UI417+34单测、41浏览器、type/lint/format/build/deps通过，日志/tmp/crystra-c055-final-*.log。独立预览初次高度不足是BiSurface测试容器尺寸声明未落地，改为显式harness class height100vh；工作面移除原Tabs的12px内容间距，实际窗口铺满。
+
+3082当前模式：CRYSTRA_ANALYSIS_EXPLORATION=1、CRYSTRA_WORKFLOW_EXPLORATION=1，INPUT_GEOMETRY_TEST未设置。Task列表仍是真实Evidence，Analysis与Workflow为显式样本。Workflow入口是draft-workflow-implementation@v8-2eecd430，页面与目录描述标明草案；左侧明确未关联包工作区/会话，不制造Session或代替原生Composer。实测从目录精确打开和展开理解与设计。资源/结晶仍缺口页。
+
+恢复：UI build后在DSH clone运行上述两个探索开关的scripts/.v8-dev-build.mjs；该helper先核对布局源hash，再覆盖仅开发的product-surface，将产物复制到3082专用home。helper仍untracked，不进入正式包；忽略裸CSS导入的警告由已合入Core dist/styles.css覆盖。取消WORKFLOW_EXPLORATION则恢复正式目录unavailable。没有操作3080、没有发消息、没有发布RC。独立4191预览进程用于视觉复核。C056继续资源Viewer，随后结晶/真实数据及草案失效。
