@@ -127,11 +127,11 @@ T0 产出必须链接在本文中，可以建立同目录的决策附件；不�
 
 | 字段 | 当前值 |
 |---|---|
-| 检查点 | C050：UI 9baa635 / DSH 070933e 完成品牌、折叠侧栏与 Input 联动；UI 402+34 单测、34 浏览器，DSH 229 项通过。C051 Task Browser 开发开始，未发布新 RC |
+| 检查点 | C051：UI 71ab3ca / DSH 961c493 完成 v8 Task Browser 与真实 Evidence 身份/名称接入；UI407+34单测、36浏览器，DSH230项通过。C052 开始返回恢复与菜单交互，未发布新 RC |
 | 当前任务 | T0–T7 DONE；T8 IN_PROGRESS |
 | 已完成 | 更名／配置复用；crystra-v0.1.0-rc.1 远端六文件与本地相同；真实执行、入库、Trace、评估及 Workflow AVAILABLE；旧部署备份隔离完成 |
 | 未完成 | 实际 DSH 安装验收与公开安装入口收尾；bot PR #277、DSH #38、Execution #46、Evolution #10、Contracts #18 尚需按审批规则合并 |
-| 工作路径 | 新 UI /tmp/crystra-ui-host-integration `9baa635`（C051 Task Browser 变更未提交）；新宿主 /tmp/crystra-dsh-t6 `070933e`（未发布）。原组合 /tmp/crystra-combination-stage 1593f589；/tmp/crystra-dsh-t6 产品候选 9a9777d、另有 test-only 742e1de；实际 ~/.dsh/profiles/web；台账 /Users/firestige/Projects/wsr-contracts |
+| 工作路径 | 新 UI /tmp/crystra-ui-host-integration `71ab3ca`（C052 返回恢复变更未提交）；新宿主 /tmp/crystra-dsh-t6 `961c493`（未发布）。原组合 /tmp/crystra-combination-stage 1593f589；/tmp/crystra-dsh-t6 产品候选 9a9777d、另有 test-only 742e1de；实际 ~/.dsh/profiles/web；台账 /Users/firestige/Projects/wsr-contracts |
 | 活跃进程／作业 | 本次安装／归档命令完成；现有 DSH PID 40455（全局 web，3080）保留。精确 DSH 0.1.1-rc.2 已作为普通依赖安装于 ~/Library/Application Support/Crystra/tools，未降级全局 CLI |
 | 隔离档案 | /Users/firestige/Library/Application Support/Crystra-quarantine/20260914-wsr；17 个校验归档、旧运行目录原件、15 个无容器引用的离线卷 |
 | 已知阻塞 | Input 专属实例隔离与 Task 几何已验证，附件/发送完整链路仍待验证；无须先批准共享会话或 fork。旧 Workflow 匿名额度 403 仅为此前证据，当前未复验，不按旧恢复时刻推定仍被限流。无 GA 门槛 |

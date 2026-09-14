@@ -156,3 +156,17 @@ UI 401 Vitest + 34 Node 通过；计划/执行新增层级时整套 33 浏览器
 3082 的 1280×720 实测先复现折叠后原生 left220 而目标 left64；修复后两者均 left64/top112/width462.078125/height608。重载保留折叠且 Input 仍为空。通用按钮样式曾覆盖隐藏与矢量尺寸，导致折叠 logo 被挤为 1px；修复后实测24px，收起按钮隐藏。UI 402 Vitest +34 Node、type/lint/format/build 通过，最终整套浏览器34项通过。品牌字号旧测试22px已按定稿19px修正。
 
 DSH 首轮并行负载下冷启动登记既有测试超时；单独复验17ms通过，单独重跑整套229/229通过（/tmp/crystra-c050-dsh-tests-rerun.log）。未修改这项既有运行逻辑或放宽超时。不存在用户决策阻塞；C051 继续按定稿 Task Browser 接真实列表和明确未知字段。
+
+
+## C051 Task Browser 接入中
+
+工作副本 /tmp/crystra-ui-host-integration 新增 TaskBrowser、task-browser-model，复用定稿 CSS 并限定到本页，复用已有 ToggleSwitch 与本地 Tabler 图标。Gallery 按容器宽度计算列数/卡宽并通过内容区 observer 追加，List 分页；选择与打开分开，Gallery 折叠在切换视图/查询时保留。归档/缩略图/改名/Pin 只有显式 callback 才可调用，普通入口无这些适配器。当前尚未补齐跨页面偏好恢复、排序完整键盘菜单与写探索。
+
+DSH product-surface 已改为消费 Core.TaskBrowser。projectEvidenceTasks 只映射正式 tasks/list 的 task_id/display_name，其他字段保持未知；复用 next_cursor 读取后续页，新建任务与 Sidebar 共用先离开绑定再 clear 的行为。当前改动未提交。UI 407 Vitest+34 Node、type/lint/format/deps 通过，两项 Browser 专项通过；完整 Browser 与 DSH 最终检查进行中。
+
+3082 当前已关闭 CRYSTRA_INPUT_GEOMETRY_TEST，保留 CRYSTRA_ANALYSIS_EXPLORATION=1：Task 列表与 Browser 是真实 Evidence 来源，Analysis 仍为独立标记的样本。实测读到 task-5f9ecaae-8f06-42f9-93bd-22ac3a551bc7；Gallery/List 切换、未知字段和精确打开正常。该 Task 不属于当前本地会话，Input 不显示且不借用测试 Session。修复宿主默认标题边距/按钮背景后，Header height=88.6953125，分组透明；用户3080未改。
+
+恢复时先核对当前开发模式，不把样本 Task 与真实 Task 混淆。当前页面在真实 Task 详情；此前测试草稿已清空。下一项继续 Browser 返回恢复与菜单，再接 Workflow；五工作面真实数据/草案持续失效与 RC 仍未完成。
+
+
+C051 保存提交：UI 71ab3ca，DSH 961c493。最终 UI 407+34 单测、36 浏览器、type/lint/format/build/deps 通过，DSH230/230通过；日志 /tmp/crystra-c051-*.log。3082 当前为真实 Task 详情，Task Browser 的旧本地浏览状态在跨页返回时尚未持久化，C052 正在补这一点及菜单；不要将这些门槛称作整个 T8 完成。
