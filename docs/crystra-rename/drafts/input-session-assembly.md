@@ -46,3 +46,20 @@ DSH 新增 new-task 产品路由；点击新建任务清空当前选择并留在
 ## C047 精确 Task 会话解析
 
 DSH 426f3ed 增加只读 resolveTaskSessionBinding，复用正式 control-plane 校验，要求 ready 来源与本实例 ready 成员列表。相同 Task 多 Delivery 同 Session 可归一；不同 Session 必须保留歧义；foreign+local 不因过滤而变成单候选；空关联或失效来源不猜测。四项针对性回归与全套 220/220 通过（/tmp/crystra-c047-tests.log）。解析器尚未连接页面或执行 sessions.open；下一步装配实时 control-plane、Session 成员和 Task 页面，并验证过期/切页竞态。新建页开发 bundle 仍为 C046 行为，无新 RC。
+
+## C048 进行中恢复记录
+
+工作副本：/tmp/crystra-dsh-t6、/tmp/crystra-ui-host-integration。TaskInputController 已连接 product-entry，Execution/product 通过按 RPC 对象划分的 WeakMap 共用 control-plane。实时成员或来源失效立即隐藏 Input；页面切换后迟到的旧 Task 结果不重新选会话；多候选只显示本实例可选项并要求明确选择。新建任务先离开旧 Task 绑定，再 clear，防止订阅把旧会话选回来。
+
+实际 3082 正向装配验证使用显式测试开关 CRYSTRA_INPUT_GEOMETRY_TEST=1（同时 CRYSTRA_ANALYSIS_EXPLORATION=1），未跟踪 helper 读取 /tmp/crystra-input-test-session.json。当前测试 Session 是 crystra-input-test-669d36c8-84ed-46c6-b069-b9d9d9cc9418，通过现有 workspace.create/session.create 在专属实例创建，无 LLM 消息。Task draft-input-geometry、关联及工作面内容都是 UI 测试样本，绝不写入正式 control-plane。右下角须标示草案探索；恢复普通开发模式必须去掉 INPUT_GEOMETRY_TEST 再重建安装 client。
+
+浏览器 1280×720：native 与 input-stream 均为 left220/top112/width380/height608。切计划保留输入；Analysis 中 Input 角色数0；返回测试 Task 后草稿与计划页签保留。当前测试草稿“Task 工作面连续性测试，不发送”可能仍在宿主持久化中：此前立即清空并重载未等持久化完成，重载又恢复旧值，因此不能宣称草稿清理完成。它只属于专属测试 Session，不是用户会话；后续清空后需实际重载确认。
+
+需求面组件 TaskRequirementsPanel 及独立 v8 fixture 已完成，397 Vitest+34 Node、专项两项浏览器测试、type/lint/build 通过；随后交付和审核组件仍在工作副本开发中，最终全量门槛需针对最终 HEAD 重跑。最近 DSH 全套 226/226 通过，日志 /tmp/crystra-c048-dsh-tests.log（以实际末尾数字复核）。
+
+
+### C048 已保存的实现检查点
+
+DSH 51b7a89；UI 4180cb8。需求、交付、审核三面以 caller-supplied projection 接口实现，测试样本单独位于 test-harness；没有以 UI 的可交付/选择动作冒充授权或关闭。UI 399 Vitest、34 Node、32 浏览器测试全部通过；format/lint/type/build/deps 通过。日志 /tmp/crystra-c048-ui-*.log。DSH 226 项通过。上述检查不等于新制品或组合 RC 资格，正式 DSH lib 仍待重建。
+
+3082 已实际展示三面与唯一原生 Composer。首次接审核时开发 helper 的默认 JSX transform 导致 React is not defined，已在未跟踪 helper 设置 automatic JSX 并复验恢复；该问题不在已发布制品。再次清空测试 textarea 后等待再重载，旧草稿仍返回，说明不能归因为单纯持久化等待不足；保留为待诊断项，未发送任何消息。C049 继续计划文档、DAG 和执行层级接入。

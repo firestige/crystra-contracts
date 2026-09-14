@@ -127,7 +127,7 @@ T0 产出必须链接在本文中，可以建立同目录的决策附件；不�
 
 | 字段 | 当前值 |
 |---|---|
-| 检查点 | C047：新建页原生 Input 与双实例隔离已验证；精确 Task 会话解析完成，尚未接页面；220 测试通过 |
+| 检查点 | C048：DSH 51b7a89 完成实时 Task 精确绑定；UI 4180cb8 完成需求/交付/审核组件，399+34 单测与 32 浏览器测试通过。C049 开始计划/执行层级接入，尚未发布新 RC |
 | 当前任务 | T0–T7 DONE；T8 IN_PROGRESS |
 | 已完成 | 更名／配置复用；crystra-v0.1.0-rc.1 远端六文件与本地相同；真实执行、入库、Trace、评估及 Workflow AVAILABLE；旧部署备份隔离完成 |
 | 未完成 | 实际 DSH 安装验收与公开安装入口收尾；bot PR #277、DSH #38、Execution #46、Evolution #10、Contracts #18 尚需按审批规则合并 |
@@ -277,3 +277,5 @@ T0 已完成附件：[t0-decisions.md](t0-decisions.md)。新首轮分发采用 
 | L050 | 2026-09-14 | T8 Input 接入与隔离实证 | 两个一次性实例通过会话读写和新增事件隔离；3082 新建任务保留 Crystra Shell，原生菜单与未发送草稿往返通过，Analysis 隐藏底层输入；216/216 Node 通过 | drafts/input-session-assembly.md C046；继续 Task/Workflow 精确绑定与完整工作面，不代表新 RC |
 
 | L051 | 2026-09-14 | T8 Task 会话解析 | DSH 426f3ed：按正式 Task identity / sessionCorrelation 与当前实例成员解析，零关联不绑定、多候选不猜测、foreign+local 仍歧义、失效来源拒绝；新增 4 回归，完整 220/220 通过 | 解析器尚未接 Task 页面，不代表已有 Task Input 可用；下一步接当前实例的实时成员、control-plane 与页面状态 |
+
+| L052 | 2026-09-14 | T8 持续接入中 | TaskInputController 接实时 control-plane 与本实例 Session，复用 Execution 轮询；Task 工作台本地关联为空时不借用其他会话。测试关联下原生 Input 与目标区域四边一致，切 bench/Analysis 往返保留草稿与页签；测试代码只在未跟踪 .v8-dev-build.mjs 的显式开关中 | 3082 暂处 Input 装配探索：Task关联及内容为样本，非正式业务状态；继续组件和完整验证，不等待用户指令 |
