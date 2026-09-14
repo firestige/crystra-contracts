@@ -186,3 +186,12 @@ UI 45569e5 / DSH 82c4d88：Task Browser 保存经过白名单验证的查询、�
 UI349bb6a / DSH bb3fd07：WorkflowExplorer 复用已接受 Task Browser 布局配方；ResourceGalleryGroup 抽取为两页共用。目录类型只定义消费者需求，精确 definitionId/revision、显式 isLatest；最新项先确定再筛选，不根据字符串、时间或状态猜最新；冲突最新不选。Gallery/List、最新/全部版本、状态过滤、排序、分页、独立选择、精确打开已实现。无 owner callback 的新建/改名/归档等保持禁用。跨页面 Workflow 视图恢复和正式目录/资源管理通路尚缺。
 
 UI414+34单测、39整套浏览器、type/lint/format/build/deps通过；DSH232/232通过。3082从侧栏进入完整 Workflow Explorer Header 与缺口提示，当前没有正式目录接口，不显示伪造的0项集合，不加载测试工作流。48定义×3revision的独立样本只在 workflow-explorer-test.html，验证筛选不回退、版本模式清选、跨视图选择及精确r1打开。没有RC发布。继续C054共享工作台Header/分栏/Input连续性，再接已合入组件；不得把历史样本的window全局对话/假写入直接当正式宿主。
+
+
+## C054 Workflow 共享工作台
+
+UI d675e74 / DSH6395d13：WorkflowWorkbench使用原page-header组合、三页签和显式Input插槽；Tabs新增显式panelContainer，挂载到共享右栏，ARIA关联保持完整。分栏360px下限、可用宽度一半上限、方向键16px、Home/End、指针拖动和720px最小工作区通过浏览器检查；切页保留Input节点和未发送草稿。测试页原生body8px边距造成可用宽度1264，已为独立harness重置，不改变真实宽度计算。
+
+DSH工作台携带精确definition/revision并按其key重挂载，未知页签回流程设计，不借用Task或Harness Session。未关联时显示包工作区/会话缺口。UI416+34单测、40浏览器、type/lint/format/build/deps通过；DSH233/233通过。3082此时仍是C053 bundle、Workflow Explorer缺口页，C054尚未重新装入开发实例。
+
+C055进行中：原WorkflowMapWorkbench直接加载样本、querySelector外部对话、替换conversation-feed并截获Enter，还有本地保存/发布演示。拆为显式定义/布局/Header/引用回调的只读Viewer，原独立设计包装器保留探索行为；不能将这些样本行为部署成正式Input链路。五工作面数据/Workflow真实目录、草案验证、事务和RC仍未完成。
