@@ -208,3 +208,14 @@ UI417+34单测、41浏览器、type/lint/format/build/deps通过，日志/tmp/cr
 3082当前模式：CRYSTRA_ANALYSIS_EXPLORATION=1、CRYSTRA_WORKFLOW_EXPLORATION=1，INPUT_GEOMETRY_TEST未设置。Task列表仍是真实Evidence，Analysis与Workflow为显式样本。Workflow入口是draft-workflow-implementation@v8-2eecd430，页面与目录描述标明草案；左侧明确未关联包工作区/会话，不制造Session或代替原生Composer。实测从目录精确打开和展开理解与设计。资源/结晶仍缺口页。
 
 恢复：UI build后在DSH clone运行上述两个探索开关的scripts/.v8-dev-build.mjs；该helper先核对布局源hash，再覆盖仅开发的product-surface，将产物复制到3082专用home。helper仍untracked，不进入正式包；忽略裸CSS导入的警告由已合入Core dist/styles.css覆盖。取消WORKFLOW_EXPLORATION则恢复正式目录unavailable。没有操作3080、没有发消息、没有发布RC。独立4191预览进程用于视觉复核。C056继续资源Viewer，随后结晶/真实数据及草案失效。
+
+
+## C056 显式资源 Viewer 与原生 Markdown
+
+UI bb7df75：WorkflowResourceViewer消费调用方提供的workspace/catalog，目录不自行按路径或同名工作流选择；精确definition/revision构成消费身份。默认只读，保存/增删改入口禁用且handler拒绝演示写入；讨论回调仅发resourceId/path，不操作宿主Input；关系投影由明确组件提供，缺少时显示unavailable。原独立WorkflowResourceBrowser包装器保留探索交互。CodeMirror继续复用已有实现，只读源码保留查找。正式资源身份、关系完整性、内容版本读取和写事务仍需owner/草案接口。
+
+样本来自assets/workflow-resource-workspaces.js，SHA256=38228fd2240934b94f3fe4ec27e9bc861d240e36c16dc1d8668a94b5e9ac3550；AST读取Implementation的103文件快照，不执行原JS。该历史设计adapter仍有目录分类/别名推导，不能当正式索引；关系输入过滤普通“文档链接”，不把导航当语义依赖。样本位于test-harness，不在正式包文件清单。
+
+3082资源页已显示完整分组、文件检查与原生MarkdownText（当前dsh-client-ui-primitives 0.1.1-rc.2公开导出，参数text）；标题/表格/正文实测正常。资源页窄Header原来操作组覆盖页签，先复现后将context列改为max-content并保留原横向滚动；增加选择器优先级，防止首次加载又被共享Header覆盖。工作区补studio-display容器，恢复760/520断点。资源组inert沿用宿主兼容处理。
+
+UI418+34单测、43浏览器、type/lint/format/build/deps通过；DSH正式源码本轮未改，仍6395d13。新的完整开发bundle已复制3082，当前浏览器未重新加载最后Header样式修正（重新加载会回流程设计，再点资源配置）；普通来源仍不具备正式目录接口。helper增加资源源hash核验并注入已验证的MarkdownText。未发消息、未碰3080、未发RC。C057下一步结晶数据端口，预测与实测严格分开。
