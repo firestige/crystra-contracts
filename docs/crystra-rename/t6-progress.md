@@ -84,3 +84,11 @@ Execution rc.2（82a88ea）与 Evolution rc.2（b7163f2）自动发布、下载�
 恢复脚本：/tmp/crystra-real-chain.mjs（已增加 Workflow AVAILABLE 断言）、/tmp/crystra-qualify-real-chain.mjs（隔离容器且 finally 清理，仅 /tmp 测试工具）；远端输入部分草案 /tmp/crystra-combination-partial-inputs.json。最新失败／部分通过日志 /tmp/crystra-real-chain.log 与 /tmp/crystra-real-chain-proof.json；它们不代表最终资格。
 
 下一步：核验 Evolution rc.3；生成服务 rc.3；真实链路全部通过后更新 DSH 服务描述并生成插件 rc.2，再冻结组合 rc.1。T7/T8 尚未进行，无需 GA 或人工发布 RC。
+
+## C030：最终候选组合冻结
+
+服务 rc.3 作业 34815338639 成功，七个下载文件与本地逐字节一致。插件 rc.2 源码 9a9777d6fc8d2d104dc8f18ccffe9660239b21a4，199 测试、构建、归档／来源验证和六项精确制品资格全部通过，自动 RC 作业 34815768299。本地制品 /tmp/crystra-dsh-rc2-local-assets；日志 /tmp/crystra-dsh-rc2-qualification.log。
+
+组合隔离仓库提交 1593f589，清单 release/combinations/0.1.0-rc.1.json 固定 Contracts rc.1、Execution rc.2、UI rc.1、Evidence rc.1、Evolution rc.3、Workflow rc.1、DSH rc.2、services rc.3，并固定对应 gitlink。50 项组合回归通过。等待插件远端原字节核验后，运行 build-combination-candidate / qualify-combination-candidate / finalize-combination-candidate，再沿 release/next 自动生成 crystra-v0.1.0-rc.1。组合 PR #277 将更新为整个最终 RC 组合，保持 bot／非 Draft。
+
+T7 仅新增只读盘点：旧 WSR 56 个容器、12 个运行、14 个专用数据库卷，来源绑定保存在 /tmp/crystra-t7-containers.json。未停止或删除任何旧资源。原 ~/.config/wsr/credentials 私钥仍由改名后的发行 App 复用，不得随旧部署清理删除。

@@ -4,9 +4,9 @@
 - 文档版本：2
 - 最后更新：2026-09-14
 - 总体状态：IN_PROGRESS（T0–T5 完成，T6 进行中）
-- 当前执行任务：T6
-- 当前执行者：本任务 Codex；T6
-- 下一步：继续服务、插件与组合 RC，完成真实联调；不要求任何 GA 前置
+- 当前执行任务：T8
+- 当前执行者：本任务 Codex；T8
+- 下一步：完成实际 DSH 安装验收与文档收尾；组合 RC 已通过，不要求 GA
 
 ## 1. 本文的作用与优先级
 
@@ -64,9 +64,9 @@ T0 已落定具体实现选择，见 [T0 决策](t0-decisions.md)。新坐标的
 | T3 | 统一 dsh-crystra 包与模块装配 | T2-EX、T2-UI DONE | DONE | 本任务 Codex | main b951b9c；PR #33、CI 34762427482 成功；[恢复记录](t3-progress.md) |
 | T4 | 插件初始化、取消独立安装步骤 | T3 DONE；完整服务验收需 T2-EV、T2-EO、T2-WP DONE | DONE | 本任务 Codex | PR #34；CI 34764469211；195 测试、空白浏览器和真实服务通过；[恢复记录](t4-progress.md) |
 | T5 | 当前品牌收尾与外部坐标切换 | 准备可在 T0 后；实际切换需 T1–T4 DONE | DONE | 本任务 Codex | 配置复用与读回见 release-configuration.json；发布和文档 PR #275/#276、DSH #37 已合并 |
-| T6 | 新组件候选与隔离环境组合验证 | T5 DONE | IN_PROGRESS | 本任务 Codex | 六组件、服务、单插件 RC 均已核验；剩余组合与真实 Workflow 联调；见 [T6 记录](t6-progress.md) |
-| T7 | 一次性人工清理实际旧部署 | T6 DONE；只读盘点可在 T0 开始 | PENDING | 未分配 | — |
-| T8 | 实际 RC 安装验收与更名收尾 | T7 DONE；使用 T6 验证制品 | PENDING | 未分配 | — |
+| T6 | 新组件候选与隔离环境组合验证 | T5 DONE | DONE | 本任务 Codex | crystra-v0.1.0-rc.1，34816139862 成功；远端字节一致及真实服务联调通过；[最终证据](evidence/t6-final-combination.json) |
+| T7 | 一次性人工清理实际旧部署 | T6 DONE；只读盘点可在 T0 开始 | DONE | 本任务 Codex | 17 归档校验、59 旧／夹具容器移除、15 卷离线保留；旧运行目录已隔离；[清理记录](evidence/t7-cleanup.json) |
+| T8 | 实际 RC 安装验收与更名收尾 | T7 DONE；使用 T6 验证制品 | IN_PROGRESS | 本任务 Codex | 实际 ~/.dsh web profile 安装精确 dsh-crystra rc.2；未改全局 DSH CLI，继续安装验收 |
 
 详细范围见 [T0–T8 实施说明](implementation-plan.md)。允许独立推进不表示已启动其它 Agent、创建其它任务或进行了分支切换。
 
@@ -126,18 +126,17 @@ T0 产出必须链接在本文中，可以建立同目录的决策附件；不�
 
 | 字段 | 当前值 |
 |---|---|
-| 检查点 | C029：严格真实链路通过；Evolution rc.3 已核验，服务 rc.3 自动资格中 |
-| 当前任务 | T5 DONE；T6 IN_PROGRESS；T0–T4 DONE |
-| 已完成 | 八仓库远端更名及唯一插件身份；现行发布代码／文档 PR 全部合并；原发行 App 改名但 ID 不变；八仓库新 Actions 变量与 Secret 上传并读回 |
-| 未完成 | T6 新服务／插件及组合 RC 的远端资格与跨服务联调；T7–T8；本地 checkout 路径仅在协调窗口调整 |
-| 本轮产品变更 | 新 Workflow tag 命名在发行端与两消费端一致；移除 Evolution 历史制品回退 |
-| 本轮仓库／发布／部署操作 | 已按用户明确授权复用旧发行私钥配置八仓库；无需改动 App 安装范围；T6 候选推进中，未触发 GA、未清理部署 |
-| 工作路径 | 台账 /Users/firestige/Projects/wsr-contracts，codex/crystra-release-configuration-bot；Contracts /tmp/crystra-contracts-t6；Execution /tmp/crystra-t6-components/execution；其余隔离路径见 t6-progress.md；原组件本地路径保持不动 |
-| 文档持久化 | 先前 Contracts #17 已合并；C025 继续写入 Contracts #18 的 bot 审核分支，不直推 main |
-| 活跃进程／作业 | #276、DSH #37、Contracts #17 均已合并；Contracts、Workflow、UI RC 成功并下载验证；Evidence 34800958905、Evolution 34800959153 成功并复验镜像；Execution 34801187270 成功且下载字节一致；无 GA 或清理作业 |
-| 已知阻塞 | 不存在人工发布 RC 的门槛；原先提前要求底层 GA 是执行判断错误，已撤回。先完成 RC 联调；本次不处理 GA 晋级 |
-| 下一条动作 | Workflow 聚合 RC 发现已修复：Execution #46／Evolution #10 及 rc.2 全部 CI 通过。服务 rc.2 已发布，真实执行／入库通过；发现 Evolution 生产下载未跟随 302，c5aa85e 修复后 196 测试及开发镜像真实下载通过。Evolution rc.3 34814993261 成功并复验；服务 rc.3 4a6269b8 真实链路通过（Workflow AVAILABLE），34815338639 自动发布中；插件最终输入 199 测试通过。继续插件／组合 RC。GA 不在当前范围 |
-| 禁止误恢复项 | 不重做仓库更名；不绕过凭据审批；保护原组合子模块脏内容，不消费旧制品 |
+| 检查点 | C031：T6/T7 DONE，首个可用组合 RC 已核验；T8 实际安装中 |
+| 当前任务 | T0–T7 DONE；T8 IN_PROGRESS |
+| 已完成 | 更名／配置复用；crystra-v0.1.0-rc.1 远端六文件与本地相同；真实执行、入库、Trace、评估及 Workflow AVAILABLE；旧部署备份隔离完成 |
+| 未完成 | 实际 DSH 安装验收与公开安装入口收尾；bot PR #277、DSH #38、Execution #46、Evolution #10、Contracts #18 尚需按审批规则合并 |
+| 工作路径 | /tmp/crystra-combination-stage 1593f589；/tmp/crystra-dsh-t6 产品候选 9a9777d、另有 test-only 742e1de；实际 ~/.dsh/profiles/web；台账 /Users/firestige/Projects/wsr-contracts |
+| 活跃进程／作业 | npm exec 精确 DSH 0.1.1-rc.2，安装已核验 dsh-crystra rc.2 到实际 web profile；日志 /tmp/crystra-t8-install.log |
+| 隔离档案 | /Users/firestige/Library/Application Support/Crystra-quarantine/20260914-wsr；17 个校验归档、旧运行目录原件、15 个无容器引用的离线卷 |
+| 已知阻塞 | 无需 GA、无需人工发布 RC；实际工作区角色配置尚待安装验收确定，不能把 NEEDS_CONFIGURATION 谎报 READY |
+| 下一条动作 | 完成实际插件安装，验证唯一激活、setup/doctor、UI 与实际服务链路；补文档与 PR。已发布候选绝不重建替换 |
+| 禁止误恢复项 | 不重做更名；不删除 ~/.config/wsr/credentials 复用私钥；不动原组合子模块脏内容；不消费旧档案；不自动合并／发 GA |
+
 
 
 每次推进后直接更新此表，不追加第二份“最新”检查点；旧事件保留在日志。终端会话 ID 仅供定位，跨会话必须验证是否仍有效。
@@ -237,3 +236,7 @@ T0 已完成附件：[t0-decisions.md](t0-decisions.md)。新首轮分发采用 
 | L030 | 2026-09-14 | T6 IN_PROGRESS | 真实交付成功并入库，评估发现生产 Workflow 302 缺口；已补回归并修复 c5aa85e，196 测试与开发容器生产下载通过，Evolution rc.3 自动资格中 | 更新服务 rc.3 并重跑严格完整链路 |
 
 | L031 | 2026-09-14 | T6 IN_PROGRESS | Evolution rc.3 镜像复验 PASS；服务 rc.3 本地完整执行→入库→Trace→评估通过，Workflow AVAILABLE、任务 COMPLETED，见 [真实链路证据](evidence/t6-real-service-chain.json)；自动发布 34815338639 | 插件 rc.2 全套资格与最终组合 rc.1 |
+
+| L032 | 2026-09-14 | T6 IN_PROGRESS | 服务 rc.3 34815338639 成功、远端七文件字节相同；插件 rc.2 9a9777d 六项本地资格通过，34815768299 运行；组合 1593f589 清单与 gitlink 固定，50 测试通过 | 下载插件 rc.2、核验并发布组合 rc.1 |
+
+| L033 | 2026-09-14 | T6/T7 DONE；T8 IN_PROGRESS | 组合 RC1 34816139862 成功、六文件原字节复验；旧部署 17 归档校验并隔离，59 容器移除、15 卷离线保留、私钥及共享服务保留 | 实际 DSH 插件安装与收尾 |

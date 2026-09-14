@@ -1,0 +1,165 @@
+{
+  "status": "ISOLATED",
+  "archives": [
+    {
+      "file": "crystra-evidence-59d41d965222.tar.gz",
+      "volume": "crystra-evidence-59d41d965222",
+      "bytes": 7058338,
+      "members": 1337,
+      "sha256": "0ef1a8b232c25c93904a02e0e5669375645b2ac30e79bfe33d9e1f2f9f76d6a9"
+    },
+    {
+      "file": "wsr-evidence-0a9ca6763995.tar.gz",
+      "volume": "wsr-evidence-0a9ca6763995",
+      "bytes": 7056452,
+      "members": 1337,
+      "sha256": "1fc7c2d52f1f60e093afcdcc652c66642f12ba5e1b81d98dd1944fc331721c77"
+    },
+    {
+      "file": "wsr-evidence-176fb35e6010.tar.gz",
+      "volume": "wsr-evidence-176fb35e6010",
+      "bytes": 7039104,
+      "members": 1335,
+      "sha256": "7362af4cff612613de980538d21cfcd47082b5a4f415c1ea60e7868567157115"
+    },
+    {
+      "file": "wsr-evidence-2116dc58d0f1.tar.gz",
+      "volume": "wsr-evidence-2116dc58d0f1",
+      "bytes": 7039732,
+      "members": 1335,
+      "sha256": "b7b6e4002a9b3b8644bb35dcd2df387126cb32847d83bd06d0c4924dd358ef6d"
+    },
+    {
+      "file": "wsr-evidence-82ec32a70e4e.tar.gz",
+      "volume": "wsr-evidence-82ec32a70e4e",
+      "bytes": 7038915,
+      "members": 1335,
+      "sha256": "b260c9f1416c08a2f9718df2d9665505945aaf2049d0359097671809e398efe4"
+    },
+    {
+      "file": "wsr-evidence-b72b8623e4d4.tar.gz",
+      "volume": "wsr-evidence-b72b8623e4d4",
+      "bytes": 7038550,
+      "members": 1335,
+      "sha256": "00766cf9ea11be5e45b85859df228bfa277215ba65a3625fefcd20a34710b21c"
+    },
+    {
+      "file": "wsr-evidence-d3626cf4c3a6.tar.gz",
+      "volume": "wsr-evidence-d3626cf4c3a6",
+      "bytes": 6923448,
+      "members": 1335,
+      "sha256": "b749d3fb4a3fb7aaa6a3aa57242aec0ee9f9dd4ce0c697030cb06f4e9231ae93"
+    },
+    {
+      "file": "wsr-evidence-e47f1d792bd6.tar.gz",
+      "volume": "wsr-evidence-e47f1d792bd6",
+      "bytes": 6924650,
+      "members": 1335,
+      "sha256": "018557d952a7e5239f271220e5359c4eb614a34f561829e210be4c3d582c5ca2"
+    },
+    {
+      "file": "wsr-evidence-f4d64b327eec.tar.gz",
+      "volume": "wsr-evidence-f4d64b327eec",
+      "bytes": 7040184,
+      "members": 1335,
+      "sha256": "87d718df09a73d9ad0127e15b6a6752bf77f338180a7190bcd3d7c5b2e7866dc"
+    },
+    {
+      "file": "wsr-evidence-fc0c51fc43d6.tar.gz",
+      "volume": "wsr-evidence-fc0c51fc43d6",
+      "bytes": 7039682,
+      "members": 1335,
+      "sha256": "e86d7833beed8665234c644adca0d6ada1cc282d76e69ac4842635b0c3f0cebd"
+    },
+    {
+      "file": "wsr-issue187-056.tar.gz",
+      "volume": "wsr-issue187-056",
+      "bytes": 7067202,
+      "members": 1337,
+      "sha256": "08856abb87bbdc02570cf07f6220d3b026b725988671be3225dcda4932575b69"
+    },
+    {
+      "file": "wsr_issue187_052b_evidence.tar.gz",
+      "volume": "wsr_issue187_052b_evidence",
+      "bytes": 7057002,
+      "members": 1337,
+      "sha256": "aefb64adc94104c55d1699c322b1505fd7669077d8ce7ad1259891410d4d41c7"
+    },
+    {
+      "file": "wsr_issue187_053_evidence.tar.gz",
+      "volume": "wsr_issue187_053_evidence",
+      "bytes": 7057104,
+      "members": 1337,
+      "sha256": "359a1b69f06e814ed38cdfc809472e6fd424beb8c3e95e7c72337f6cbfdf3ecc"
+    },
+    {
+      "file": "wsr_issue187_054_evidence.tar.gz",
+      "volume": "wsr_issue187_054_evidence",
+      "bytes": 7057644,
+      "members": 1337,
+      "sha256": "fac36bca0dbe804a7b097a69f393970ba34f9469686579a652a26efd19d50581"
+    },
+    {
+      "file": "wsr_issue187_055_evidence.tar.gz",
+      "volume": "wsr_issue187_055_evidence",
+      "bytes": 7056550,
+      "members": 1337,
+      "sha256": "0cd32c7960d369db5b8fdb7ff74d19e431278611feb852b457691e870d1f2382"
+    },
+    {
+      "file": "runtime-WSR.tar.gz",
+      "source": "/Users/firestige/Library/Application Support/WSR",
+      "bytes": 5042689,
+      "members": 409,
+      "sha256": "b7a814ba9933a81aff249cb3c0cc36c3342ade4998f9e8ed467afc0379e3370c"
+    },
+    {
+      "file": "dsh-profiles-before-cleanup.tar.gz",
+      "source": "/Users/firestige/.dsh/profiles",
+      "bytes": 28543,
+      "members": 680,
+      "sha256": "b5f77c064965dcbcb72ef65b4e39020769825516d1f07b1e52790aad4468aff6"
+    }
+  ],
+  "containersStopped": 59,
+  "volumes": [
+    "crystra-evidence-59d41d965222",
+    "wsr-evidence-0a9ca6763995",
+    "wsr-evidence-176fb35e6010",
+    "wsr-evidence-2116dc58d0f1",
+    "wsr-evidence-82ec32a70e4e",
+    "wsr-evidence-b72b8623e4d4",
+    "wsr-evidence-d3626cf4c3a6",
+    "wsr-evidence-e47f1d792bd6",
+    "wsr-evidence-f4d64b327eec",
+    "wsr-evidence-fc0c51fc43d6",
+    "wsr-issue187-056",
+    "wsr_issue187_052b_evidence",
+    "wsr_issue187_053_evidence",
+    "wsr_issue187_054_evidence",
+    "wsr_issue187_055_evidence"
+  ],
+  "retainedCredentialPath": "/Users/firestige/.config/wsr/credentials",
+  "removedContainers": 59,
+  "retainedOfflineVolumes": [
+    "crystra-evidence-59d41d965222",
+    "wsr-evidence-0a9ca6763995",
+    "wsr-evidence-176fb35e6010",
+    "wsr-evidence-2116dc58d0f1",
+    "wsr-evidence-82ec32a70e4e",
+    "wsr-evidence-b72b8623e4d4",
+    "wsr-evidence-d3626cf4c3a6",
+    "wsr-evidence-e47f1d792bd6",
+    "wsr-evidence-f4d64b327eec",
+    "wsr-evidence-fc0c51fc43d6",
+    "wsr-issue187-056",
+    "wsr_issue187_052b_evidence",
+    "wsr_issue187_053_evidence",
+    "wsr_issue187_054_evidence",
+    "wsr_issue187_055_evidence"
+  ],
+  "runtimeMovedTo": "/Users/firestige/Library/Application Support/Crystra-quarantine/20260914-wsr/runtime-WSR",
+  "profileCleanup": "only four obsolete WSR package exemptions removed",
+  "credentialsPreserved": true,
+  "backupDirectory": "/Users/firestige/Library/Application Support/Crystra-quarantine/20260914-wsr"
+}
