@@ -179,3 +179,10 @@ UI 45569e5 / DSH 82c4d88：Task Browser 保存经过白名单验证的查询、�
 共享 Menu 支持图标触发、menuitemradio、上下方向及 auto 放置，复用键盘焦点、Escape/外部关闭。React refs 静态检查发现排序回调间接读取滚动 ref，已移到查询变更 effect；不关闭规则。UI409 Vitest+34 Node、38浏览器、lint/type/format/build/deps通过；DSH231/231通过。日志 /tmp/crystra-c052-*.log。
 
 3082 当前仍为真实 Task 来源、Analysis 显式探索；实测 List 搜索 5f9ecaae → 打开精确 task-5f9ecaae-8f06-42f9-93bd-22ac3a551bc7 → 侧栏全部任务，保留 List 与查询；排序菜单在宿主正确定位。没有操作3080，没有发送消息，没有发布新RC。接着 C053 Workflow Explorer：先复用定稿资源浏览配方，精确 definition+revision，最新项在筛选前确定且不回退；真实目录未知能力必须明确，不能混入样本。
+
+
+## C053 Workflow Explorer
+
+UI349bb6a / DSH bb3fd07：WorkflowExplorer 复用已接受 Task Browser 布局配方；ResourceGalleryGroup 抽取为两页共用。目录类型只定义消费者需求，精确 definitionId/revision、显式 isLatest；最新项先确定再筛选，不根据字符串、时间或状态猜最新；冲突最新不选。Gallery/List、最新/全部版本、状态过滤、排序、分页、独立选择、精确打开已实现。无 owner callback 的新建/改名/归档等保持禁用。跨页面 Workflow 视图恢复和正式目录/资源管理通路尚缺。
+
+UI414+34单测、39整套浏览器、type/lint/format/build/deps通过；DSH232/232通过。3082从侧栏进入完整 Workflow Explorer Header 与缺口提示，当前没有正式目录接口，不显示伪造的0项集合，不加载测试工作流。48定义×3revision的独立样本只在 workflow-explorer-test.html，验证筛选不回退、版本模式清选、跨视图选择及精确r1打开。没有RC发布。继续C054共享工作台Header/分栏/Input连续性，再接已合入组件；不得把历史样本的window全局对话/假写入直接当正式宿主。

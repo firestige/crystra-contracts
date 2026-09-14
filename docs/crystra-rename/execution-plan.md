@@ -127,15 +127,15 @@ T0 产出必须链接在本文中，可以建立同目录的决策附件；不�
 
 | 字段 | 当前值 |
 |---|---|
-| 检查点 | C052：UI 45569e5 / DSH 82c4d88 完成 Task Browser 返回视图/精确条目恢复与共享键盘菜单；UI409+34单测、38浏览器，DSH231项通过。3082真实目录往返验证通过，继续 C053 Workflow Explorer；未发布新 RC |
+| 检查点 | C053：UI 349bb6a / DSH bb3fd07 接入 Workflow Explorer 与共享 Gallery；UI414+34单测、39浏览器，DSH232项通过。3082显示正式目录接口缺口，继续 C054 Workflow 工作台；未发布新 RC |
 | 当前任务 | T0–T7 DONE；T8 IN_PROGRESS |
 | 已完成 | 更名／配置复用；crystra-v0.1.0-rc.1 远端六文件与本地相同；真实执行、入库、Trace、评估及 Workflow AVAILABLE；旧部署备份隔离完成 |
 | 未完成 | 实际 DSH 安装验收与公开安装入口收尾；bot PR #277、DSH #38、Execution #46、Evolution #10、Contracts #18 尚需按审批规则合并 |
-| 工作路径 | 新 UI /tmp/crystra-ui-host-integration `45569e5`；新宿主 /tmp/crystra-dsh-t6 `82c4d88`（未发布）。原组合 /tmp/crystra-combination-stage 1593f589；/tmp/crystra-dsh-t6 产品候选 9a9777d、另有 test-only 742e1de；实际 ~/.dsh/profiles/web；台账 /Users/firestige/Projects/wsr-contracts |
+| 工作路径 | 新 UI /tmp/crystra-ui-host-integration `349bb6a`；新宿主 /tmp/crystra-dsh-t6 `bb3fd07`（未发布）。原组合 /tmp/crystra-combination-stage 1593f589；/tmp/crystra-dsh-t6 产品候选 9a9777d、另有 test-only 742e1de；实际 ~/.dsh/profiles/web；台账 /Users/firestige/Projects/wsr-contracts |
 | 活跃进程／作业 | 本次安装／归档命令完成；现有 DSH PID 40455（全局 web，3080）保留。精确 DSH 0.1.1-rc.2 已作为普通依赖安装于 ~/Library/Application Support/Crystra/tools，未降级全局 CLI |
 | 隔离档案 | /Users/firestige/Library/Application Support/Crystra-quarantine/20260914-wsr；17 个校验归档、旧运行目录原件、15 个无容器引用的离线卷 |
 | 已知阻塞 | Input 专属实例隔离与 Task 几何已验证，附件/发送完整链路仍待验证；无须先批准共享会话或 fork。旧 Workflow 匿名额度 403 仅为此前证据，当前未复验，不按旧恢复时刻推定仍被限流。无 GA 门槛 |
-| 下一条动作 | C053 按 v8 接 Workflow Explorer 精确版本目录及 Workflow 页面；随后接草案 value 验证与持续失效、真实数据端口；继续处理[新 UI 接入缺口](t8-ui-integration-gap.md)，再发布新 RC；原 UI 验收仅证明旧链路可运行。限流为独立复验项。公开 RC 安装入口已更新至 #277/#38，PR 保持 bot／非 Draft，等待正常合并 |
+| 下一条动作 | C054 接 Workflow 工作台三工作面与已有活动图/资源/结晶组件，随后补 Workflow 目录草案/真实来源和跨页恢复；随后接草案 value 验证与持续失效、真实数据端口；继续处理[新 UI 接入缺口](t8-ui-integration-gap.md)，再发布新 RC；原 UI 验收仅证明旧链路可运行。限流为独立复验项。公开 RC 安装入口已更新至 #277/#38，PR 保持 bot／非 Draft，等待正常合并 |
 | 禁止误恢复项 | 不重做更名；不删除 ~/.config/wsr/credentials 复用私钥；不动原组合子模块脏内容；不消费旧档案；不自动合并／发 GA |
 
 
