@@ -1,0 +1,53 @@
+{
+  "status": "PASS",
+  "platforms": [
+    "linux/amd64",
+    "linux/arm64"
+  ],
+  "receipt": {
+    "schemaVersion": "crystra.release-qualification@1.0.0",
+    "candidateTag": "crystra-evidence-v0.1.0-rc.1",
+    "commit": "84bb3152162dee4d448f4c8227f34a686af008d6",
+    "publisherRevision": "84bb3152162dee4d448f4c8227f34a686af008d6",
+    "contractRevision": "evidence.query@0.1.0",
+    "contractStatus": "CURRENT",
+    "artifactMetadataSha256": "sha256:502100193727d89b0a629c556e3f59074f2f1e085bd06663ade72d31276ea092",
+    "ociDigest": "sha256:e65bb3d68e9f08862a54407dc927bf702ff32ec8845c2733cbb967970a84010b",
+    "localAcceptance": {
+      "status": "PASS"
+    },
+    "remoteQualification": {
+      "status": "PASS"
+    }
+  },
+  "files": [
+    {
+      "file": "crystra_evidence-0.1.0-py3-none-any.whl",
+      "sha256": "9f515111ddd94e2c2fe635b7012c0f4fe7ca2e39c4a338fad40864c80a473822"
+    },
+    {
+      "file": "crystra_evidence-0.1.0.tar.gz",
+      "sha256": "5c3ed63f8b9359af30382e51a58a9aac0cf1afbe4961f1e78b899a3459f76e21"
+    },
+    {
+      "file": "image-config.json",
+      "sha256": "559ad0c076675873eb2dc22954258ecb0ebb074265e470faf0327748d3115235"
+    },
+    {
+      "file": "image-manifest.json",
+      "sha256": "dd13dab6639df6371a0b4b6630bdaa23656459aeea3ea914da52ab27763d683a"
+    },
+    {
+      "file": "image-provenance.json",
+      "sha256": "4b7466d3fa296d696d79def453f48ec79d19d7321249a530d3efec4cc3b3a5f5"
+    },
+    {
+      "file": "release-metadata.json",
+      "sha256": "502100193727d89b0a629c556e3f59074f2f1e085bd06663ade72d31276ea092"
+    },
+    {
+      "file": "release-qualification.json",
+      "sha256": "e2ade599edaf4f0ddda6519bf6b2a196cbf87d00c150045e7c18f3471bc2dd6b"
+    }
+  ]
+}

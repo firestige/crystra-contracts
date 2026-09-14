@@ -1,0 +1,50 @@
+{
+  "status": "PASS",
+  "platforms": [
+    "linux/amd64",
+    "linux/arm64"
+  ],
+  "receipt": {
+    "schemaVersion": "crystra.evolution-image-qualification@1.0.0",
+    "candidateTag": "crystra-evolution-v0.1.0-rc.1",
+    "version": "0.1.0",
+    "commit": "984a0dcf2d9388812136b789b5d0bc487c146d56",
+    "authority": {
+      "repository": "firestige/crystra-evolution",
+      "revision": "984a0dcf2d9388812136b789b5d0bc487c146d56"
+    },
+    "publisherRevision": "984a0dcf2d9388812136b789b5d0bc487c146d56",
+    "image": "ghcr.io/firestige/crystra-evolution:crystra-evolution-v0.1.0-rc.1@sha256:fdc1e3a800c2851d4b468e92b717d290a6408d3ab4d8575901d02f535ffdddb2",
+    "ociDigest": "sha256:fdc1e3a800c2851d4b468e92b717d290a6408d3ab4d8575901d02f535ffdddb2",
+    "source": "https://github.com/firestige/crystra-evolution",
+    "platforms": [
+      "linux/amd64",
+      "linux/arm64"
+    ],
+    "provenance": {
+      "mode": "max",
+      "status": "PASS"
+    },
+    "sbom": {
+      "requested": true
+    }
+  },
+  "files": [
+    {
+      "file": "image-config.json",
+      "sha256": "b1d7b93a4331d691b23617210cc3275a13bf6234480d29f30daa174cad86bd16"
+    },
+    {
+      "file": "image-manifest.json",
+      "sha256": "84eb3b35aa7917dd1b3f2f0d70280f63001985f4943c23d1f0133adaf102c6b4"
+    },
+    {
+      "file": "image-provenance.json",
+      "sha256": "ffe300e8dcbaaf0349bbaab64c05a96a7fdf78b08b33dee40fa568e3821b91a7"
+    },
+    {
+      "file": "release-qualification.json",
+      "sha256": "6f361987c50111388d1b64d16a5069bdb48987ebe6a219a00422fca9ca663ebd"
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "status": "PASS",
+  "receipt": {
+    "schemaVersion": "execution.release-qualification@1.0.0",
+    "packageVersion": "0.1.0",
+    "candidateTag": "crystra-execution-v0.1.0-rc.1",
+    "commit": "0a708b59250cccda43ff6054000cb3af380d6906",
+    "publisherRevision": "0a708b59250cccda43ff6054000cb3af380d6906",
+    "artifactMetadataSha256": "sha256:47efb097ff99cc7598cc1c3865a402d7b459855552b9dd71a200eaaf7159cbcf",
+    "componentGates": {
+      "status": "PASS"
+    },
+    "remoteArtifactVerification": {
+      "status": "PASS"
+    }
+  },
+  "files": [
+    {
+      "file": "crystra-execution-0.1.0.tgz",
+      "sha256": "bcaa1400dd601450abe3b494474cd9b6a9e590552c8421e0784a4f5d614a3b35",
+      "localRemoteIdentical": true
+    },
+    {
+      "file": "crystra-execution-0.1.0.tgz.publication.json",
+      "sha256": "f50392f35bce63602d68a48ab7d03e864ccf959770e8e27132ebe5bf96e125ed",
+      "localRemoteIdentical": true
+    },
+    {
+      "file": "release-metadata.json",
+      "sha256": "47efb097ff99cc7598cc1c3865a402d7b459855552b9dd71a200eaaf7159cbcf",
+      "localRemoteIdentical": true
+    },
+    {
+      "file": "release-notes.md",
+      "sha256": "c6daab554a17c8da7c3e276c7a8cc03bc45d4b7b922de9bfc235bdf98962b18d",
+      "localRemoteIdentical": true
+    },
+    {
+      "file": "release-qualification.json",
+      "sha256": "ae8917ec56076dcbafbe6829bb3892d9fbaf599642afc2c5d6799233868b22f8"
+    }
+  ]
+}

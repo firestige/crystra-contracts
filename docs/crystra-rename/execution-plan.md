@@ -3,10 +3,10 @@
 - 计划 ID：CRYSTRA-RENAME-20260913
 - 文档版本：2
 - 最后更新：2026-09-14
-- 总体状态：IN_PROGRESS（T0–T4 完成，T5 进行中）
+- 总体状态：IN_PROGRESS（T0–T5 完成，T6 进行中）
 - 当前执行任务：T6
 - 当前执行者：本任务 Codex；T6
-- 下一步：完成 Contracts 远端候选核验，再推进其余组件；恢复细节见第 8 节
+- 下一步：用户触发底层组件晋级；随后核验稳定字节并继续服务、插件、组合；见晋级提案与第 8 节
 
 ## 1. 本文的作用与优先级
 
@@ -125,17 +125,17 @@ T0 产出必须链接在本文中，可以建立同目录的决策附件；不�
 
 | 字段 | 当前值 |
 |---|---|
-| 检查点 | C024：沿用更名后的发行 App，八仓库配置就绪；进入 Contracts 候选资格 |
+| 检查点 | C025：六个底层组件 RC 核验通过；晋级提案 READY，等待人工正式晋级 |
 | 当前任务 | T5 DONE；T6 IN_PROGRESS；T0–T4 DONE |
 | 已完成 | 八仓库远端更名及唯一插件身份；现行发布代码／文档 PR 全部合并；原发行 App 改名但 ID 不变；八仓库新 Actions 变量与 Secret 上传并读回 |
-| 未完成 | T6 全部新组件、服务、插件及组合的远端资格；T7–T8；本地 checkout 路径仅在协调窗口调整 |
+| 未完成 | T6 底层正式晋级、服务归档、插件及组合的远端资格；T7–T8；本地 checkout 路径仅在协调窗口调整 |
 | 本轮产品变更 | 新 Workflow tag 命名在发行端与两消费端一致；移除 Evolution 历史制品回退 |
 | 本轮仓库／发布／部署操作 | 已按用户明确授权复用旧发行私钥配置八仓库；无需改动 App 安装范围；T6 候选推进中，未触发 GA、未清理部署 |
-| 工作路径 | 台账 /Users/firestige/Projects/wsr-contracts，codex/crystra-release-configuration-bot；Contracts T6 干净克隆 /tmp/crystra-contracts-t6，13adf4d；原组件本地路径保持不动 |
-| 文档持久化 | 先前 Contracts #17 已合并；C024 在独立 bot 审核分支保存，不直推 main |
-| 活跃进程／作业 | #276、DSH #37、Contracts #17 均已合并；Contracts RC workflow 34798564767 成功，下载验证通过；无 GA 或清理作业 |
-| 已知阻塞 | 发布配置授权已解除；没有继续等待授权的凭据操作。App 更名由用户完成，原 ID 与 Client ID 不变 |
-| 下一条动作 | 按 t6-progress.md 推进其余组件候选、服务归档、单插件与最终组合；Contracts RC 可作为精确已核验输入；GA 仍由人决定 |
+| 工作路径 | 台账 /Users/firestige/Projects/wsr-contracts，codex/crystra-release-configuration-bot；Contracts /tmp/crystra-contracts-t6；Execution /tmp/crystra-t6-components/execution；其余隔离路径见 t6-progress.md；原组件本地路径保持不动 |
+| 文档持久化 | 先前 Contracts #17 已合并；C025 继续写入 Contracts #18 的 bot 审核分支，不直推 main |
+| 活跃进程／作业 | #276、DSH #37、Contracts #17 均已合并；Contracts、Workflow、UI RC 成功并下载验证；Evidence 34800958905、Evolution 34800959153 成功并复验镜像；Execution 34801187270 成功且下载字节一致；无 GA 或清理作业 |
+| 已知阻塞 | 没有技术失败或凭据阻塞；当前为计划内人工 GA 门槛。底层晋级前不冻结带 RC 坐标的上层可晋级制品 |
+| 下一条动作 | 按 [底层晋级提案](t6-component-promotion-proposal.md) 由用户触发六仓库正式晋级；读回稳定坐标及原始字节，再冻结服务／插件候选，不将 RC URL 固化进最终 GA |
 | 禁止误恢复项 | 不重做仓库更名；不绕过凭据审批；保护原组合子模块脏内容，不消费旧制品 |
 
 
@@ -222,3 +222,5 @@ T0 已完成附件：[t0-decisions.md](t0-decisions.md)。新首轮分发采用 
 | L016 | 2026-09-13 | T5 IN_PROGRESS | 八仓库 ID 校验更名；新 Workflow tag 消费／发行一致，三个组件 CI 成功；凭据操作被自动审批拒绝并等待明确授权 | 独立推进 DSH 输入与组合发布收尾 |
 
 | L019 | 2026-09-13 | T5 IN_PROGRESS | DSH #35/#36 main 集成；GitHub 唯一插件 Topic 读回；组合 #271 CI 通过待审核；#272 草稿 9569df79、46 测试通过，发布接线待完成 | 按 C019 继续；不绕过两个明确门槛 |
+
+| L025 | 2026-09-14 | T6 IN_PROGRESS | 六个底层 RC 均完成远端资格及下载核验；服务镜像两平台来源绑定通过；本地环境问题已解决，源码未改；[晋级提案](t6-component-promotion-proposal.md) READY | 用户正式晋级，随后继续服务／插件／组合；未清理旧部署 |

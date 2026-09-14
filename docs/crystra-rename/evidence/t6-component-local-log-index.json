@@ -1,0 +1,76 @@
+[
+  {
+    "component": "workflow",
+    "logs": [
+      {
+        "path": "/tmp/crystra-workflow-t6.log",
+        "sha256": "d35d81f40896a952cdbf8b2454d868b546a6d8d14c99eb6802a3280f3af09447"
+      }
+    ],
+    "note": "Logs may include resolved setup or command errors; final successful gates and qualifications are described in t6-progress.md."
+  },
+  {
+    "component": "ui",
+    "logs": [
+      {
+        "path": "/tmp/crystra-ui-t6.log",
+        "sha256": "c9e9c97e87f3272f9879bb6bf78ce77d9962f955054ce68970637b0eb1d7e194"
+      }
+    ],
+    "note": "Logs may include resolved setup or command errors; final successful gates and qualifications are described in t6-progress.md."
+  },
+  {
+    "component": "execution",
+    "logs": [
+      {
+        "path": "/tmp/crystra-execution-t6-recheck.log",
+        "sha256": "75a9d269a257aeaa93c740ea5a4f75ee91dd1c8d0316e4b46c45c768f3004f9d"
+      },
+      {
+        "path": "/tmp/crystra-execution-t6-full-final.log",
+        "sha256": "beb5254dbfef07db1107b91baf571f8782b927cd9426e0ed36126767dc52a747"
+      },
+      {
+        "path": "/tmp/crystra-execution-t6-qualified.log",
+        "sha256": "9a2eee48df560c89f1a83ad2ba1406bb17548d686f46e9db536e3543877e9655"
+      },
+      {
+        "path": "/tmp/crystra-execution-t6-harness.log",
+        "sha256": "047a6d4e9e7a848eac25f1161d01ce285f08ba0cc80a54e90e477557a9fe4678"
+      }
+    ],
+    "note": "Logs may include resolved setup or command errors; final successful gates and qualifications are described in t6-progress.md."
+  },
+  {
+    "component": "evidence",
+    "logs": [
+      {
+        "path": "/tmp/crystra-evidence-t6.log",
+        "sha256": "a85813a949792ceb068214ce52d79209977140068da71c75edbdd5fd5b8565c3"
+      },
+      {
+        "path": "/tmp/crystra-evidence-t6-integration.log",
+        "sha256": "debc23035af7441f38aa540cf166a5bbc3cf4fdf023213acde483109b077d02b"
+      },
+      {
+        "path": "/tmp/crystra-evidence-t6-deployment.log",
+        "sha256": "0c9a9156306720847c3caef51c76851d1b406bde9f634e3e9d0fb314e4836dc9"
+      }
+    ],
+    "note": "Logs may include resolved setup or command errors; final successful gates and qualifications are described in t6-progress.md."
+  },
+  {
+    "component": "evolution",
+    "logs": [
+      {
+        "path": "/tmp/crystra-evolution-t6.log",
+        "sha256": "792400316717071255a1cc306c91f8fd2729af4bbeb1644db976c836264abc0a"
+      },
+      {
+        "path": "/tmp/crystra-evolution-t6-docker.log",
+        "sha256": "dc1d7f9a4cdae8fc4f744cc25c5a9d3193ef7e8292167c30c9d95fe201923fab"
+      }
+    ],
+    "note": "Logs may include resolved setup or command errors; final successful gates and qualifications are described in t6-progress.md."
+  }
+]
