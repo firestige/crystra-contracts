@@ -127,7 +127,7 @@ T0 产出必须链接在本文中，可以建立同目录的决策附件；不�
 
 | 字段 | 当前值 |
 |---|---|
-| 检查点 | C061：UI 2514fb8 / DSH 2eab864。Workflow 三工作面与五 Task 工作面显式草案探索已在3082验证；投影到期/撤权清空、目录版本和List恢复通过；UI421+34单测、45浏览器，DSH242测试。未发布新RC |
+| 检查点 | C062：Workflow原生Input与附件已在一次性工作区实测，247 DSH测试；C061：UI 2514fb8 / DSH 2eab864。Workflow 三工作面与五 Task 工作面显式草案探索已在3082验证；投影到期/撤权清空、目录版本和List恢复通过；UI421+34单测、45浏览器，DSH242测试。未发布新RC |
 | 当前任务 | T0–T7 DONE；T8 IN_PROGRESS |
 | 已完成 | 更名／配置复用；crystra-v0.1.0-rc.1 远端六文件与本地相同；真实执行、入库、Trace、评估及 Workflow AVAILABLE；旧部署备份隔离完成 |
 | 未完成 | 实际 DSH 安装验收与公开安装入口收尾；bot PR #277、DSH #38、Execution #46、Evolution #10、Contracts #18 尚需按审批规则合并 |
@@ -287,3 +287,5 @@ T0 已完成附件：[t0-decisions.md](t0-decisions.md)。新首轮分发采用 
 | L055 | 2026-09-15 | T8 IN_PROGRESS | C060 订阅式五工作面草案渲染，241 DSH 测试；3082 显式样本自然到期/撤权移除旧内容和 Wave 运行图交互通过 | 继续精确目标关联、真实 adapter、原生 Input 联调；开发样本不发行 |
 
 | L056 | 2026-09-15 | T8 IN_PROGRESS | C061 UI2514fb8 / DSH2eab864：Workflow目录保存检索/版本/视图/页码及精确revision定位；窄Header遮挡修复，421+34/45浏览器/242 DSH通过；3082目录往返复验 | 继续实际数据与精确对象关联，不等待用户指令 |
+
+| L057 | 2026-09-15 | T8 IN_PROGRESS | C062 Workflow原生Input精确绑定、三种几何/草稿保持/附件粘贴预览移除/Analysis隐藏实测通过；247 DSH测试；无模型发送 | 继续精确引用、隔离草案写入和实际服务adapter；测试绑定不发行 |

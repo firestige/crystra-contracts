@@ -1,0 +1,45 @@
+{
+  "status": "EXPLORATION_ONLY",
+  "runtime": "DSH 0.1.1-rc.2",
+  "port": 3082,
+  "definitionId": "draft-workflow-implementation",
+  "revision": "v8-2eecd430",
+  "workspaceRoot": "/private/tmp/crystra-workflow-input-acceptance",
+  "checks": {
+    "nativeRectangle": [
+      {
+        "left": 64,
+        "top": 89,
+        "width": 400,
+        "height": 631
+      },
+      {
+        "left": 64,
+        "top": 89,
+        "width": 416,
+        "height": 631
+      },
+      {
+        "left": 220,
+        "top": 89,
+        "width": 416,
+        "height": 631
+      }
+    ],
+    "rectangleMatchesViewer": true,
+    "draftAcrossThreeTabs": true,
+    "clipboardImageAdded": true,
+    "imageSurvivedResourceTab": true,
+    "nativeImagePreview": true,
+    "imageRemoved": true,
+    "draftCleared": true,
+    "sendDisabledAfterCleanup": true,
+    "inputHiddenOnAnalysis": true,
+    "modelMessagesSent": 0
+  },
+  "limitations": [
+    "Explicit test binding only; no formal package/session adapter",
+    "No model send/approval chain verified",
+    "3080 and 3081 unchanged"
+  ]
+}

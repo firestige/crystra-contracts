@@ -256,3 +256,12 @@ createDraftTaskPanel 订阅已准入 controller，按当前 taskId 拒绝 foreig
 UI `2514fb8` / DSH `2eab864`：恢复检索、状态筛选、排序、latest/all versions、Gallery/List、分组、页码/页大小和精确 definitionId+revision 定位。持久状态有长度、版本和字段白名单；打开工作流前保存定位；离开目录后拒绝迟到回调。浏览器回归还发现窄 Header 操作覆盖版本切换，改为按内容宽度列与横向滚动。421 Vitest+34 Node、45 浏览器、242 DSH 测试通过。
 
 3082 实测 Implementation 检索 + 全部版本 + List → exact v8-2eecd430 → 全部工作流，三项选择保留。开发实例仍显式启用 Analysis/Workflow/Task fixture，未发布RC。当前原生 Workflow 会话、真实目录来源与资源事务仍未就绪，不以目录恢复替代这些能力。
+
+
+## C062 Workflow 原生 Input 与附件（2026-09-15）
+
+Workflow resolver 按精确 definitionId/revision、包 workspaceId/path 和本实例 Session 成员关系解析，重复绑定、archived/foreign Session、缺失/失效来源均不打开。controller 只有原生 current 确认后才暴露 active Input。外层几何桥接只读取 input-stream rectangle 并更新固定 DSH frame CSS，不移动 Conversation DOM；监听分栏、父区域、窗口和滚动，卸载清理。247 DSH 测试通过。
+
+独立 3082 通过 `CRYSTRA_WORKFLOW_INPUT_TEST=1` 将定稿样本显式绑定到一次性 `/private/tmp/crystra-workflow-input-acceptance` 工作区和新建未发送会话。UI harness 接受 native input 插槽。浏览器实测三种几何完全对齐：400px、416px、侧栏从64到220px；三工作面保留原生草稿；测试PNG可粘贴、跨页保留、原生预览、移除；进入Analysis隐藏原生Input。文字草稿和图片已清空，发送按钮恢复disabled，模型请求为0。[证据](drafts/evidence/c062-workflow-input.json)。
+
+未跟踪 `.workflow-input-preview.js` 的绑定仅有效1小时、来源变无效后关闭Input，正常入口没有自动启用。Task/Workflow 导航切换先停用两者再启用目标，避免两个控制器抢夺会话。正式 package adapter、发送/审批链路仍未完成。当前是原生组件装配验收，不是新RC或正式发布资格。
