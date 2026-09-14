@@ -56,3 +56,7 @@ Evidence/Evolution 候选均已成功，随后重新下载资产并从 GHCR 读�
 本地完整日志位置与摘要见 [日志索引](evidence/t6-component-local-log-index.json)。目标稳定 tag 与 Release 已逐个只读检查，2026-09-14 均未占用。下一阶段边界见 [底层晋级提案](t6-component-promotion-proposal.md)。
 
 Execution 34801187270 已成功，重新下载后制品验证通过，tgz、publication、metadata、notes 全部与本地冻结文件逐字节一致；回执源码／tag／元数据摘要与 PASS 绑定核验通过，见 [Execution 证据](evidence/t6-execution-remote-verification.json)。六个底层组件 RC 完成，进入已写明范围的人工晋级门槛；服务、插件、组合与 T7/T8 尚未完成。
+
+## C026：继续 RC 与联调
+
+用户明确当前不发 GA。撤回上一检查点的人工晋级暂停；已发布 RC 可作为服务和插件候选的精确输入。服务、插件、组合 RC 均由候选分支自动发布，先完成真实联调。未来正式晋级仍需对具体 RC 与其依赖执行资格检查，不能因此要求现在提前 GA。
