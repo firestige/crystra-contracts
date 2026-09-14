@@ -1,0 +1,144 @@
+{
+  "checkedAt": "2026-09-14T01:09:18.139291+00:00",
+  "scope": "read-only names; no values or credential writes",
+  "repositories": [
+    {
+      "repository": "firestige/crystra",
+      "secrets": [],
+      "variables": []
+    },
+    {
+      "repository": "firestige/crystra-contracts",
+      "secrets": [
+        {
+          "name": "WSR_RELEASE_APP_PRIVATE_KEY",
+          "updatedAt": "2026-08-25T17:17:01Z"
+        }
+      ],
+      "variables": [
+        {
+          "name": "WSR_RELEASE_APP_ID",
+          "updatedAt": "2026-08-25T17:16:59Z"
+        },
+        {
+          "name": "WSR_RELEASE_CLIENT_ID",
+          "updatedAt": "2026-09-05T02:12:26Z"
+        }
+      ]
+    },
+    {
+      "repository": "firestige/crystra-execution",
+      "secrets": [
+        {
+          "name": "WSR_RELEASE_APP_PRIVATE_KEY",
+          "updatedAt": "2026-08-25T17:17:01Z"
+        }
+      ],
+      "variables": [
+        {
+          "name": "WSR_RELEASE_APP_ID",
+          "updatedAt": "2026-08-25T17:16:59Z"
+        },
+        {
+          "name": "WSR_RELEASE_CLIENT_ID",
+          "updatedAt": "2026-09-05T02:12:24Z"
+        }
+      ]
+    },
+    {
+      "repository": "firestige/crystra-evidence",
+      "secrets": [
+        {
+          "name": "WSR_RELEASE_APP_PRIVATE_KEY",
+          "updatedAt": "2026-08-25T17:17:01Z"
+        }
+      ],
+      "variables": [
+        {
+          "name": "WSR_RELEASE_APP_ID",
+          "updatedAt": "2026-08-25T17:16:59Z"
+        },
+        {
+          "name": "WSR_RELEASE_CLIENT_ID",
+          "updatedAt": "2026-09-05T02:10:22Z"
+        }
+      ]
+    },
+    {
+      "repository": "firestige/crystra-evolution",
+      "secrets": [
+        {
+          "name": "WSR_RELEASE_APP_PRIVATE_KEY",
+          "updatedAt": "2026-08-29T14:56:47Z"
+        }
+      ],
+      "variables": [
+        {
+          "name": "WSR_RELEASE_APP_ID",
+          "updatedAt": "2026-08-29T11:48:39Z"
+        },
+        {
+          "name": "WSR_RELEASE_CLIENT_ID",
+          "updatedAt": "2026-09-05T02:11:11Z"
+        }
+      ]
+    },
+    {
+      "repository": "firestige/crystra-ui",
+      "secrets": [
+        {
+          "name": "WSR_RELEASE_APP_PRIVATE_KEY",
+          "updatedAt": "2026-08-29T14:56:29Z"
+        }
+      ],
+      "variables": [
+        {
+          "name": "WSR_RELEASE_APP_ID",
+          "updatedAt": "2026-09-04T23:03:47Z"
+        },
+        {
+          "name": "WSR_RELEASE_CLIENT_ID",
+          "updatedAt": "2026-09-05T02:12:33Z"
+        }
+      ]
+    },
+    {
+      "repository": "firestige/crystra-workflow-package",
+      "secrets": [
+        {
+          "name": "WSR_RELEASE_APP_PRIVATE_KEY",
+          "updatedAt": "2026-08-25T17:17:01Z"
+        }
+      ],
+      "variables": [
+        {
+          "name": "WSR_RELEASE_APP_ID",
+          "updatedAt": "2026-08-25T17:16:59Z"
+        },
+        {
+          "name": "WSR_RELEASE_CLIENT_ID",
+          "updatedAt": "2026-09-05T02:12:28Z"
+        }
+      ]
+    },
+    {
+      "repository": "firestige/crystra-dsh",
+      "secrets": [
+        {
+          "name": "WSR_RELEASE_APP_PRIVATE_KEY",
+          "updatedAt": "2026-08-29T14:57:27Z"
+        }
+      ],
+      "variables": [
+        {
+          "name": "WSR_RELEASE_APP_ID",
+          "updatedAt": "2026-08-29T21:16:17Z"
+        },
+        {
+          "name": "WSR_RELEASE_CLIENT_ID",
+          "updatedAt": "2026-09-05T02:12:31Z"
+        }
+      ]
+    }
+  ]
+}

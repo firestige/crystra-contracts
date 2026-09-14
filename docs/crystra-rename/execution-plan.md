@@ -6,7 +6,7 @@
 - 总体状态：IN_PROGRESS（T0–T4 完成，T5 进行中）
 - 当前执行任务：T5
 - 当前执行者：本任务 Codex；T5
-- 下一步：协调仓库改名、remote／配置坐标及发布权限；恢复细节见第 8 节
+- 下一步：发布接线 PR 验证与审核、当前文档归属及发布权限收尾；恢复细节见第 8 节
 
 ## 1. 本文的作用与优先级
 
@@ -124,17 +124,17 @@ T0 产出必须链接在本文中，可以建立同目录的决策附件；不�
 
 | 字段 | 当前值 |
 |---|---|
-| 检查点 | C021：#273 已合并；#274 作为独立候选工具准备步骤进入审核 |
+| 检查点 | C023：#275 已合并；现行文档收尾，发布权限待明确授权 |
 | 当前任务 | T5 IN_PROGRESS；T0–T4 DONE |
 | 已完成 | 八仓库更名、origin 更新；Execution 0a708b5、Evolution 984a0dc、Workflow 2fc61f0 新 tag 坐标修复与 CI 成功 |
-| 未完成 | T5 当前资产、组合发布代码、权限配置；T6–T8 |
+| 未完成 | T5 现行文档 PR 与权限配置；本地目录协调窗口；T6–T8 |
 | 本轮产品变更 | 新 Workflow tag 命名在发行端与两消费端一致；移除 Evolution 历史制品回退 |
 | 本轮仓库／发布／部署操作 | repository-renames.json 记录相同仓库 ID；没有新发布或旧部署清理 |
-| 工作路径 | 台账 /Users/firestige/Projects/wsr-contracts；组件仍用旧本地目录；组合隔离工作树 /tmp/crystra-combination-stage，codex/crystra-combination |
-| 文档持久化 | C020 与 t5-progress.md、bot-pr-replacements.json 随本轮保存 |
-| 活跃进程／作业 | DSH #35/#36 已合并；bot #273 已合并；#274 head 94f02132 已 ready；发布治理与 qualify 均成功；旧 #271/#272 已关闭，原提交验证证据保留；无发布作业 |
-| 已知阻塞 | 发布凭据自动审批等待明确授权；用户已授权并完成 bot 重建：#273 已合并；#274 已重整到 main 并取消 Draft，待用户正常审核；发布凭据复制仍待单独授权；不使用管理员绕过 |
-| 下一条动作 | 在 codex/crystra-combination-publisher 完成发布 workflow 接线、资格／晋升检查及旧安装器退出。以 bot 分支 codex/crystra-combination-publisher-bot 继续 #274；#273 已由用户合并；#274 独立工具步骤已 ready，由用户审核；后续 T5 发布接线与安装器退出继续实施。bot 重建已完成，发布凭据复制仍待单独授权，详见 t5-progress.md |
+| 工作路径 | 台账 /Users/firestige/Projects/wsr-contracts，codex/crystra-rename-checkpoint-c022；DSH 文档 codex/crystra-lifecycle-docs-bot；组合隔离 /tmp/crystra-combination-stage，codex/crystra-docs-ownership-bot，基线 5fa0fc17a1dbd03dbd1cab43d0e8fc6a29867c05 |
+| 文档持久化 | C022/C023 已提交 Contracts bot PR #17，非 Draft；main 合并前以本恢复分支为最新，不直推 main |
+| 活跃进程／作业 | #275 已由用户合并，合并提交 5fa0fc17；组合 #276 与 DSH #37 均 CI 成功、bot 非 Draft；Contracts #17 同步本台账；无候选发布作业 |
+| 已知阻塞 | 八仓库均缺 CRYSTRA_RELEASE_CLIENT_ID／CRYSTRA_RELEASE_APP_PRIVATE_KEY；详见 release-authorization.md，发布凭据复制与必要安装范围补充仍待明确授权 |
+| 下一条动作 | 读回本轮文档 PR／CI，用户审核；明确授权后按 release-authorization.md 配置发布权限，再推进 T6；不清理原组合子模块或旧部署 |
 | 禁止误恢复项 | 不重做仓库更名；不绕过凭据审批；保护原组合子模块脏内容，不消费旧制品 |
 
 
