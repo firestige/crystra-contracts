@@ -18,4 +18,8 @@ C082 实际3083验收：计划摘要、原生Markdown正文、DAG键盘选择、
 
 可选 `inputBinding` 只接受 `{workspaceId,packageRoot,sessionId}`。投影先经精确来源/身份/有效期准入；本地工作区列表必须就绪、路径一致、会话属于该工作区且未归档，当前会话确认后才显示原生 Input。Task 草案不混入正式 Delivery inventory；出现同 ID owner Task 时由正式来源优先，来源撤销不得回退到旧草案绑定。
 
-隔离验收会话 `/tmp/crystra-c083-session.json`，独立于 Workflow C077 会话；未配置 API Key、未调用模型。304项全量回归/build/boundaries通过；实际3083打开Task原生Input、切Workflow空白会话、返回Task保留草稿、Analysis隐藏Input、foreign-session拒绝均通过。测试草稿清理及新RC资格继续。
+隔离验收会话 `/tmp/crystra-c083-session.json`，独立于 Workflow C077 会话；未配置 API Key、未调用模型。304项全量回归/build/boundaries通过；实际3083打开Task原生Input、切Workflow空白会话、返回Task保留草稿、Analysis隐藏Input、foreign-session拒绝均通过。测试草稿已清空。DSH ae74ed9六项本地RC资格通过，远端RC4作业34891888318成功，组合RC3作业34892523368成功且六资产下载相同。
+
+C084在Task原生Input提交只读`/crystra doctor`，回显NEEDS_CONFIGURATION（本隔离home尚未setup），非空原生对话页头装配正常，未回落LLM。[命令证据](evidence/c084-task-native-command.json)。这不是模型/审批或真实Task执行成功证据。
+
+C084最终正常安装：3083单插件RC4，554文件逐字节匹配发布归档；Task会话/计划图、Workflow独立会话及C080候选在升级后均恢复。安装初次因pnpm忽略原生构建未完成，限定许可并补建better-sqlite3后普通安装成功；未关闭其他构建限制。
