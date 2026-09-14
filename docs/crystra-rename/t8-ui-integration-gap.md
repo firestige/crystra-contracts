@@ -281,3 +281,10 @@ Workflow 引用桥经公开 `ctx.sessions.scope` / `ctx.conversation.input.for` 
 3082实际资源页“在对话中讨论此文件”追加 definitionId/revision/workspaceId/resourceId/path/resourceRevision，保留原文，焦点在原生TEXTAREA。初次焦点选择仅role属性未命中原生textarea，修正后复验通过。测试文字已清空。为保持引用路径可定位，103份完整设计资源快照仅物化至一次性 `/private/tmp/crystra-workflow-input-acceptance`，并写入各文件digest清单；未执行资源脚本。结晶样本与当前实际流程尚无正式proposal关联，继续禁用其讨论动作。
 
 普通实例没有启用该探索adapter；不宣称引用本身构成正式绑定、审批或执行授权。下一步用只读 /crystra doctor 验证原生提交链路，无需模型API Key。
+
+
+## C065 原生提交与附件保管（2026-09-15）
+
+3082一次性Workflow会话经原生发送按钮执行 `/crystra doctor`，宿主返回测试工作区缺role-provider-bindings，结果回到Conversation，模型steps/llmMs均0。带格式错误测试PNG时宿主拒绝并保留原生草稿；替换有效2×2 PNG后图片已作为user/message attachment持久化，attachmentId SHA256与本地73字节文件一致。管理命令既有策略不接受附件，返回CRYSTRA_ADMIN_COMMAND_INVALID，未执行或回落LLM；不为使测试通过放宽策略。原生草稿和待发送附件已手动移除。[证据](drafts/evidence/c065-native-command.json)。
+
+证明的是原生输入提交、图片序列化/保管、拒绝后的草稿保持及命令边界；不是模型provider成功调用、审批或Workflow执行完成。首次产生历史消息后原生Session Header/旧view tabs出现于左侧Input，尚需按v8组合处理其重复导航，不能继续以空白Session外观覆盖这项验收。
