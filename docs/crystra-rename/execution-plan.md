@@ -3,10 +3,10 @@
 - 计划 ID：CRYSTRA-RENAME-20260913
 - 文档版本：2
 - 最后更新：2026-09-15
-- 总体状态：IN_PROGRESS（T0–T7 完成，T8 进行中）
-- 当前执行任务：T8
-- 当前执行者：本任务 Codex；T8
-- 下一步：先恢复定稿 v8 的完整页面组合与交互，草案作为数据端口；视觉及真实链路分别验收后才发布 RC
+- 总体状态：DONE（T0–T8 完成；C092 合并后核验通过）
+- 当前执行任务：无；更名与 RC 验收已完成
+- 当前执行者：本任务 Codex；收尾记录
+- 下一步：通过 codex/crystra-rename-closure PR 归档本次收尾文档；后续正式领域契约与模型消费验收另立范围，组件继续在各自 main 演进。无需重发 RC 或发布 GA。
 
 ## 1. 本文的作用与优先级
 
@@ -67,7 +67,7 @@ T0 已落定具体实现选择，见 [T0 决策](t0-decisions.md)。新坐标的
 | T5 | 当前品牌收尾与外部坐标切换 | 准备可在 T0 后；实际切换需 T1–T4 DONE | DONE | 本任务 Codex | 配置复用与读回见 release-configuration.json；发布和文档 PR #275/#276、DSH #37 已合并 |
 | T6 | 新组件候选与隔离环境组合验证 | T5 DONE | DONE | 本任务 Codex | crystra-v0.1.0-rc.1，34816139862 成功；远端字节一致及真实服务联调通过；[最终证据](evidence/t6-final-combination.json) |
 | T7 | 一次性人工清理实际旧部署 | T6 DONE；只读盘点可在 T0 开始 | DONE | 本任务 Codex | 17 归档校验、59 旧／夹具容器移除、15 卷离线保留；旧运行目录已隔离；[清理记录](evidence/t7-cleanup.json) |
-| T8 | 实际 RC 安装验收与更名收尾 | T7 DONE；使用 T6 验证制品 | IN_PROGRESS | 本任务 Codex | Mac 已解锁；实际 RC setup 启动三项健康服务，doctor 正确报告缺少工作区绑定；Studio 可读取 Evidence；[安装证据](evidence/t8-installation.json) |
+| T8 | 实际 RC 安装验收与更名收尾 | T7 DONE；使用已验证制品 | DONE | 本任务 Codex | 组合 RC5／UI RC5／DSH RC6 公开制品及实际安装通过；六 PR 已合并，main 树与审核版本一致，CI 全通过；[最终资格](evidence/c091-final-rc-combination.json)、[合并核验](evidence/c092-main-closure.json) |
 
 详细范围见 [T0–T8 实施说明](implementation-plan.md)。允许独立推进不表示已启动其它 Agent、创建其它任务或进行了分支切换。
 
@@ -127,15 +127,15 @@ T0 产出必须链接在本文中，可以建立同目录的决策附件；不�
 
 | 字段 | 当前值 |
 |---|---|
-| 检查点 | C091：UI RC5 e3246e1、DSH RC6 c7cb177、组合RC5 4b48c3e3均已发布并下载核验。DSH331回归/六项资格、组合50回归/资格通过，远端插件字节及组合六资产等于本地。3085正常安装RC6，558文件一致；真实取消恢复/重投及保存通知通过，0模型轮次。见evidence/c091-final-rc-combination.json。 |
-| 当前任务 | T0–T7 DONE；T8 IN_PROGRESS |
+| 检查点 | C092：六份 PR 已由用户合并；六仓库 main 与审核 head 的 Git tree 完全相同，主线 CI 全成功。组合 RC5 清单与入门文档固定 UI RC5、DSH RC6 的正确提交、URL 和摘要。见 [合并核验](evidence/c092-main-closure.json)。 |
+| 当前任务 | T0–T8 DONE。此次更名与 RC 组合验收完成。 |
 | 已完成 | 更名／配置复用；crystra-v0.1.0-rc.1 远端六文件与本地相同；真实执行、入库、Trace、评估及 Workflow AVAILABLE；旧部署备份隔离完成 |
-| 未完成 | 人工合并现有bot非Draft PR：UI#8、Execution#46、Evolution#10、DSH#38、Contracts#18，最后组合#277；合并后复核main与固定制品指针再关闭T8。最新安装入口与清理完成状态已更新。 |
+| 未完成 | 产品更名范围无剩余实现或资格项。C092 收尾文档通过 codex/crystra-rename-closure 分支 PR 归档，是否进入 main 以该 PR 的实际合并状态为准。正式领域契约、真实模型消费及 provider/approval 完整链路未纳入本次完成声明。 |
 | 工作路径 | UI /tmp/crystra-ui-host-integration e3246e1；DSH /tmp/crystra-dsh-t6 9d56535（相对已发布c7cb177仅README）；组合 /tmp/crystra-combination-stage 4b48c3e3；干净资格副本/tmp/crystra-dsh-candidate-rc6；Contracts /Users/firestige/Projects/wsr-contracts。原始子模块未改。 |
-| 活跃进程／作业 | 3085 session97166，home/tmp/crystra-c089-dsh-home，patch/tmp/crystra-c089-dsh.patch.yml，日志/tmp/crystra-c091-published-dsh.log：公开RC6，558文件一致；3084 session77289仍公开RC5，3083 session29162仍RC4。3082/4192/4191保留；3080/3081不改。 |
+| 活跃进程／作业 | C091 的 3083／3084／3085 与临时路径仅为历史验收定位；C092 未复核这些进程存活状态，不据此声称当前页面仍运行。未改动 3080／3081 或用户 Chrome。 |
 | 隔离档案 | /Users/firestige/Library/Application Support/Crystra-quarantine/20260914-wsr；17 个校验归档、旧运行目录原件、15 个无容器引用的离线卷 |
-| 已知阻塞 | 技术资格无失败；剩余为既定人工PR合并门禁（禁止自动合并）。正式领域数据/模型消费与provider/approval链路未声明完成，也不由设计草案或队列回执替代；不扩大成本次GA目标。 |
-| 下一条动作 | 完成现有PR最终head检查；按既定人工合并门禁由用户合并组件与Contracts PR，组合PR最后。合并后只需读回main/固定提交和安装入口、更新T8结束状态；不重发已合格RC，不发GA，不重做更名清理。 |
+| 已知阻塞 | 无产品范围阻塞；人工合并门禁已解除。草案仍受来源、身份与有效期前提约束，通知入队不等于模型读取。 |
+| 下一条动作 | 核对 codex/crystra-rename-closure 文档 PR 的合并状态；使用已合格组合 RC5。后续开发从组件各自 main 开始，组合继续固定制品，不随 main 漂移；不重发 RC，不发 GA，不重做清理。 |
 | 禁止误恢复项 | 不重做更名；不删除 ~/.config/wsr/credentials 复用私钥；不动原组合子模块脏内容；不消费旧档案；不自动合并／发 GA |
 
 
@@ -161,13 +161,13 @@ T0 产出必须链接在本文中，可以建立同目录的决策附件；不�
 
 ## 10. 外部动作与一次性清理记录
 
-八仓库已完成远端更名与 origin 更新，见 [读回台账](repository-renames.json)。发布凭据尚未复制，旧部署尚未清理。开始其它 T5–T8 动作前，在日志中记录具体目标和状态；出现不确定结果时补记读回结果。按当时适用的仓库／发布规则处理实际操作，不把本文中的任务条目当作已经完成的批准或执行结果。
+八仓库已完成远端更名与 origin 更新，见 [读回台账](repository-renames.json)。发行 App 已按 D12 复用，旧部署已完成打包隔离清理，见 [配置读回](release-configuration.json)及[清理证据](evidence/t7-cleanup.json)。开始其它 T5–T8 动作前，在日志中记录具体目标和状态；出现不确定结果时补记读回结果。按当时适用的仓库／发布规则处理实际操作，不把本文中的任务条目当作已经完成的批准或执行结果。
 
-人工清理记录模板（T7 使用，当前未执行）：
+人工清理完成摘要（详细清单以 T7 证据为准）：
 
 | 项目 | 原位置／归属 | 备份／隔离位置与摘要 | 验证 | 实际清理动作／时间 | 结果 |
 |---|---|---|---|---|---|
-| 尚无条目 | 待现场盘点 | 未打包 | 未验证 | 未执行 | PENDING |
+| 旧 WSR 部署 | 见 T7 归属清单 | Crystra-quarantine/20260914-wsr | 17 归档校验通过 | 59 旧／夹具容器移除，15 卷离线保留 | DONE |
 
 共享 profile 的其它插件、归属不明资源和用户工作文件不自动清理。远端历史资产批量删除未纳入本计划。隔离档案不作为 Crystra 输入，也不构成跨品牌回滚机制。
 
@@ -345,3 +345,5 @@ T0 已完成附件：[t0-decisions.md](t0-decisions.md)。新首轮分发采用 
 | L084 | 2026-09-15 | T8 IN_PROGRESS | C090 DSH c7cb177：331回归/build/boundaries通过。明确通知开关，非唤醒原生投递/flush持久化、按事件幂等与资源版本排序。真实重启暴露取消记录，已补取消重投；3085实测两个逻辑事件/三次物理插入/零模型轮次及Token，证据drafts/evidence/c090-native-notifications.json | DSH RC6自动资格和干净副本本地六项资格，随后组合RC5；3085 session8991（末尾no-op防护仅源码测试，最终公开包再安装），3084公开RC5未改 |
 
 | L085 | 2026-09-15 | T8 IN_PROGRESS，人工合并门禁 | C091最终公开组合RC5/DSH RC6验收完成：远端与本地精确字节相同，3085安装558文件一致，原生通知取消恢复两逻辑事件各一队列副本、零模型轮次。DSH9d56535仅刷新README安装指引；组合4b48c3e3更新准确URL/SHA和旧清理完成状态 | 现有bot非Draft PR最终检查后进入人工合并；合并后读回main再关闭T8。没有需要重做的技术资格 |
+
+| L086 | 2026-09-15 | T8 DONE；总体 DONE | C092：用户确认全部合并；GitHub 读回六 PR 均 MERGED，main Git tree 与已审核 head 相同且所有主线检查成功。组合 RC5 与公开 quickstart 的 UI RC5／DSH RC6 提交及摘要正确；[合并证据](evidence/c092-main-closure.json)。沿用 C091 实际安装与资格，不重复发布 | 持久化本次收尾记录；后续领域契约／模型消费工作另立范围，不发 GA |
