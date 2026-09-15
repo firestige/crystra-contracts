@@ -1,0 +1,57 @@
+{
+  "result": "PASS",
+  "date": "2026-09-15",
+  "results": [
+    {
+      "kind": "task",
+      "view": {
+        "background": "rgba(255, 255, 255, 0.08)",
+        "color": "rgb(249, 250, 251)",
+        "radius": "6px",
+        "x": 0,
+        "y": 0
+      },
+      "all": {
+        "background": "rgba(255, 255, 255, 0.08)",
+        "color": "rgb(249, 250, 251)",
+        "radius": "6px",
+        "x": 0,
+        "y": 0
+      },
+      "search": {
+        "background": "rgba(255, 255, 255, 0.08)",
+        "color": "rgb(249, 250, 251)",
+        "radius": "6px",
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "kind": "workflow",
+      "view": {
+        "background": "rgba(255, 255, 255, 0.08)",
+        "color": "rgb(249, 250, 251)",
+        "radius": "6px",
+        "x": 0,
+        "y": 0
+      },
+      "all": {
+        "background": "rgba(255, 255, 255, 0.08)",
+        "color": "rgb(249, 250, 251)",
+        "radius": "6px",
+        "x": 0,
+        "y": 0
+      },
+      "search": {
+        "background": "rgba(255, 255, 255, 0.08)",
+        "color": "rgb(249, 250, 251)",
+        "radius": "6px",
+        "x": 0,
+        "y": 0
+      }
+    }
+  ],
+  "errors": [],
+  "clientSha256": "27028dda2c904140214b959992d69dcf858692f1754d0ec95530da79dffa1a2b",
+  "artifactSha256": "2c5c8d4fef0f17c33141b1045e031ccc822d8d65dc054040c2cb6c13fbd38924"
+}

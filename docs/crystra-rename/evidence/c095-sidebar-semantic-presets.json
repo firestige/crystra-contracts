@@ -1,0 +1,62 @@
+{
+  "v8": {
+    "dsh": {
+      "width": "28px",
+      "height": "28px",
+      "iconWidth": "14px",
+      "iconHeight": "14px",
+      "hitToken": "28px"
+    },
+    "compact": {
+      "width": "28px",
+      "height": "28px",
+      "iconWidth": "14px",
+      "iconHeight": "14px",
+      "hitToken": "28px"
+    },
+    "balanced": {
+      "width": "32px",
+      "height": "32px",
+      "iconWidth": "16px",
+      "iconHeight": "16px",
+      "hitToken": "32px"
+    },
+    "prominent": {
+      "width": "36px",
+      "height": "36px",
+      "iconWidth": "18px",
+      "iconHeight": "18px",
+      "hitToken": "36px"
+    }
+  },
+  "current": {
+    "dsh": {
+      "width": "28px",
+      "height": "28px",
+      "iconWidth": "14px",
+      "iconHeight": "14px",
+      "hitToken": "28px"
+    },
+    "compact": {
+      "width": "28px",
+      "height": "28px",
+      "iconWidth": "14px",
+      "iconHeight": "14px",
+      "hitToken": "28px"
+    },
+    "balanced": {
+      "width": "32px",
+      "height": "32px",
+      "iconWidth": "16px",
+      "iconHeight": "16px",
+      "hitToken": "32px"
+    },
+    "prominent": {
+      "width": "36px",
+      "height": "36px",
+      "iconWidth": "18px",
+      "iconHeight": "18px",
+      "hitToken": "36px"
+    }
+  }
+}

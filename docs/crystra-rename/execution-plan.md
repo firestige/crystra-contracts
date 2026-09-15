@@ -3,10 +3,13 @@
 - 计划 ID：CRYSTRA-RENAME-20260913
 - 文档版本：2
 - 最后更新：2026-09-15
-- 总体状态：IN_PROGRESS（T0–T7 完成；C093 人工验收发现入口残留，重新打开 T8）
-- 当前执行任务：T8；修复 DSH sidebar 残留与 banner 导航
+- 总体状态：DONE（2026-09-15 用户确认更名任务完成；剩余 UI/UX 集成转入新会话）
+- 当前执行任务：无；更名任务已关闭，UI/UX 集成使用独立接续说明。
+- C096 当前部署（2026-09-15）：按人工反馈统一收起态搜索与视图/全部按钮的 hover 配方；保持原语义颜色变量、原 rounded-md 配方及展开搜索交互。UI 本地提交 `9baf454`，434+34 单元测试、3 项浏览器测试、typecheck/build 通过。本地实例 已正常安装并重启，实际测量两组的三个按钮背景/颜色/圆角相同，中心偏差均为 0，且标题无重复高亮，见 [C096 实测证据](evidence/c096-search-hover.json)。仍为本地开发制品，未发布新 RC。
+- C095 语义化约束：保留 v8 的 token、配方、配置入口、继承和覆盖关系；不得把默认配置测得的尺寸/颜色/间隙固化为组件常量。默认视觉与配置变更均需验证，详见组件复用映射。2026-09-15 已安装 Sidebar 本地开发包到 本地实例，六个操作按钮居中和 hover 排他验证通过；不代表新 RC 或整页完成。
 - 当前执行者：本任务 Codex；收尾记录
-- 下一步：完成 C093 修复 PR 及人工验收；3085 已安装修复候选，公开 RC6 保持不可变。
+- C095 部署核验：本地实例 已加载 UI `285a67e` 的本地开发包，[实际页面证据](evidence/c095-installed-sidebar.json)记录六个操作图标中心偏差均为 0、操作 hover 不叠加标题背景、关闭搜索 opacity=0、分析标题单层背景。旧重写 CSS 已删除。隔离宿主设置/导航/草稿保留回归通过。下游服务在验收时不可用，任务区仍会提示下游不可用；本批未改动服务生命周期。全页面迁移、提取链固化、全量门禁和新 RC 尚未完成。
+- 下一步：新会话从 [UI/UX 集成接续说明](ui-ux-integration-handoff.md) 开始；不重新打开更名任务。
 
 ## 1. 本文的作用与优先级
 
@@ -16,7 +19,7 @@
 
 尚未创建对应 GitHub Issue。若后续建立 Issue／PR，在任务记录中链接并同步外部真实状态；遇到冲突应核实并记录，不能根据本文旧快照宣称外部操作已完成。不得自动把创建本文理解为创建 Issue、发布或清理的指令。
 
-当前存放位置：`/Users/firestige/Projects/wsr-contracts/docs/crystra-rename/execution-plan.md`。相对路径 `docs/crystra-rename/execution-plan.md` 是此计划的稳定入口。T5 若将本地目录改为 crystra-contracts，必须先记录新绝对路径并更新入口链接，保留计划 ID；不另建一份独立状态台账。
+当前存放位置：`docs/crystra-rename/execution-plan.md`。相对路径 `docs/crystra-rename/execution-plan.md` 是此计划的稳定入口。T5 若将本地目录改为 crystra-contracts，必须更新仓库标识与相对入口链接，保留计划 ID；不另建一份独立状态台账。
 
 ## 2. 已确认约束
 
@@ -67,7 +70,7 @@ T0 已落定具体实现选择，见 [T0 决策](t0-decisions.md)。新坐标的
 | T5 | 当前品牌收尾与外部坐标切换 | 准备可在 T0 后；实际切换需 T1–T4 DONE | DONE | 本任务 Codex | 配置复用与读回见 release-configuration.json；发布和文档 PR #275/#276、DSH #37 已合并 |
 | T6 | 新组件候选与隔离环境组合验证 | T5 DONE | DONE | 本任务 Codex | crystra-v0.1.0-rc.1，34816139862 成功；远端字节一致及真实服务联调通过；[最终证据](evidence/t6-final-combination.json) |
 | T7 | 一次性人工清理实际旧部署 | T6 DONE；只读盘点可在 T0 开始 | DONE | 本任务 Codex | 17 归档校验、59 旧／夹具容器移除、15 卷离线保留；旧运行目录已隔离；[清理记录](evidence/t7-cleanup.json) |
-| T8 | 实际 RC 安装验收与更名收尾 | T7 DONE；使用已验证制品 | IN_PROGRESS | 本任务 Codex | C093 人工验收发现旧 Delivery 分组和 footer 入口残留，banner 未按设计切换，原 RC 资格仍有效但 UI 验收不完整；六 PR 已合并，main 树与审核版本一致，CI 全通过；[最终资格](evidence/c091-final-rc-combination.json)、[合并核验](evidence/c092-main-closure.json) |
+| T8 | 实际 RC 安装验收与更名收尾 | T7 DONE；使用已验证制品 | DONE | 用户确认关闭 | 2026-09-15 用户明确“改名任务算完成了”；既有 RC 组合证据保留，C095/C096 本地 UI 改进及剩余 UI/UX 集成移交新会话，不声称新 RC 已发布或 PR 已合并。 |
 
 详细范围见 [T0–T8 实施说明](implementation-plan.md)。允许独立推进不表示已启动其它 Agent、创建其它任务或进行了分支切换。
 
@@ -127,20 +130,17 @@ T0 产出必须链接在本文中，可以建立同目录的决策附件；不�
 
 | 字段 | 当前值 |
 |---|---|
-| 检查点 | C093：banner 双向切换及旧 Delivery 侧栏清理已实现，DSH 提交 2271e90。331 回归、build/boundaries/pack、普通及终态 Harness、独立浏览器鼠标/Enter/Space/折叠/草稿检查全部通过。3085 正常安装修复候选，556 文件一致，未覆盖公开 RC6。 |
-| 当前任务 | T0–T7 DONE；T8 IN_PROGRESS（修复候选待人工验收及 PR 合并）。 |
-| 已完成 | 旧 Workspace 包装组件、Delivery 折叠状态、嵌入构建、footer 入口及相关旧说明和资格断言已清理；原生 Workspace 恢复；banner 适配保留卸载恢复。 |
-| 未完成 | 修复 PR 合并及用户人工复验；本地修复候选不等于已发布新 RC。 |
-| 工作路径 | 修复仓库 /tmp/crystra-banner-fix，分支 codex/crystra-banner-navigation；持久验收目录 /Users/firestige/.local/share/crystra-acceptance-rc5；Contracts 记录通过 codex/crystra-banner-acceptance PR 同步。 |
-| 活跃进程／作业 | 3085 PID 9627，start.sh、dsh.log、dsh.pid 位于持久验收目录，使用 banner-fix 候选；3086 为独立回归实例。3080/3081及原工作树未改。 |
-| 隔离档案 | /Users/firestige/Library/Application Support/Crystra-quarantine/20260914-wsr；17 个校验归档、旧运行目录原件、15 个无容器引用的离线卷 |
-| 已知阻塞 | 无产品范围阻塞；人工合并门禁已解除。草案仍受来源、身份与有效期前提约束，通知入队不等于模型读取。 |
-| 下一条动作 | 用户在 http://127.0.0.1:3085 刷新人工验收；[DSH 修复 PR #39](https://github.com/firestige/crystra-dsh/pull/39)及本记录 PR 待合并。后续正式 RC 按候选流程，不覆盖原 RC6，不发 GA。 |
-| 禁止误恢复项 | 不重做更名；不删除 ~/.config/wsr/credentials 复用私钥；不动原组合子模块脏内容；不消费旧档案；不自动合并／发 GA |
+| 检查点 | C097：用户确认更名任务完成，当前修改提交保存，UI/UX 集成另开会话。 |
+| 当前任务 | T0–T8 DONE；更名不再承载 UI/UX 集成待办。 |
+| 已完成 | 更名、仓库和插件归并、旧资产隔离、既有 RC 组合资格；C093–C096 当前 UI 修复已保留。 |
+| 独立后续工作 | 完整 UI/UX 集成、提取链固化、全量门禁及后续候选，见 [接续说明](ui-ux-integration-handoff.md)。 |
+| 当前代码 | UI codex/crystra-sidebar-v8：9baf454；DSH codex/crystra-banner-navigation：c67cbcc；本地运行包另外记录精确 UI 和摘要。 |
+| 实际验收 | 本地验收实例；C096 本地开发包，非新 RC。恢复时核验进程与制品。 |
+| PR 状态 | UI #9、DSH #39、Contracts #20 在 C097 读回均 OPEN、非 Draft；提交保存不等于合并或完整 UI 验收。 |
+| 环境状态 | 下游服务在验收时不可用；未在 Sidebar 修复时更改下游生命周期。 |
+| 禁止误恢复项 | 不重做更名，不动原组合 submodule 脏内容，不迁移旧资产，不自动合并或发 GA；保留验收数据。 |
 
-
-
-每次推进后直接更新此表，不追加第二份“最新”检查点；旧事件保留在日志。终端会话 ID 仅供定位，跨会话必须验证是否仍有效。
+历史检查点与测试属于当时快照，不覆盖 C097 用户关闭决定。
 
 ## 9. 分析基线（历史快照，T0 必须刷新）
 
@@ -244,7 +244,7 @@ T0 已完成附件：[t0-decisions.md](t0-decisions.md)。新首轮分发采用 
 
 | L034 | 2026-09-14 | T8 BLOCKED | 实际 web profile 安装 dsh-crystra rc.2，419 文件与发布归档相同、单激活、精确 DSH runtime 0.1.1-rc.2 已就位；唯一 dsh-plugin topic 仓库读回 crystra-dsh；CUA 报 Mac 锁屏，实际 UI 验收不能继续 | 解锁后继续；已有共享 DSH 进程和认证配置保留 |
 
-| L035 | 2026-09-14 | T8 IN_PROGRESS | 用户解锁；3081 固定运行时复用已安装 RC，Crystra 已挂载；实际 setup 三服务健康、doctor 明确报告角色绑定缺失，Studio Load tasks 正常返回空列表；共享 3080 保留 | 实际服务任务与 Studio 联调 |
+| L035 | 2026-09-14 | T8 IN_PROGRESS | 用户解锁；本地实例 固定运行时复用已安装 RC，Crystra 已挂载；实际 setup 三服务健康、doctor 明确报告角色绑定缺失，Studio Load tasks 正常返回空列表；共享 本地实例 保留 | 实际服务任务与 Studio 联调 |
 
 | L036 | 2026-09-14 | T8 部分验证完成 | 实际任务执行入库，Studio 12 指标、Evidence、Recorded Trace 验证通过；Workflow 来源受 GitHub 匿名额度 403 阻挡，未宣称 T8 DONE；五份 bot PR 当前均 OPEN／非 Draft／CI SUCCESS | 额度恢复后仅重验已有任务评估；正常合并仍由用户执行 |
 
@@ -254,7 +254,7 @@ T0 已完成附件：[t0-decisions.md](t0-decisions.md)。新首轮分发采用 
 
 | L039 | 2026-09-14 | T8 Shell/导航实现中 | 新增 UI Shell 组合、精确路由/返回恢复、DSH additive overlay 桥接工厂；5 项导航/挂载测试通过。尚未激活到 root client，当前安装保持旧 RC | 补 v8 一致性、页面/数据端口后接 root client，不以占位页面交付 |
 
-| L040 | 2026-09-14 | T8 新 Shell 实际挂载 | 3082 独立开发实例挂载 root client；修复 overlay 无 renderSlot 异常及主题/定位；真实 Task 选择、Harness 往返身份保持通过；DSH 205 项回归通过。开发 bundle 使用本地 UI alias，不是已发布 RC 字节 | 补完整页面、Shell 交互和真实数据端口；新 UI RC 固定后才更新正式生成 bundle |
+| L040 | 2026-09-14 | T8 新 Shell 实际挂载 | 本地实例 独立开发实例挂载 root client；修复 overlay 无 renderSlot 异常及主题/定位；真实 Task 选择、Harness 往返身份保持通过；DSH 205 项回归通过。开发 bundle 使用本地 UI alias，不是已发布 RC 字节 | 补完整页面、Shell 交互和真实数据端口；新 UI RC 固定后才更新正式生成 bundle |
 
 | L041 | 2026-09-14 | T8 Analysis 接入 | UI bca3552、DSH 8a42836；独立 Analysis 总览/Trace 连接真实接口；修复 Trace 注册字段 ID 解码、零宽图布局及新建 Task 提前创建 Session。UI 391+34 单测、27 浏览器测试、DSH 209 项通过；完整 v8 和新 RC 未完成 | 见 C038 接入记录；继续现有接口可支持的 UI，O01/O10/C07 领域扩展待用户确认 |
 
@@ -262,9 +262,9 @@ T0 已完成附件：[t0-decisions.md](t0-decisions.md)。新首轮分发采用 
 
 | L043 | 2026-09-14 | T8 草案基础完成 | 草案来源锁覆盖 12 份设计文档；DSH e0aaf82 增加条件化 envelope 准入，5 项新回归及全量 214 项通过。UI 14f8fa0 / DSH 388c040 同步 D21 的对比分析命名；尚未接草案读取和持久化，不能声称五工作面完成 | 接各工作面 value 校验与隔离 adapter；正式化不得由 RC 隐式触发 |
 
-| L044 | 2026-09-14 | T8 实施方向纠正 | 用户指出实际 Chrome 页与 v8 差距很大；在 3082 与只读 4185 原 HTML 同尺寸对照确认 Shell/页面结构差异，不能以数据读取或单测通过替代 v8 验收。暂停新增草案字段，先对齐视觉与交互 | 见 [C040](t8-ui-integration-gap.md#c040-v8-视觉与交互纠正) |
+| L044 | 2026-09-14 | T8 实施方向纠正 | 用户指出实际 Chrome 页与 v8 差距很大；在 本地实例 与只读 4185 原 HTML 同尺寸对照确认 Shell/页面结构差异，不能以数据读取或单测通过替代 v8 验收。暂停新增草案字段，先对齐视觉与交互 | 见 [C040](t8-ui-integration-gap.md#c040-v8-视觉与交互纠正) |
 
-| L045 | 2026-09-14 | T8 Analysis 完整组合 | UI 0a54cd8 抽取 AnalysisWorkspace，保留日期/布局/目录/Trace/对比分析插槽，生产入口不默认引入样本或改宿主 URL；394 Vitest+34 Node、28 原浏览器回归及 1 新完整页面回归通过。3082 显式启用 v8 设计样本探索并标注；不代表真实数据接入或 RC | 继续同尺寸视觉与交互检查、Task/Workflow 组件化、真实/草案端口接入 |
+| L045 | 2026-09-14 | T8 Analysis 完整组合 | UI 0a54cd8 抽取 AnalysisWorkspace，保留日期/布局/目录/Trace/对比分析插槽，生产入口不默认引入样本或改宿主 URL；394 Vitest+34 Node、28 原浏览器回归及 1 新完整页面回归通过。本地实例 显式启用 v8 设计样本探索并标注；不代表真实数据接入或 RC | 继续同尺寸视觉与交互检查、Task/Workflow 组件化、真实/草案端口接入 |
 
 | L046 | 2026-09-14 | T8 Task frame 与宿主边界 | TaskWorkbench 容器完成，395 Vitest+34 Node、1920×1080 浏览器切页/输入保持通过；不是五工作面内容完成。固定 DSH overlay 无 Conversation 子插槽且 root 禁止插件重新注册，实际 Input 接入需要新增 ui-layout 修改/受控 fork 范围 | [可审核宿主扩展草案](drafts/dsh-host-layout.md)；该项待用户授权，其它页面/端口工作可独立继续 |
 
@@ -272,21 +272,21 @@ T0 已完成附件：[t0-decisions.md](t0-decisions.md)。新首轮分发采用 
 
 | L048 | 2026-09-14 | T8 Input 复用边界裁定 | 用户明确复用组件和交互即可，不要求与原生 DSH 共用 Session 管理器，倾向互不可见；撤销共享原 Harness Conversation 节点与会话的前提 | 先核对组件与服务装配，优先复用实现并隔离会话；Crystra 内部导航连续性仍需验证 |
 
-| L049 | 2026-09-14 | T8 隔离装配核对 | 确认 Input 按 Session scope 依赖输入状态机与 RPC；默认会话与工作区存储归 DSH_HOME。3082 独立 home、空会话列表已核对；native picker 无网页菜单不能直接定性为故障，原生窗口检查工具长时返回仍未找到 picker | [装配核对与验证顺序](drafts/input-session-assembly.md)；继续专属实例隔离及 v8 Input 组合验证，无 fork 授权阻塞 |
+| L049 | 2026-09-14 | T8 隔离装配核对 | 确认 Input 按 Session scope 依赖输入状态机与 RPC；默认会话与工作区存储归 DSH_HOME。本地实例 独立 home、空会话列表已核对；native picker 无网页菜单不能直接定性为故障，原生窗口检查工具长时返回仍未找到 picker | [装配核对与验证顺序](drafts/input-session-assembly.md)；继续专属实例隔离及 v8 Input 组合验证，无 fork 授权阻塞 |
 
-| L050 | 2026-09-14 | T8 Input 接入与隔离实证 | 两个一次性实例通过会话读写和新增事件隔离；3082 新建任务保留 Crystra Shell，原生菜单与未发送草稿往返通过，Analysis 隐藏底层输入；216/216 Node 通过 | drafts/input-session-assembly.md C046；继续 Task/Workflow 精确绑定与完整工作面，不代表新 RC |
+| L050 | 2026-09-14 | T8 Input 接入与隔离实证 | 两个一次性实例通过会话读写和新增事件隔离；本地实例 新建任务保留 Crystra Shell，原生菜单与未发送草稿往返通过，Analysis 隐藏底层输入；216/216 Node 通过 | drafts/input-session-assembly.md C046；继续 Task/Workflow 精确绑定与完整工作面，不代表新 RC |
 
 | L051 | 2026-09-14 | T8 Task 会话解析 | DSH 426f3ed：按正式 Task identity / sessionCorrelation 与当前实例成员解析，零关联不绑定、多候选不猜测、foreign+local 仍歧义、失效来源拒绝；新增 4 回归，完整 220/220 通过 | 解析器尚未接 Task 页面，不代表已有 Task Input 可用；下一步接当前实例的实时成员、control-plane 与页面状态 |
 
-| L052 | 2026-09-14 | T8 持续接入中 | TaskInputController 接实时 control-plane 与本实例 Session，复用 Execution 轮询；Task 工作台本地关联为空时不借用其他会话。测试关联下原生 Input 与目标区域四边一致，切 bench/Analysis 往返保留草稿与页签；测试代码只在未跟踪 .v8-dev-build.mjs 的显式开关中 | 3082 暂处 Input 装配探索：Task关联及内容为样本，非正式业务状态；继续组件和完整验证，不等待用户指令 |
+| L052 | 2026-09-14 | T8 持续接入中 | TaskInputController 接实时 control-plane 与本实例 Session，复用 Execution 轮询；Task 工作台本地关联为空时不借用其他会话。测试关联下原生 Input 与目标区域四边一致，切 bench/Analysis 往返保留草稿与页签；测试代码只在未跟踪 .v8-dev-build.mjs 的显式开关中 | 本地实例 暂处 Input 装配探索：Task关联及内容为样本，非正式业务状态；继续组件和完整验证，不等待用户指令 |
 
-| L053 | 2026-09-15 | T8 IN_PROGRESS | C057 UI f1c5bc0：结晶分析独立投影，3082 草案样本复验，419+34 单测/44 浏览器通过；C058 草案持续失效控制器 236 DSH 测试通过，尚未接生产页面 | C059 五工作面 value 校验与显式 adapter 接入；RC 未发布，继续推进 |
+| L053 | 2026-09-15 | T8 IN_PROGRESS | C057 UI f1c5bc0：结晶分析独立投影，本地实例 草案样本复验，419+34 单测/44 浏览器通过；C058 草案持续失效控制器 236 DSH 测试通过，尚未接生产页面 | C059 五工作面 value 校验与显式 adapter 接入；RC 未发布，继续推进 |
 
 | L054 | 2026-09-15 | T8 IN_PROGRESS | C059 五工作面结构校验接入 draft admission，239 DSH 测试通过；草案 README 同步实现边界 | C060 订阅式草案页面渲染与持续失效实测 |
 
-| L055 | 2026-09-15 | T8 IN_PROGRESS | C060 订阅式五工作面草案渲染，241 DSH 测试；3082 显式样本自然到期/撤权移除旧内容和 Wave 运行图交互通过 | 继续精确目标关联、真实 adapter、原生 Input 联调；开发样本不发行 |
+| L055 | 2026-09-15 | T8 IN_PROGRESS | C060 订阅式五工作面草案渲染，241 DSH 测试；本地实例 显式样本自然到期/撤权移除旧内容和 Wave 运行图交互通过 | 继续精确目标关联、真实 adapter、原生 Input 联调；开发样本不发行 |
 
-| L056 | 2026-09-15 | T8 IN_PROGRESS | C061 UI2514fb8 / DSH2eab864：Workflow目录保存检索/版本/视图/页码及精确revision定位；窄Header遮挡修复，421+34/45浏览器/242 DSH通过；3082目录往返复验 | 继续实际数据与精确对象关联，不等待用户指令 |
+| L056 | 2026-09-15 | T8 IN_PROGRESS | C061 UI2514fb8 / DSH2eab864：Workflow目录保存检索/版本/视图/页码及精确revision定位；窄Header遮挡修复，421+34/45浏览器/242 DSH通过；本地实例目录往返复验 | 继续实际数据与精确对象关联，不等待用户指令 |
 
 | L057 | 2026-09-15 | T8 IN_PROGRESS | C062 Workflow原生Input精确绑定、三种几何/草稿保持/附件粘贴预览移除/Analysis隐藏实测通过；247 DSH测试；无模型发送 | 继续精确引用、隔离草案写入和实际服务adapter；测试绑定不发行 |
 
@@ -300,7 +300,7 @@ T0 已完成附件：[t0-decisions.md](t0-decisions.md)。新首轮分发采用 
 
 | L062 | 2026-09-15 | T8 IN_PROGRESS | C067 UI198cf76/DSH7ec3228：资源显式异步保存、隔离持久化、刷新恢复；来源未修改，旧版本拒绝、撤权和UTF-8边界通过；425+34/45/259测试 | 接真实数据端口、草案事件消费与Agent读取精确候选；未发布RC |
 
-| L063 | 2026-09-15 | T8 IN_PROGRESS | C068 UI d3b93e6：资源草稿按精确身份保留、跨页卸载仍保护刷新；实际3082目录往返后编辑器文末恢复；426+34/45通过。远端root277、DSH38、Contracts18仍open非Draft/bot；UI无openPR | 真实数据与候选消费链路；不要求用户此刻合并 |
+| L063 | 2026-09-15 | T8 IN_PROGRESS | C068 UI d3b93e6：资源草稿按精确身份保留、跨页卸载仍保护刷新；实际本地实例目录往返后编辑器文末恢复；426+34/45通过。远端root277、DSH38、Contracts18仍open非Draft/bot；UI无openPR | 真实数据与候选消费链路；不要求用户此刻合并 |
 
 | L064 | 2026-09-15 | T8 IN_PROGRESS | C069 UI PR #8 bot／非 Draft，CI 34877525947 与 RC 34877591941 成功；RC2 下载4资产资格校验通过；DSH e2b3c2b 精确输入、259测试、pack通过 | 接真实Trace目录等数据端口；继续DSH RC与组合，不发GA |
 
@@ -308,15 +308,15 @@ T0 已完成附件：[t0-decisions.md](t0-decisions.md)。新首轮分发采用 
 
 | L066 | 2026-09-15 | T8 IN_PROGRESS | C071 UI05c4c12：Facts字段ID修复完整本地门禁通过，bot更新PR8非Draft，RC3自动作业34880090833；C072资源精确历史版本读取3项针对性测试通过 | 下载RC3、DSH真实回放及新候选；Agent通知仍未实现 |
 
-| L067 | 2026-09-15 | T8 IN_PROGRESS | C073 DSH83b0ecd，273回归/pack/inputs通过；3083无开发源码别名，五工作面读取与撤销清空/恢复通过，UI RC3真实Facts回放通过 | C074冻结DSH RC3字节完成，运行六门禁；正式Plan图/文档、Workflow端口和Agent事件仍需继续 |
+| L067 | 2026-09-15 | T8 IN_PROGRESS | C073 DSH83b0ecd，273回归/pack/inputs通过；本地实例无开发源码别名，五工作面读取与撤销清空/恢复通过，UI RC3真实Facts回放通过 | C074冻结DSH RC3字节完成，运行六门禁；正式Plan图/文档、Workflow端口和Agent事件仍需继续 |
 
 | L068 | 2026-09-15 | T8 IN_PROGRESS | C074 DSH3ac11ad六资格及最终制品验证通过；原验收路径更新为先验证Crystra默认页再公开返回Harness，原断言保留；bot PR38非Draft/CI通过，RC3作业34882477091运行 | C075组合RC2清单b12f9583已准备，等待DSH远端制品验证 |
 
-| L069 | 2026-09-15 | T8 IN_PROGRESS | C075：DSH RC3 下载与本地冻结字节一致，组合 RC2 六资产一致；3083 实际发布包 541 文件校验且五工作面显示，控制台无新错误 | C076 Workflow 配置式草案读取进行中；不发 GA |
+| L069 | 2026-09-15 | T8 IN_PROGRESS | C075：DSH RC3 下载与本地冻结字节一致，组合 RC2 六资产一致；本地实例 实际发布包 541 文件校验且五工作面显示，控制台无新错误 | C076 Workflow 配置式草案读取进行中；不发 GA |
 
-| L070 | 2026-09-15 | T8 IN_PROGRESS | C076 Workflow 配置式目录与三工作面接入，285回归/build/boundaries通过，3083版本失效撤销恢复通过 | 继续原生 Workflow 输入精确绑定和资源草案读取/消费；C076暂不发新RC |
+| L070 | 2026-09-15 | T8 IN_PROGRESS | C076 Workflow 配置式目录与三工作面接入，285回归/build/boundaries通过，本地实例版本失效撤销恢复通过 | 继续原生 Workflow 输入精确绑定和资源草案读取/消费；C076暂不发新RC |
 
-| L071 | 2026-09-15 | T8 IN_PROGRESS | C077 4624028：287回归/build/boundaries通过；3083原生Workflow输入、切页保留、foreign会话拒绝与恢复实测通过 | 接资源引用/候选读取与草案消费；测试草稿已清空且重载确认 |
+| L071 | 2026-09-15 | T8 IN_PROGRESS | C077 4624028：287回归/build/boundaries通过；本地实例原生Workflow输入、切页保留、foreign会话拒绝与恢复实测通过 | 接资源引用/候选读取与草案消费；测试草稿已清空且重载确认 |
 
 | L072 | 2026-09-15 | T8 IN_PROGRESS | C078 f5e10e6：288回归/build/boundaries通过，资源精确读取与原生引用追加实测通过；原草稿保留、未发送 | C079 Agent读取工具与会话权限检查进行中，尚未提交 |
 
@@ -326,26 +326,30 @@ T0 已完成附件：[t0-decisions.md](t0-decisions.md)。新首轮分发采用 
 
 | L075 | 2026-09-15 | T8 IN_PROGRESS | C081 UI01fc070：公开TaskDiagram/Explorer，闭合SVG词汇、显式选择，恢复760×250摘要；431+34/46及完整本地资格通过，bot PR8非Draft，RC4作业34890155457 | C082 Task富投影端口与真实DSH验收，随后新DSH/组合RC |
 
-| L076 | 2026-09-15 | T8 IN_PROGRESS | C082/83：Task正文/摘要/DAG/运行图草案端口、Task原生Input精确会话绑定；UI RC4已下载核验，304回归/build/boundaries通过；3083图导航、身份撤回、跨页草稿隔离及foreign会话拒绝通过 | 提交DSH并准备新RC资格；事件消费及模型链路不冒充完成 |
+| L076 | 2026-09-15 | T8 IN_PROGRESS | C082/83：Task正文/摘要/DAG/运行图草案端口、Task原生Input精确会话绑定；UI RC4已下载核验，304回归/build/boundaries通过；本地实例图导航、身份撤回、跨页草稿隔离及foreign会话拒绝通过 | 提交DSH并准备新RC资格；事件消费及模型链路不冒充完成 |
 
-| L077 | 2026-09-15 | T8 IN_PROGRESS | C084：DSH RC4 ae74ed9 本地/远端六资格PASS，下载插件SHA256 9c70f87cf8a8f471777e2374a09e5c5cf40eed5f9169e3c4415a0346840b1d1b与本地一致；组合197869ea、50回归通过；3083旧包备份/tmp/crystra-c084-before-release-install | 正常DSH安装RC4并复验；组合RC3资格和自动发布进行中 |
+| L077 | 2026-09-15 | T8 IN_PROGRESS | C084：DSH RC4 ae74ed9 本地/远端六资格PASS，下载插件SHA256 9c70f87cf8a8f471777e2374a09e5c5cf40eed5f9169e3c4415a0346840b1d1b与本地一致；组合197869ea、50回归通过；本地实例旧包备份本地临时记录（未上传） | 正常DSH安装RC4并复验；组合RC3资格和自动发布进行中 |
 
-| L078 | 2026-09-15 | T8 IN_PROGRESS | C084完成：组合RC3作业34892523368成功，六资产相同；3083正常安装RC4，554文件相同，单插件、Task会话/图、Workflow独立会话/资源候选恢复通过。旧安装备份保留。pnpm仅补建已许可better-sqlite3，安装最终成功 | C085补审核证据只读上下文，3083保持发布版；不因PR等待停工 |
+| L078 | 2026-09-15 | T8 IN_PROGRESS | C084完成：组合RC3作业34892523368成功，六资产相同；本地实例正常安装RC4，554文件相同，单插件、Task会话/图、Workflow独立会话/资源候选恢复通过。旧安装备份保留。pnpm仅补建已许可better-sqlite3，安装最终成功 | C085补审核证据只读上下文，本地实例保持发布版；不因PR等待停工 |
 
-| L079 | 2026-09-15 | T8 IN_PROGRESS | C085 DSH c879ae8：306回归，11项审核上下文、缺失关联返回及跨Gate撤回验证通过；C086/87 UI e3246e1：432+34/47及全资格通过，RC5自动作业34894661067。DSH资源关系图端口本地实现，来源文件及版本/候选变化/旧回调拒绝用例通过 | 3084实际关系图验收，消费UI RC5后再做新DSH/组合RC；3083仍是RC4原件 |
+| L079 | 2026-09-15 | T8 IN_PROGRESS | C085 DSH c879ae8：306回归，11项审核上下文、缺失关联返回及跨Gate撤回验证通过；C086/87 UI e3246e1：432+34/47及全资格通过，RC5自动作业34894661067。DSH资源关系图端口本地实现，来源文件及版本/候选变化/旧回调拒绝用例通过 | 本地实例实际关系图验收，消费UI RC5后再做新DSH/组合RC；本地实例仍是RC4原件 |
 
-| L080 | 2026-09-15 | T8 IN_PROGRESS | C087 精确 UI RC5 输入后宿主313项回归、build、boundaries通过；旧图拒绝候选变化/畸形文件、组件身份跨轮询保持。正常CLI已将最终开发包安装到3084，日志/tmp/crystra-c087-final-dsh.log | 继续真实浏览器验收及DSH RC5/组合RC4资格；3083仍为未修改RC4，未发生模型调用 |
+| L080 | 2026-09-15 | T8 IN_PROGRESS | C087 精确 UI RC5 输入后宿主313项回归、build、boundaries通过；旧图拒绝候选变化/畸形文件、组件身份跨轮询保持。正常CLI已将最终开发包安装到本地实例，日志本地临时记录（未上传） | 继续真实浏览器验收及DSH RC5/组合RC4资格；本地实例仍为未修改RC4，未发生模型调用 |
 
-| L081 | 2026-09-15 | T8 IN_PROGRESS | DSH82ce38b：3084节点详情跨轮询保持、声明资源跳转、候选保存后旧图撤回均通过；审核返回按钮在面板内（235.5>=196），返回成功。DSH RC5自动作业34896020077启动，本地资格在/tmp/crystra-dsh-candidate-rc5 | 继续RC5归档资格、组合RC4及发布制品实际安装；3084 session70997，3083未改；无用户决策阻塞 |
+| L081 | 2026-09-15 | T8 IN_PROGRESS | DSH82ce38b：本地实例节点详情跨轮询保持、声明资源跳转、候选保存后旧图撤回均通过；审核返回按钮在面板内（235.5>=196），返回成功。DSH RC5自动作业34896020077启动，本地资格在本地临时记录（未上传） | 继续RC5归档资格、组合RC4及发布制品实际安装；本地实例 临时会话（未上传），本地实例未改；无用户决策阻塞 |
 
-| L082 | 2026-09-15 | T8 IN_PROGRESS | C088：DSH RC5作业34896020077成功，SHA256 597d0a9861144004cf239a71dc9cc79dbb0dea531fd6a7519c4537ced3d9192e；本地六资格与远端相同插件字节。组合RC4 b029f1b2作业34896509843成功，六资产相同。3084正常安装后555文件一致、审核差异和持久化候选撤回通过 | 继续C089事件状态；公开候选与开发分开，未发布GA |
+| L082 | 2026-09-15 | T8 IN_PROGRESS | C088：DSH RC5作业34896020077成功，SHA256 597d0a9861144004cf239a71dc9cc79dbb0dea531fd6a7519c4537ced3d9192e；本地六资格与远端相同插件字节。组合RC4 b029f1b2作业34896509843成功，六资产相同。本地实例正常安装后555文件一致、审核差异和持久化候选撤回通过 | 继续C089事件状态；公开候选与开发分开，未发布GA |
 
-| L083 | 2026-09-15 | T8 IN_PROGRESS | C089 DSH7221c3f：317回归/build/boundaries通过；持久化精确pending状态、幂等与旧版本回执验证；3085真实保存/重载提示通过，session91611。发现原生agent.inject公开接口为不唤醒的next-step上下文，可继续评估可靠投递草案 | C090核验会话身份、flush持久化与去重边界后接原生通知；不把入队当模型读取。3084仍公开RC5，3083仍RC4 |
+| L083 | 2026-09-15 | T8 IN_PROGRESS | C089 DSH7221c3f：317回归/build/boundaries通过；持久化精确pending状态、幂等与旧版本回执验证；本地实例真实保存/重载提示通过，临时会话（未上传）。发现原生agent.inject公开接口为不唤醒的next-step上下文，可继续评估可靠投递草案 | C090核验会话身份、flush持久化与去重边界后接原生通知；不把入队当模型读取。本地实例仍公开RC5，本地实例仍RC4 |
 
-| L084 | 2026-09-15 | T8 IN_PROGRESS | C090 DSH c7cb177：331回归/build/boundaries通过。明确通知开关，非唤醒原生投递/flush持久化、按事件幂等与资源版本排序。真实重启暴露取消记录，已补取消重投；3085实测两个逻辑事件/三次物理插入/零模型轮次及Token，证据drafts/evidence/c090-native-notifications.json | DSH RC6自动资格和干净副本本地六项资格，随后组合RC5；3085 session8991（末尾no-op防护仅源码测试，最终公开包再安装），3084公开RC5未改 |
+| L084 | 2026-09-15 | T8 IN_PROGRESS | C090 DSH c7cb177：331回归/build/boundaries通过。明确通知开关，非唤醒原生投递/flush持久化、按事件幂等与资源版本排序。真实重启暴露取消记录，已补取消重投；本地实例实测两个逻辑事件/三次物理插入/零模型轮次及Token，证据drafts/evidence/c090-native-notifications.json | DSH RC6自动资格和干净副本本地六项资格，随后组合RC5；本地实例 临时会话（未上传）（末尾no-op防护仅源码测试，最终公开包再安装），本地实例公开RC5未改 |
 
-| L085 | 2026-09-15 | T8 IN_PROGRESS，人工合并门禁 | C091最终公开组合RC5/DSH RC6验收完成：远端与本地精确字节相同，3085安装558文件一致，原生通知取消恢复两逻辑事件各一队列副本、零模型轮次。DSH9d56535仅刷新README安装指引；组合4b48c3e3更新准确URL/SHA和旧清理完成状态 | 现有bot非Draft PR最终检查后进入人工合并；合并后读回main再关闭T8。没有需要重做的技术资格 |
+| L085 | 2026-09-15 | T8 IN_PROGRESS，人工合并门禁 | C091最终公开组合RC5/DSH RC6验收完成：远端与本地精确字节相同，本地实例安装558文件一致，原生通知取消恢复两逻辑事件各一队列副本、零模型轮次。DSH9d56535仅刷新README安装指引；组合4b48c3e3更新准确URL/SHA和旧清理完成状态 | 现有bot非Draft PR最终检查后进入人工合并；合并后读回main再关闭T8。没有需要重做的技术资格 |
 
 | L086 | 2026-09-15 | T8 DONE；总体 DONE | C092：用户确认全部合并；GitHub 读回六 PR 均 MERGED，main Git tree 与已审核 head 相同且所有主线检查成功。组合 RC5 与公开 quickstart 的 UI RC5／DSH RC6 提交及摘要正确；[合并证据](evidence/c092-main-closure.json)。沿用 C091 实际安装与资格，不重复发布 | 持久化本次收尾记录；后续领域契约／模型消费工作另立范围，不发 GA |
 
 | L087 | 2026-09-15 | T8 IN_PROGRESS | C093：Contracts #19 已合并，但人工 UI 验收暴露旧 Delivery sidebar 和 footer 入口残留、原生 banner 未替换。用户授权修复与残留清理；此前 DONE 声明对 UI 验收覆盖不足，重新打开 T8 | 测试复现、修复、真实宿主验证和更新验收实例 |
+
+| L088 | 2026-09-15 | T8 IN_PROGRESS | C094：按人工反馈修复标题整行 hover、折叠箭头动画、搜索整行覆盖、全部实心三角、Task/Workflow 视图菜单、设置原地打开；UI 433+34/48 和完整本地门禁通过，DSH 333 回归、本地实例/本地实例 设置点击命中及关闭保留 Crystra、banner/未发送草稿回归通过。本地实例 正常安装，摘要及逐文件比对见 [C094 证据](evidence/c094-sidebar-v8.json) | UI #9 非 Draft；UI RC6 自动资格进行中；等待发布字节核验后更新 DSH #39 与 Contracts #20，不合并、不发 GA |
+
+| L089 | 2026-09-15 | T0–T8 DONE | C097：用户明确更名完成，要求提交当前修改，UI/UX 集成在新会话推进；建立独立接续说明，保留部署和测试边界。 | 提交推送既有分支；后续从 UI/UX 接续说明恢复，不自动合并。 |

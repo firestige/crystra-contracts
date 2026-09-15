@@ -1,0 +1,54 @@
+{
+  "date": "2026-09-15",
+  "result": "PASS",
+  "results": [
+    {
+      "id": "task-search-action",
+      "x": 0,
+      "y": 0,
+      "headerHighlight": false
+    },
+    {
+      "id": "task-view-options-action",
+      "x": 0,
+      "y": 0,
+      "headerHighlight": false
+    },
+    {
+      "id": "all-tasks-action",
+      "x": 0,
+      "y": 0,
+      "headerHighlight": false
+    },
+    {
+      "id": "workflow-search-action",
+      "x": 0,
+      "y": 0,
+      "headerHighlight": false
+    },
+    {
+      "id": "workflow-view-options-action",
+      "x": 0,
+      "y": 0,
+      "headerHighlight": false
+    },
+    {
+      "id": "all-workflows-action",
+      "x": 0,
+      "y": 0,
+      "headerHighlight": false
+    }
+  ],
+  "searchClosedOpacity": 0,
+  "analysisDoubleHighlight": false,
+  "errors": [],
+  "stage": "local-development-not-published-RC",
+  "uiRevision": "285a67ec759ca34b77f5ce6dc36c660dc021fbc7",
+  "artifactSha256": "1da2d7ef2577b293c77a7ade661e40819b9f423ac8af148322cd334a29a37468",
+  "clientSha256": "b0f16f6753f62fdd1c50797402fce0373b6106ef327274f7b2f885ebe6245dac",
+  "limitations": [
+    "Full page migration and release qualification remain pending.",
+    "Downstream services were unavailable during UI validation. No downstream lifecycle was changed in this Sidebar fix.",
+    "The published RC.6 coordinate assertion is inapplicable to the local development package using an explicit file dependency; this is not RC qualification."
+  ]
+}
