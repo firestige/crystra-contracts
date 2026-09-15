@@ -3,10 +3,10 @@
 - 计划 ID：CRYSTRA-RENAME-20260913
 - 文档版本：2
 - 最后更新：2026-09-15
-- 总体状态：DONE（T0–T8 完成；C092 合并后核验通过）
-- 当前执行任务：无；更名与 RC 验收已完成
+- 总体状态：IN_PROGRESS（T0–T7 完成；C093 人工验收发现入口残留，重新打开 T8）
+- 当前执行任务：T8；修复 DSH sidebar 残留与 banner 导航
 - 当前执行者：本任务 Codex；收尾记录
-- 下一步：通过 codex/crystra-rename-closure PR 归档本次收尾文档；后续正式领域契约与模型消费验收另立范围，组件继续在各自 main 演进。无需重发 RC 或发布 GA。
+- 下一步：完成 C093 修复 PR 及人工验收；3085 已安装修复候选，公开 RC6 保持不可变。
 
 ## 1. 本文的作用与优先级
 
@@ -67,7 +67,7 @@ T0 已落定具体实现选择，见 [T0 决策](t0-decisions.md)。新坐标的
 | T5 | 当前品牌收尾与外部坐标切换 | 准备可在 T0 后；实际切换需 T1–T4 DONE | DONE | 本任务 Codex | 配置复用与读回见 release-configuration.json；发布和文档 PR #275/#276、DSH #37 已合并 |
 | T6 | 新组件候选与隔离环境组合验证 | T5 DONE | DONE | 本任务 Codex | crystra-v0.1.0-rc.1，34816139862 成功；远端字节一致及真实服务联调通过；[最终证据](evidence/t6-final-combination.json) |
 | T7 | 一次性人工清理实际旧部署 | T6 DONE；只读盘点可在 T0 开始 | DONE | 本任务 Codex | 17 归档校验、59 旧／夹具容器移除、15 卷离线保留；旧运行目录已隔离；[清理记录](evidence/t7-cleanup.json) |
-| T8 | 实际 RC 安装验收与更名收尾 | T7 DONE；使用已验证制品 | DONE | 本任务 Codex | 组合 RC5／UI RC5／DSH RC6 公开制品及实际安装通过；六 PR 已合并，main 树与审核版本一致，CI 全通过；[最终资格](evidence/c091-final-rc-combination.json)、[合并核验](evidence/c092-main-closure.json) |
+| T8 | 实际 RC 安装验收与更名收尾 | T7 DONE；使用已验证制品 | IN_PROGRESS | 本任务 Codex | C093 人工验收发现旧 Delivery 分组和 footer 入口残留，banner 未按设计切换，原 RC 资格仍有效但 UI 验收不完整；六 PR 已合并，main 树与审核版本一致，CI 全通过；[最终资格](evidence/c091-final-rc-combination.json)、[合并核验](evidence/c092-main-closure.json) |
 
 详细范围见 [T0–T8 实施说明](implementation-plan.md)。允许独立推进不表示已启动其它 Agent、创建其它任务或进行了分支切换。
 
@@ -127,15 +127,15 @@ T0 产出必须链接在本文中，可以建立同目录的决策附件；不�
 
 | 字段 | 当前值 |
 |---|---|
-| 检查点 | C092：六份 PR 已由用户合并；六仓库 main 与审核 head 的 Git tree 完全相同，主线 CI 全成功。组合 RC5 清单与入门文档固定 UI RC5、DSH RC6 的正确提交、URL 和摘要。见 [合并核验](evidence/c092-main-closure.json)。 |
-| 当前任务 | T0–T8 DONE。此次更名与 RC 组合验收完成。 |
-| 已完成 | 更名／配置复用；crystra-v0.1.0-rc.1 远端六文件与本地相同；真实执行、入库、Trace、评估及 Workflow AVAILABLE；旧部署备份隔离完成 |
-| 未完成 | 产品更名范围无剩余实现或资格项。C092 收尾文档通过 codex/crystra-rename-closure 分支 PR 归档，是否进入 main 以该 PR 的实际合并状态为准。正式领域契约、真实模型消费及 provider/approval 完整链路未纳入本次完成声明。 |
-| 工作路径 | UI /tmp/crystra-ui-host-integration e3246e1；DSH /tmp/crystra-dsh-t6 9d56535（相对已发布c7cb177仅README）；组合 /tmp/crystra-combination-stage 4b48c3e3；干净资格副本/tmp/crystra-dsh-candidate-rc6；Contracts /Users/firestige/Projects/wsr-contracts。原始子模块未改。 |
-| 活跃进程／作业 | C091 的 3083／3084／3085 与临时路径仅为历史验收定位；C092 未复核这些进程存活状态，不据此声称当前页面仍运行。未改动 3080／3081 或用户 Chrome。 |
+| 检查点 | C093：banner 双向切换及旧 Delivery 侧栏清理已实现，DSH 提交 2271e90。331 回归、build/boundaries/pack、普通及终态 Harness、独立浏览器鼠标/Enter/Space/折叠/草稿检查全部通过。3085 正常安装修复候选，556 文件一致，未覆盖公开 RC6。 |
+| 当前任务 | T0–T7 DONE；T8 IN_PROGRESS（修复候选待人工验收及 PR 合并）。 |
+| 已完成 | 旧 Workspace 包装组件、Delivery 折叠状态、嵌入构建、footer 入口及相关旧说明和资格断言已清理；原生 Workspace 恢复；banner 适配保留卸载恢复。 |
+| 未完成 | 修复 PR 合并及用户人工复验；本地修复候选不等于已发布新 RC。 |
+| 工作路径 | 修复仓库 /tmp/crystra-banner-fix，分支 codex/crystra-banner-navigation；持久验收目录 /Users/firestige/.local/share/crystra-acceptance-rc5；Contracts 记录通过 codex/crystra-banner-acceptance PR 同步。 |
+| 活跃进程／作业 | 3085 PID 9627，start.sh、dsh.log、dsh.pid 位于持久验收目录，使用 banner-fix 候选；3086 为独立回归实例。3080/3081及原工作树未改。 |
 | 隔离档案 | /Users/firestige/Library/Application Support/Crystra-quarantine/20260914-wsr；17 个校验归档、旧运行目录原件、15 个无容器引用的离线卷 |
 | 已知阻塞 | 无产品范围阻塞；人工合并门禁已解除。草案仍受来源、身份与有效期前提约束，通知入队不等于模型读取。 |
-| 下一条动作 | 核对 codex/crystra-rename-closure 文档 PR 的合并状态；使用已合格组合 RC5。后续开发从组件各自 main 开始，组合继续固定制品，不随 main 漂移；不重发 RC，不发 GA，不重做清理。 |
+| 下一条动作 | 用户在 http://127.0.0.1:3085 刷新人工验收；[DSH 修复 PR #39](https://github.com/firestige/crystra-dsh/pull/39)及本记录 PR 待合并。后续正式 RC 按候选流程，不覆盖原 RC6，不发 GA。 |
 | 禁止误恢复项 | 不重做更名；不删除 ~/.config/wsr/credentials 复用私钥；不动原组合子模块脏内容；不消费旧档案；不自动合并／发 GA |
 
 
@@ -347,3 +347,5 @@ T0 已完成附件：[t0-decisions.md](t0-decisions.md)。新首轮分发采用 
 | L085 | 2026-09-15 | T8 IN_PROGRESS，人工合并门禁 | C091最终公开组合RC5/DSH RC6验收完成：远端与本地精确字节相同，3085安装558文件一致，原生通知取消恢复两逻辑事件各一队列副本、零模型轮次。DSH9d56535仅刷新README安装指引；组合4b48c3e3更新准确URL/SHA和旧清理完成状态 | 现有bot非Draft PR最终检查后进入人工合并；合并后读回main再关闭T8。没有需要重做的技术资格 |
 
 | L086 | 2026-09-15 | T8 DONE；总体 DONE | C092：用户确认全部合并；GitHub 读回六 PR 均 MERGED，main Git tree 与已审核 head 相同且所有主线检查成功。组合 RC5 与公开 quickstart 的 UI RC5／DSH RC6 提交及摘要正确；[合并证据](evidence/c092-main-closure.json)。沿用 C091 实际安装与资格，不重复发布 | 持久化本次收尾记录；后续领域契约／模型消费工作另立范围，不发 GA |
+
+| L087 | 2026-09-15 | T8 IN_PROGRESS | C093：Contracts #19 已合并，但人工 UI 验收暴露旧 Delivery sidebar 和 footer 入口残留、原生 banner 未替换。用户授权修复与残留清理；此前 DONE 声明对 UI 验收覆盖不足，重新打开 T8 | 测试复现、修复、真实宿主验证和更新验收实例 |
