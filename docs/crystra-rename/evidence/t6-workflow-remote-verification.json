@@ -1,0 +1,90 @@
+{
+  "status": "PASS",
+  "files": [
+    {
+      "file": "release-metadata.json",
+      "sha256": "6bc6dad4566257037cac4c8373b7b5314229fa706dcb58041a770c27195ab75d",
+      "localRemoteIdentical": false
+    },
+    {
+      "file": "release-qualification.json",
+      "sha256": "608da05dc02b27854f3d323c423d6aa1bc7f7e08a2c0140902bb8f3603d54f29"
+    },
+    {
+      "file": "workflow-package-hello-world-workflow-0.2.0.json",
+      "sha256": "daaae2c5f8077fb2fbca790dd3bd851fc1851b4b32847328a889a036f1f9fc73",
+      "localRemoteIdentical": false
+    },
+    {
+      "file": "workflow-package-hello-world-workflow-0.2.0.provenance.json",
+      "sha256": "0d73fd9a36659ae62f49b6869f276ba31a2fc2ee4820db82af719b82cfc082e2",
+      "localRemoteIdentical": false
+    },
+    {
+      "file": "workflow-package-hello-world-workflow-0.2.0.tar.gz",
+      "sha256": "afb1d32ec30494f6ce141cede8398fb9a30054cfd5ee2486c4364a912fb39f4e",
+      "localRemoteIdentical": false,
+      "difference": "gzip OS byte only: local 19, remote 3; decompressed tar byte-identical"
+    },
+    {
+      "file": "workflow-package-hello-world-workflow-0.2.0.tar.gz.sha256",
+      "sha256": "efe1388181e4d98a3ede66f274856ae0e451edaa9b9f793ef8371af3a13bf7b5",
+      "localRemoteIdentical": false
+    },
+    {
+      "file": "workflow-package-implementation-workflow-0.4.12.json",
+      "sha256": "fcafde117ce4f8aafceb5b06382ccaa745da1a4b63e041b1792ac36dc80ba848",
+      "localRemoteIdentical": false
+    },
+    {
+      "file": "workflow-package-implementation-workflow-0.4.12.provenance.json",
+      "sha256": "157ecbcc9defcce5337feed8b9864f8b5792be710e3976737a3bf50981302b71",
+      "localRemoteIdentical": false
+    },
+    {
+      "file": "workflow-package-implementation-workflow-0.4.12.tar.gz",
+      "sha256": "78722e9a78b7a0e8f773a48d7af4672bad134c56b584c77495eeca053d2a67e0",
+      "localRemoteIdentical": false,
+      "difference": "gzip OS byte only: local 19, remote 3; decompressed tar byte-identical"
+    },
+    {
+      "file": "workflow-package-implementation-workflow-0.4.12.tar.gz.sha256",
+      "sha256": "6f3317f2a3299a939f59e5a72fde5a92d6184593a12da2abb6116cc756d9fa7c",
+      "localRemoteIdentical": false
+    },
+    {
+      "file": "workflow-package-system-design-workflow-0.4.10.json",
+      "sha256": "5ec3af84b4040a778df882fa90e01dd641b80a3086e59886ecf94ea695405ff3",
+      "localRemoteIdentical": false
+    },
+    {
+      "file": "workflow-package-system-design-workflow-0.4.10.provenance.json",
+      "sha256": "64bd94c76b35deb8f8fa231457299d22050909bab1107805394c97d1f23ea86e",
+      "localRemoteIdentical": false
+    },
+    {
+      "file": "workflow-package-system-design-workflow-0.4.10.tar.gz",
+      "sha256": "76dbae812cb7f398a4724cf8fc5a267df6a8ad3549f186732c9845444c517066",
+      "localRemoteIdentical": false,
+      "difference": "gzip OS byte only: local 19, remote 3; decompressed tar byte-identical"
+    },
+    {
+      "file": "workflow-package-system-design-workflow-0.4.10.tar.gz.sha256",
+      "sha256": "54f5855915ff8f297b2893cd41febeadb1c77bc74cf740ef7d21255293341514",
+      "localRemoteIdentical": false
+    }
+  ],
+  "receipt": {
+    "schemaVersion": "crystra.release-qualification@1.0.0",
+    "candidateTag": "crystra-workflow-package-v0.1.0-rc.1",
+    "commit": "2fc61f057ca712deacfed504f70601ed916c0fb3",
+    "artifactMetadataSha256": "sha256:6bc6dad4566257037cac4c8373b7b5314229fa706dcb58041a770c27195ab75d",
+    "localAcceptance": {
+      "status": "PASS"
+    },
+    "remoteQualification": {
+      "status": "PASS"
+    }
+  },
+  "note": "Remote published bytes are the promotion authority; local cross-platform archive hashes are not substituted."
+}

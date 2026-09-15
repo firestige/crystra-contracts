@@ -1,0 +1,154 @@
+{
+  "status": "PASS",
+  "runId": 34803216172,
+  "receipt": {
+    "schemaVersion": "crystra.dsh.release-qualification@1.0.0",
+    "packageVersion": "0.1.0",
+    "candidateTag": "crystra-dsh-v0.1.0-rc.1",
+    "commit": "0074c86bf956558dfa482714fb4064c40d8eef7c",
+    "artifactMetadataSha256": "sha256:e0a795a12c59edf9e32802667584dbd197d59f57af14dcd54b496645f93d4c25",
+    "gates": {
+      "cleanProfile": "PASS",
+      "lifecycle": "PASS",
+      "realHarness": "PASS",
+      "loopbackOutage": "PASS",
+      "providerRouting": "PASS",
+      "remoteArtifacts": "PASS"
+    },
+    "receipts": {
+      "cleanProfile": {
+        "schemaVersion": "crystra.dsh.gate-receipt@1.0.0",
+        "gate": "cleanProfile",
+        "status": "PASS",
+        "exitCode": 0,
+        "commit": "0074c86bf956558dfa482714fb4064c40d8eef7c",
+        "candidateTag": "crystra-dsh-v0.1.0-rc.1",
+        "artifactMetadataSha256": "sha256:e0a795a12c59edf9e32802667584dbd197d59f57af14dcd54b496645f93d4c25",
+        "command": [
+          "node",
+          "scripts/qualify-clean-profile.mjs"
+        ],
+        "log": "cleanProfile.log",
+        "logSha256": "sha256:560759f4a83c4e6e76a9d2634fab2075095ad8b6cc11ecca0f405d449fb064c5"
+      },
+      "lifecycle": {
+        "schemaVersion": "crystra.dsh.gate-receipt@1.0.0",
+        "gate": "lifecycle",
+        "status": "PASS",
+        "exitCode": 0,
+        "commit": "0074c86bf956558dfa482714fb4064c40d8eef7c",
+        "candidateTag": "crystra-dsh-v0.1.0-rc.1",
+        "artifactMetadataSha256": "sha256:e0a795a12c59edf9e32802667584dbd197d59f57af14dcd54b496645f93d4c25",
+        "command": [
+          "node",
+          "scripts/qualify-lifecycle.mjs"
+        ],
+        "log": "lifecycle.log",
+        "logSha256": "sha256:ff89fb2ddb38bc1c4df028e2e8d811767acf5580e3bcacfe5fe333027de3283f"
+      },
+      "realHarness": {
+        "schemaVersion": "crystra.dsh.gate-receipt@1.0.0",
+        "gate": "realHarness",
+        "status": "PASS",
+        "exitCode": 0,
+        "commit": "0074c86bf956558dfa482714fb4064c40d8eef7c",
+        "candidateTag": "crystra-dsh-v0.1.0-rc.1",
+        "artifactMetadataSha256": "sha256:e0a795a12c59edf9e32802667584dbd197d59f57af14dcd54b496645f93d4c25",
+        "command": [
+          "node",
+          "scripts/qualify-real-harness.mjs"
+        ],
+        "log": "realHarness.log",
+        "logSha256": "sha256:cf907f1b3da6301bb2be19b90b7550c464787f4f9a86b464a2cdc27f27e94bdb"
+      },
+      "loopbackOutage": {
+        "schemaVersion": "crystra.dsh.gate-receipt@1.0.0",
+        "gate": "loopbackOutage",
+        "status": "PASS",
+        "exitCode": 0,
+        "commit": "0074c86bf956558dfa482714fb4064c40d8eef7c",
+        "candidateTag": "crystra-dsh-v0.1.0-rc.1",
+        "artifactMetadataSha256": "sha256:e0a795a12c59edf9e32802667584dbd197d59f57af14dcd54b496645f93d4c25",
+        "command": [
+          "node",
+          "scripts/qualify-real-harness.mjs"
+        ],
+        "log": "loopbackOutage.log",
+        "logSha256": "sha256:cf907f1b3da6301bb2be19b90b7550c464787f4f9a86b464a2cdc27f27e94bdb"
+      },
+      "providerRouting": {
+        "schemaVersion": "crystra.dsh.gate-receipt@1.0.0",
+        "gate": "providerRouting",
+        "status": "PASS",
+        "exitCode": 0,
+        "commit": "0074c86bf956558dfa482714fb4064c40d8eef7c",
+        "candidateTag": "crystra-dsh-v0.1.0-rc.1",
+        "artifactMetadataSha256": "sha256:e0a795a12c59edf9e32802667584dbd197d59f57af14dcd54b496645f93d4c25",
+        "command": [
+          "node",
+          "scripts/qualify-provider-routing.mjs"
+        ],
+        "log": "providerRouting.log",
+        "logSha256": "sha256:389a922d586c0862a49a5f55117a36e2c5282712deb84d07ca47ba9d0073ab40"
+      },
+      "remoteArtifacts": {
+        "schemaVersion": "crystra.dsh.gate-receipt@1.0.0",
+        "gate": "remoteArtifacts",
+        "status": "PASS",
+        "exitCode": 0,
+        "commit": "0074c86bf956558dfa482714fb4064c40d8eef7c",
+        "candidateTag": "crystra-dsh-v0.1.0-rc.1",
+        "artifactMetadataSha256": "sha256:e0a795a12c59edf9e32802667584dbd197d59f57af14dcd54b496645f93d4c25",
+        "command": [
+          "node",
+          "scripts/verify-candidate-inputs.mjs"
+        ],
+        "log": "remoteArtifacts.log",
+        "logSha256": "sha256:6ac7267653a67b23e84a5fc368a9594506be5195749335fcf454692c2a06a24a"
+      }
+    }
+  },
+  "files": [
+    {
+      "file": "SHA256SUMS",
+      "sha256": "dade18a311b271bea52aa0976941a1e1695893c881b38f6aad7aca4f8369661f",
+      "localRemoteIdentical": false
+    },
+    {
+      "file": "compatibility-matrix.json",
+      "sha256": "1f785459291363bf42510873f269742e568b5596c3657a34eea5a4f40c639e7b",
+      "localRemoteIdentical": true
+    },
+    {
+      "file": "dsh-crystra-0.1.0.tgz",
+      "sha256": "97196ad715f3ff4e162b4ae2b1f7a07456dc3f27c21dceaffbc3d07573d493be",
+      "localRemoteIdentical": true
+    },
+    {
+      "file": "provenance.json",
+      "sha256": "5ba540849f02ab8ecff1cb53953634f0792174f4a343fdd318732573f81ebba2",
+      "localRemoteIdentical": true
+    },
+    {
+      "file": "qualification-evidence.tar.gz",
+      "sha256": "0c45f8ecfebfdbd010fab100e6821572cacc0776c0694c77ad65c01edcd58d79"
+    },
+    {
+      "file": "release-metadata.json",
+      "sha256": "e0a795a12c59edf9e32802667584dbd197d59f57af14dcd54b496645f93d4c25",
+      "localRemoteIdentical": true
+    },
+    {
+      "file": "release-qualification.json",
+      "sha256": "db51e762c4ade3f5424d07c5e9ee3fa5173c4ebc78dc4b46f3a158c4508aa995",
+      "localRemoteIdentical": false
+    },
+    {
+      "file": "sbom.spdx.json",
+      "sha256": "a5991411443b7014b5a430aca6cbd4c059f1a7f824be1c8f20cea6869ca82de7",
+      "localRemoteIdentical": false
+    }
+  ],
+  "checksumManifestVerification": "PASS",
+  "remoteReceiptLogBindings": "PASS"
+}

@@ -1,0 +1,10 @@
+{
+  "schemaVersion": "crystra.contract-release@1.0.0",
+  "repository": "firestige/crystra-contracts",
+  "revision": "13adf4df2a5abb755cf583f2c10972584e63eec3",
+  "artifact": {
+    "name": "crystra-contracts.tgz",
+    "bytes": 312763,
+    "sha256": "sha256:9aef1649fe1554e2be090c7911b29bbf93a8305ec377435d4c1e0823d119f0bd"
+  }
+}

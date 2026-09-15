@@ -1,0 +1,29 @@
+{
+  "status": "EXPLORATION_ONLY",
+  "port": 3082,
+  "sessionId": "crystra-workflow-input-test-ebac27aa-e57f-4388-bcd8-7cfee2a845c6",
+  "command": "/crystra doctor",
+  "plainCommand": "NEEDS_CONFIGURATION / CRYSTRA_ROLE_BINDINGS_REQUIRED",
+  "malformedPng": "rejected; native draft retained",
+  "validPng": {
+    "attachmentId": "sha256:25d91038a353eb779a1df682ad52fba1ef10645e2410987abeb163f5372e0af1",
+    "mediaType": "image/png",
+    "width": 2,
+    "height": 2,
+    "bytes": 73,
+    "name": "clipboard.png"
+  },
+  "attachmentHashMatchesLocal": true,
+  "adminWithAttachment": "CRYSTRA_ADMIN_COMMAND_INVALID (existing router policy)",
+  "modelStats": {
+    "turns": 0,
+    "steps": 0,
+    "llmMs": 0,
+    "toolMs": 0,
+    "ttftMs": 0,
+    "ttftSteps": 0,
+    "decodeMs": 0,
+    "decodeTokens": 0
+  },
+  "scope": "native submit serialization, attachment custody and deterministic command refusal; not model/provider/approval qualification"
+}

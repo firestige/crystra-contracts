@@ -1,0 +1,107 @@
+{
+  "schemaVersion": "crystra.dsh.release-qualification@1.0.0",
+  "packageVersion": "0.1.0",
+  "candidateTag": "crystra-dsh-v0.1.0-rc.1",
+  "commit": "0074c86bf956558dfa482714fb4064c40d8eef7c",
+  "artifactMetadataSha256": "sha256:e0a795a12c59edf9e32802667584dbd197d59f57af14dcd54b496645f93d4c25",
+  "gates": {
+    "cleanProfile": "PASS",
+    "lifecycle": "PASS",
+    "realHarness": "PASS",
+    "loopbackOutage": "PASS",
+    "providerRouting": "PASS",
+    "remoteArtifacts": "PASS"
+  },
+  "receipts": {
+    "cleanProfile": {
+      "schemaVersion": "crystra.dsh.gate-receipt@1.0.0",
+      "gate": "cleanProfile",
+      "status": "PASS",
+      "exitCode": 0,
+      "commit": "0074c86bf956558dfa482714fb4064c40d8eef7c",
+      "candidateTag": "crystra-dsh-v0.1.0-rc.1",
+      "artifactMetadataSha256": "sha256:e0a795a12c59edf9e32802667584dbd197d59f57af14dcd54b496645f93d4c25",
+      "command": [
+        "node",
+        "scripts/qualify-clean-profile.mjs"
+      ],
+      "log": "cleanProfile.log",
+      "logSha256": "sha256:560759f4a83c4e6e76a9d2634fab2075095ad8b6cc11ecca0f405d449fb064c5"
+    },
+    "lifecycle": {
+      "schemaVersion": "crystra.dsh.gate-receipt@1.0.0",
+      "gate": "lifecycle",
+      "status": "PASS",
+      "exitCode": 0,
+      "commit": "0074c86bf956558dfa482714fb4064c40d8eef7c",
+      "candidateTag": "crystra-dsh-v0.1.0-rc.1",
+      "artifactMetadataSha256": "sha256:e0a795a12c59edf9e32802667584dbd197d59f57af14dcd54b496645f93d4c25",
+      "command": [
+        "node",
+        "scripts/qualify-lifecycle.mjs"
+      ],
+      "log": "lifecycle.log",
+      "logSha256": "sha256:ff89fb2ddb38bc1c4df028e2e8d811767acf5580e3bcacfe5fe333027de3283f"
+    },
+    "realHarness": {
+      "schemaVersion": "crystra.dsh.gate-receipt@1.0.0",
+      "gate": "realHarness",
+      "status": "PASS",
+      "exitCode": 0,
+      "commit": "0074c86bf956558dfa482714fb4064c40d8eef7c",
+      "candidateTag": "crystra-dsh-v0.1.0-rc.1",
+      "artifactMetadataSha256": "sha256:e0a795a12c59edf9e32802667584dbd197d59f57af14dcd54b496645f93d4c25",
+      "command": [
+        "node",
+        "scripts/qualify-real-harness.mjs"
+      ],
+      "log": "realHarness.log",
+      "logSha256": "sha256:d37feed5888f15d049ce6aac83854dd6477a9315d25759efb5ae080a9df644b9"
+    },
+    "loopbackOutage": {
+      "schemaVersion": "crystra.dsh.gate-receipt@1.0.0",
+      "gate": "loopbackOutage",
+      "status": "PASS",
+      "exitCode": 0,
+      "commit": "0074c86bf956558dfa482714fb4064c40d8eef7c",
+      "candidateTag": "crystra-dsh-v0.1.0-rc.1",
+      "artifactMetadataSha256": "sha256:e0a795a12c59edf9e32802667584dbd197d59f57af14dcd54b496645f93d4c25",
+      "command": [
+        "node",
+        "scripts/qualify-real-harness.mjs"
+      ],
+      "log": "loopbackOutage.log",
+      "logSha256": "sha256:d37feed5888f15d049ce6aac83854dd6477a9315d25759efb5ae080a9df644b9"
+    },
+    "providerRouting": {
+      "schemaVersion": "crystra.dsh.gate-receipt@1.0.0",
+      "gate": "providerRouting",
+      "status": "PASS",
+      "exitCode": 0,
+      "commit": "0074c86bf956558dfa482714fb4064c40d8eef7c",
+      "candidateTag": "crystra-dsh-v0.1.0-rc.1",
+      "artifactMetadataSha256": "sha256:e0a795a12c59edf9e32802667584dbd197d59f57af14dcd54b496645f93d4c25",
+      "command": [
+        "node",
+        "scripts/qualify-provider-routing.mjs"
+      ],
+      "log": "providerRouting.log",
+      "logSha256": "sha256:0ddcb385aa9acec03831367681206d2042d98aed4f4965fc7d4d14a6f7be76a5"
+    },
+    "remoteArtifacts": {
+      "schemaVersion": "crystra.dsh.gate-receipt@1.0.0",
+      "gate": "remoteArtifacts",
+      "status": "PASS",
+      "exitCode": 0,
+      "commit": "0074c86bf956558dfa482714fb4064c40d8eef7c",
+      "candidateTag": "crystra-dsh-v0.1.0-rc.1",
+      "artifactMetadataSha256": "sha256:e0a795a12c59edf9e32802667584dbd197d59f57af14dcd54b496645f93d4c25",
+      "command": [
+        "node",
+        "scripts/verify-candidate-inputs.mjs"
+      ],
+      "log": "remoteArtifacts.log",
+      "logSha256": "sha256:6ac7267653a67b23e84a5fc368a9594506be5195749335fcf454692c2a06a24a"
+    }
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "kind": "isolated-native-notification-qualification",
+  "profile": "/tmp/crystra-c089-dsh-home",
+  "sessionId": "crystra-c090-cb41ae65-5b35-4820-b13f-5344686eb07e",
+  "logicalEvents": 2,
+  "physicalInsertions": 3,
+  "canceledThenRequeued": true,
+  "queueStates": [
+    {
+      "messageId": "crystra-resource-d869ca0cd910a7178ed4e2b812a9495b11fa6e9e7629a3892e5b7de5e381b78b",
+      "state": "queued"
+    },
+    {
+      "messageId": "crystra-resource-71673ea2d2fc5cb488b99e918b1453a9b9ea3bc9aa1af9d6ef066a0487d4adb7",
+      "state": "queued"
+    }
+  ],
+  "sessionStats": {
+    "turns": 0,
+    "steps": 0,
+    "llmMs": 0,
+    "toolMs": 0,
+    "ttftMs": 0,
+    "ttftSteps": 0,
+    "decodeMs": 0,
+    "decodeTokens": 0
+  },
+  "tokenUsage": {
+    "uncachedInputTokens": 0,
+    "outputTokens": 0,
+    "cacheReadTokens": 0,
+    "cacheWriteTokens": 0
+  },
+  "historySha256": "34cdf95ca320194c73bcdb5141b5b3dbc5fb64686571009b4df94ec28f3107ad",
+  "limitations": [
+    "No model request or model consumption proof",
+    "Conditional draft only; no execution or publication permission"
+  ]
+}

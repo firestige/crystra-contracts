@@ -1,0 +1,356 @@
+# T8 新 UI 与宿主接入缺口
+
+用户于 2026-09-14 指出实际页面仍为旧布局。核查确认，不能以品牌文本及旧链路通过代替新 UI 接入验收。
+
+| 层次 | 已核验事实 | 尚缺内容 |
+|---|---|---|
+| UI 版本 | 远端 main 482f6f175052bf770efbbbfe0b8ef54a6c365c45，与 UI RC1 来源相同；包含 #7 新组件与设计资产 | 更新依赖版本本身不能完成页面集成 |
+| UI 包入口 | packages/bi/src/public.ts 导出共享基础组件、BI、Trace；新版工作台入口 workbench-preview.tsx 为独立预览，含 fixture/原型上下文 | 将可生产复用的页面组件与所需样式导出，分离 fixture，定义宿主数据端口 |
+| DSH 页面 | modules/studio/src/client/browser-entry.js 仍消费旧 Bi/Metric/Trace 组合；studio.js 为 Evaluate/receipt/facts/trace，保留 Statistics | 按已接受设计接入 Task/Workflow 浏览与工作台、Analysis 导航；保留宿主 workspace、Task 精确身份与返回上下文 |
+| DSH Shell | modules/execution/src/client/delivery-inventory/sidebar.js 仍为 Workspace + Delivery；未接入新 Shell 信息架构 | 新页面入口和宿主路由接入；不是浏览器缓存问题 |
+| 当前证明 | 已发布 RC 字节一致、旧业务链路可运行，实际 setup/doctor/Evidence/Trace 可用 | 不能证明新组件页面、路由、返回恢复已生效 |
+
+设计依据：workflow-self-recursive/tmp/20260907/Crystra-ui-design/foundations/navigation.md。该文档明确逻辑路由不是已发布 URL/API；不能把示例路径直接作为生产契约。Analysis Trace 只保留 Waterfall/Tree，统计回 Overview。页面原型不能冒充真实业务写入。
+
+后续实施顺序：先建立设计入口→UI 公共导出→DSH 挂载/路由→真实数据端口的逐项映射；补接入及缺失状态；验证刷新/返回/切换和精确对象上下文；发布新的 UI/DSH RC 并重新固定组合。现有 RC 不覆写。涉及尚未发布的业务语义或生产写接口时，显式列出契约缺口，不用 fixture 补假功能。
+
+GitHub 匿名限流仍是已有链路的独立复验项，不是新 UI 未生效的原因。T8 不得关闭；旧链路证据继续有效，但必须标注范围。
+
+## 用户确认后的实施检查点
+
+用户确认 PR #7 已合入 UI 主线，并授权参考定稿 v8 系列 HTML 完成接入。以五份 v8 HTML 的视觉与交互为基准，复用 React 组件；不重新设计，也不把原型的示例 IR/数据接入真实业务。
+
+| 子步骤 | 状态 | 工作／证据 |
+|---|---|---|
+| v8 区域清单 | 完成 | evidence/t8-v8-sections.json：Task Work 342 个、其余各 83–84 个稳定区域标识 |
+| Analysis Trace 消费侧纠正 | 已实现、未发布 | /tmp/crystra-dsh-t6：去掉 Statistics，向 Waterfall/Tree 传 showSummary=false；针对性 RED→GREEN；全套 199 项通过 |
+| PR #7 Directory 公共导出 | 已实现、未发布 | /tmp/crystra-ui-host-integration，codex/crystra-host-ui-integration：导出 DeliveryDirectory 和数据类型；精确身份选择／真实空结果测试；格式/lint/types/test/build/deps 及 26 项浏览器回归通过 |
+| 新 Shell / 页面导航及恢复 | 部分实现，开发浏览器已挂载 | 按 v8 的 Task、Workflow、Analysis 入口和品牌切换接入 DSH，不保留旧入口作为最终页面 |
+| 新页面真实数据接入 | 待实现 | WorkflowMapWorkbench 当前默认 samples、AnalysisObservationStudy 当前 observation fixture 都不能直接作为生产数据；需拆出宿主数据输入与明确缺失状态 |
+| 新 RC 及实际页面复验 | 待前述完成 | 不覆写旧候选，不以当前局部修正标记 T8 完成 |
+
+UI 原工作树 .gitignore 等用户更改未动；使用从 main 建立的隔离 clone。DSH 修正基于已有候选分支继续，尚未发布新字节。浏览器最终验收必须覆盖 v8 入口、页面切换和返回状态，不只看品牌或底层服务。
+
+本地恢复提交：UI `97b3c04`，DSH `8635a72`。均未发布新 RC；下一项是 v8 Shell 与宿主路由接入。
+
+### Shell 与导航实现续记
+
+- UI 隔离分支新增 `CrystraShell` 组合组件，复用 PR #7 的基础组件及 v8 区域标识；仍需逐项补齐 v8 视觉/交互一致性，不能称已定稿接入。
+- DSH 新增 `product-navigation.js`：精确对象路由、Harness/Crystra 切换、返回历史、允许字段的每页上下文恢复；不把输入草稿放入路由。
+- DSH 新增 `product-surface.js` 宿主桥接工厂，使用 `shell.overlay` 和 `sidebar.footer.action`；不替换 root/conversation。**尚未接到 root client，因此当前实际安装不受影响。**
+- Task Browser 桥接只读取现有 Evidence task list；Task/Workflow 工作面尚未接完，显示未接入状态。不要把这些占位状态作为最终实现交付。
+- 新增导航/挂载边界 5 项测试通过（含 Workflow 精确 revision 恢复）；UI Shell 操作、Directory 精确选择与空结果 3 项针对性测试通过。完整 UI 回归本轮另记日志。
+- 下一动作：补齐 v8 Shell 折叠/搜索/视图设置及主内容页面，建立真实数据端口，接到 root client 后再做实际 DSH 验收。不能只把现有旧 Studio 包在新 Shell 内就宣称完成。
+
+恢复提交：UI `c1a9182`，DSH `3c61f5a`；源分支本轮改动仅本地提交，未发布候选。UI lint/types/test/build 已通过，Shell 定稿视觉对照与实际 DSH 激活尚未验证。
+
+
+### C037 实际开发实例挂载
+
+恢复提交：UI `2fa2b98`（/tmp/crystra-ui-host-integration），DSH `1a1e1ed`（/tmp/crystra-dsh-t6）。DSH root client 现已注册内部 product 模块，公开插件仍只有 dsh-crystra。
+
+开发实例为 http://127.0.0.1:3082，DSH_HOME=/tmp/crystra-v8-dsh-home；使用固定 DSH 0.1.1-rc.2。该 profile 复制 dsh-crystra，仅用 /tmp/crystra-v8-client.js 覆盖本实例 client bundle，其他依赖链接原 profile。浏览器无需模型密钥即可检验任务读取。现有 3080 用户会话和 3081 RC 验收实例保留。
+
+浏览器首先复现 `TypeError: props.renderSlot is not a function`：shell.overlay 不提供子插槽渲染器。新增回归先失败，再修复为返回 Harness 设置入口；尚未实现一键打开设置。BiSurface 的 style 属性会被组件覆盖，因此宿主全屏定位改为专用 CSS 类，同时显式传入接受组件要求的 data-crystra-theme=dark。最终截图确认新主题与完整覆盖层生效。
+
+已验证：从 Evidence 读取真实 task-5f9ecaae-8f06-42f9-93bd-22ac3a551bc7；选择任务；品牌切回 Harness；由 Crystra 按钮返回同一精确 Task。未验证草稿或滚动恢复。Task 详情目前仍为明确缺口提示；Analysis 三入口仍共用旧 Studio，Workflow 无真实目录输入。当前效果不符合完整 v8 验收，不可作为完成交付。
+
+验证日志：/tmp/crystra-product-root-tests.log，205/205 通过；其中导航及 overlay 6 项通过。此套测试的生成 lib/client.js 仍是原已提交版本，因此不代表新正式 bundle 资格。新的浏览器证明来自明确标注的开发 bundle。
+
+开发构建恢复：先在 UI clone 运行 npm run build；随后在 DSH clone 运行 node scripts/.v8-dev-build.mjs（临时 helper，不进入发布），其 alias 指向 UI clone 的 packages/bi/dist/index.js 与 styles.css，输出 /tmp/crystra-v8-client.js。仅复制到上述开发 profile 的 dsh-crystra/lib/client.js 后刷新 3082。不得覆盖实际 ~/.dsh 安装或把本地路径写入发布依赖。正式 lib/client.js 必须在新 UI RC 被固定后重建和资格验证。
+
+下一步：按 v8 补齐 Shell 展开搜索/视图设置，完成 Task Browser 与 Task 工作面、Workflow 目录/精确版本工作面、Analysis 独立页面的数据适配；已有 Gateway 仅暴露 tasks/list 等查询，不能假定存在 tasks/get 或 Workflow 编辑写入契约。需逐项核对后接入，缺失契约单独列明。之后新 UI/DSH RC、组合重固定及真实页面验收。
+
+C037 同轮续记：UI 最新提交 `b4214dc`，Shell 改用 PR #7 ExpandableSearchField，验证点击展开、任务过滤和 Esc 清空；导航箭头改用共享 Icon。387 个 Vitest 和 34 个 Node 测试通过，lint/types/build 通过（日志 /tmp/crystra-shell-search-*.log）。已重建 3082 开发 bundle；完整页面、视图选项、折叠布局与正式 RC 仍未完成。
+
+
+## Analysis 与新建空白态（C038）
+
+源码检查点：UI `bca3552`，DSH `8a42836`，均为隔离 clone 本地提交，尚未发布。3082 已重建开发 bundle；3080 用户实例和已部署 RC 未改。
+
+- 新 Analysis 三页框架使用定稿布局与组件，总览调用现有评估控制器，Trace 使用正式解码器、分页加载器与 Waterfall/Tree（showSummary=false）。研究报表没有生产接口，明确显示缺口。
+- 修复正式 Trace 查询解码：注册字段应为 C01/C02 等 ID，而不是原始 agentops 名；拒绝未知 ID、重复/乱序字段。Facts 解码兼容性尚未在新工作面验证。
+- Trace 查询处理错误、absent、partial、分页与竞态；错误时移除旧图。保留空目录 aside，修复定稿网格将主图压入零宽列的问题。
+- 实际 3082 验证真实 task-5f9ecaae-8f06-42f9-93bd-22ac3a551bc7 的 12 指标、100% terminal outcome；Trace aed6fbb2d3ce5d2a902c74af06f89bb8（324 ms），Waterfall/Tree 切换、页面往返保留结果和视图，非法 ID 清除旧图。未声称刷新后恢复查询。
+- 宿主 startSession 会经 connectWorkspace 调用 sessions.create，创建完整 Session+Agent；新建 Task 改用 sessions.clear 进入空白 Harness。回归先失败后修复；3082 点击后显示空白页且会话目录仍为空。工作区选择后的持久化时机仍需按宿主契约单独检查。
+- UI format/lint/type/build/deps 通过，391 Vitest + 34 Node + 27 浏览器用例通过。DSH 宿主完整回归 209/209 通过（允许 localhost 监听），日志 /tmp/crystra-analysis-dsh-tests.log；沙箱 EPERM 不是逻辑测试失败。UI clone 缓存位于自身 node_modules，不修改原 UI 工作树。
+
+仍未完成：完整 Task Browser/工作面、Workflow 目录/版本页、Trace 可搜索目录和 Evidence 下钻、Overview 定稿配置能力、设置与覆盖层焦点管理、新 UI/DSH RC 和组合重固定。当前开发 bundle 通过本地 UI alias，正式 lib/client.js 尚未重建，不能用本轮结果宣称发布资格。
+
+范围边界：定稿 handoff/decisions-and-open-questions.md 的 O01、O10、C07 尚未定义 Task IR、Plan/Wave/Gate、readiness、持久化事务等领域接口。是否扩大本次范围定义后端契约的问题已提出，尚无明确选择；后续“继续”按现有 UI 接入授权执行，不视为扩大领域范围。下一步先处理现有能力的接入，禁止以 fixture 填补生产数据。
+
+
+## C039：条件化草案授权与实现入口
+
+用户授权已解除 C038 的领域范围待确认项：优先使用指定设计目录中的现成结论，不足则按 UI 提出最小契约；全部保留草案身份、前提不满足即作废。正式语义未被改写。见 [草案与映射表](drafts/README.md) 和 [精确来源锁](drafts/source-lock.json)。
+
+DSH `e0aaf82` 实现 `src/client/draft-projection.js`：仅 exploration + draft.1，绑定来源摘要、适配器、Task 与目标/计划 revision，权限/过期/来源变化拒绝，fixture 必须显式启用；无效结果不携带旧 projection。5 项新增回归及 DSH 214 项全量通过。该模块目前没有挂入正式数据入口，只验证 envelope，不验证 value 的业务语义，也不授予执行权。待接入 UI 时必须在过期与上下文变化时重新准入。
+
+UI `14f8fa0`、DSH `388c040` 另修正 D21 后续确认的“对比分析”名称；UI 5 项相关测试、1 项页面往返浏览器回归与 build 通过。开发 3082 bundle 已更新；正式依赖、RC 与用户 3080 实例未改。
+
+下一动作：为五工作面定义并验证最小 value，接隔离 adapter 的读取和明确的探索来源；复用已接受组件展示效果。之后再实现隔离 authoring CAS 与恢复，不把 fixture、结构通过或草案保存当正式业务效果。Task 生命周期、正式领域映射和 RC 资格仍需各自证据。
+
+
+## C040 v8 视觉与交互纠正
+
+用户指出当前浏览器页面远离定稿，判断成立。此前实现优先建立数据桥，结果形成了另一套简化页面；C037–C039 的功能证明不能作为完整 v8 接入证明。草案用于支撑既有页面，不是重新设计或降级页面的理由。本轮暂停新增草案字段。
+
+只读对照服务：4185，目录为指定设计资产原件；进程日志由本任务管理。3082 仍是隔离开发实例，3080 用户页面不改。当前原型和生产事实分别展示，绝不把源 HTML 样例替换进去后宣称真实数据接入。
+
+| 区域 | 已核实差距 | 后续修正 |
+|---|---|---|
+| Shell | 248px 不符 v8 220/260；品牌居中无标志；标题和搜索拆行；无导航图标和明确选中背景 | 本轮恢复响应宽度、标题行内共享检索、左对齐品牌/图标、新建按钮、分析导航与 footer；折叠 rail、视图菜单、品牌精确矢量和恢复仍待完成 |
+| Overview | 原型系统级、日期范围、刷新/布局编辑、资源/运行质量 Widget；开发是单 Task 指标列表 | 复用完整 Analysis 组件结构，移除简化表单替代，按草案补数据适配，不伪造指标 |
+| Trace | 原型搜索 Delivery 目录、全局范围、目录展开、中文切换；开发是手输 Trace ID | 复用 DeliveryDirectory 与完整 Header/toolbar，将真实精确 Trace 读取接选择结果 |
+| 对比分析 | 原型观察设置与图形映射已确认；开发只有缺口提示 | 复用已审核设置/图表组合，草案覆盖数据选择及持久化缺口 |
+| Task / Workflow | 开发工作面仍是占位 | 按 v8 原 HTML 布局完整移植，复用共享组件；先固定页面与交互，随后填条件化草案 |
+
+回归新增 1280px 下侧栏 220px、标题/检索同行及选中导航检查，修改前失败、修改后 2 项浏览器测试通过；UI 391 Vitest + 34 Node、lint/type/build 通过。当前只修复 Shell 的一部分，不能称页面已达到 v8。后续同时比较相同页面、尺寸、状态，缺少真实数据时用明确隔离的探索样本验证布局。
+
+
+## C041：完整 Analysis 组合与显式探索数据
+
+UI `0a54cd8` 将原 AnalysisObservationStudy 的完整组合移入公共 AnalysisWorkspace，保留 v8 日期范围、刷新周期、布局编辑/导入导出、Widget 网格、DeliveryDirectory、Trace toolbar 与对比分析插槽。原 Study 成为样本与静态页面路由适配器；公共组件不自行读写 location/history，也不订阅全局导航 DOM。布局默认值改用已有 PRESET_LAYOUTS，去除 layout codec/editor 的 dashboard fixture 运行依赖。relative date 改为宿主显式 referenceDate，不把 2026-09-09 样本时间当实际今天。
+
+生产端口暂时包含 tasks/samples/roles/workflows/deliveries/searchFields、sources/queries/trace 和 renderComparison。它们是 UI 适配接口，不是新正式服务协议。对比分析完整样本仍由 renderComparison 显式注入；其业务统计/设置持久化还没有正式化。旧简化页与真实数据桥仍保留供继续接线，不能视为最终页面。
+
+3082 本轮显式运行完整 Analysis **探索模式**，右下角标明“草案探索 · v8 设计样本，非真实运行数据”。总览 112.04 等值、42 条目录、版本费用图均为定稿 fixture，不能写成真实服务指标。Shell 的真实 Task list 与样本分析范围不是领域绑定；跨两者的 Task/Delivery 深链尚未接入，禁止混用。实际 3080 和固定 RC 3081 未改。
+
+恢复：UI clone `npm run build`；`node scripts/build-analysis-exploration.mjs /tmp/crystra-analysis-exploration` 构建仅供探索的独立 bundle。DSH clone 的临时 scripts/.v8-dev-build.mjs 支持 CRYSTRA_ANALYSIS_EXPLORATION=1，先按本计划 source-lock 复验原设计文件，再覆盖 Analysis factory；不设置该变量则回到现有真实数据开发桥。仅将输出 /tmp/crystra-v8-client.js 复制到 /tmp/crystra-v8-dsh-home/profiles/web/node_modules/dsh-crystra/lib/client.js。临时 helper 不进入正式制品，发布不得带此开关和本地路径。
+
+验证：394 Vitest + 34 Node 通过；原 28 浏览器测试通过；新增完整组合浏览器用例验证编辑状态跨页保持、目录展开和 Tree 切换；真实 DSH 浏览器确认完整总览与对比分析三列设置编辑器可打开。lint/type/build/format/deps 通过；新增构建脚本单独验证。已发现并修正 Header 图标垂直堆叠（恢复已接受的 identity flex 组合）。仍需最终同尺寸截图复验、完整主页面接入和实际数据联调，T8 不变。
+
+
+## C042：Task frame 与实际 Input 的宿主边界
+
+TaskWorkbench 已按 v8 Header、38:62 分栏、Input 最小 360 / Control 最小 680 和五工作面导航抽取为公共组合。Input 为必传 ReactNode，切换 bench 不卸载；systemFocus 独立于所选页面。五工作面的具体内容尚未移植。单元测试与 1920×1080 浏览器验证输入节点/草稿保持和布局；395 Vitest + 34 Node、lint/type/build 通过。测试中的 textarea 明确是隔离替身，不声称真实 DSH Composer 接通。
+
+读取实际 DSH SlotRegistry/AppFrame 后，确认 ctx.renderSlot 仅能渲染 root、其它 seat 只能由 owner 的子 renderer 使用；当前 overlay 没有 Conversation 子 seat，root 不允许插件再次注册。为满足同一 Input 和定稿布局，需要扩展 DSH ui-layout 的受支持布局/产品 seat。已准备[具体草案](drafts/dsh-host-layout.md)，新增宿主组件修改或受控 fork 的范围尚需用户明确授权；没有改宿主源码、私有 CSS 或另造 Composer 来绕过。
+
+UI 工作树包含完整 Analysis 和 Task frame；DSH 正式源码仍 388c040，3082 仅启用了有明确样本标识的 Analysis 探索。真实 Task/Workflow Input 接入在上述范围决定前暂停；其它页面组件化与数据适配不受影响。T8 仍 IN_PROGRESS。
+
+## C043 · overlay 路线复核
+
+C042 的“需要扩展宿主”结论过早，现撤回必需性判断。shell.overlay 在当前 rc.2 仍可用；缺少 props.renderSlot 不等于不能与原生 Conversation 并排布局。dsh-macos-desktop 实际通过 overlay + 宿主外层 CSS 定位实现。尚未实测其在固定 rc.2 的完整兼容性，也没有版本回归证据；先在隔离环境验证外层适配，宿主扩展保留为备选。详见 drafts/dsh-host-layout.md 的 C043 更正。
+
+## C044 · 复用 Input 与会话隔离
+
+用户明确复用原生 Input 的组件和交互，不要求共用原生 DSH Session 管理器，并倾向互不可见。取消 C042 对跨 Harness/Crystra 同一 Conversation 实例的必要性。输入连续性以 Crystra 自身导航范围为准。下一步检查组件、scope、输入状态机、Session 服务与 RPC 装配，优先复用实现并隔离会话，不能只隐藏原生会话列表就宣称完成。详见 drafts/dsh-host-layout.md C044。
+
+
+## C049 Task 工作面与只读上下文
+
+UI fc463a1：TaskPlanPanel 提供摘要/文档/完整 DAG 三层只读组合；TaskExecutionPanel 区分 Plan Run 与 Wave 内部 Workflow Run，分析回调只接显式 identity；TaskEvidenceContext 提供审核证据检查和返回。计划/执行图从定稿 v8 SVG 静态提取为 test-harness/task-design-graphs.json，未执行 HTML 内脚本；源 SHA256 b5eefc9739ab1d995e4c10cbb0e90c8dcb2fa099cc4b707ec47a574a46b2af87。样本仍仅用于显式探索，正式组件不加载它们。
+
+UI 401 Vitest + 34 Node 通过；计划/执行新增层级时整套 33 浏览器通过，随后新增审核证据检查的四项专项浏览器通过；type/lint/build/format 通过。不是最终 PR/RC 资格声明。DSH 2de5bf1 为 inventory 和 session read 加请求顺序保护；两项回归先复现旧响应覆盖新状态，再修复，全套 228/228 通过。
+
+3082 实测：唯一原生 Input 旁展示五工作面探索内容；点击 Wave 1B 进入指定 Workflow Run，原始未发送草稿使用键盘事件删除后重载仍为空。native 3080 未操作。开发 helper 增加 automatic JSX 与测试样式显式注入；不进入制品。
+
+仍未完成：完整 DAG minimap/分支折叠、运行观测扩展与动效、Gate 到 Plan/Analysis 的精确跨页关联、五工作面 value validator 和持续失效处理、真实端口联调、Workflow 页面、侧栏余项及 RC。不能把本节的设计样本当运行事实，也不能把组件已渲染当全量 v8 已对齐。下一项 C050 侧栏折叠与原生几何联动正在实施。
+
+
+## C050 侧栏折叠与原生几何
+
+侧栏使用定稿 24px 晶体矢量和 19px 品牌字、64px rail、原有分组浮出导航、Escape/外部点击关闭；UI 不自行读取宿主存储，初始偏好及保存回调由 DSH 提供。DSH 070933e 将 Task 与 new-task 原生区域统一使用侧栏宽度变量，折叠偏好保存在本实例浏览器 sessionStorage。
+
+3082 的 1280×720 实测先复现折叠后原生 left220 而目标 left64；修复后两者均 left64/top112/width462.078125/height608。重载保留折叠且 Input 仍为空。通用按钮样式曾覆盖隐藏与矢量尺寸，导致折叠 logo 被挤为 1px；修复后实测24px，收起按钮隐藏。UI 402 Vitest +34 Node、type/lint/format/build 通过，最终整套浏览器34项通过。品牌字号旧测试22px已按定稿19px修正。
+
+DSH 首轮并行负载下冷启动登记既有测试超时；单独复验17ms通过，单独重跑整套229/229通过（/tmp/crystra-c050-dsh-tests-rerun.log）。未修改这项既有运行逻辑或放宽超时。不存在用户决策阻塞；C051 继续按定稿 Task Browser 接真实列表和明确未知字段。
+
+
+## C051 Task Browser 接入中
+
+工作副本 /tmp/crystra-ui-host-integration 新增 TaskBrowser、task-browser-model，复用定稿 CSS 并限定到本页，复用已有 ToggleSwitch 与本地 Tabler 图标。Gallery 按容器宽度计算列数/卡宽并通过内容区 observer 追加，List 分页；选择与打开分开，Gallery 折叠在切换视图/查询时保留。归档/缩略图/改名/Pin 只有显式 callback 才可调用，普通入口无这些适配器。当前尚未补齐跨页面偏好恢复、排序完整键盘菜单与写探索。
+
+DSH product-surface 已改为消费 Core.TaskBrowser。projectEvidenceTasks 只映射正式 tasks/list 的 task_id/display_name，其他字段保持未知；复用 next_cursor 读取后续页，新建任务与 Sidebar 共用先离开绑定再 clear 的行为。当前改动未提交。UI 407 Vitest+34 Node、type/lint/format/deps 通过，两项 Browser 专项通过；完整 Browser 与 DSH 最终检查进行中。
+
+3082 当前已关闭 CRYSTRA_INPUT_GEOMETRY_TEST，保留 CRYSTRA_ANALYSIS_EXPLORATION=1：Task 列表与 Browser 是真实 Evidence 来源，Analysis 仍为独立标记的样本。实测读到 task-5f9ecaae-8f06-42f9-93bd-22ac3a551bc7；Gallery/List 切换、未知字段和精确打开正常。该 Task 不属于当前本地会话，Input 不显示且不借用测试 Session。修复宿主默认标题边距/按钮背景后，Header height=88.6953125，分组透明；用户3080未改。
+
+恢复时先核对当前开发模式，不把样本 Task 与真实 Task 混淆。当前页面在真实 Task 详情；此前测试草稿已清空。下一项继续 Browser 返回恢复与菜单，再接 Workflow；五工作面真实数据/草案持续失效与 RC 仍未完成。
+
+
+C051 保存提交：UI 71ab3ca，DSH 961c493。最终 UI 407+34 单测、36 浏览器、type/lint/format/build/deps 通过，DSH230/230通过；日志 /tmp/crystra-c051-*.log。3082 当前为真实 Task 详情，Task Browser 的旧本地浏览状态在跨页返回时尚未持久化，C052 正在补这一点及菜单；不要将这些门槛称作整个 T8 完成。
+
+
+## C052 目录返回与菜单
+
+UI 45569e5 / DSH 82c4d88：Task Browser 保存经过白名单验证的查询、筛选、排序、Gallery/List、分组、页码/页长及精确 anchorId 到原有 navigation context.view；先保存再打开 Task，过期组件回调不能覆盖当前 Task 上下文。返回重新挂载时恢复列表或 Gallery 条目，不保存业务事实或选择权限。分组折叠仍仅在 Browser 挂载期跨查询/视图保留。
+
+共享 Menu 支持图标触发、menuitemradio、上下方向及 auto 放置，复用键盘焦点、Escape/外部关闭。React refs 静态检查发现排序回调间接读取滚动 ref，已移到查询变更 effect；不关闭规则。UI409 Vitest+34 Node、38浏览器、lint/type/format/build/deps通过；DSH231/231通过。日志 /tmp/crystra-c052-*.log。
+
+3082 当前仍为真实 Task 来源、Analysis 显式探索；实测 List 搜索 5f9ecaae → 打开精确 task-5f9ecaae-8f06-42f9-93bd-22ac3a551bc7 → 侧栏全部任务，保留 List 与查询；排序菜单在宿主正确定位。没有操作3080，没有发送消息，没有发布新RC。接着 C053 Workflow Explorer：先复用定稿资源浏览配方，精确 definition+revision，最新项在筛选前确定且不回退；真实目录未知能力必须明确，不能混入样本。
+
+
+## C053 Workflow Explorer
+
+UI349bb6a / DSH bb3fd07：WorkflowExplorer 复用已接受 Task Browser 布局配方；ResourceGalleryGroup 抽取为两页共用。目录类型只定义消费者需求，精确 definitionId/revision、显式 isLatest；最新项先确定再筛选，不根据字符串、时间或状态猜最新；冲突最新不选。Gallery/List、最新/全部版本、状态过滤、排序、分页、独立选择、精确打开已实现。无 owner callback 的新建/改名/归档等保持禁用。跨页面 Workflow 视图恢复和正式目录/资源管理通路尚缺。
+
+UI414+34单测、39整套浏览器、type/lint/format/build/deps通过；DSH232/232通过。3082从侧栏进入完整 Workflow Explorer Header 与缺口提示，当前没有正式目录接口，不显示伪造的0项集合，不加载测试工作流。48定义×3revision的独立样本只在 workflow-explorer-test.html，验证筛选不回退、版本模式清选、跨视图选择及精确r1打开。没有RC发布。继续C054共享工作台Header/分栏/Input连续性，再接已合入组件；不得把历史样本的window全局对话/假写入直接当正式宿主。
+
+
+## C054 Workflow 共享工作台
+
+UI d675e74 / DSH6395d13：WorkflowWorkbench使用原page-header组合、三页签和显式Input插槽；Tabs新增显式panelContainer，挂载到共享右栏，ARIA关联保持完整。分栏360px下限、可用宽度一半上限、方向键16px、Home/End、指针拖动和720px最小工作区通过浏览器检查；切页保留Input节点和未发送草稿。测试页原生body8px边距造成可用宽度1264，已为独立harness重置，不改变真实宽度计算。
+
+DSH工作台携带精确definition/revision并按其key重挂载，未知页签回流程设计，不借用Task或Harness Session。未关联时显示包工作区/会话缺口。UI416+34单测、40浏览器、type/lint/format/build/deps通过；DSH233/233通过。3082此时仍是C053 bundle、Workflow Explorer缺口页，C054尚未重新装入开发实例。
+
+C055进行中：原WorkflowMapWorkbench直接加载样本、querySelector外部对话、替换conversation-feed并截获Enter，还有本地保存/发布演示。拆为显式定义/布局/Header/引用回调的只读Viewer，原独立设计包装器保留探索行为；不能将这些样本行为部署成正式Input链路。五工作面数据/Workflow真实目录、草案验证、事务和RC仍未完成。
+
+
+## C055 宿主中立活动图与定稿布局
+
+UI86945a7：WorkflowMapViewer公开入口强制关闭exploration；初始定义、布局resolver、Header目标、对象引用回调均显式提供。不查询宿主Input、不替换conversation-feed、不截获Enter，不开启本地样本保存/发布/验证台。原WorkflowMapWorkbench成为独立设计包装器，继续保留已有演示。引用提供选中对象ID，正式提案/保存通路仍缺。定义/revision变更须由宿主以精确key重挂载；布局失败不将旧坐标绘到新定义。
+
+定稿 assets/workflow-map-candidate.js SHA256=2eecd430380f6a68620fb712e8ff779b4bc78779c0d484ca768bb059f5102cac。用TypeScript AST读取其中data字面量为test-harness/workflow-map-design.json，未执行原脚本。预生成3套样本的精确匹配/展开掩码/分段关系转换沿源实现；不声称支持任意新定义。修复缩略图使用语义edge.id导致同关系分段重复key，改为已有segmentKey；回归先失败再通过。真实DSH旧React忽略JSX布尔inert，已在commit ref设置DOM inert并增加aria-hidden，实测收起width0、inert=true。
+
+UI417+34单测、41浏览器、type/lint/format/build/deps通过，日志/tmp/crystra-c055-final-*.log。独立预览初次高度不足是BiSurface测试容器尺寸声明未落地，改为显式harness class height100vh；工作面移除原Tabs的12px内容间距，实际窗口铺满。
+
+3082当前模式：CRYSTRA_ANALYSIS_EXPLORATION=1、CRYSTRA_WORKFLOW_EXPLORATION=1，INPUT_GEOMETRY_TEST未设置。Task列表仍是真实Evidence，Analysis与Workflow为显式样本。Workflow入口是draft-workflow-implementation@v8-2eecd430，页面与目录描述标明草案；左侧明确未关联包工作区/会话，不制造Session或代替原生Composer。实测从目录精确打开和展开理解与设计。资源/结晶仍缺口页。
+
+恢复：UI build后在DSH clone运行上述两个探索开关的scripts/.v8-dev-build.mjs；该helper先核对布局源hash，再覆盖仅开发的product-surface，将产物复制到3082专用home。helper仍untracked，不进入正式包；忽略裸CSS导入的警告由已合入Core dist/styles.css覆盖。取消WORKFLOW_EXPLORATION则恢复正式目录unavailable。没有操作3080、没有发消息、没有发布RC。独立4191预览进程用于视觉复核。C056继续资源Viewer，随后结晶/真实数据及草案失效。
+
+
+## C056 显式资源 Viewer 与原生 Markdown
+
+UI bb7df75：WorkflowResourceViewer消费调用方提供的workspace/catalog，目录不自行按路径或同名工作流选择；精确definition/revision构成消费身份。默认只读，保存/增删改入口禁用且handler拒绝演示写入；讨论回调仅发resourceId/path，不操作宿主Input；关系投影由明确组件提供，缺少时显示unavailable。原独立WorkflowResourceBrowser包装器保留探索交互。CodeMirror继续复用已有实现，只读源码保留查找。正式资源身份、关系完整性、内容版本读取和写事务仍需owner/草案接口。
+
+样本来自assets/workflow-resource-workspaces.js，SHA256=38228fd2240934b94f3fe4ec27e9bc861d240e36c16dc1d8668a94b5e9ac3550；AST读取Implementation的103文件快照，不执行原JS。该历史设计adapter仍有目录分类/别名推导，不能当正式索引；关系输入过滤普通“文档链接”，不把导航当语义依赖。样本位于test-harness，不在正式包文件清单。
+
+3082资源页已显示完整分组、文件检查与原生MarkdownText（当前dsh-client-ui-primitives 0.1.1-rc.2公开导出，参数text）；标题/表格/正文实测正常。资源页窄Header原来操作组覆盖页签，先复现后将context列改为max-content并保留原横向滚动；增加选择器优先级，防止首次加载又被共享Header覆盖。工作区补studio-display容器，恢复760/520断点。资源组inert沿用宿主兼容处理。
+
+UI418+34单测、43浏览器、type/lint/format/build/deps通过；DSH正式源码本轮未改，仍6395d13。新的完整开发bundle已复制3082，当前浏览器未重新加载最后Header样式修正（重新加载会回流程设计，再点资源配置）；普通来源仍不具备正式目录接口。helper增加资源源hash核验并注入已验证的MarkdownText。未发消息、未碰3080、未发RC。C057下一步结晶数据端口，预测与实测严格分开。
+
+
+## C057 结晶分析独立投影（2026-09-15）
+
+UI `f1c5bc0` 将 WorkflowCrystallizationView 与静态设计数据分开。公共入口只消费显式 proposal / baseline / candidate、前后 IR 与对应布局、历史依据、预测假设及实测；没有历史或实测时不补设计数字。应用到草稿保持 unavailable；未绑定会话时讨论动作禁用。设计样本仍在探索 wrapper，普通入口不默认导入。
+
+Workflow 三页签已在 3082 独立开发实例显示完整的设计样本，包括结晶前后图、检查弹窗和三类证据。渲染检查发现旧颜色变量缺失导致黑色节点、连线不可见；失败浏览器断言复现后复用现有 workflow-map.tokens 修复。419 Vitest + 34 Node、44 浏览器及 type/lint/format/build/deps 通过。Input 替身草稿跨页保留通过；本样本没有本实例 package/session 绑定，不代表原生 Workflow Input 已接通。
+
+DSH 正式源码仍为 `6395d13`，开发 bundle 仅在独立 3082 更新；3080/3081 未操作。尚未发布新 RC。继续 C058：投影到期、权限撤销、上下文切换及迟到读取结果必须清除旧有效投影；五工作面 value 校验及实际 adapter 仍待接入。
+
+
+## C058 草案投影持续失效基础（2026-09-15）
+
+新增独立 draft projection controller：先校验宿主上下文再读取 adapter；更换上下文立即清除旧值；有效期定时重验；撤权直接失效；迟到或销毁后的响应丢弃；读取失败不保留旧绿色内容。适配器收到上下文副本，不能通过修改入参把 foreign 响应变成可信绑定。定时器可注入，覆盖精确到期、撤权、乱序、销毁、adapter 篡改和读取失败。DSH 全量 236/236 通过。
+
+这是后续 adapter 接入所用生命周期基础，尚未挂入生产页面；单次解码不再是唯一可用机制，但未宣称浏览器持续失效验收完成。接下来补五工作面 value 结构准入并用显式探索 adapter 驱动页面。
+
+
+## C059 五工作面结构准入（2026-09-15）
+
+草案 admission 现在对每个 available value 使用对应只读 UI shape 校验。覆盖必需字段、嵌套列表、重复稳定 ID、枚举、完整运行身份与未知字段拒绝。Gate 消费形状为显式 gates 列表；空列表是 adapter 的明确输入，不把不存在的响应推成空队列。239 DSH 测试通过。结构校验不验证确认记录真实性、readiness 算法或 provenance，只解决错误结构进入 UI 的问题。继续将已准入投影接入订阅式页面渲染。
+
+
+## C060 订阅式草案 Task 页面（2026-09-15）
+
+createDraftTaskPanel 订阅已准入 controller，按当前 taskId 拒绝 foreign 内容，五工作面复用公共 UI，失效后卸载原内容。Gate 只读队列选择不产生批准动作；未提供证据/Analysis 深链时不启用；计划图/全文/运行图依赖显式 renderer。241 DSH 测试通过。
+
+3082 显式启用 `CRYSTRA_TASK_EXPLORATION=1`，增加 `draft-projection-v8` 静态样本，真实任务列表继续保留。开发专用未跟踪 `.task-projection-preview.js` 和 `.v8-dev-build.mjs` 提供静态数据与失效验证按钮，不得打包发布。五工作面均经过 envelope + value 准入；样本 Gate 的多余 `wide` 展示字段被拒绝后，adapter 仅映射 UI 声明的字段，没有放宽校验。实际浏览器验证：需求页 1.5 秒自然到期移除旧内容，审核页撤权立即显示 ACCESS_REQUIRED；显式恢复后执行总览 → Wave 内部图成功。没有关联/发送原生会话。
+
+仍缺：正式 Task projection adapter、精确计划全文与证据引用路由、真实 Workflow 资源/定义及包会话绑定、写草案 store、Native Input 附件与发送联调。v8 显式探索不等于新 RC 正式资格。
+
+
+## C061 Workflow 目录恢复（2026-09-15）
+
+UI `2514fb8` / DSH `2eab864`：恢复检索、状态筛选、排序、latest/all versions、Gallery/List、分组、页码/页大小和精确 definitionId+revision 定位。持久状态有长度、版本和字段白名单；打开工作流前保存定位；离开目录后拒绝迟到回调。浏览器回归还发现窄 Header 操作覆盖版本切换，改为按内容宽度列与横向滚动。421 Vitest+34 Node、45 浏览器、242 DSH 测试通过。
+
+3082 实测 Implementation 检索 + 全部版本 + List → exact v8-2eecd430 → 全部工作流，三项选择保留。开发实例仍显式启用 Analysis/Workflow/Task fixture，未发布RC。当前原生 Workflow 会话、真实目录来源与资源事务仍未就绪，不以目录恢复替代这些能力。
+
+
+## C062 Workflow 原生 Input 与附件（2026-09-15）
+
+Workflow resolver 按精确 definitionId/revision、包 workspaceId/path 和本实例 Session 成员关系解析，重复绑定、archived/foreign Session、缺失/失效来源均不打开。controller 只有原生 current 确认后才暴露 active Input。外层几何桥接只读取 input-stream rectangle 并更新固定 DSH frame CSS，不移动 Conversation DOM；监听分栏、父区域、窗口和滚动，卸载清理。247 DSH 测试通过。
+
+独立 3082 通过 `CRYSTRA_WORKFLOW_INPUT_TEST=1` 将定稿样本显式绑定到一次性 `/private/tmp/crystra-workflow-input-acceptance` 工作区和新建未发送会话。UI harness 接受 native input 插槽。浏览器实测三种几何完全对齐：400px、416px、侧栏从64到220px；三工作面保留原生草稿；测试PNG可粘贴、跨页保留、原生预览、移除；进入Analysis隐藏原生Input。文字草稿和图片已清空，发送按钮恢复disabled，模型请求为0。[证据](drafts/evidence/c062-workflow-input.json)。
+
+未跟踪 `.workflow-input-preview.js` 的绑定仅有效1小时、来源变无效后关闭Input，正常入口没有自动启用。Task/Workflow 导航切换先停用两者再启用目标，避免两个控制器抢夺会话。正式 package adapter、发送/审批链路仍未完成。当前是原生组件装配验收，不是新RC或正式发布资格。
+
+
+## C063 隔离草案存储基础（2026-09-15）
+
+新增 draft-authoring-only store，一个显式 root 绑定一个 workspace/resource 流与来源锁。提交核对 baseRevision、不可重用 candidateRevision、proposal 幂等、候选校验与提交前权限；候选/校验上下文使用隔离副本。新不可变版本、pending 事件和幂等回执在同一文件原子替换；并发锁竞争拒绝而不覆盖，验证失败不留下半个候选。252 DSH 测试通过，包括重建store恢复、重复提案、revision冲突、来源漂移、撤权、validator修改入参及并发。
+
+这是存储基础，尚未接UI/Agent写入入口或通知派发。不会写真实包目录，不会执行/批准/发布。异常退出遗留lock需要显式恢复，不自动删锁；不声称跨服务或断电事务保证。
+
+
+## C064 原生 Input 精确引用（2026-09-15）
+
+Workflow 引用桥经公开 `ctx.sessions.scope` / `ctx.conversation.input.for` / `setDraft` 写入当前草稿，不调用submit。校验当前active定义版本与Session，并拒绝busy Input；资源引用同时保留独立resourceRevision，活动引用保留objectId。保留已有草稿并追加条件化对象引用。254 DSH测试通过。
+
+3082实际资源页“在对话中讨论此文件”追加 definitionId/revision/workspaceId/resourceId/path/resourceRevision，保留原文，焦点在原生TEXTAREA。初次焦点选择仅role属性未命中原生textarea，修正后复验通过。测试文字已清空。为保持引用路径可定位，103份完整设计资源快照仅物化至一次性 `/private/tmp/crystra-workflow-input-acceptance`，并写入各文件digest清单；未执行资源脚本。结晶样本与当前实际流程尚无正式proposal关联，继续禁用其讨论动作。
+
+普通实例没有启用该探索adapter；不宣称引用本身构成正式绑定、审批或执行授权。下一步用只读 /crystra doctor 验证原生提交链路，无需模型API Key。
+
+
+## C065 原生提交与附件保管（2026-09-15）
+
+3082一次性Workflow会话经原生发送按钮执行 `/crystra doctor`，宿主返回测试工作区缺role-provider-bindings，结果回到Conversation，模型steps/llmMs均0。带格式错误测试PNG时宿主拒绝并保留原生草稿；替换有效2×2 PNG后图片已作为user/message attachment持久化，attachmentId SHA256与本地73字节文件一致。管理命令既有策略不接受附件，返回CRYSTRA_ADMIN_COMMAND_INVALID，未执行或回落LLM；不为使测试通过放宽策略。原生草稿和待发送附件已手动移除。[证据](drafts/evidence/c065-native-command.json)。
+
+证明的是原生输入提交、图片序列化/保管、拒绝后的草稿保持及命令边界；不是模型provider成功调用、审批或Workflow执行完成。首次产生历史消息后原生Session Header/旧view tabs出现于左侧Input，尚需按v8组合处理其重复导航，不能继续以空白Session外观覆盖这项验收。
+
+## C066 非空原生 Session 页头装配（2026-09-15）
+
+DSH `a710b07` 使用0.1.1-rc.2公开`conversation.session.header` shadowing和原始共享store；仅精确绑定的Crystra Task/Workflow Input有效时注册。原始Header与children保留，退出或绑定失效即恢复。没有接管Conversation body、Input draft mirror或审批carrier。进入绑定Session以原生setView回到chat；后续原生drilldown提供返回对话按钮，避免隐藏标签后困在其他view。
+
+256回归通过。实际3082非空会话不再呈现原生标题/模式/旧标签；退出到隔离Harness原Header恢复，选择Delivery后返回Crystra自动恢复对话，未发送草稿完整保留；最终清空测试草稿、发送按钮禁用。原生历史含C065有效图片，截图可见。Conversation精确SHA增加qualification guard。未改3080/3081、未调用模型、未发RC。
+
+边界：使用公开注册表的shared store seat；不兼容宿主保留原Header，不宣称跨版本支持。原生工具详情/轨迹的完整交互尚需带真实工具结果继续验收。
+
+## C067 资源草案编辑和持久化（2026-09-15）
+
+UI `198cf76`增加显式`onSaveDraft`异步端口；默认只读。请求携带resourceId/path/baseRevision/baseContent/content，文件精确revision优先于workspace版本。宿主必须完成持久化并提供刷新后的snapshot再resolve。保存中锁定重复提交，冲突和失败保留草稿；保存期间撤权不接受迟到结果。不会直接改写传入snapshot。
+
+DSH `7ec3228`用声明资源目录约束资源和路径，复用C063隔离store，按文件流保存不可变候选、幂等proposal与pending事件。上下文身份失效拒绝。UTF-8字节上限替代字符计数，避免中文大内容写入后无法读回。
+
+实际3082通过显式测试桥连接127.0.0.1:4192；桥只接受3082 Origin、校验12项source lock；开发helper未纳入发布。首次保存因样本包0.4.6误作资源版本被正确拒绝；修正adapter为v8-resource-snapshot后，保存成功且浏览器刷新恢复。README候选含C067验收标记，原始snapshot及源包未修改。编辑后旧关系图和对话引用暂停，以免误用旧revision。证据`drafts/evidence/c067-resource-authoring.json`。
+
+425 Vitest+34 Node、45浏览器、259 DSH测试通过；type/lint/format/build/deps通过。新RC未发布。当前只证明隔离草案存储和UI联调，不证明正式包文件写入、Agent读取候选、可靠事件投递、跨Workflow未保存编辑保留或正式领域契约完成。
+
+## C068 未保存资源草稿导航恢复（2026-09-15）
+
+UI `d3b93e6`：显式资源保存端口的本地草稿按definitionId、definition revision、workspace root隔离。保存后清除本地dirty状态；未保存编辑在组件卸载后保留，返回同一身份恢复选择文件、内容与编辑模式，其他revision不能继承。只要仍有dirty草稿，跨页面也保留beforeunload保护；此机制是内存恢复，不声称刷新后持久化未保存内容。
+
+新增隔离/remount与unload回归。实际3082编辑README、退到工作流目录、返回同一版本并打开资源页，预览和源码文末均出现C068未保存标记；源码为虚拟化行，必须定位文末而非仅取当前DOM文本。最终取消测试编辑，页面显示无未保存修改。426 Vitest+34 Node、45浏览器、type/lint/format/build通过。DSH仍7ec3228/259测试；未发RC。
+
+远端只读核对：firestige/crystra#277、crystra-dsh#38、crystra-contracts#18仍open、非Draft、project-ops-agent bot；crystra-ui无openPR。不能把本地UI完成等同远端已发布。
+
+## C069 UI RC2 与宿主精确输入
+
+UI `4f3d22a78d8e9f474299d6a4b5a8739e03a8f0ad` 已通过完整本地资格（426 Vitest、34 Node、45 browser、type/lint/format/build/deps、package、React18、Docker）及远端 CI 34877525947。自动 RC 34877591941 成功，发布 [crystra-ui-v0.1.0-rc.2](https://github.com/firestige/crystra-ui/releases/tag/crystra-ui-v0.1.0-rc.2)。下载四个资产执行 `release.mjs verify --qualified` 通过；包 SHA256 `884ff9c2a344846fad787cde91eea5833e467d60b2f840e45211a92a399f361f`。
+
+[UI PR #8](https://github.com/firestige/crystra-ui/pull/8) 为 project-ops-agent bot、非 Draft，合并仍归用户。DSH `e2b3c2b` 更新发布 URL、锁文件、候选输入元数据及缓存，使用公开命名导出重建正式 bundle；259 项测试、输入校验、pack 验证通过。开发 fixture helper 未进入正式 bundle。此结果只证明 UI 组件制品及 DSH 消费输入，新 DSH RC、完整页面真实数据与组合资格仍未完成。
+
+## C070/C071 真实 Trace 目录与 Facts 解码修正（进行中）
+
+DSH 目录按当前实例 Delivery inventory 的真实 Task、Workflow 和 startedAt 投影，用 Evidence `DELIVERY_ROOT` 的 SPAN → DELIVERY 精确关联打开 Trace；缺失、多根、过期、分页快照变化和来源撤销均不猜测。目录复用公开 DeliveryDirectory 和 Trace 插槽，3082 关闭 Analysis 样本后验证真实空目录、抽屉及错误输入；全量264 DSH测试通过。
+
+追加现有 T6 真实服务留档回放（`evidence/t6-real-service-chain.json` 的 root fact）发现 RC2 Facts decoder 仍按 ingestion 属性名判断 fields/dimensions，拒绝正式 `C01` 等 registry ID。已在 UI 补两个失败回归并修正，保持 ID 顺序、重复、未知字段拒绝。当前428 Vitest与34 Node通过；完整门禁及新RC待完成。此处记录的是已确认软件缺陷，不需要更改正式契约或用户决策。
+
+## C073 配置式 Task 草案进入插件归档
+
+UI `05c4c12` 的 RC3 自动作业 34880090833 成功，下载四资产资格验证通过；包 SHA256 `010a92aa53cd38afcab6bdb2bd7fdd7de584eed35ae939d1f8beac96e11e3e19`。DSH `83b0ecd` 已固定该发布输入，真实T6根关联回放通过。
+
+DSH新增默认关闭的 `exploration` 配置和只读 loopback `/crystra-exploration` 端口，逐次核验本地文件、来源锁及12份来源摘要、精确Task/Goal/Plan绑定、有效期和fixture opt-in。浏览器5秒刷新，10秒读取租期或快照到期时先清空；请求卡住也不能无限显示旧草案。正式Task同ID优先，不继承草案工作面。不创建会话、不注入模型、不提供批准/执行回调。
+
+3083 新独立home消费实际打包的插件和UI RC3，不使用开发源码alias；显式JSON源来自v8设计数据，页面注明fixture。需求、计划、执行、审核、交付均加载；改变binding使目录及旧内容清空，恢复文件后读取恢复。Plan图、全文、运行图与证据没有提供，因此显示unavailable。此验收证明配置式草案传输与公共组件组合，不能宣称真实Task业务数据已完成。273 DSH测试、打包、发布输入检查通过。
+
+C074干净副本 `/tmp/crystra-dsh-candidate-rc3` 冻结归档到 `/tmp/crystra-dsh-rc3-local`，完整安装/生命周期/provider/Harness/离线恢复资格进行中。3080用户、3081旧RC、3082设计探索保留。
+
+C074 最终 DSH 提交 `3ac11ad5c3e5c9a7bdfa8fd4b5cbcd76cc6b6486` 的六门禁全部 PASS；资格归档 `/tmp/crystra-dsh-rc3-local-b`，插件 SHA256 `10953b107d3a5093003e66ac9535b184f28155706a0a734508b2f6cfc22a76fd`。初轮失败为原脚本假设启动即显示 Harness composer；修正为先验证 Crystra 默认页，再点公开返回入口，完整保留后续原生命令、会话、Studio 与离线断言。最终制品资格验证通过。bot PR38 已更新非 Draft，远端 Foundation CI 成功，自动 RC3 作业34882477091进行中。
+
+C075 组合专用 worktree `/tmp/crystra-combination-stage` 提交 `b12f9583`，新增 `release/combinations/0.1.0-rc.2.json`，只更新 UI/DSH 输入与对应 gitlink，其余服务/组件保持已验证组合；50项组合测试通过。DSH远端下载校验前不发布组合；原RC1清单保持不可变。
+
+## C076 Workflow 配置式投影
+
+目录、流程设计、资源配置、结晶分析已通过正式插件入口接入公开 UI RC3 组件。配置/端口及前提见 [Workflow 文件投影草案](drafts/workflow-file-projection.md)。285 回归、build、boundaries 通过；3083 实际检查三工作面、目录、失效撤销和恢复。侧栏 definitionId→id 映射和轮询保持投影身份均有回归用例。
+
+3083 现为 C076 本地代码覆盖已发布 RC3 的隔离实例，不能继续称作未修改的发布包；原 RC3 source/modules/lib 备份在 `/tmp/crystra-c076-installed-rc3-source`，会话41610。已发布的 UI RC3、DSH RC3、组合 RC2 的下载验证结论不变。C076尚未发布。资源编辑与原生 Workflow 会话、Agent 消费仍待接入；不据条件设计样本宣称正式运行事实。
+
+## C077–C080 输入、资源与Agent读取
+
+Workflow 原生Input现要求显式本实例工作区/会话绑定；资源候选保存只在显式root与写权限下启用。引用追加到原生草稿，Agent工具按精确版本读取，均不自动发送/执行/采用。298回归与实际保存重载、候选引用、工具读取验证通过，详见 [条件契约和证据](drafts/workflow-file-projection.md)。事件仍pending。下一缺口是Task计划文档、DAG及运行图，C081继续；C076–80尚未发布新RC，旧RC资格不覆盖新提交。
+
+## C081–C084：Task 富投影与独立 Input
+
+UI01fc070 RC4公开Task图组件，修复摘要误提取；431 Vitest+34 Node、46浏览器及全资格通过。DSH ae74ed9消费下载核验RC4，接入正文/图与Task独立会话，304回归/build/boundaries通过。实际3083图选择、来源撤回、Task/Workflow独立未发送草稿、Analysis隐藏和foreign会话拒绝均通过。条件草案详见[Task富投影](drafts/task-rich-projection.md)。C084新DSH/组合RC资格进行中，旧RC资格不得覆盖新提交。

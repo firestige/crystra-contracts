@@ -115,3 +115,13 @@ T6 尚未发布候选。T7 尚未清理任何真实旧部署。
 - 文档 PR 已读回：组合 [#276](https://github.com/firestige/crystra/pull/276)，head 9ce01cae4230ebf21959fdd2c7b41ab7d4727c68；DSH [#37](https://github.com/firestige/crystra-dsh/pull/37)，head 88f48d8baeaa87408365d5b7e51a09ab8b71289e。均 project-ops-agent[bot]、非 Draft，未自动合并。
 
 - 远端 CI：组合 #276 qualify 34795084552、release-governance 34795084555 均成功；DSH #37 verify 34795095534 成功。恢复台账已通过 bot PR [Contracts #17](https://github.com/firestige/crystra-contracts/pull/17) 提交，非 Draft；此前本地 C022 与本轮 C023 均包含在该审核分支中。发布权限授权问题已重新提出，尚未收到明确答复；未执行凭据配置。
+
+## C024：发行配置已完成，T5 退出
+
+- 用户明确批准八仓库配置范围，要求复用既有资产；用户已将 wsr-release 更名为 crystra-release。只读核对 App ID 4716644、Client ID Iv23liIS3BZCeQOUWhDX、安装 ID 156531932 均沿用。
+- 现有 selected 安装已经覆盖全部八仓库，所以未修改安装范围或全局权限。用已有本地私钥设置八仓库 CRYSTRA_RELEASE_APP_PRIVATE_KEY，设置并核对 CRYSTRA_RELEASE_CLIENT_ID；每次写入成功，读回名称与时间戳。未读回 Secret 明文。旧 WSR 配置暂保留。证据见 release-configuration.json。
+- #276 合并 2d9f2e51、DSH #37 合并 fee8e879、Contracts #17 合并 13adf4df 均已确认。发布代码、现行文档入口、网络坐标和发行权限达到 T5 退出条件。旧本地 checkout 名是当前会话路径，不作为对外发布坐标；仅在协调窗口调整，不边运行资格边移动目录。
+- T6 在 /tmp/crystra-contracts-t6 的 13adf4df2a5abb755cf583f2c10972584e63eec3 上开始：全部 25 项领域资格命令 PASS；14 项发行工具测试 PASS；冻结 239 文件归档 SHA-256 9aef1649fe1554e2be090c7911b29bbf93a8305ec377435d4c1e0823d119f0bd。证据见 evidence/t6-contracts-local-qualification.json 与 evidence/t6-contracts-local-metadata.json。
+- release/next 留在旧 evidence-query 历史且与 main 分叉；普通快进预检拒绝后，核实旧提交仍被历史稳定 tag 保留，采用精确 lease 切换候选分支，不修改旧 tag。候选目标为 crystra-contracts-v0.1.0-rc.1；远端资格结果另行读回，不以本地 PASS 冒充。
+
+- Contracts 候选 workflow 34798564767 已成功；远端归档和元数据逐字节等于本地冻结集，资格回执绑定验证通过。T6 的后续状态统一见 t6-progress.md，不能把首个组件成功视作整套组合资格已完成。

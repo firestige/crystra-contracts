@@ -1,0 +1,42 @@
+{
+  "status": "PASS",
+  "candidate": "crystra-v0.1.0-rc.1",
+  "run": 34816139862,
+  "commit": "1593f58968b4fbef4de47c62f4f811f75646f406",
+  "remoteFiles": 6,
+  "localRemoteBytes": "IDENTICAL",
+  "qualification": {
+    "schemaVersion": "crystra.combination.qualification@1.0.0",
+    "status": "PASS",
+    "candidateTag": "crystra-v0.1.0-rc.1",
+    "commit": "1593f58968b4fbef4de47c62f4f811f75646f406",
+    "artifactMetadataSha256": "b0762f134ac8a10c6fc9170ca38554e0af51f57f0861efd70263830d0d33f2d5",
+    "closure": {
+      "plugin": {
+        "commit": "9a9777d6fc8d2d104dc8f18ccffe9660239b21a4",
+        "url": "https://github.com/firestige/crystra-dsh/releases/download/crystra-dsh-v0.1.0-rc.2/dsh-crystra-0.1.0.tgz",
+        "sha256": "7d6635ef424ee5cffc250c7a13c5e22be62e20e4970ec1db951528d944b6df6f",
+        "metadataSha256": "255098878e446f791ddee6222154fb3192a62cc80cc2ee7032ec78278553b09f"
+      },
+      "services": {
+        "commit": "4a6269b8b3b8d6dadce0de12df6e22221fbd99fc",
+        "url": "https://github.com/firestige/crystra/releases/download/crystra-services-v0.1.0-rc.3/crystra-services-0.1.0.tar.gz",
+        "sha256": "4ad75bbca7d544b4710c9eabe97f5080e694329f01d584babe3ec3f9a4f30d9f",
+        "metadataSha256": "0588b264fe5f3e49012862599f9ce4fcf177019e942f8aa41cc5af3f61930d82"
+      }
+    },
+    "receiptSha256": {
+      "plugin": "a426698bf3cab6a33232635aa03194020ecbceb3f41f5913b54ecc8793c4ff7d",
+      "services": "480ec2b81f83a2317e4a38704f31325db2a7f9d69abb0dc6a2416e9195d32a92"
+    },
+    "checks": [
+      "all-remote-artifacts",
+      "plugin-execution-receipts",
+      "service-lifecycle-receipt",
+      "installed-dependencies",
+      "installed-service-binding"
+    ]
+  },
+  "serviceIntegrationEvidence": "t6-real-service-chain.json",
+  "pluginRC2Run": 34815768299
+}

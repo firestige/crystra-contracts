@@ -1,0 +1,24 @@
+{
+  "checkpoint": "C084",
+  "command": "/crystra doctor",
+  "sessionBinding": {
+    "workspaceId": "12534645-211b-49c4-a6ee-cdddeda89655",
+    "packageRoot": "/private/tmp/crystra-c083-package",
+    "sessionId": "crystra-c083-ab9ee273-1841-4efd-b962-9e3959f7f8f3"
+  },
+  "result": "NEEDS_CONFIGURATION",
+  "modelEvents": [],
+  "commandDone": [
+    {
+      "commandId": "crystra-initialization-9aa0307f-1c68-4638-9975-6437337ac4e8",
+      "kind": "error",
+      "text": "{\"status\":\"NEEDS_CONFIGURATION\"}"
+    },
+    {
+      "commandId": "cmd-a4f54bb1-1",
+      "kind": "error",
+      "text": "{\"status\":\"NEEDS_CONFIGURATION\"}"
+    }
+  ],
+  "sourceHistory": "/tmp/crystra-c084-task-command-history.json"
+}

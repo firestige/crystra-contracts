@@ -1,0 +1,12 @@
+{
+  "repository": "firestige/crystra-contracts",
+  "candidateTag": "crystra-contracts-v0.1.0-rc.1",
+  "commit": "13adf4df2a5abb755cf583f2c10972584e63eec3",
+  "workflowRun": 34798564767,
+  "localAndRemoteBytesIdentical": true,
+  "artifactSha256": "sha256:9aef1649fe1554e2be090c7911b29bbf93a8305ec377435d4c1e0823d119f0bd",
+  "fileCount": 239,
+  "qualificationReceiptBound": true,
+  "releaseUrl": "https://github.com/firestige/crystra-contracts/releases/tag/crystra-contracts-v0.1.0-rc.1",
+  "status": "PASS"
+}

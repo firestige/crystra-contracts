@@ -1,0 +1,33 @@
+{
+  "checkpoint": "C067",
+  "date": "2026-09-15",
+  "authority": "draft",
+  "uiCommit": "198cf76",
+  "dshCommit": "7ec3228",
+  "browser": {
+    "port": 3082,
+    "saveConfirmed": true,
+    "reloadRestored": true,
+    "sourceRevisionMismatchRejectedThenAdapterCorrected": true,
+    "staleRelationsAndQuoteDisabled": true
+  },
+  "tests": {
+    "uiVitest": 425,
+    "uiNode": 34,
+    "browser": 45,
+    "dsh": 259
+  },
+  "limits": [
+    "No source package writes",
+    "No Agent adoption or reliable event delivery",
+    "No new RC",
+    "No model request"
+  ],
+  "persisted": {
+    "path": "README.md",
+    "revision": "draft-sha256:2cfa8f2a026532837bda767f7d38384cedf9c80f852b8e2e39821e0a6c6d2618",
+    "sourceSha256": "9e89c27092833a804943250799c8c9efc19994a789b76fb1ee5382d92113e951",
+    "draftSha256": "9c4cc420107083dcf92bd454aedec0fda06576e882ff420c33931ad2a0e160ee",
+    "pendingEvents": 1
+  }
+}
