@@ -1,0 +1,157 @@
+{
+  "checkpoint": "C092",
+  "checkedAt": "2026-09-15T02:48:21.105988+00:00",
+  "repositories": [
+    {
+      "mergeCommit": {
+        "oid": "073507c65c3427058ca8bbd733a012f304add306"
+      },
+      "mergedAt": "2026-09-15T01:34:26Z",
+      "state": "MERGED",
+      "url": "https://github.com/firestige/crystra-ui/pull/8",
+      "repo": "crystra-ui",
+      "main": "073507c65c3427058ca8bbd733a012f304add306",
+      "qualifiedPrHead": "e3246e17bd875ad32ef8ec4268357ca457530ede",
+      "headTree": "620e499cfbd55f0bb881f1b5ba3418a9415633df",
+      "mainTree": "620e499cfbd55f0bb881f1b5ba3418a9415633df",
+      "treesEqual": true,
+      "checks": [
+        {
+          "name": "docker-build",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "verify",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "mergeCommit": {
+        "oid": "6665a90e6e2fbbcb15c053617102a5b1cf198217"
+      },
+      "mergedAt": "2026-09-15T01:34:41Z",
+      "state": "MERGED",
+      "url": "https://github.com/firestige/crystra-execution/pull/46",
+      "repo": "crystra-execution",
+      "main": "6665a90e6e2fbbcb15c053617102a5b1cf198217",
+      "qualifiedPrHead": "82a88ea4222e40810a387863d654a12e008a5b26",
+      "headTree": "e7669da9eaaa8d129566a6e5d0bcc5bf1cd3de0d",
+      "mainTree": "e7669da9eaaa8d129566a6e5d0bcc5bf1cd3de0d",
+      "treesEqual": true,
+      "checks": [
+        {
+          "name": "verify",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "mergeCommit": {
+        "oid": "69c0e1f4cabba80377d95f966e2d96ac5f447262"
+      },
+      "mergedAt": "2026-09-15T01:34:53Z",
+      "state": "MERGED",
+      "url": "https://github.com/firestige/crystra-evolution/pull/10",
+      "repo": "crystra-evolution",
+      "main": "69c0e1f4cabba80377d95f966e2d96ac5f447262",
+      "qualifiedPrHead": "c5aa85ec25781d11df31354b076764fa900754a7",
+      "headTree": "8d6df9c54397c3a631993b7f712f97da30f13782",
+      "mainTree": "8d6df9c54397c3a631993b7f712f97da30f13782",
+      "treesEqual": true,
+      "checks": [
+        {
+          "name": "container",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "python-compatibility (3.14)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "python-compatibility (3.13)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "quality-and-build",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "mergeCommit": {
+        "oid": "89d8f0aff75cad69f95eaa3ce317f4895591462e"
+      },
+      "mergedAt": "2026-09-15T01:35:05Z",
+      "state": "MERGED",
+      "url": "https://github.com/firestige/crystra-dsh/pull/38",
+      "repo": "crystra-dsh",
+      "main": "89d8f0aff75cad69f95eaa3ce317f4895591462e",
+      "qualifiedPrHead": "9d565351f049db669f0d76e9510845277fc2a4cd",
+      "headTree": "c022e0a16b296d1038881b35d9284c0c830528eb",
+      "mainTree": "c022e0a16b296d1038881b35d9284c0c830528eb",
+      "treesEqual": true,
+      "checks": [
+        {
+          "name": "verify",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "mergeCommit": {
+        "oid": "c8845ba56fc3ad43951faf801a64cf0bd3c76ec6"
+      },
+      "mergedAt": "2026-09-15T01:35:14Z",
+      "state": "MERGED",
+      "url": "https://github.com/firestige/crystra-contracts/pull/18",
+      "repo": "crystra-contracts",
+      "main": "c8845ba56fc3ad43951faf801a64cf0bd3c76ec6",
+      "qualifiedPrHead": "ed3ba994544b98451755f5334d1b63839ac528cd",
+      "headTree": "e6c370e815ecbb556e3385bada3e13778a7f1c0d",
+      "mainTree": "e6c370e815ecbb556e3385bada3e13778a7f1c0d",
+      "treesEqual": true,
+      "checks": [
+        {
+          "name": "qualify",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "mergeCommit": {
+        "oid": "f2c1f0aba48480d67c099754d3795ec6ae73ee39"
+      },
+      "mergedAt": "2026-09-15T01:35:36Z",
+      "state": "MERGED",
+      "url": "https://github.com/firestige/crystra/pull/277",
+      "repo": "crystra",
+      "main": "f2c1f0aba48480d67c099754d3795ec6ae73ee39",
+      "qualifiedPrHead": "4b48c3e3f761e7b51adb335e5334ff3fcd0e291d",
+      "headTree": "28b97cef433e57e04312a121619ca63e521217f0",
+      "mainTree": "28b97cef433e57e04312a121619ca63e521217f0",
+      "treesEqual": true,
+      "checks": [
+        {
+          "name": "qualify",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    }
+  ],
+  "combination": "crystra-v0.1.0-rc.5",
+  "mainManifestMatchesQualifiedUiAndDsh": true,
+  "quickstartMatchesQualifiedPlugin": true,
+  "qualificationEvidence": "c091-final-rc-combination.json",
+  "scope": "Rename and qualified RC complete; no GA; conditional drafts and model-consumption limits remain."
+}
