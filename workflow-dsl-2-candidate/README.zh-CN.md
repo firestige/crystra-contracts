@@ -5,3 +5,5 @@
 它仍是 review candidate，不是 publication record。运行 `npm test` 会重新生成已纳入版本控制的 machine artifact，并执行 positive/negative conformance。相邻的 published `workflow-dsl` 包不会被修改。
 
 Provider selection 仍不属于 Workflow author intent。Admission 汇总每个 Role 的 exact Route `capabilities`，并用该 requirement 校验 repository 中显式的 Role→Provider binding。Workflow 不声明 Provider priority、fallback、credential 或 model default。
+
+Package 身份及 Snapshot 的 Package 绑定支持 `1.2.3-rc.1` 等精确预发布版本；其他版本字段保持原规则。源准入由 Execution 负责：RC 必须显式指定精确版本并使用本地私有源，包有效不代表已经公开发布。
