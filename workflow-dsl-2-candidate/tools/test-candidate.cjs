@@ -25,6 +25,22 @@ test('standalone 2.0 candidate accepts its generated minimal package', () => {
   assert.equal(result.status, 0, `${result.stderr}\n${result.stdout}`);
 });
 
+test('exact prerelease package versions preserve snapshot identity and reject aliases', () => {
+  const {canonicalDigest}=require('../generated/tools/canonicalize.cjs');
+  for (const version of ['1.2.3-rc.1','latest','^1.2.3','1.2']) {
+    const root=mutate(directory=>{
+      const file=path.join(directory,'package.json'),snapshotFile=path.join(directory,'snapshot.json');
+      const pkg=JSON.parse(fs.readFileSync(file));pkg.package.version=version;delete pkg.package.digest;pkg.package.digest=canonicalDigest(pkg);
+      fs.writeFileSync(file,JSON.stringify(pkg));
+      const snapshot=JSON.parse(fs.readFileSync(snapshotFile));snapshot.snapshot.package.version=version;snapshot.snapshot.package.digest=pkg.package.digest;
+      delete snapshot.snapshot.digest;snapshot.snapshot.digest=canonicalDigest(snapshot);fs.writeFileSync(snapshotFile,JSON.stringify(snapshot));
+    });
+    const result=check(root);
+    if(version==='1.2.3-rc.1')assert.equal(result.status,0,result.stderr);
+    else assert.notEqual(result.status,0);
+  }
+});
+
 test('published 1.1 package remains 1.1 and is rejected by exact 2.0 dispatch', () => {
   const published = path.resolve(ROOT, '..', 'workflow-dsl', 'examples', 'minimal');
   const result = check(published);

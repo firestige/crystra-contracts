@@ -7,3 +7,5 @@ It is a review candidate, not a publication record. Run `npm test` to regenerate
 Provider selection remains outside Workflow author intent. Admission derives the union of each Role's exact Route `capabilities` and validates that requirement against the repository's explicit Role-to-Provider binding. The Workflow never declares Provider priority, fallback, credentials, or a model default.
 
 Chinese companion: [`README.zh-CN.md`](README.zh-CN.md).
+
+Exact prerelease Package versions such as `1.2.3-rc.1` are accepted in Package identity and its Snapshot binding. The other version fields retain their original rules. Source admission policy belongs to Execution: RC use requires an exact selector and a private local source; package validity does not imply a public release.

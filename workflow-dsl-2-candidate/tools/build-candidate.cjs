@@ -32,6 +32,11 @@ fs.mkdirSync(TOOLS, { recursive: true });
 
 for (const name of fs.readdirSync(path.join(SOURCE, 'schemas')).filter(name => name.endsWith('.json'))) {
   const schema = replaceVersion(readJson(path.join(SOURCE, 'schemas', name)));
+  if (name === 'agentops.meta.schema.json') schema.$defs.packageVersion = {
+    type: 'string', pattern: '^(?:0|[1-9][0-9]*)\\.(?:0|[1-9][0-9]*)\\.(?:0|[1-9][0-9]*)(?:-[0-9A-Za-z-]+(?:\\.[0-9A-Za-z-]+)*)?$',
+  };
+  if (name === 'package.schema.json') schema.properties.package.properties.version.$ref = 'urn:agentops:workflow-dsl:1.1.0:meta#/$defs/packageVersion';
+  if (name === 'package-snapshot.schema.json') schema.properties.snapshot.properties.package.properties.version.$ref = 'urn:agentops:workflow-dsl:1.1.0:meta#/$defs/packageVersion';
   if (name === 'routes.schema.json') {
     const route = schema.properties.routes.items;
     route.required = route.required.filter(field => field !== 'agent');
